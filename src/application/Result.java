@@ -12,7 +12,17 @@ public class Result {
 	 * of _numberInt
 	 * @param number: number being tested
 	 */
-	public Result(int number) {
+	public Result(Difficulty difficulty) {
+		int max = 0;
+		
+		if (difficulty == difficulty.HARD) {
+			max = 99;
+		} else if (difficulty == difficulty.EASY) {
+			max = 9;
+		}
+		
+		int number = (int )(Math.random() * max + 1);
+		
 		_numberInt = number;
 		if (number == 1) {
 			_numberWord = "tahi";			
