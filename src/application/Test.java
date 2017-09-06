@@ -33,4 +33,21 @@ public class Test {
 	public void addTestResult(Result result) {
 		_testResults.add(result);
 	}
+	
+	/**
+	 * Will return an integer value representing the number
+	 * of questions answered correctly out of ten in the 
+	 * current test.
+	 * @return
+	 */
+	public int getOverallMark() {
+		int overallMark = 0;
+		//cycles through each result checking if it was a pass
+		for (Result result : _testResults) {
+			if (result._pass == true) {
+				overallMark++;
+			}
+		}
+		return overallMark;
+	}
 }

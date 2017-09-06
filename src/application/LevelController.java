@@ -11,7 +11,12 @@ public class LevelController {
 	@FXML
 	private Label numberWord;
 	
-	//should update these labels every time update number button is pressed
+	/**
+	 * For now just having a play around - this method is called when the make random number
+	 * button is clicked and will show the number and the word of that number in maori.
+	 * Learning how to use events.
+	 * @param event
+	 */
 	public void updateLabels(ActionEvent event) {
 		//instantiating result for shits and gigs
 		Result result = new Result(Difficulty.EASY);
