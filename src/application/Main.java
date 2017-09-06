@@ -30,7 +30,7 @@ public class Main extends Application {
 			//wanted to fiddle around functionality of changing labels ect. Should generate a random number
 			//when pressing the button and print appropriate maori word. 
 			PauseTransition delay = new PauseTransition(Duration.seconds(2));
-			delay.setOnFinished( event -> primaryStage.setScene(levelScene));
+			delay.setOnFinished( event -> primaryStage.setScene(mainScene));
 			delay.play();
 
 		} catch(Exception e) {
