@@ -9,8 +9,8 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LevelController">
    <children>
       <Label layoutX="270.0" layoutY="353.0" text="Round 1/10" />
-      <ProgressBar layoutX="151.0" layoutY="335.0" prefHeight="18.0" prefWidth="319.0" progress="0.0" />
-      <Label fx:id="numberToTest" layoutX="274.0" layoutY="39.0" prefWidth="76.0">
+      <ProgressBar fx:id="progressBar" layoutX="151.0" layoutY="335.0" prefHeight="18.0" prefWidth="319.0" progress="0.0" />
+      <Label fx:id="numberToTest" layoutX="227.0" layoutY="39.0" prefHeight="161.0" prefWidth="168.0" textAlignment="CENTER">
          <font>
             <Font size="110.0" />
          </font>
@@ -20,6 +20,6 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Label fx:id="numberWord" layoutX="257.0" layoutY="207.0" prefHeight="17.0" prefWidth="109.0" />
+      <Label fx:id="numberWord" layoutX="257.0" layoutY="207.0" prefHeight="17.0" prefWidth="109.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

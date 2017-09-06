@@ -49,7 +49,7 @@ public class Result {
 	public void setRecording(File recording) {
 		_recording = recording;
 	}
-
+	
 	/**
 	 * Converts an integer to the maori word associated to that integer.
 	 * @param number: number to be converted
