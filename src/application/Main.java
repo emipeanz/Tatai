@@ -1,7 +1,11 @@
 package application;
 	
+import java.util.concurrent.TimeUnit;
+
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
@@ -11,14 +15,13 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
+			
+			Scene introScene = new Scene(FXMLLoader.load(getClass().getResource("IntroMenu.fxml")));
+			
+			introScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(introScene);
 			primaryStage.show();
 
-			System.out.println("hello world ā ");
-
-			System.out.println("Please work");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
