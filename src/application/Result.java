@@ -35,11 +35,27 @@ public class Result {
 	}
 
 	/**
+	 * Stores the result of the test that has been taken.
+	 * @param pass
+	 */
+	public void initialisePass(boolean pass) {
+		_pass = pass;
+	}
+
+	/**
+	 * Stores a file to hold the recording associated to the the result.
+	 * @param recording
+	 */
+	public void initialiseRecording(File recording) {
+		_recording = recording;
+	}
+
+	/**
 	 * Converts an integer to the maori word associated to that integer.
 	 * @param number: number to be converted
 	 * @return String associated to that number
 	 */
-	public String numberToWord(int number) {
+	private String numberToWord(int number) {
 		String _numberWord = "";
 
 		if ((number >= 10) && (number < 20)) {
@@ -67,7 +83,7 @@ public class Result {
 		if ((number > 10) && ((number % 10) != 0)) {
 			_numberWord += "tekau mā ";
 		}
-	
+
 		if ((number % 10) == 0) {
 			_numberWord += "tekau";
 		} else if ((number % 10) == 1) {
@@ -91,18 +107,6 @@ public class Result {
 		}
 
 		return _numberWord;
-	}
-
-	/**
-	 * Stores the result of the test that has been taken.
-	 * @param pass
-	 */
-	public void initialisePass(boolean pass) {
-		_pass = pass;
-	}
-
-	public void initialiseRecording(File recording) {
-		_recording = recording;
 	}
 
 }
