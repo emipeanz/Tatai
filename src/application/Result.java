@@ -38,7 +38,7 @@ public class Result {
 	 * Stores the result of the test that has been taken.
 	 * @param pass
 	 */
-	public void initialisePass(boolean pass) {
+	public void setPass(boolean pass) {
 		_pass = pass;
 	}
 
@@ -46,7 +46,7 @@ public class Result {
 	 * Stores a file to hold the recording associated to the the result.
 	 * @param recording
 	 */
-	public void initialiseRecording(File recording) {
+	public void setRecording(File recording) {
 		_recording = recording;
 	}
 
@@ -58,55 +58,55 @@ public class Result {
 	private String numberToWord(int number) {
 		String _numberWord = "";
 
-		if ((number >= 10) && (number < 20)) {
-			_numberWord += "tekau ";
-		} else if ((number >= 20) && (number < 30)) {
-			_numberWord += "rua ";
-		} else if ((number >= 30) && (number < 40)) {
-			_numberWord += "toru ";
-		} else if ((number >= 40) && (number < 50)){
-			_numberWord += "whā ";
-		} else if ((number >= 50) && (number < 60)){
-			_numberWord += "rima ";
-		} else if ((number >= 60) && (number < 70)){
-			_numberWord += "ono ";
-		} else if ((number >= 70) && (number < 80)){
-			_numberWord += "whitu ";
-		} else if ((number >= 80) && (number < 90)){
-			_numberWord += "waru ";
-		} else if ((number >= 90) && (number < 100)){
-			_numberWord += "iwa ";
-		} else if (number > 100) {
-			return "number is over 100";
-		}
-
-		if ((number > 10) && ((number % 10) != 0)) {
-			_numberWord += "tekau mā ";
-		}
-
-		if ((number % 10) == 0) {
-			_numberWord += "tekau";
-		} else if ((number % 10) == 1) {
-			_numberWord += "tahi";
-		} else if ((number % 10) == 2) {
-			_numberWord += "rua";
-		} else if ((number % 10) == 3) {
-			_numberWord += "toru";
-		} else if ((number % 10) == 4) {
-			_numberWord += "whā";
-		} else if ((number % 10) == 5) {
-			_numberWord += "rima";
-		} else if ((number % 10) == 6) {
-			_numberWord += "ono";
-		} else if ((number % 10) == 7) {
-			_numberWord += "whitu";
-		} else if ((number % 10) == 8) {
-			_numberWord += "waru";
-		} else if ((number % 10) == 9) {
-			_numberWord += "iwa";
-		}
-
+		//if number is only a single digit
+		if (number < 10) {
+			_numberWord = digitToMaori(number);
+		//if number is between 10 and 19 does not have prefix tahi
+		} else if ((number >= 10) && (number < 20)) {
+			_numberWord = "tekau mā " + digitToMaori(number % 10);
+		//case for when number is between 20-100
+		} else if ((number > 10) && (number < 100)) {
+				if (number % 10 == 0) {
+					_numberWord = digitToMaori(number / 10) + " tekau";
+				} else {
+					_numberWord = digitToMaori(number / 10) + " tekau mā "
+							+ digitToMaori(number % 10);
+				}
+		} 		
 		return _numberWord;
+	}
+	
+	/**
+	 * Returns maori name for a single digit
+	 * @param number: for name to be found
+	 * @return String associated to number
+	 */
+	private String digitToMaori(int number) {
+		String numberWord = "";
+		
+		if (number == 0) {
+			numberWord = "";
+		} else if (number == 1) {
+			numberWord = "tahi";
+		} else if (number == 2) {
+			numberWord = "rua";
+		} else if (number == 3) {
+			numberWord = "toru";
+		} else if (number == 4) {
+			numberWord = "whā";
+		} else if (number == 5) {
+			numberWord = "rima";
+		} else if (number == 6) {
+			numberWord = "ono";
+		} else if (number == 7) {
+			numberWord = "whitu";
+		} else if (number == 8) {
+			numberWord = "waru";
+		} else if (number == 9) {
+			numberWord = "iwa";
+		}
+
+		return numberWord;	
 	}
 
 }
