@@ -33,6 +33,7 @@ public class MainController {
 		
 		Scene easyScene = null;
 		try {
+			
 			easyScene = new Scene(FXMLLoader.load(getClass().getResource("Level.fxml")));
 		} catch (IOException e1) {
 			e1.printStackTrace();
