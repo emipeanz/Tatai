@@ -10,6 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ * This class is the controller for the main class and handles button events
+ * @author emipe
+ *
+ */
 public class MainController {
 	
 	@FXML
@@ -18,15 +23,18 @@ public class MainController {
 	@FXML
 	private Button easyButton;
 	
+	/**
+	 * This method directs the user to the easy test screen
+	 * @param e ActionEvent when easyButton is clicked
+	 */
 	public void easyButtonEvent(ActionEvent e) {
-		System.out.print("Easy Button Pressed");
+		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 		
 		Scene easyScene = null;
 		try {
 			easyScene = new Scene(FXMLLoader.load(getClass().getResource("Level.fxml")));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -34,15 +42,18 @@ public class MainController {
 		
 	}
 	
+	/**
+	 * This method directs the user to the hard test screen
+	 * @param e ActionEvent when hardButton is clicked
+	 */
 	public void hardButtonEvent(ActionEvent e) {
-		System.out.print("Hard Button Pressed");
+		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 		
 		Scene easyScene = null;
 		try {
 			easyScene = new Scene(FXMLLoader.load(getClass().getResource("Level.fxml")));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
