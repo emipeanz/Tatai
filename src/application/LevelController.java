@@ -69,7 +69,6 @@ public class LevelController {
 	}
 
 	public void playRecording() {
-		System.out.println("In play recording method");
 		/*
 		//if recording has been set for a level...
 		if (_currentLevelResult._recording == null) {
