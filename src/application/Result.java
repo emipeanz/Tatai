@@ -7,7 +7,7 @@ public class Result {
 	public int _numberInt;
 	public String _numberWord = "";
 	public boolean _pass;
-	public File _recording;
+	public File _recording = null;
 
 	/**
 	 * Constructor to store state of number currently being tested.

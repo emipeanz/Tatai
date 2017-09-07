@@ -37,10 +37,7 @@ public class LevelController {
 	 * @param event
 	 */
 	public void updateLabels(ActionEvent event) {
-		
 		_currentLevelResult = new Result(_test._difficulty);	
-
-
 		//sets labels that show a number and the maori word corresponding to it
 		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
 		numberWord.setText(_currentLevelResult._numberWord);
@@ -58,14 +55,17 @@ public class LevelController {
 		 */
 	}
 
-	public void hearRecording() {
+	public void playRecording() {
+		System.out.println("In play recording method");
+		/*
 		//if recording has been set for a level...
-		if (_currentLevelResult._recording != null) {
-			//play recording (cbf using bash as do not want to work on VM)
-			System.out.println("In method for hearing a recording (recording not null)");
-		} else {
+		if (_currentLevelResult._recording == null) {
 			System.out.println("recording has not been properly initialised");
+			//play recording (cbf using bash as do not want to work on VM)
+		} else {
+			System.out.println("In method for hearing a recording (recording not null)");
 		}
+		*/
 	}
 
 	/**

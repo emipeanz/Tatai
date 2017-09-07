@@ -11,20 +11,22 @@
    <children>
       <Label fx:id="progressLabel" layoutX="270.0" layoutY="353.0" text="Round 1/10" />
       <ProgressBar fx:id="progressBar" layoutX="151.0" layoutY="335.0" prefHeight="18.0" prefWidth="319.0" progress="0.0" />
-      <Label fx:id="numberToTest" layoutX="227.0" layoutY="39.0" prefHeight="161.0" prefWidth="168.0" textAlignment="CENTER">
+      <Label fx:id="numberToTest" layoutX="227.0" layoutY="14.0" prefHeight="161.0" prefWidth="168.0" textAlignment="CENTER">
          <font>
             <Font size="110.0" />
          </font>
       </Label>
-      <Button layoutX="182.0" layoutY="266.0" mnemonicParsing="false" onAction="#updateLabels" prefHeight="44.0" prefWidth="258.0" text="make random num&#10;">
+      <Button layoutX="266.0" layoutY="208.0" mnemonicParsing="false" onAction="#updateLabels" prefHeight="88.0" prefWidth="178.0" text="Make Random&#10;Number" textAlignment="CENTER">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
          <effect>
             <DropShadow color="#9f9e9e" />
          </effect>
       </Button>
-      <Label fx:id="numberWord" layoutX="257.0" layoutY="207.0" prefHeight="17.0" prefWidth="109.0" textAlignment="CENTER" />
-      <Button layoutX="483.0" layoutY="276.0" mnemonicParsing="false" onAction="#nextLevel" text="next level" />
+      <Label fx:id="numberWord" layoutX="257.0" layoutY="183.0" prefHeight="17.0" prefWidth="109.0" textAlignment="CENTER" />
+      <Button layoutX="499.0" layoutY="332.0" mnemonicParsing="false" onAction="#nextLevel" text="next level" />
+      <Button fx:id="recordButton" layoutX="179.0" layoutY="207.0" mnemonicParsing="false" onAction="#takeRecording" text="Take New&#10;Recording" textAlignment="CENTER" />
+      <Button fx:id="listenButton" layoutX="179.0" layoutY="255.0" mnemonicParsing="false" onAction="#playRecording" text="Listen to &#10;Recording" textAlignment="CENTER" />
    </children>
 </AnchorPane>
