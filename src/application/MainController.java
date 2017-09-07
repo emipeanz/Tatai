@@ -84,7 +84,7 @@ public class MainController{
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 
-	}
 
 
 }
+	}
