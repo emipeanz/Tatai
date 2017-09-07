@@ -19,6 +19,7 @@ public class Main extends Application {
 			Scene levelScene = new Scene(FXMLLoader.load(getClass().getResource("Level.fxml")));
 			
 			introScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			mainScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			primaryStage.setScene(introScene);
 			primaryStage.setResizable(false);
