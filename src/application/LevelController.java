@@ -1,33 +1,46 @@
 package application;
 
 import java.io.File;
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.stage.Stage;
 
 public class LevelController {
 
 	@FXML
 	private Label numberToTest;
+	
 	@FXML
 	private Label numberWord;
+	
 	@FXML
 	private ProgressBar progressBar;
+	
 	@FXML
 	private Label progressLabel;
+	
+	@FXML
+	private Button backButton;
 
-	private double progress = 0;
+	private double _progress = 0;
 	//will store all the data associated with the current level
 	private Result _currentLevelResult;
 	//will store all data associated with entire test
 	private Test _test;
-
-
-	public LevelController() {
-		//need to figure out how NOT to hard code this...
-		_test = new Test(Difficulty.HARD);
+	
+	private Difficulty _difficulty;
+	
+	public LevelController(Difficulty diff) {
+		_difficulty = diff;
+		_test = new Test(_difficulty);
 	}
 
 	/**
@@ -77,8 +90,25 @@ public class LevelController {
 		_test.addTestResult(_currentLevelResult);
 		//instantiates a new result for the next level of the test
 		_currentLevelResult = new Result(_test._difficulty);
-		progress += 0.1;
-		progressLabel.setText("Round " + Math.round(progress * 10) + "/10");
-		progressBar.setProgress(progress);
+		_progress += 0.1;
+		progressLabel.setText("Round " + Math.round(_progress * 10) + "/10");
+		progressBar.setProgress(_progress);
+	}
+	
+	public void backButtonEvent(ActionEvent e) {
+		
+		// Get the main stage to display the scene in
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+		
+		Scene mainScene = null;
+		try {
+			mainScene = new Scene(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
+			mainScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		stageEventBelongsTo.setScene(mainScene);
+		
 	}
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LevelController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="progressLabel" layoutX="270.0" layoutY="353.0" text="Round 1/10" />
       <ProgressBar fx:id="progressBar" layoutX="151.0" layoutY="335.0" prefHeight="18.0" prefWidth="319.0" progress="0.0" />
@@ -16,7 +16,7 @@
             <Font size="110.0" />
          </font>
       </Label>
-      <Button layoutX="266.0" layoutY="208.0" mnemonicParsing="false" onAction="#updateLabels" prefHeight="88.0" prefWidth="178.0" text="Make Random&#10;Number" textAlignment="CENTER">
+      <Button fx:id="circleButton" layoutX="299.0" layoutY="209.0" mnemonicParsing="false" onAction="#updateLabels" prefHeight="90.0" prefWidth="90.0" text="Check!" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
@@ -26,7 +26,8 @@
       </Button>
       <Label fx:id="numberWord" layoutX="257.0" layoutY="183.0" prefHeight="17.0" prefWidth="109.0" textAlignment="CENTER" />
       <Button layoutX="499.0" layoutY="332.0" mnemonicParsing="false" onAction="#nextLevel" text="next level" />
-      <Button fx:id="recordButton" layoutX="179.0" layoutY="207.0" mnemonicParsing="false" onAction="#takeRecording" text="Take New&#10;Recording" textAlignment="CENTER" />
-      <Button fx:id="listenButton" layoutX="179.0" layoutY="255.0" mnemonicParsing="false" onAction="#playRecording" text="Listen to &#10;Recording" textAlignment="CENTER" />
+      <Button fx:id="recordButton" layoutX="212.0" layoutY="208.0" mnemonicParsing="false" onAction="#takeRecording" text="Take New&#10;Recording" textAlignment="CENTER" />
+      <Button fx:id="listenButton" layoutX="212.0" layoutY="256.0" mnemonicParsing="false" onAction="#playRecording" text="Listen to &#10;Recording" textAlignment="CENTER" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="25.0" prefWidth="71.0" text="🡠 Back" />
    </children>
 </AnchorPane>

@@ -9,25 +9,56 @@
 	-fx-background-color: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 
-#background{
-	-fx-background-color: linear-gradient(to top, #dfe9f3 0%, white 100%);
+#title{
+	-fx-background-color: #ffffff;
 }
 
-.button{
-	-fx-background-color: linear-gradient(to top, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+#background{
+	-fx-background-image: url("background.png");
+}
+
+#easyButton{
+	-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);
 	-fx-border-color: none;
 }
 
-.button:hover {
-    -fx-scale-y: 1.1;
-    -fx-scale-x: 1.1;
+
+#hardButton{
+	-fx-background-color: linear-gradient(to right, #f7971e, #ffd200); 
+	-fx-border-color: none;
 }
+
 
 #englishTranslation{
 	-fx-font-size: 13;
 	-fx-text-fill: #686868;
 }
 
-#roundButton{
+#circleButton{
+	-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);
+	-fx-background-radius: 5em; 
+    -fx-min-width: 90px; 
+    -fx-min-height: 90px; 
+    -fx-max-width: 90px; 
+    -fx-max-height: 90px; 
+    -fx-background-insets: 0px; 
+    -fx-padding: 0px;
+}
+
+#backButton{
+	-fx-border-color: #000000;
+	-fx-border-width: 2px;
+	-fx-border-radius: 10px;
+	-fx-background-radius: 10em; 
+	-fx-font-weight: BOLD;
 	
+}
+
+#backButton:hover,  #circleButton:hover, #easyButton:hover, #hardButton:hover{
+	-fx-scale-y: 1.1;
+    -fx-scale-x: 1.1;
+}
+
+.button:hover{
+	-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); 
 }

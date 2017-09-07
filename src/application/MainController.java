@@ -1,13 +1,17 @@
 package application;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -15,33 +19,47 @@ import javafx.stage.Stage;
  * @author emipe
  *
  */
-public class MainController {
-	
+public class MainController{
+
+	@FXML 
+	private LevelController levelController;
+
 	@FXML
 	private Button hardButton;
-	
+
 	@FXML
 	private Button easyButton;
-	
+
+	private Difficulty _difficulty;
+
+
+
 	/**
 	 * This method directs the user to the easy test screen
 	 * @param e ActionEvent when easyButton is clicked
 	 */
 	public void easyButtonEvent(ActionEvent e) {
 		// Get the main stage to display the scene in
-		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
-		
-		Scene easyScene = null;
-		try {
-			easyScene = new Scene(FXMLLoader.load(getClass().getResource("Level.fxml")));
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		
-		stageEventBelongsTo.setScene(easyScene);
-		
+				Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+
+				AnchorPane easyScene = null;
+				try {
+					System.out.println("easy set");
+					_difficulty = Difficulty.HARD;
+					System.out.println(_difficulty.toString());
+					LevelController controller = new LevelController(_difficulty);
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
+					loader.setController(controller);
+					easyScene = loader.load();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				Scene scene = new Scene(easyScene);
+				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				stageEventBelongsTo.setScene(scene);
+
 	}
-	
+
 	/**
 	 * This method directs the user to the hard test screen
 	 * @param e ActionEvent when hardButton is clicked
@@ -49,16 +67,24 @@ public class MainController {
 	public void hardButtonEvent(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
-		
-		Scene easyScene = null;
+
+		AnchorPane hardScene = null;
 		try {
-			easyScene = new Scene(FXMLLoader.load(getClass().getResource("Level.fxml")));
+			System.out.println("hard set");
+			_difficulty = Difficulty.HARD;
+			System.out.println(_difficulty.toString());
+			LevelController controller = new LevelController(_difficulty);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
+			loader.setController(controller);
+			hardScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
-		stageEventBelongsTo.setScene(easyScene);
-		
+		Scene scene = new Scene(hardScene);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stageEventBelongsTo.setScene(scene);
+
 	}
+
 
 }
