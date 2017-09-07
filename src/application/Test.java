@@ -51,4 +51,17 @@ public class Test {
 		return overallMark;
 	}
 
+	/**
+	 * Returns the number of results stored in the test model, 
+	 * this will determine how many rounds of the test have been
+	 * carried out by the user.
+	 * @return
+	 */
+	public int getNumberofRound() {
+		int count = 0;
+		for (Result result: _testResults) {
+			count++;
+		}
+		return count;
+	}
 }

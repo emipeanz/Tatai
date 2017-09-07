@@ -30,16 +30,13 @@ public class MainController {
 	public void easyButtonEvent(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
-		
 		Scene easyScene = null;
 		try {
 			easyScene = new Scene(FXMLLoader.load(getClass().getResource("Level.fxml")));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
-		stageEventBelongsTo.setScene(easyScene);
-		
+		stageEventBelongsTo.setScene(easyScene);	
 	}
 	
 	/**
@@ -56,9 +53,7 @@ public class MainController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
 		stageEventBelongsTo.setScene(easyScene);
-		
 	}
 
 }

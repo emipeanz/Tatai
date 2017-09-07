@@ -28,5 +28,6 @@
       <Button layoutX="499.0" layoutY="332.0" mnemonicParsing="false" onAction="#nextLevel" text="next level" />
       <Button fx:id="recordButton" layoutX="179.0" layoutY="207.0" mnemonicParsing="false" onAction="#takeRecording" text="Take New&#10;Recording" textAlignment="CENTER" />
       <Button fx:id="listenButton" layoutX="179.0" layoutY="255.0" mnemonicParsing="false" onAction="#playRecording" text="Listen to &#10;Recording" textAlignment="CENTER" />
+      <Button layoutX="494.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnMainMenu" text="Return to &#10;Main Menu" textAlignment="CENTER" />
    </children>
 </AnchorPane>
