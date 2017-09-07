@@ -45,8 +45,7 @@ public class MainController{
 				AnchorPane easyScene = null;
 				try {
 					System.out.println("easy set");
-					_difficulty = Difficulty.HARD;
-					System.out.println(_difficulty.toString());
+					_difficulty = Difficulty.EASY;
 					LevelController controller = new LevelController(_difficulty);
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
 					loader.setController(controller);
@@ -72,7 +71,6 @@ public class MainController{
 		try {
 			System.out.println("hard set");
 			_difficulty = Difficulty.HARD;
-			System.out.println(_difficulty.toString());
 			LevelController controller = new LevelController(_difficulty);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
 			loader.setController(controller);

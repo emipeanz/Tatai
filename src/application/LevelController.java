@@ -97,10 +97,12 @@ public class LevelController {
 	 * progress bar.
 	 */
 	public void nextLevel(ActionEvent event) {
+		System.out.print("entered nextLevel");
 		//stores result of previous test in test model
 		_test.addTestResult(_currentLevelResult);
 		//instantiates a new result for the next level of the test
 		_currentLevelResult = new Result(_test._difficulty);
+		System.out.print(progress);
 		progress += 0.1;
 		progressLabel.setText("Round " + Math.round(progress * 10) + "/10");
 		progressBar.setProgress(progress);
@@ -141,6 +143,7 @@ public class LevelController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 }
