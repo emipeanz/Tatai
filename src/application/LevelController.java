@@ -3,20 +3,32 @@ package application;
 import java.io.File;
 import java.io.IOException;
 
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialog.DialogTransition;
+
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.Spinner;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Arc;
 import javafx.stage.Stage;
 
 public class LevelController {
 
+	@FXML
+	private Spinner spinner;
+	
 	@FXML
 	private Button readyButton;
 	
@@ -43,6 +55,9 @@ public class LevelController {
 	
 	@FXML
 	private Button listenButton;
+	
+	@FXML
+	private StackPane stackPane;
 
 	private int progress = 0;
 	//will store all the data associated with the current level
@@ -75,7 +90,7 @@ public class LevelController {
 		numberWord.setText(_currentLevelResult._numberWord);
 	}
 
-	public void takeRecording() {
+	public void takeRecording(ActionEvent e) {
 		//part 2 of cbf using bash as do not want to work on VM
 		System.out.println("In method for taking a recording");
 
@@ -182,4 +197,25 @@ public class LevelController {
 		recordButton.setDisable(false);
 		listenButton.setDisable(false);
 	}
+	
+	public void checkReccordingForWord(ActionEvent e) {
+		System.out.print("Checking reccording");
+		Boolean correct = false;
+		// Bash commands to check if recording is correct
+		
+		JFXDialog dialogue = new JFXDialog();
+		if(correct == false) {
+			System.out.print("false");
+			dialogue.setDialogContainer(stackPane);
+			dialogue.setContent(new Label("Oops, got that one wrong!"));
+			dialogue.show();
+		}
+		else if(correct == true) {
+			System.out.print("true");
+			dialogue.setContent(new Label("Yay, got it right!"));
+			dialogue.show();
+			updateLabels(e);
+		}
+	}
+	
 }

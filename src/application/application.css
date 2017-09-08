@@ -13,19 +13,29 @@
 	-fx-background-color: #ffffff;
 }
 
+#menuCircleButtons{
+	-fx-background-radius: 5em; 
+    -fx-min-width: 130px; 
+    -fx-min-height: 130px; 
+    -fx-max-width: 130px; 
+    -fx-max-height: 130px; 
+    -fx-background-insets: 0px; 
+    -fx-padding: 0px;
+}
+
+#readyCircleButton{
+	-fx-background-radius: 5em; 
+    -fx-min-width: 120px; 
+    -fx-min-height: 120px; 
+    -fx-max-width: 120px; 
+    -fx-max-height: 120px; 
+    -fx-background-insets: 0px; 
+    -fx-padding: 0px;
+}
+
 #background{
 	-fx-background-image: url("background.jpg");
 }
-
-#easyButton{
-	-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);
-}
-
-
-#hardButton{
-	-fx-background-color: linear-gradient(to right, #f7971e, #ffd200); 
-}
-
 
 #englishTranslation{
 	-fx-font-size: 13;
@@ -51,11 +61,18 @@
 	
 }
 
-#backButton:hover,  #circleButton:hover, #easyButton:hover, #hardButton:hover{
+.button:hover{
 	-fx-scale-y: 1.1;
     -fx-scale-x: 1.1;
 }
 
-.button:hover{
-	-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); 
+.button:pressed{
+	-fx-effect: innershadow( one-pass-box , grey , 4 , 0.0 , 2 , 0 ); 
+}
+
+#spinner{
+	-fx-min-width: 100px; 
+    -fx-min-height: 100px; 
+    -fx-max-width: 100px; 
+    -fx-max-height: 100px; 
 }
