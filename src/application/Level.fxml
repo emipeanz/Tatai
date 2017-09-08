@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="progressLabel" layoutX="270.0" layoutY="353.0" text="Round 1/10" />
-      <ProgressBar fx:id="progressBar" layoutX="151.0" layoutY="335.0" prefHeight="18.0" prefWidth="319.0" progress="0.0" />
-      <Label fx:id="numberToTest" layoutX="227.0" layoutY="14.0" prefHeight="161.0" prefWidth="168.0" textAlignment="CENTER">
+      <Label fx:id="progressLabel" layoutX="268.0" layoutY="360.0" text="Round 1/10" />
+      <ProgressBar fx:id="progressBar" layoutX="140.0" layoutY="338.0" prefHeight="18.0" prefWidth="319.0" progress="0.0" />
+      <Label fx:id="numberToTest" layoutX="215.0" layoutY="14.0" prefHeight="161.0" prefWidth="168.0" textAlignment="CENTER">
          <font>
             <Font size="110.0" />
          </font>
       </Label>
-      <Button fx:id="circleButton" layoutX="299.0" layoutY="209.0" mnemonicParsing="false" onAction="#updateLabels" prefHeight="90.0" prefWidth="90.0" text="Check!" textAlignment="CENTER">
+      <Button fx:id="circleButton" disable="true" layoutX="281.0" layoutY="214.0" maxHeight="99.0" mnemonicParsing="false" onAction="#updateLabels" prefHeight="99.0" prefWidth="100.0" text="Check!" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
@@ -24,12 +24,17 @@
             <DropShadow color="#9f9e9e" />
          </effect>
       </Button>
-      <Label fx:id="numberWord" layoutX="257.0" layoutY="183.0" prefHeight="17.0" prefWidth="109.0" textAlignment="CENTER" />
-      <Button layoutX="499.0" layoutY="332.0" mnemonicParsing="false" onAction="#nextLevel" text="next level" />
+      <Label fx:id="numberWord" layoutX="216.0" layoutY="175.0" prefHeight="17.0" prefWidth="168.0" textAlignment="CENTER" />
+      <Button fx:id="nectLvlButton" disable="true" layoutX="489.0" layoutY="335.0" mnemonicParsing="false" onAction="#nextLevel" text="next level" />
 
-      <Button fx:id="recordButton" layoutX="179.0" layoutY="207.0" mnemonicParsing="false" onAction="#takeRecording" text="Take New&#10;Recording" textAlignment="CENTER" />
-      <Button fx:id="listenButton" layoutX="179.0" layoutY="255.0" mnemonicParsing="false" onAction="#playRecording" text="Listen to &#10;Recording" textAlignment="CENTER" />
+      <Button fx:id="recordButton" disable="true" layoutX="203.0" layoutY="222.0" mnemonicParsing="false" onAction="#takeRecording" text="Take New&#10;Recording" textAlignment="CENTER" />
+      <Button fx:id="listenButton" disable="true" layoutX="203.0" layoutY="276.0" mnemonicParsing="false" onAction="#playRecording" text="Listen to &#10;Recording" textAlignment="CENTER" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" text="← Return" textAlignment="CENTER" />
+      <Button fx:id="readyButton" layoutX="252.0" layoutY="54.0" mnemonicParsing="false" onAction="#readyButtonAction" prefHeight="107.0" prefWidth="119.0" text="READY!" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
 
    </children>
 </AnchorPane>

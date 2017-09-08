@@ -3,6 +3,7 @@ package application;
 import java.io.File;
 import java.io.IOException;
 
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,9 @@ import javafx.stage.Stage;
 public class LevelController {
 
 	@FXML
+	private Button readyButton;
+	
+	@FXML
 	private Label numberToTest;
 	
 	@FXML
@@ -30,6 +34,15 @@ public class LevelController {
 	
 	@FXML
 	private Button backButton;
+	
+	@FXML
+	private Button circleButton;
+	
+	@FXML
+	private Button recordButton;
+	
+	@FXML
+	private Button listenButton;
 
 	private int progress = 0;
 	//will store all the data associated with the current level
@@ -39,6 +52,11 @@ public class LevelController {
 	
 	private Difficulty _difficulty;
 	
+	/**
+	 * Method is custom constructor for LevelController so parameters can be passed into it.
+	 * the difficulty is set and a new test is made
+	 * @param diff Difficulty of the test user wants to run (enum)
+	 */
 	public LevelController(Difficulty diff) {
 		_difficulty = diff;
 		_test = new Test(_difficulty);
@@ -108,8 +126,6 @@ public class LevelController {
 		progressBar.setProgress(progress);
 	}
 	
-
-	
 	/**
 	 * Method takes user to a screen which displays their results, invoked
 	 * when 10 rounds of the test have been completed or if user quits prematurely.
@@ -130,6 +146,11 @@ public class LevelController {
 		stageEventBelongsTo.setScene(easyScene);
 	}
 
+	/**
+	 * Method takes an action event on the return to menu button.  The main menu scene is
+	 * displayed and the level view is taken away
+	 * @param event
+	 */
 	public void returnMainMenu(ActionEvent event) {
 		System.out.println("Event triggering return to main menu");
 		//main scene should be reloaded.
@@ -145,5 +166,20 @@ public class LevelController {
 		}
 		mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
+	}
+	
+	/**
+	 * Method take an event on the ready button to start the test.  It disabled the 'ready' button
+	 * and enabled all the other control buttons so the user can submit/record/listen to recordings
+	 * before the actual test has started
+	 * @param event
+	 */
+	public void readyButtonAction(ActionEvent event){
+		readyButton.setDisable(true);
+		readyButton.setVisible(false);
+		updateLabels(event);
+		circleButton.setDisable(false);
+		recordButton.setDisable(false);
+		listenButton.setDisable(false);
 	}
 }

@@ -14,18 +14,16 @@
 }
 
 #background{
-	-fx-background-image: url("background.png");
+	-fx-background-image: url("background.jpg");
 }
 
 #easyButton{
 	-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);
-	-fx-border-color: none;
 }
 
 
 #hardButton{
 	-fx-background-color: linear-gradient(to right, #f7971e, #ffd200); 
-	-fx-border-color: none;
 }
 
 
@@ -37,10 +35,10 @@
 #circleButton{
 	-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);
 	-fx-background-radius: 5em; 
-    -fx-min-width: 90px; 
-    -fx-min-height: 90px; 
-    -fx-max-width: 90px; 
-    -fx-max-height: 90px; 
+    -fx-min-width: 100px; 
+    -fx-min-height: 100px; 
+    -fx-max-width: 100px; 
+    -fx-max-height: 100px; 
     -fx-background-insets: 0px; 
     -fx-padding: 0px;
 }
@@ -61,4 +59,15 @@
 
 .button:hover{
 	-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); 
+}
+
+#readyButton{
+	-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);
+	-fx-background-radius: 5em; 
+    -fx-min-width: 90px; 
+    -fx-min-height: 90px; 
+    -fx-max-width: 90px; 
+    -fx-max-height: 90px; 
+    -fx-background-insets: 0px; 
+    -fx-padding: 0px;
 }

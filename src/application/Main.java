@@ -24,7 +24,7 @@ public class Main extends Application {
 			primaryStage.setScene(introScene);
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("Tātai");
-			primaryStage.setHeight(400);
+			primaryStage.setHeight(420);
 			primaryStage.setWidth(600);
 			primaryStage.show();
 			
