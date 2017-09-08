@@ -147,6 +147,10 @@ public class LevelController {
 		_currentLevelResult = new Result(_test._difficulty);
 		System.out.println("next level progress = " + progress);
 		progress += 0.1;
+		
+		if(progress == 10) {
+			showResults(event);
+		}
 	}
 	
 	/**
