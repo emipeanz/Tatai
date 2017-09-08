@@ -32,6 +32,7 @@ public class ResultsController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 
@@ -52,7 +53,6 @@ public class ResultsController {
 		}
 		stageEventBelongsTo.setScene(mainMenuScene);		
 	}
-
 
 
 
