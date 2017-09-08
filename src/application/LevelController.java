@@ -147,9 +147,6 @@ public class LevelController {
 		_currentLevelResult = new Result(_test._difficulty);
 		System.out.println("next level progress = " + progress);
 		progress += 0.1;
-		progressLabel.setText("Round " + Math.round(progress * 10) + "/10");
-		System.out.println("progress label Round " + Math.round(progress * 10) + "/10");
-		progressBar.setProgress(progress);
 	}
 	
 	/**
@@ -264,7 +261,7 @@ public class LevelController {
 			layout.setActions(dialogButton);
 			dialog.setContent(layout);
 			dialog.show();
-			
+			nextLevel(e);
 			chances = 2;
 		}
 	}

@@ -27,7 +27,6 @@
          </effect>
       </Button>
       <Label fx:id="numberWord" layoutX="235.0" layoutY="176.0" prefHeight="17.0" prefWidth="168.0" textAlignment="CENTER" />
-      <Button fx:id="nectLvlButton" disable="true" layoutX="489.0" layoutY="335.0" mnemonicParsing="false" onAction="#nextLevel" text="next level" />
 
       <Button id="circleButton" fx:id="recordButton" disable="true" layoutX="247.0" layoutY="214.0" mnemonicParsing="false" onAction="#takeRecording" style="-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);;" text="Record" textAlignment="CENTER">
          <font>
