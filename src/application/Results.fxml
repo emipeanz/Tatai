@@ -6,19 +6,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ResultsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView layoutX="179.0" layoutY="73.0" prefHeight="241.0" prefWidth="242.0" />
-      <Label layoutX="186.0" layoutY="25.0" prefHeight="36.0" prefWidth="242.0" text="You got 3/10 correct!" textAlignment="CENTER" wrapText="true">
+      <ListView fx:id="resultsTable" layoutX="186.0" layoutY="47.0" prefHeight="241.0" prefWidth="242.0" />
+      <Label layoutX="186.0" layoutY="11.0" prefHeight="36.0" prefWidth="242.0" text="You got 3/10 correct!" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="250.0" layoutY="330.0" mnemonicParsing="false" onAction="#restartTest" text="Try Again">
+      <Button id="circleButton" layoutX="250.0" layoutY="292.0" mnemonicParsing="false" onAction="#restartTest" text="Try Again">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" text="← Return" textAlignment="CENTER" />
+      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" text="← Return" textAlignment="CENTER" />
    </children>
 </AnchorPane>

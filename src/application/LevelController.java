@@ -18,11 +18,10 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DialogEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.Spinner;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Arc;
 import javafx.scene.text.Text;
@@ -30,8 +29,6 @@ import javafx.stage.Stage;
 
 public class LevelController {
 
-	@FXML
-	private Spinner spinner;
 	
 	@FXML
 	private Button readyButton;
@@ -93,7 +90,7 @@ public class LevelController {
 	 * @param event
 	 */
 	public void updateLabels(ActionEvent event) {
-		_currentLevelResult = new Result(_test._difficulty);	
+		_currentLevelResult = new Result(_test.getdifficulty());	
 		//sets labels that show a number and the maori word corresponding to it
 		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
 		numberWord.setText(_currentLevelResult._numberWord);
@@ -144,12 +141,15 @@ public class LevelController {
 		//stores result of previous test in test model
 		_test.addTestResult(_currentLevelResult);
 		//instantiates a new result for the next level of the test
-		_currentLevelResult = new Result(_test._difficulty);
+		_currentLevelResult = new Result(_test.getdifficulty());
 		System.out.println("next level progress = " + progress);
 		progress += 0.1;
 		
 		if(progress == 10) {
 			showResults(event);
+		}
+		if(progress>10) {
+			throw new RuntimeException("Too many tests have been logged");
 		}
 	}
 	
@@ -162,15 +162,19 @@ public class LevelController {
 		System.out.println("in method that sets the scene to results");
 		
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		
-		Scene easyScene = null;
+
+		AnchorPane resultsScene = null;
 		try {
-			easyScene = new Scene(FXMLLoader.load(getClass().getResource("Results.fxml")));
+			ResultsController controller = new ResultsController(_test);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Results.fxml"));
+			loader.setController(controller);
+			resultsScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
-		stageEventBelongsTo.setScene(easyScene);
+		Scene scene = new Scene(resultsScene);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stageEventBelongsTo.setScene(scene);
 	}
 
 	/**
@@ -248,6 +252,7 @@ public class LevelController {
 			});
 			layout.setActions(dialogButton);
 			dialog.setContent(layout);
+			stackPane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			dialog.show();
 			
 		}
@@ -268,6 +273,7 @@ public class LevelController {
 			nextLevel(e);
 			chances = 2;
 		}
+
 	}
 	
 }

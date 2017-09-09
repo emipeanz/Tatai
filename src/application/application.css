@@ -71,9 +71,6 @@
 	-fx-effect: innershadow( one-pass-box , grey , 4 , 0.0 , 2 , 0 ); 
 }
 
-#spinner{
-	-fx-min-width: 100px; 
-    -fx-min-height: 100px; 
-    -fx-max-width: 100px; 
-    -fx-max-height: 100px; 
+#dialog{
+	-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);
 }

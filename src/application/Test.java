@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Test {
 	
-	public ArrayList<Result> _testResults;
-	public Difficulty _difficulty;
+	private ArrayList<Result> _testResults;
+	private Difficulty _difficulty;
 	
 	/**
 	 * Stores the difficulty level of the particular test being 
@@ -16,6 +16,10 @@ public class Test {
 	public Test(Difficulty difficulty) {
 		_difficulty = difficulty;
 		_testResults = new ArrayList<Result>();
+	}
+	
+	public Difficulty getdifficulty() {
+		return _difficulty;
 	}
 	
 	/**
