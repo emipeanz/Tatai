@@ -230,6 +230,7 @@ public class LevelController {
 		JFXDialogLayout layout = new JFXDialogLayout();
 		dialog.setDialogContainer(stackPane);
 		if(correct == false) {
+			_currentLevelResult.setPass(false);
 			chances--;
 			if(!(chances == 0)) {
 				layout.setBody(new Text ("Oops, got that one wrong"));
@@ -257,6 +258,7 @@ public class LevelController {
 			
 		}
 		else if(correct == true) {
+			_currentLevelResult.setPass(true);
 			layout.setBody(new Text ("Yay, got it right!"));
 			JFXButton dialogButton = new JFXButton("Continue");
 			dialogButton.setOnAction(new EventHandler<ActionEvent>() {

@@ -1,6 +1,9 @@
 package application;
 
+import java.awt.List;
 import java.util.ArrayList;
+
+import javafx.collections.ObservableList;
 
 public class Test {
 	
@@ -67,5 +70,17 @@ public class Test {
 			count++;
 		}
 		return count;
+	}
+
+	public ArrayList<String> getResultsToString() {
+		ArrayList<String> data = new ArrayList<String>();
+		for(int i = 0 ; i < _testResults.size();i++) {
+			Result current = _testResults.get(i);
+			String pass = current.getPass();
+			String numWord = current.getNumberWord();
+			int numInt = current.getNumberInt();
+			data.add(numInt + "\t\t" + numWord + "\t\t" + pass);
+		}
+		return data;
 	}
 }

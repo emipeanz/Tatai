@@ -2,15 +2,20 @@ package application;
 
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class ResultsController {
 
@@ -22,12 +27,14 @@ public class ResultsController {
 	//will take user to the beginning of a new test
 	
 	@FXML
-	private ListView resultsList;
+	private ListView<String> resultsList = new ListView<String>();
 	
 	// Gonna need some sort of 3D map to map together the number name, number in numeral form and if they got it right or not
 	private Test _test;
 	
 	private Difficulty _difficulty;
+    
+    private ObservableList<String> _dataList;
 
 	public ResultsController(Test test) {
 		_test = test;
@@ -36,7 +43,25 @@ public class ResultsController {
 	}
 
 	private void setUpResultsTable() {
-		resultsList = new ListView<String>();
+		_dataList = FXCollections.observableArrayList(_test.getResultsToString());
+		resultsList.setItems(_dataList);
+		resultsList.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> stringListView) {
+                return new ListCell<String>(){
+                    @Override
+                    protected void updateItem(String s, boolean b) {
+                        super.updateItem(s, b);    //To change body of overridden methods use File | Settings | File Templates.
+                        if (s.contains("Right!")) {
+                        	setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
+                        }
+                        else {
+                        	setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
+                        }
+                    }
+                };
+            }
+        });
 		
 	}
 
