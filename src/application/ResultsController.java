@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,19 +16,21 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 public class ResultsController {
 
 	@FXML
-	//will return user to the main menu
 	private Button returnButton;
+	//will return user to the main menu
+	
 	@FXML
 	private Button tryAgainButton;
 	//will take user to the beginning of a new test
 	
 	@FXML
-	private ListView<String> resultsList = new ListView<String>();
+	private ListView<String> resultsListView;
 	
 	// Gonna need some sort of 3D map to map together the number name, number in numeral form and if they got it right or not
 	private Test _test;
@@ -39,13 +42,16 @@ public class ResultsController {
 	public ResultsController(Test test) {
 		_test = test;
 		_difficulty = _test.getdifficulty();
-		setUpResultsTable();
 	}
-
-	private void setUpResultsTable() {
+	
+	/**
+	 * Issue with initlization of controller and linking to FXML file, ordering is a problem which results in
+	 * null pointer excpetions
+	 */
+	public void setUpResultsTable() {
 		_dataList = FXCollections.observableArrayList(_test.getResultsToString());
-		resultsList.setItems(_dataList);
-		resultsList.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+		resultsListView.setItems(_dataList);		
+		 resultsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override
             public ListCell<String> call(ListView<String> stringListView) {
                 return new ListCell<String>(){
