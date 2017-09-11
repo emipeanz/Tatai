@@ -8,16 +8,38 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 public class ResultsController {
 
-	@FXML
-	//will return user to the main menu
-	private Button returnButton;
-	@FXML
-	//will take user to the beginning of a new test
-	private Button tryAgainButton;
+	//takes user back to main menu
+	@FXML private Button returnButton;
+	//takes user back to the start of a new test
+	@FXML private Button tryAgainButton;
+	//displays the user's result and a congrats message
+	@FXML private Label resultLabel;
+	//Lists the results from the test
+	@FXML private ListView resultsList;
+
+	private Test _test;
+
+	/**
+	 * Populates the list view with the results and sets the message
+	 * to be displayed with the result.
+	 */
+	@FXML 
+	private void initialize() {
+		String listItem;
+		for (Result result : _test.getTestResults()) {
+			listItem = result._numberInt + "\t" + result._numberWord;
+			System.out.println(listItem);
+			//resultsList.getItems().add(arg0)
+		}
+
+	}
+
 
 	public void returnMainMenu(ActionEvent event) {
 		System.out.println("Event triggering return to main menu");
