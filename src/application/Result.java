@@ -108,5 +108,21 @@ public class Result {
 
 		return numberWord;	
 	}
+	
+	public String getPass() {
+		if(_pass==true) {
+			return "Right!";
+		}
+		else {
+			return "Wrong";
+		}
+	}
 
+	public int getNumberInt() {
+		return this._numberInt;
+	}
+	
+	public String getNumberWord() {
+		return this._numberWord;
+	}
 }

@@ -1,11 +1,14 @@
 package application;
 
+import java.awt.List;
 import java.util.ArrayList;
+
+import javafx.collections.ObservableList;
 
 public class Test {
 	
-	public ArrayList<Result> _testResults;
-	public Difficulty _difficulty;
+	private ArrayList<Result> _testResults;
+	private Difficulty _difficulty;
 	
 	/**
 	 * Stores the difficulty level of the particular test being 
@@ -16,6 +19,10 @@ public class Test {
 	public Test(Difficulty difficulty) {
 		_difficulty = difficulty;
 		_testResults = new ArrayList<Result>();
+	}
+	
+	public Difficulty getdifficulty() {
+		return _difficulty;
 	}
 	
 	/**
@@ -63,5 +70,17 @@ public class Test {
 			count++;
 		}
 		return count;
+	}
+
+	public ArrayList<String> getResultsToString() {
+		ArrayList<String> data = new ArrayList<String>();
+		for(int i = 0 ; i < _testResults.size();i++) {
+			Result current = _testResults.get(i);
+			String pass = current.getPass();
+			String numWord = current.getNumberWord();
+			int numInt = current.getNumberInt();
+			data.add(numInt + "\t\t" + numWord + "\t\t" + pass);
+		}
+		return data;
 	}
 }

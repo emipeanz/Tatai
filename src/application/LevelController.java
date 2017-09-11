@@ -3,20 +3,39 @@ package application;
 import java.io.File;
 import java.io.IOException;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialog.DialogTransition;
+import com.jfoenix.controls.JFXDialogLayout;
+
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Arc;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+/**
+ * This class is the controller for a level ie. a test environment.
+ * @author Maddie Beagley and Emilie Pearce
+ *
+ */
 
 public class LevelController {
 
+	
 	@FXML
 	private Button readyButton;
 	
@@ -43,7 +62,13 @@ public class LevelController {
 	
 	@FXML
 	private Button listenButton;
-
+	
+	@FXML
+	private StackPane stackPane;
+	
+	@FXML
+	private JFXDialog dialog;
+	
 	private int progress = 0;
 	//will store all the data associated with the current level
 	private Result _currentLevelResult;
@@ -51,6 +76,8 @@ public class LevelController {
 	private Test _test;
 	
 	private Difficulty _difficulty;
+	
+	private int chances = 2;
 	
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
@@ -69,13 +96,13 @@ public class LevelController {
 	 * @param event
 	 */
 	public void updateLabels(ActionEvent event) {
-		_currentLevelResult = new Result(_test._difficulty);	
+		_currentLevelResult = new Result(_test.getdifficulty());	
 		//sets labels that show a number and the maori word corresponding to it
 		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
 		numberWord.setText(_currentLevelResult._numberWord);
 	}
 
-	public void takeRecording() {
+	public void takeRecording(ActionEvent e) {
 		//part 2 of cbf using bash as do not want to work on VM
 		System.out.println("In method for taking a recording");
 
@@ -91,10 +118,10 @@ public class LevelController {
 		/*
 		//if recording has been set for a level...
 		if (_currentLevelResult._recording == null) {
-			System.out.println("recording has not been properly initialised");
+			System.out.printlnlnlnln("recording has not been properly initialised");
 			//play recording (cbf using bash as do not want to work on VM)
 		} else {
-			System.out.println("In method for hearing a recording (recording not null)");
+			System.out.printlnlnlnln("In method for hearing a recording (recording not null)");
 		}
 		*/
 		
@@ -107,23 +134,29 @@ public class LevelController {
 	 */
 	private void updateProgressBar() {
 		progress = _test.getNumberofRound();
+		System.out.println("update bar progress = " + progress);
 		progressLabel.setText("Round " + progress + "/10");
 		progressBar.setProgress((double) progress / 10);
 	}
+	
 	/**
-	 * Called only when the user is advancing to the next level, updates
-	 * progress bar.
+	 * Called only when the user is advancing to another question
 	 */
 	public void nextLevel(ActionEvent event) {
-		System.out.print("entered nextLevel");
+		System.out.println("entered next question");
 		//stores result of previous test in test model
 		_test.addTestResult(_currentLevelResult);
 		//instantiates a new result for the next level of the test
-		_currentLevelResult = new Result(_test._difficulty);
-		System.out.print(progress);
+		_currentLevelResult = new Result(_test.getdifficulty());
+		System.out.println("next level progress = " + progress);
 		progress += 0.1;
-		progressLabel.setText("Round " + Math.round(progress * 10) + "/10");
-		progressBar.setProgress(progress);
+		
+		if(progress == 10) {
+			showResults(event);
+		}
+		if(progress>10) {
+			throw new RuntimeException("Too many tests have been logged");
+		}
 	}
 	
 	/**
@@ -135,15 +168,21 @@ public class LevelController {
 		System.out.println("in method that sets the scene to results");
 		
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		
-		Scene easyScene = null;
+
+		AnchorPane resultsScene = null;
+		ResultsController controller = null;
 		try {
-			easyScene = new Scene(FXMLLoader.load(getClass().getResource("Results.fxml")));
+			controller = new ResultsController(_test);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Results.fxml"));
+			loader.setController(controller);
+			resultsScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
-		stageEventBelongsTo.setScene(easyScene);
+		Scene scene = new Scene(resultsScene);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		controller.setUpResultsTable();
+		stageEventBelongsTo.setScene(scene);
 	}
 
 	/**
@@ -182,4 +221,71 @@ public class LevelController {
 		recordButton.setDisable(false);
 		listenButton.setDisable(false);
 	}
+	
+	/**
+	 * Method checks if the recording the user wants tested if the correct pronunciation
+	 * for the current number and displays the respective instructions and feedback.
+	 * ****ISSUE WITH PROGRESS BAR
+	 * I know there HEAPS of code duplication, but i was trailing this out to see if the idea
+	 * worked - if we wanna use it then ill come back to it and fix it
+	 * Checking audio part of method needs doing
+	 * @param e
+	 */
+	public void checkRecordingForWord(ActionEvent e) {
+		System.out.println("Checking recording...");
+		Boolean correct = true;
+		// Bash commands to check if recording is correct
+		JFXDialogLayout layout = new JFXDialogLayout();
+		dialog.setDialogContainer(stackPane);
+		if(correct == false) {
+			_currentLevelResult.setPass(false);
+			chances--;
+			JFXButton dialogButton = null;
+			if(!(chances == 0)) {
+				layout.setBody(new Text ("Oops, got that one wrong"));
+				dialogButton = new JFXButton("Try again");
+			}
+			else {
+				layout.setBody(new Text ("No more chances"));
+				dialogButton = new JFXButton("Next Question");
+			}
+			dialogButton.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					dialog.close();
+					System.out.println("chances = " + chances);
+					if(chances == 0) {
+						updateLabels(e);
+						updateProgressBar();
+						chances = 2;
+					}
+				}
+			});
+			layout.setActions(dialogButton);
+			dialog.setContent(layout);
+			stackPane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			dialog.show();
+			
+		}
+		else if(correct == true) {
+			_currentLevelResult.setPass(true);
+			layout.setBody(new Text ("Yay, got it right!"));
+			JFXButton dialogButton = new JFXButton("Continue");
+			dialogButton.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					dialog.close();
+					updateLabels(e);
+					updateProgressBar();
+				}
+			});
+			layout.setActions(dialogButton);
+			dialog.setContent(layout);
+			dialog.show();
+			nextLevel(e);
+			chances = 2;
+		}
+
+	}
+	
 }
