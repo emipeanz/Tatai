@@ -35,6 +35,7 @@ public class ResultsController {
 		for (Result result : _test.getTestResults()) {
 			listItem = result._numberInt + "\t" + result._numberWord;
 			System.out.println(listItem);
+			System.out.println(listItem);
 			//resultsList.getItems().add(arg0)
 		}
 
