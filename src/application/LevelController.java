@@ -170,8 +170,9 @@ public class LevelController {
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
 		AnchorPane resultsScene = null;
+		ResultsController controller = null;
 		try {
-			ResultsController controller = new ResultsController(_test);
+			controller = new ResultsController(_test);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Results.fxml"));
 			loader.setController(controller);
 			resultsScene = loader.load();
@@ -180,6 +181,7 @@ public class LevelController {
 		}
 		Scene scene = new Scene(resultsScene);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		controller.setUpResultsTable();
 		stageEventBelongsTo.setScene(scene);
 	}
 
@@ -229,8 +231,8 @@ public class LevelController {
 	 * Checking audio part of method needs doing
 	 * @param e
 	 */
-	public void checkReccordingForWord(ActionEvent e) {
-		System.out.println("Checking reccording...");
+	public void checkRecordingForWord(ActionEvent e) {
+		System.out.println("Checking recording...");
 		Boolean correct = true;
 		// Bash commands to check if recording is correct
 		JFXDialogLayout layout = new JFXDialogLayout();
@@ -238,13 +240,15 @@ public class LevelController {
 		if(correct == false) {
 			_currentLevelResult.setPass(false);
 			chances--;
+			JFXButton dialogButton = null;
 			if(!(chances == 0)) {
 				layout.setBody(new Text ("Oops, got that one wrong"));
+				dialogButton = new JFXButton("Try again");
 			}
 			else {
 				layout.setBody(new Text ("No more chances"));
+				dialogButton = new JFXButton("Next Question");
 			}
-			JFXButton dialogButton = new JFXButton("Try again");
 			dialogButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent e) {

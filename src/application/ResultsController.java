@@ -50,8 +50,38 @@ public class ResultsController {
 	 */
 	public void setUpResultsTable() {
 		_dataList = FXCollections.observableArrayList(_test.getResultsToString());
-		resultsListView.setItems(_dataList);		
-		 resultsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+		this.resultsListView.setItems(_dataList);
+		this.resultsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>(){
+
+	        @Override
+	        public ListCell<String> call(ListView<String> p) {
+
+	            ListCell<String> cell = new ListCell<String>(){
+
+	                @Override
+	                protected void updateItem(String t, boolean bln) {
+	                    super.updateItem(t, bln);
+	                    if (t != null ) {
+	                        setText( t);
+	                        if (t.contains("Right!")) {
+	                        	setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
+	                        }
+	                        else {
+	                        	setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
+	                        }
+	                        
+	                    } else {
+	                        setText("");
+	                    }
+	                }
+
+	            };
+
+	            return cell;
+	        }
+	    });
+		 /*
+		  * this.resultsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override
             public ListCell<String> call(ListView<String> stringListView) {
                 return new ListCell<String>(){
@@ -68,6 +98,7 @@ public class ResultsController {
                 };
             }
         });
+		  */
 		
 	}
 
