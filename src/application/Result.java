@@ -1,13 +1,10 @@
 package application;
 
-import java.io.File;
-
 public class Result {
 
 	public int _numberInt;
 	public String _numberWord = "";
 	public boolean _pass;
-	public File _recording = null;
 
 	/**
 	 * Constructor to store state of number currently being tested.
@@ -40,14 +37,6 @@ public class Result {
 	 */
 	public void setPass(boolean pass) {
 		_pass = pass;
-	}
-
-	/**
-	 * Stores a file to hold the recording associated to the the result.
-	 * @param recording
-	 */
-	public void setRecording(File recording) {
-		_recording = recording;
 	}
 	
 	/**

@@ -75,6 +75,8 @@ public class LevelController {
 	//will store all data associated with entire test
 	private Test _test;
 	
+	private File _recording;
+	private String _recordingFilepath = "RecordingDir/recording.wav";
 	private Difficulty _difficulty;
 	
 	private int chances = 2;
@@ -87,6 +89,12 @@ public class LevelController {
 	public LevelController(Difficulty diff) {
 		_difficulty = diff;
 		_test = new Test(_difficulty);
+		
+		//generates a new directory
+		File recordingDir = new File("RecordingDir/");
+		if(!recordingDir.exists()) {
+			recordingDir.mkdir();
+		}
 	}
 
 	/**
@@ -105,13 +113,29 @@ public class LevelController {
 	public void takeRecording(ActionEvent e) {
 		//part 2 of cbf using bash as do not want to work on VM
 		System.out.println("In method for taking a recording");
+		
+		_recordingFilepath = "RecordingDir/foo.wav";
+	
+		String cmd = "ffmpeg -y -f alsa -i \"default\" -t 6 " + _recordingFilepath;
 
-		//to be uncommented when there is a valid file for a recording.
+		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
 
-		/*
-		File recording = new File("recording");
-		_currentLevelResult.setRecording(recording);
-		 */
+		//generates a new thread to execute the recording functionality
+		Thread record = new Thread(() -> {
+			try {
+				System.out.println("about to run process to take recording");
+				pb.start().waitFor();
+				//when recording has completed, run the onRecordComplete with the input 
+				//being the recording file that has just been generated.
+				System.out.println("recording ready to update");
+				_recording = new File(_recordingFilepath);
+			} catch (InterruptedException ignored) { // if process is prematurely terminated
+			} catch (IOException ioEvent) { //if process is incorrect (likely programmer error)
+				throw new RuntimeException("Programmer messed up command...");
+			}
+		});
+		record.start();
+		
 	}
 
 	public void playRecording() {
