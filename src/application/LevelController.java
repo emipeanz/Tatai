@@ -27,6 +27,12 @@ import javafx.scene.shape.Arc;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * This class is the controller for a level ie. a test environment.
+ * @author Maddie Beagley and Emilie Pearce
+ *
+ */
+
 public class LevelController {
 
 	
@@ -132,9 +138,9 @@ public class LevelController {
 		progressLabel.setText("Round " + progress + "/10");
 		progressBar.setProgress((double) progress / 10);
 	}
+	
 	/**
-	 * Called only when the user is advancing to the next level, updates
-	 * progress bar.
+	 * Called only when the user is advancing to another question
 	 */
 	public void nextLevel(ActionEvent event) {
 		System.out.println("entered next question");
