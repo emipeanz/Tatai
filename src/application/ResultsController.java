@@ -80,26 +80,7 @@ public class ResultsController {
 	            return cell;
 	        }
 	    });
-		 /*
-		  * this.resultsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> stringListView) {
-                return new ListCell<String>(){
-                    @Override
-                    protected void updateItem(String s, boolean b) {
-                        super.updateItem(s, b);    //To change body of overridden methods use File | Settings | File Templates.
-                        if (s.contains("Right!")) {
-                        	setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
-                        }
-                        else {
-                        	setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
-                        }
-                    }
-                };
-            }
-        });
-		  */
-		
+
 	}
 
 	/**
