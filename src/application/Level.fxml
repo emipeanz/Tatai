@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="progressLabel" layoutX="268.0" layoutY="360.0" text="Round 1/10" />
       <ProgressBar fx:id="progressBar" layoutX="140.0" layoutY="338.0" prefHeight="18.0" prefWidth="319.0" progress="0.0" />
@@ -18,7 +18,7 @@
             <Font size="110.0" />
          </font>
       </Label>
-      <Button fx:id="circleButton" disable="true" layoutX="383.0" layoutY="214.0" maxHeight="99.0" mnemonicParsing="false" onAction="#checkRecordingForWord" prefHeight="99.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);;" text="Check!" textAlignment="CENTER">
+      <Button fx:id="checkButton" disable="true" layoutX="383.0" layoutY="214.0" maxHeight="99.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="99.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);;" text="Check!" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
