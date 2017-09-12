@@ -51,7 +51,7 @@
 	-fx-text-fill: #686868;
 }
 
-#checkButton{
+#circleButton{
 	-fx-background-radius: 5em; 
     -fx-min-width: 100px; 
     -fx-min-height: 100px; 
