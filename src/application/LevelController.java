@@ -95,6 +95,9 @@ public class LevelController {
 		if(!recordingDir.exists()) {
 			recordingDir.mkdir();
 		}
+		
+		checkButton.setDisable(true);
+		listenButton.setDisable(true);
 	}
 
 	/**
@@ -123,6 +126,9 @@ public class LevelController {
 		//generates a new thread to execute the recording functionality
 		Thread record = new Thread(() -> {
 			try {
+				listenButton.setDisable(true);
+				checkButton.setDisable(true);
+				recordButton.setDisable(true);
 				
 				System.out.println("about to run process to take recording");
 				pb.start().waitFor();
@@ -130,6 +136,11 @@ public class LevelController {
 				//being the recording file that has just been generated.
 				System.out.println("recording ready to update");
 				_recording = new File(_recordingFilepath);
+				
+				listenButton.setDisable(false);
+				checkButton.setDisable(false);
+				recordButton.setDisable(false);
+
 			} catch (InterruptedException ignored) { // if process is prematurely terminated
 			} catch (IOException ioEvent) { //if process is incorrect (likely programmer error)
 				throw new RuntimeException("Programmer messed up command...");
@@ -145,7 +156,14 @@ public class LevelController {
 			System.out.println("recording has not been properly initialised");
 			//play recording (cbf using bash as do not want to work on VM)
 		} else {
+			recordButton.setDisable(true);
+			checkButton.setDisable(true);
 			System.out.println("In method for hearing a recording (recording not null)");
+			/**
+			 * add functionality to play recording
+			 */
+			recordButton.setDisable(false);
+			checkButton.setDisable(false);
 		}
 	}
 	
@@ -188,6 +206,7 @@ public class LevelController {
 			throw new RuntimeException("Too many tests have been logged");
 		}
 		
+		listenButton.setDisable(true);
 		_recording = null;
 	}
 	
