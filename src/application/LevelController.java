@@ -103,19 +103,6 @@ public class LevelController {
 	
 	}
 
-	/**
-	 * For now just having a play around - this method is called when the make random number
-	 * button is clicked and will show the number and the word of that number in maori.
-	 * Learning how to use events.
-	 * @param event
-	 */
-	public void updateLabels(ActionEvent event) {
-		_currentLevelResult = new Result(_test.getdifficulty());	
-		//sets labels that show a number and the maori word corresponding to it
-		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
-		numberWord.setText(_currentLevelResult._numberWord);
-	}
-
 	public void takeRecording(ActionEvent e) {
 		//part 2 of cbf using bash as do not want to work on VM
 		System.out.println("In method for taking a recording");
@@ -189,22 +176,34 @@ public class LevelController {
 	 */
 	private void updateProgressBar() {
 		progress = _test.getNumberofRound();
-		System.out.println("update bar progress = " + progress);
+		System.out.println("test round = " + _test.getNumberofRound());
 		progressLabel.setText("Round " + progress + "/10");
 		progressBar.setProgress((double) progress / 10);
+	}
+	
+
+	/**
+	 * For now just having a play around - this method is called when the make random number
+	 * button is clicked and will show the number and the word of that number in maori.
+	 * Learning how to use events.
+	 * @param event
+	 */
+	public void updateLabels() {
+		_currentLevelResult = new Result(_test.getdifficulty());
+		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
+		numberWord.setText(_currentLevelResult._numberWord);
+		_test.addTestResult(_currentLevelResult);
 	}
 	
 	/**
 	 * Called only when the user is advancing to another question
 	 */
-	public void nextLevel(ActionEvent event) {
-		System.out.println("entered next question");
-		//stores result of previous test in test model
-		_test.addTestResult(_currentLevelResult);
-		//instantiates a new result for the next level of the test
-		_currentLevelResult = new Result(_test.getdifficulty());
+	public void nextQuestion(ActionEvent event) {
+
 		System.out.println("next level progress = " + progress);
 		progress += 0.1;
+		this.updateLabels();
+		this.updateProgressBar();
 		
 		if(progress == 10) {
 			showResults(event);
@@ -274,7 +273,8 @@ public class LevelController {
 	public void readyButtonAction(ActionEvent event){
 		readyButton.setDisable(true);
 		readyButton.setVisible(false);
-		updateLabels(event);
+		updateLabels();
+		updateProgressBar();
 		checkButton.setDisable(true);
 		recordButton.setDisable(false);
 		listenButton.setDisable(true);
@@ -283,16 +283,24 @@ public class LevelController {
 	/**
 	 * Method checks if the recording the user wants tested if the correct pronunciation
 	 * for the current number and displays the respective instructions and feedback.
-	 * ****ISSUE WITH PROGRESS BAR
-	 * I know there HEAPS of code duplication, but i was trailing this out to see if the idea
-	 * worked - if we wanna use it then ill come back to it and fix it
-	 * Checking audio part of method needs doing
 	 * @param e
 	 */
 	public void checkRecording(ActionEvent e) {
 		System.out.println("Checking recording check button");
-		checkRecordingForWord();
-		Boolean correct = true;
+		Boolean correct = this.checkRecordingForWord();
+		if(correct) {
+			_currentLevelResult.setPass(true);
+			this.nextQuestion(e);
+			chances = 2;
+		}
+		else {
+			chances--;
+			if(chances==0) {
+				_currentLevelResult.setPass(false);
+				this.nextQuestion(e);
+				chances = 2;
+			}
+		}
 		
 	}
 	
