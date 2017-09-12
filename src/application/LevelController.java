@@ -8,10 +8,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialog.DialogTransition;
-import com.jfoenix.controls.JFXDialogLayout;
+import java.nio.file.Paths;
+
 
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -42,50 +40,46 @@ import javafx.stage.Stage;
  */
 
 public class LevelController {
-
-	
 	@FXML
 	private Button readyButton;
-	
+
 	@FXML
 	private Label numberToTest;
-	
+
 	@FXML
 	private Label numberWord;
-	
+
 	@FXML
 	private ProgressBar progressBar;
-	
+
 	@FXML
 	private Label progressLabel;
-	
+
 	@FXML
 	private Button backButton;
-	
+
 	@FXML
 	private Button recordButton;
-	
+
 	@FXML
 	private Button checkButton;
-	
+
 	@FXML
 	private Button listenButton;
-	
-	@FXML
-	private JFXDialog dialog;
-	
+
+
 	private int progress = 0;
 	//will store all the data associated with the current level
 	private Result _currentLevelResult;
 	//will store all data associated with entire test
 	private Test _test;
-	
+	private MediaPlayer _player;
 	private File _recording;
-	private String _recordingFilepath = "RecordingDir/recording.wav";
+	private String _recordingFilepath = "RecordingDir/foo.wav";
 	private Difficulty _difficulty;
-	
+
 	private int chances = 2;
-	
+
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
 	 * the difficulty is set and a new test is made
@@ -94,81 +88,117 @@ public class LevelController {
 	public LevelController(Difficulty diff) {
 		_difficulty = diff;
 		_test = new Test(_difficulty);
-		
+
 		//generates a new directory
 		File recordingDir = new File("RecordingDir/");
 		if(!recordingDir.exists()) {
 			recordingDir.mkdir();
 		}
-	
+
+		_player = newMediaPlayer();
 	}
 
+
+	/**
+	 * For now just having a play around - this method is called when the make random number
+	 * button is clicked and will show the number and the word of that number in maori.
+	 * Learning how to use events.
+	 * @param event
+	 */
+	public void updateLabels(ActionEvent event) {
+		_currentLevelResult = new Result(_test.getdifficulty());	
+		//sets labels that show a number and the maori word corresponding to it
+		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
+		numberWord.setText(_currentLevelResult._numberWord);
+	}
+
+	/**
+	 * Uses a bash command to take a new recording. This functionality will be run in a 
+	 * backgroud thread. Buttons (except return to main menu) will be disabled during the
+	 * recording process and reenabled after. A new media player storing the current 
+	 * recording will be instantiated once this recording has been taken.
+	 * @param e
+	 */
 	public void takeRecording(ActionEvent e) {
-		//part 2 of cbf using bash as do not want to work on VM
-		System.out.println("In method for taking a recording");
-		
-		_recordingFilepath = "RecordingDir/foo.wav";
-	
-		String cmd = "ffmpeg -y -f alsa -i \"default\" -t 6 -acodec pcm_s16le -ar 22050 -ac 1 " + _recordingFilepath;
-		System.out.print(cmd);
+		String cmd = "ffmpeg -y -f alsa -i \"default\" -t 6 " + _recordingFilepath;
+
+
 		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
 
 		//generates a new thread to execute the recording functionality
 		Thread record = new Thread(() -> {
 			try {
-				if (listenButton.isDisabled()) {
-					listenButton.setDisable(true);					
-				}
-				if (checkButton.isDisabled()) {
-					checkButton.setDisable(true);					
-				}
+				listenButton.setDisable(true);					
+				checkButton.setDisable(true);					
 				recordButton.setDisable(true);
-				
-				System.out.println("about to run process to take recording");
+
 				pb.start().waitFor();
 				//when recording has completed, run the onRecordComplete with the input 
 				//being the recording file that has just been generated.
 				System.out.println("recording ready to update");
-				_recording = new File(_recordingFilepath);
 				
 				listenButton.setDisable(false);
 				checkButton.setDisable(false);
 				recordButton.setDisable(false);
+
+				//instantiates a new media player with the new media recording set.
+				_player = newMediaPlayer();
+				_recording = new File(_recordingFilepath);
 
 			} catch (InterruptedException ignored) { // if process is prematurely terminated
 			} catch (IOException ioEvent) { //if process is incorrect (likely programmer error)
 				throw new RuntimeException("Programmer messed up command...");
 			}
 		});
-		record.start();
-		
+		//starts the thread running to take the recording.
+		record.start();	
 	}
 
+	/**
+	 * Uses the media player to play the current recording as long as that player has been
+	 * correctly set. Nothing will play if the media player is set to null (or has not been set).
+	 */
 	public void playRecording() {
 		//if recording has been set for a level...
-		if (_recording == null) {
-			System.out.println("recording has not been properly initialised");
-			//play recording (cbf using bash as do not want to work on VM)
+		if (_player == null) {
+			System.out.println("recording/mediaplayer has not been properly initialised");
 		} else {
-			recordButton.setDisable(true);
+			//for now just disabling all buttons so can't call listen while already listening.
+			//if we have the time could be cool to 
+			listenButton.setDisable(true);
 			checkButton.setDisable(true);
-			System.out.println("In method for hearing a recording (recording not null)");
-			/**
-			 * add functionality to play recording
-			 */
-			recordButton.setDisable(false);
-			checkButton.setDisable(false);
+			recordButton.setDisable(true);
+
+			_player.play(); 
+			//invokes a runnable that resets the mediaplayer and updates buttons
+			_player.onEndOfMediaProperty();
 		}
 	}
-	
-	class Reproductor extends Application {
-	   @Override
-	   public void start(Stage stage) throws Exception {
-	       Media media = new Media("file:///Movies/test.mp3"); //replace /Movies/test.mp3 with your file
-	       MediaPlayer player = new MediaPlayer(media); 
-	       player.play();
-	   }  
-	 }
+
+	/**
+	 * Creates a new media player which loads in the current media. player.setOnEndOfMedia(...)
+	 * creates a runnable that should be executed each time player.onEndOfMediaProperty() method 
+	 * called. 
+	 * @return
+	 */
+	private MediaPlayer newMediaPlayer() {
+		Media media = new Media(Paths.get(_recordingFilepath).toUri().toString());
+		//generates a media player to play audio
+		MediaPlayer player = new MediaPlayer(media);
+		//sets a runnable that will be called when player.onEndOfMediaProperty() called
+		player.setOnEndOfMedia(new Runnable() {
+			@Override
+			public void run() {
+				//ensures media can be replayed.
+				_player.stop();
+				//reenables buttons for use
+				recordButton.setDisable(false);
+				checkButton.setDisable(false);
+				listenButton.setDisable(false);
+			}
+		});
+		return player;
+	}
 
 	/**
 	 * Updates the state of the progress bar. Tracks how many rounds of the
@@ -180,8 +210,30 @@ public class LevelController {
 		progressLabel.setText("Round " + progress + "/10");
 		progressBar.setProgress((double) progress / 10);
 	}
-	
 
+
+	/**
+	 * For now just having a play around - this method is called when the make random number
+	 * button is clicked and will show the number and the word of that number in maori.
+	 * Learning how to use events.
+	 * @param event
+	 */
+
+
+
+	public void nextLevel(ActionEvent event) {
+		_player = null;
+
+		System.out.println("entered next question");
+		//stores result of previous test in test model
+		_test.addTestResult(_currentLevelResult);
+		//instantiates a new result for the next level of the test
+		_currentLevelResult = new Result(_test.getdifficulty());
+		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
+		numberWord.setText(_currentLevelResult._numberWord);
+		_test.addTestResult(_currentLevelResult);
+	}
+	
 	/**
 	 * For now just having a play around - this method is called when the make random number
 	 * button is clicked and will show the number and the word of that number in maori.
@@ -193,7 +245,7 @@ public class LevelController {
 		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
 		numberWord.setText(_currentLevelResult._numberWord);
 		_test.addTestResult(_currentLevelResult);
-	}
+}
 	
 	/**
 	 * Called only when the user is advancing to another question
@@ -204,18 +256,18 @@ public class LevelController {
 		progress += 0.1;
 		this.updateLabels();
 		this.updateProgressBar();
-		
+
 		if(progress == 10) {
 			showResults(event);
 		}
 		if(progress>10) {
 			throw new RuntimeException("Too many tests have been logged");
 		}
-		
+
 		listenButton.setDisable(true);
 		_recording = null;
 	}
-	
+
 	/**
 	 * Method takes user to a screen which displays their results, invoked
 	 * when 10 rounds of the test have been completed or if user quits prematurely.
@@ -223,7 +275,7 @@ public class LevelController {
 	 */
 	public void showResults(ActionEvent event) {
 		System.out.println("in method that sets the scene to results");
-		
+
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
 		AnchorPane resultsScene = null;
@@ -263,7 +315,7 @@ public class LevelController {
 		mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
-	
+
 	/**
 	 * Method take an event on the ready button to start the test.  It disabled the 'ready' button
 	 * and enabled all the other control buttons so the user can submit/record/listen to recordings
@@ -277,9 +329,10 @@ public class LevelController {
 		updateProgressBar();
 		checkButton.setDisable(true);
 		recordButton.setDisable(false);
-		listenButton.setDisable(true);
+		listenButton.setDisable(false);
 	}
-	
+
+
 	/**
 	 * Method checks if the recording the user wants tested if the correct pronunciation
 	 * for the current number and displays the respective instructions and feedback.
@@ -302,8 +355,7 @@ public class LevelController {
 			}
 		}
 		
-	}
-	
+}
 	/**
 	 * Method checks if the recording that is currently in the recording directory is the
 	 * word that is the current test that it is on.  Uses back commands to run the wav file
@@ -347,5 +399,5 @@ public class LevelController {
 		System.out.println("word there, exiting TRUE");
 		return true;
 	}
-	
+
 }
