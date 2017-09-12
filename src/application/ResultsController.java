@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
@@ -31,6 +32,9 @@ public class ResultsController {
 	
 	@FXML
 	private ListView<String> resultsListView;
+	
+	@FXML
+	private Label resultsLabel;
 	
 	// Gonna need some sort of 3D map to map together the number name, number in numeral form and if they got it right or not
 	private Test _test;
@@ -80,26 +84,7 @@ public class ResultsController {
 	            return cell;
 	        }
 	    });
-		 /*
-		  * this.resultsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> stringListView) {
-                return new ListCell<String>(){
-                    @Override
-                    protected void updateItem(String s, boolean b) {
-                        super.updateItem(s, b);    //To change body of overridden methods use File | Settings | File Templates.
-                        if (s.contains("Right!")) {
-                        	setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
-                        }
-                        else {
-                        	setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
-                        }
-                    }
-                };
-            }
-        });
-		  */
-		
+		resultsLabel.setText("You got " + _test.getOverallMark() + "/10 !");
 	}
 
 	/**

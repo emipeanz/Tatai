@@ -6,15 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ListView fx:id="resultsListView" layoutX="186.0" layoutY="47.0" prefHeight="241.0" prefWidth="242.0" />
-      <Label layoutX="186.0" layoutY="11.0" prefHeight="36.0" prefWidth="242.0" text="You got 3/10 correct!" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="resultsLabel" layoutX="186.0" layoutY="11.0" prefHeight="36.0" prefWidth="242.0" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button id="circleButton" fx:id="tryAgainButton" layoutX="250.0" layoutY="292.0" mnemonicParsing="false" onAction="#restartTest" text="Try Again">
+      <Button id="circleButton" fx:id="tryAgainButton" layoutX="250.0" layoutY="292.0" minHeight="84.0" mnemonicParsing="false" onAction="#restartTest" prefHeight="84.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(to right, #36d1dc, #5b86e5 );" text="Try Again">
          <font>
             <Font size="18.0" />
          </font>
