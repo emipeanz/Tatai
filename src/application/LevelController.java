@@ -95,9 +95,7 @@ public class LevelController {
 		if(!recordingDir.exists()) {
 			recordingDir.mkdir();
 		}
-		
-		checkButton.setDisable(true);
-		listenButton.setDisable(true);
+	
 	}
 
 	/**
@@ -126,8 +124,12 @@ public class LevelController {
 		//generates a new thread to execute the recording functionality
 		Thread record = new Thread(() -> {
 			try {
-				listenButton.setDisable(true);
-				checkButton.setDisable(true);
+				if (listenButton.isDisabled()) {
+					listenButton.setDisable(true);					
+				}
+				if (checkButton.isDisabled()) {
+					checkButton.setDisable(true);					
+				}
 				recordButton.setDisable(true);
 				
 				System.out.println("about to run process to take recording");
@@ -268,9 +270,9 @@ public class LevelController {
 		readyButton.setDisable(true);
 		readyButton.setVisible(false);
 		updateLabels(event);
-		checkButton.setDisable(false);
+		checkButton.setDisable(true);
 		recordButton.setDisable(false);
-		listenButton.setDisable(false);
+		listenButton.setDisable(true);
 	}
 	
 	/**
