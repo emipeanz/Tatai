@@ -83,9 +83,9 @@
 	-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);
 }
 
-.list-view . scroll-bar:vertical .increment-arrow,
-.list-view . scroll-bar:vertical .decrements-arrow,
-.list-view . scroll-bar:vertical .increment-button,
-.list-view . scroll-bar:vertical .decrement-button {
+.list-view .scroll-bar:vertical .increment-arrow,
+.list-view .scroll-bar:vertical .decrements-arrow,
+.list-view .scroll-bar:vertical .increment-button,
+.list-view .scroll-bar:vertical .decrement-button {
 	-fx-scale-x : 0;
 }
