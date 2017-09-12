@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
@@ -38,6 +39,9 @@ public class ResultsController {
 	private Difficulty _difficulty;
     
     private ObservableList<String> _dataList;
+    
+    @FXML
+    private Label resultsLabel;
 
 	public ResultsController(Test test) {
 		_test = test;
@@ -80,7 +84,7 @@ public class ResultsController {
 	            return cell;
 	        }
 	    });
-
+		resultsLabel.setText("You got " + _test.getOverallMark() + "/10!");
 	}
 
 	/**
