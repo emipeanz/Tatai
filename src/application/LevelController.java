@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXDialog.DialogTransition;
 import com.jfoenix.controls.JFXDialogLayout;
 
 import javafx.animation.Timeline;
+import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,6 +24,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Arc;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -55,16 +58,13 @@ public class LevelController {
 	private Button backButton;
 	
 	@FXML
-	private Button circleButton;
-	
-	@FXML
 	private Button recordButton;
 	
 	@FXML
-	private Button listenButton;
+	private Button checkButton;
 	
 	@FXML
-	private StackPane stackPane;
+	private Button listenButton;
 	
 	@FXML
 	private JFXDialog dialog;
@@ -123,6 +123,7 @@ public class LevelController {
 		//generates a new thread to execute the recording functionality
 		Thread record = new Thread(() -> {
 			try {
+				
 				System.out.println("about to run process to take recording");
 				pb.start().waitFor();
 				//when recording has completed, run the onRecordComplete with the input 
@@ -139,18 +140,23 @@ public class LevelController {
 	}
 
 	public void playRecording() {
-		/*
 		//if recording has been set for a level...
-		if (_currentLevelResult._recording == null) {
-			System.out.printlnlnlnln("recording has not been properly initialised");
+		if (_recording == null) {
+			System.out.println("recording has not been properly initialised");
 			//play recording (cbf using bash as do not want to work on VM)
 		} else {
-			System.out.printlnlnlnln("In method for hearing a recording (recording not null)");
+			System.out.println("In method for hearing a recording (recording not null)");
 		}
-		*/
-		
-		System.out.println("In method for playing a recording");
 	}
+	
+	class Reproductor extends Application {
+	   @Override
+	   public void start(Stage stage) throws Exception {
+	       Media media = new Media("file:///Movies/test.mp3"); //replace /Movies/test.mp3 with your file
+	       MediaPlayer player = new MediaPlayer(media); 
+	       player.play();
+	   }  
+	 }
 
 	/**
 	 * Updates the state of the progress bar. Tracks how many rounds of the
@@ -181,6 +187,8 @@ public class LevelController {
 		if(progress>10) {
 			throw new RuntimeException("Too many tests have been logged");
 		}
+		
+		_recording = null;
 	}
 	
 	/**
@@ -241,7 +249,7 @@ public class LevelController {
 		readyButton.setDisable(true);
 		readyButton.setVisible(false);
 		updateLabels(event);
-		circleButton.setDisable(false);
+		checkButton.setDisable(false);
 		recordButton.setDisable(false);
 		listenButton.setDisable(false);
 	}
@@ -255,14 +263,15 @@ public class LevelController {
 	 * Checking audio part of method needs doing
 	 * @param e
 	 */
-	public void checkRecordingForWord(ActionEvent e) {
+	public void checkRecording(ActionEvent e) {
 		System.out.println("Checking recording...");
 		Boolean correct = true;
 		// Bash commands to check if recording is correct
 		JFXDialogLayout layout = new JFXDialogLayout();
-		dialog.setDialogContainer(stackPane);
+
 		if(correct == false) {
 			_currentLevelResult.setPass(false);
+			_recording = null;
 			chances--;
 			JFXButton dialogButton = null;
 			if(!(chances == 0)) {
@@ -287,7 +296,6 @@ public class LevelController {
 			});
 			layout.setActions(dialogButton);
 			dialog.setContent(layout);
-			stackPane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			dialog.show();
 			
 		}
