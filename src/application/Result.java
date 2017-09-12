@@ -1,5 +1,8 @@
 package application;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Result {
 
 	public int _numberInt;
@@ -113,5 +116,10 @@ public class Result {
 	
 	public String getNumberWord() {
 		return this._numberWord;
+	}
+	
+	public List<String> numberInSplitformat() {
+		String[] split = _numberWord.split("\\s+");
+		return Arrays.asList(split);
 	}
 }

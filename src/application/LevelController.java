@@ -1,7 +1,12 @@
 package application;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -117,8 +122,8 @@ public class LevelController {
 		
 		_recordingFilepath = "RecordingDir/foo.wav";
 	
-		String cmd = "ffmpeg -y -f alsa -i \"default\" -t 6 " + _recordingFilepath;
-
+		String cmd = "ffmpeg -y -f alsa -i \"default\" -t 6 -acodec pcm_s16le -ar 22050 -ac 1 " + _recordingFilepath;
+		System.out.print(cmd);
 		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
 
 		//generates a new thread to execute the recording functionality
@@ -285,60 +290,54 @@ public class LevelController {
 	 * @param e
 	 */
 	public void checkRecording(ActionEvent e) {
-		System.out.println("Checking recording...");
+		System.out.println("Checking recording check button");
+		checkRecordingForWord();
 		Boolean correct = true;
-		// Bash commands to check if recording is correct
-		JFXDialogLayout layout = new JFXDialogLayout();
-
-		if(correct == false) {
-			_currentLevelResult.setPass(false);
-			_recording = null;
-			chances--;
-			JFXButton dialogButton = null;
-			if(!(chances == 0)) {
-				layout.setBody(new Text ("Oops, got that one wrong"));
-				dialogButton = new JFXButton("Try again");
-			}
-			else {
-				layout.setBody(new Text ("No more chances"));
-				dialogButton = new JFXButton("Next Question");
-			}
-			dialogButton.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent e) {
-					dialog.close();
-					System.out.println("chances = " + chances);
-					if(chances == 0) {
-						updateLabels(e);
-						updateProgressBar();
-						chances = 2;
-					}
+		
+	}
+	
+	/**
+	 * Method checks if the recording that is currently in the recording directory is the
+	 * word that is the current test that it is on.  Uses back commands to run the wav file
+	 * through HTK and reads from the recout.lmf file to see if all parts of the word have
+	 * been picked up in the analysis
+	 * @return boolean if the recording is the correct number of now=t
+	 */
+	private boolean checkRecordingForWord() {
+		ArrayList<String> output = new ArrayList<String>();
+		System.out.println("Checking recording HTK bash");
+		_recordingFilepath = "RecordingDir/foo.wav";
+		String cmd = "HVite -H HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -C user/configLR  "
+				+ "-w user/wordNetworkNum -o SWT -l '*' -i recout.mlf -p 0.0 -s 5.0  "
+				+ "user/dictionaryD user/tiedList " + _recordingFilepath;
+		ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", cmd);
+		try {
+			System.out.println("Starting process");
+			Process process = processBuilder.start();
+			process.waitFor();
+			FileReader in = new FileReader("recout.mlf");
+			BufferedReader br = new BufferedReader(in);
+			String line = null;
+			while((line = br.readLine()) != null) {
+				if((!(line.contains("#!MLF!#"))) && (!(line.contains("\"*/foo.rec\""))) && (!(line.contains(".")))) {
+					System.out.println(line);
+					output.add(line);
 				}
-			});
-			layout.setActions(dialogButton);
-			dialog.setContent(layout);
-			dialog.show();
-			
+			}
+			br.close();
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
 		}
-		else if(correct == true) {
-			_currentLevelResult.setPass(true);
-			layout.setBody(new Text ("Yay, got it right!"));
-			JFXButton dialogButton = new JFXButton("Continue");
-			dialogButton.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent e) {
-					dialog.close();
-					updateLabels(e);
-					updateProgressBar();
-				}
-			});
-			layout.setActions(dialogButton);
-			dialog.setContent(layout);
-			dialog.show();
-			nextLevel(e);
-			chances = 2;
+		
+		List<String> numberWord = _currentLevelResult.numberInSplitformat();
+		for(String s:numberWord) {
+			if(!(output.contains(s))) {
+				System.out.println("word not there, exiting FALSE");
+				return false;
+			}
 		}
-
+		System.out.println("word there, exiting TRUE");
+		return true;
 	}
 	
 }
