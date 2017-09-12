@@ -7,13 +7,27 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Circle fx:id="ringShape" fill="#1f93ff00" layoutX="300.0" layoutY="113.0" radius="84.0" strokeType="INSIDE" strokeWidth="14.0" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="216.0" AnchorPane.topAnchor="29.0">
+         <stroke>
+            <RadialGradient centerX="0.5" centerY="0.5166666666666666" radius="0.5">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="BLACK" offset="0.007662835249042145" />
+                  <Stop color="#f19d61" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </stroke>
+      </Circle>
       <Label fx:id="progressLabel" layoutX="268.0" layoutY="360.0" text="Round 1/10" />
       <ProgressBar fx:id="progressBar" layoutX="140.0" layoutY="338.0" prefHeight="18.0" prefWidth="319.0" progress="0.0" />
-      <Label fx:id="numberToTest" layoutX="235.0" layoutY="15.0" prefHeight="161.0" prefWidth="168.0" textAlignment="CENTER">
+      <Label fx:id="numberToTest" layoutX="235.0" layoutY="15.0" prefHeight="161.0" prefWidth="168.0" textAlignment="CENTER" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="216.0" AnchorPane.topAnchor="26.0">
          <font>
             <Font size="110.0" />
          </font>
@@ -26,18 +40,18 @@
             <DropShadow color="#9f9e9e" />
          </effect>
       </Button>
-      <Label fx:id="numberWord" layoutX="235.0" layoutY="176.0" prefHeight="17.0" prefWidth="168.0" textAlignment="CENTER" />
+      <Label fx:id="numberWord" layoutX="235.0" layoutY="176.0" prefHeight="17.0" prefWidth="168.0" textAlignment="CENTER" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="197.0" />
 
       <Button id="circleButton" fx:id="recordButton" disable="true" layoutX="247.0" layoutY="214.0" mnemonicParsing="false" onAction="#takeRecording" style="-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);;" text="Record" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button id="circleButton" fx:id="listenButton" disable="true" layoutX="105.0" layoutY="214.0" mnemonicParsing="false" onAction="#playRecording" style="-fx-background-color: linear-gradient(to right, #f7971e, #ffd200);;" text="Listen to &#10;Recording" textAlignment="CENTER">
+      <Button id="circleButton" fx:id="listenButton" disable="true" layoutX="105.0" layoutY="214.0" mnemonicParsing="false" onAction="#playRecording" style="-fx-background-color: linear-gradient(to right, #f7971e, #ffd200);;" text="Play &#10;Recording" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font></Button>
       <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" text="← Return" textAlignment="CENTER" />
-      <Button id="readyCircleButton" fx:id="readyButton" layoutX="237.0" layoutY="43.0" mnemonicParsing="false" onAction="#readyButtonAction" prefHeight="107.0" prefWidth="119.0" style="-fx-background-color: linear-gradient(to right, #06beb6, #48b1bf);;" text="Ready!" textAlignment="CENTER">
+      <Button id="readyCircleButton" fx:id="readyButton" layoutX="237.0" layoutY="43.0" mnemonicParsing="false" onAction="#readyButtonAction" style="-fx-background-color: linear-gradient(to right, #06beb6, #48b1bf);;" text="Ready!" textAlignment="CENTER" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="53.0">
          <font>
             <Font size="20.0" />
          </font>

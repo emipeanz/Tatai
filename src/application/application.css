@@ -9,11 +9,6 @@
 	-fx-background-color: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 
-#title{
-	-fx-background-color: #ffffff;
-}
-
-
 #background{
 	-fx-background-image: url("background.jpg");
 	-fx-background-position: left top, center;
@@ -83,9 +78,9 @@
 	-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);
 }
 
-.list-view . scroll-bar:vertical .increment-arrow,
-.list-view . scroll-bar:vertical .decrements-arrow,
-.list-view . scroll-bar:vertical .increment-button,
-.list-view . scroll-bar:vertical .decrement-button {
+.list-view .scroll-bar:vertical .increment-arrow,
+.list-view .scroll-bar:vertical .decrements-arrow,
+.list-view .scroll-bar:vertical .increment-button,
+.list-view .scroll-bar:vertical .decrement-button {
 	-fx-scale-x : 0;
 }

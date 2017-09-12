@@ -4,34 +4,27 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import java.nio.file.Paths;
 
-
-import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.beans.binding.Bindings;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.shape.Arc;
-import javafx.scene.text.Text;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * This class is the controller for a level ie. a test environment.
@@ -40,45 +33,27 @@ import javafx.stage.Stage;
  */
 
 public class LevelController {
-	@FXML
-	private Button readyButton;
-
-	@FXML
-	private Label numberToTest;
-
-	@FXML
-	private Label numberWord;
-
-	@FXML
-	private ProgressBar progressBar;
-
-	@FXML
-	private Label progressLabel;
-
-	@FXML
-	private Button backButton;
-
-	@FXML
-	private Button recordButton;
-
-	@FXML
-	private Button checkButton;
-
-	@FXML
-	private Button listenButton;
-
+	@FXML private Button readyButton;
+	@FXML private Label numberToTest;
+	@FXML private Label numberWord;
+	@FXML private ProgressBar progressBar;
+	@FXML private Label progressLabel;
+	@FXML private Button backButton;
+	@FXML private Button recordButton;
+	@FXML private Button checkButton;
+	@FXML private Button listenButton;
+	@FXML private Shape ringShape;
 
 	private int progress = 0;
-	//will store all the data associated with the current level
-	private Result _currentLevelResult;
-	//will store all data associated with entire test
+	private Question _currentLevelResult;
 	private Test _test;
 	private MediaPlayer _player;
-	private File _recording;
 	private String _recordingFilepath = "RecordingDir/foo.wav";
 	private Difficulty _difficulty;
-
 	private int chances = 2;
+	private Color _red = Color.web("e05050");
+	private Color _green = Color.web("87e56a");
+	private Color _orange = Color.web("f19d61");
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
@@ -94,10 +69,14 @@ public class LevelController {
 		if(!recordingDir.exists()) {
 			recordingDir.mkdir();
 		}
-
-		_player = newMediaPlayer();
 	}
 
+	/**
+	 * Makes the ring invisible until an answer is checked.
+	 */
+	public void initialize() {
+		ringShape.setVisible(false);
+	}
 
 	/**
 	 * For now just having a play around - this method is called when the make random number
@@ -106,7 +85,7 @@ public class LevelController {
 	 * @param event
 	 */
 	public void updateLabels(ActionEvent event) {
-		_currentLevelResult = new Result(_test.getdifficulty());	
+		_currentLevelResult = new Question(_test.getdifficulty());	
 		//sets labels that show a number and the maori word corresponding to it
 		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
 		numberWord.setText(_currentLevelResult._numberWord);
@@ -122,7 +101,6 @@ public class LevelController {
 	public void takeRecording(ActionEvent e) {
 		String cmd = "ffmpeg -y -f alsa -i \"default\" -t 6 " + _recordingFilepath;
 
-
 		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
 
 		//generates a new thread to execute the recording functionality
@@ -136,14 +114,13 @@ public class LevelController {
 				//when recording has completed, run the onRecordComplete with the input 
 				//being the recording file that has just been generated.
 				System.out.println("recording ready to update");
-				
+
 				listenButton.setDisable(false);
 				checkButton.setDisable(false);
 				recordButton.setDisable(false);
 
 				//instantiates a new media player with the new media recording set.
 				_player = newMediaPlayer();
-				_recording = new File(_recordingFilepath);
 
 			} catch (InterruptedException ignored) { // if process is prematurely terminated
 			} catch (IOException ioEvent) { //if process is incorrect (likely programmer error)
@@ -155,10 +132,26 @@ public class LevelController {
 	}
 
 	/**
+	 * Causes ring to appear around number for a second in the specified colour.
+	 * @param color
+	 */
+	private void displayRing(Color color) {
+		//sets visibility and colour of ring
+		ringShape.setStroke(_green);
+		ringShape.setVisible(true);
+		//makes ring visible for a second
+		PauseTransition pause = new PauseTransition(Duration.seconds(1));
+		pause.setOnFinished(event -> {
+			ringShape.setVisible(false);
+		});
+		pause.play();
+	}
+	
+	/**
 	 * Uses the media player to play the current recording as long as that player has been
 	 * correctly set. Nothing will play if the media player is set to null (or has not been set).
 	 */
-	public void playRecording() {
+	public void playRecording() {	
 		//if recording has been set for a level...
 		if (_player == null) {
 			System.out.println("recording/mediaplayer has not been properly initialised");
@@ -168,7 +161,7 @@ public class LevelController {
 			listenButton.setDisable(true);
 			checkButton.setDisable(true);
 			recordButton.setDisable(true);
-
+			//plays media
 			_player.play(); 
 			//invokes a runnable that resets the mediaplayer and updates buttons
 			_player.onEndOfMediaProperty();
@@ -178,7 +171,7 @@ public class LevelController {
 	/**
 	 * Creates a new media player which loads in the current media. player.setOnEndOfMedia(...)
 	 * creates a runnable that should be executed each time player.onEndOfMediaProperty() method 
-	 * called. 
+	 * called. Will be instantiated each time a new recording is taken.
 	 * @return
 	 */
 	private MediaPlayer newMediaPlayer() {
@@ -218,22 +211,18 @@ public class LevelController {
 	 * Learning how to use events.
 	 * @param event
 	 */
-
-
-
 	public void nextLevel(ActionEvent event) {
+		//player will have to be initialised when the user takes a new recording.
 		_player = null;
-
-		System.out.println("entered next question");
 		//stores result of previous test in test model
-		_test.addTestResult(_currentLevelResult);
+		_test.addTestQuestion(_currentLevelResult);
 		//instantiates a new result for the next level of the test
-		_currentLevelResult = new Result(_test.getdifficulty());
+		_currentLevelResult = new Question(_test.getdifficulty());
 		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
 		numberWord.setText(_currentLevelResult._numberWord);
-		_test.addTestResult(_currentLevelResult);
+		_test.addTestQuestion(_currentLevelResult);
 	}
-	
+
 	/**
 	 * For now just having a play around - this method is called when the make random number
 	 * button is clicked and will show the number and the word of that number in maori.
@@ -241,12 +230,12 @@ public class LevelController {
 	 * @param event
 	 */
 	public void updateLabels() {
-		_currentLevelResult = new Result(_test.getdifficulty());
+		_currentLevelResult = new Question(_test.getdifficulty());
 		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
 		numberWord.setText(_currentLevelResult._numberWord);
-		_test.addTestResult(_currentLevelResult);
-}
-	
+		_test.addTestQuestion(_currentLevelResult);
+	}
+
 	/**
 	 * Called only when the user is advancing to another question
 	 */
@@ -265,7 +254,7 @@ public class LevelController {
 		}
 
 		listenButton.setDisable(true);
-		_recording = null;
+		_player = null;
 	}
 
 	/**
@@ -301,7 +290,6 @@ public class LevelController {
 	 */
 	public void returnMainMenu(ActionEvent event) {
 		System.out.println("Event triggering return to main menu");
-		//main scene should be reloaded.
 
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -343,19 +331,27 @@ public class LevelController {
 		Boolean correct = this.checkRecordingForWord();
 		if(correct) {
 			_currentLevelResult.setPass(true);
-			this.nextQuestion(e);
 			chances = 2;
+			//green ring will appear if they have correctly answered question.
+			displayRing(_green);
+			this.nextQuestion(e);
 		}
 		else {
 			chances--;
-			if(chances==0) {
+			if(chances == 0) {
 				_currentLevelResult.setPass(false);
-				this.nextQuestion(e);
 				chances = 2;
+				//red ring will appear if they have no more chances.
+				displayRing(_red);
+				this.nextQuestion(e);
+			} else {
+				//orange ring will appear if they still have a chance remaining.
+				displayRing(_orange);
 			}
 		}
-		
-}
+
+	}
+
 	/**
 	 * Method checks if the recording that is currently in the recording directory is the
 	 * word that is the current test that it is on.  Uses back commands to run the wav file
@@ -388,7 +384,7 @@ public class LevelController {
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		List<String> numberWord = _currentLevelResult.numberInSplitformat();
 		for(String s:numberWord) {
 			if(!(output.contains(s))) {
@@ -399,5 +395,6 @@ public class LevelController {
 		System.out.println("word there, exiting TRUE");
 		return true;
 	}
+
 
 }

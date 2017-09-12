@@ -3,7 +3,7 @@ package application;
 import java.util.Arrays;
 import java.util.List;
 
-public class Result {
+public class Question {
 
 	public int _numberInt;
 	public String _numberWord = "";
@@ -15,7 +15,7 @@ public class Result {
 	 * of _numberInt
 	 * @param number: number being tested
 	 */
-	public Result(Difficulty difficulty) {
+	public Question(Difficulty difficulty) {
 		int max = 0;
 
 		//specifies maximum value of random number to be generated

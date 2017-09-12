@@ -1,24 +1,21 @@
 package application;
 
-import java.awt.List;
 import java.util.ArrayList;
-
-import javafx.collections.ObservableList;
 
 public class Test {
 	
-	private ArrayList<Result> _testResults;
+	private ArrayList<Question> _testQuestions;
 	private Difficulty _difficulty;
 	
 	/**
 	 * Stores the difficulty level of the particular test being 
 	 * carried out and initialises an array list to store 
-	 * the results of that test.
+	 * the questions of that test.
 	 * @param difficulty: difficulty level of the test (enum)
 	 */
 	public Test(Difficulty difficulty) {
 		_difficulty = difficulty;
-		_testResults = new ArrayList<Result>();
+		_testQuestions = new ArrayList<Question>();
 	}
 	
 	public Difficulty getdifficulty() {
@@ -26,19 +23,19 @@ public class Test {
 	}
 	
 	/**
-	 * Returns the results of the test being carried out.
-	 * @return: arraylist of test results
+	 * Returns the questions of the test being carried out.
+	 * @return: arraylist of test questions
 	 */
-	public ArrayList<Result> getTestResults() {
-		return _testResults;
+	public ArrayList<Question> getTestquestions() {
+		return _testQuestions;
 	}
 
 	/**
-	 * Adds a result to the test being carried out.
-	 * @param result
+	 * Adds a question to the test being carried out.
+	 * @param question
 	 */
-	public void addTestResult(Result result) {
-		_testResults.add(result);
+	public void addTestQuestion(Question question) {
+		_testQuestions.add(question);
 	}
 	
 	/**
@@ -49,9 +46,9 @@ public class Test {
 	 */
 	public int getOverallMark() {
 		int overallMark = 0;
-		//cycles through each result checking if it was a pass
-		for (Result result : _testResults) {
-			if (result._pass == true) {
+		//cycles through each question checking if it was a pass
+		for (Question question : _testQuestions) {
+			if (question._pass == true) {
 				overallMark++;
 			}
 		}
@@ -59,23 +56,19 @@ public class Test {
 	}
 
 	/**
-	 * Returns the number of results stored in the test model, 
+	 * Returns the number of questions stored in the test model, 
 	 * this will determine how many rounds of the test have been
 	 * carried out by the user.
 	 * @return
 	 */
 	public int getNumberofRound() {
-		int count = 0;
-		for (Result result: _testResults) {
-			count++;
-		}
-		return count;
+		return _testQuestions.size();
 	}
 
-	public ArrayList<String> getResultsToString() {
+	public ArrayList<String> getQuestionsToString() {
 		ArrayList<String> data = new ArrayList<String>();
-		for(int i = 0 ; i < _testResults.size();i++) {
-			Result current = _testResults.get(i);
+		for(int i = 0 ; i < _testQuestions.size();i++) {
+			Question current = _testQuestions.get(i);
 			String pass = current.getPass();
 			String numWord = current.getNumberWord();
 			int numInt = current.getNumberInt();
