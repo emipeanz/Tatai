@@ -35,7 +35,6 @@ import javafx.util.Duration;
 public class LevelController {
 	@FXML private Button readyButton;
 	@FXML private Label numberToTest;
-	@FXML private Label numberWord;
 	@FXML private ProgressBar progressBar;
 	@FXML private Label progressLabel;
 	@FXML private Button backButton;
@@ -88,7 +87,6 @@ public class LevelController {
 		_currentLevelResult = new Question(_test.getdifficulty());	
 		//sets labels that show a number and the maori word corresponding to it
 		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
-		numberWord.setText(_currentLevelResult._numberWord);
 	}
 
 	/**
@@ -137,7 +135,7 @@ public class LevelController {
 	 */
 	private void displayRing(Color color) {
 		//sets visibility and colour of ring
-		ringShape.setStroke(_green);
+		ringShape.setStroke(color);
 		ringShape.setVisible(true);
 		//makes ring visible for a second
 		PauseTransition pause = new PauseTransition(Duration.seconds(1));
@@ -219,7 +217,6 @@ public class LevelController {
 		//instantiates a new result for the next level of the test
 		_currentLevelResult = new Question(_test.getdifficulty());
 		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
-		numberWord.setText(_currentLevelResult._numberWord);
 		_test.addTestQuestion(_currentLevelResult);
 	}
 
@@ -232,7 +229,6 @@ public class LevelController {
 	public void updateLabels() {
 		_currentLevelResult = new Question(_test.getdifficulty());
 		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
-		numberWord.setText(_currentLevelResult._numberWord);
 		_test.addTestQuestion(_currentLevelResult);
 	}
 
