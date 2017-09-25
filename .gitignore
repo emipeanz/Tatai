@@ -4,6 +4,7 @@ recout.mlf
 foo.wav
 RecordingDirectory
 GoSpeech
+user
 
 # Compiled class file
 *.class
