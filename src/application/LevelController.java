@@ -320,6 +320,8 @@ public class LevelController {
 			//green ring will appear if they have correctly answered question.
 			displayRing(_green);
 			this.nextQuestion(e);
+			checkButton.setDisable(true);
+			listenButton.setDisable(true);
 		}
 		else {
 			chances--;
@@ -329,9 +331,13 @@ public class LevelController {
 				//red ring will appear if they have no more chances.
 				displayRing(_red);
 				this.nextQuestion(e);
+				checkButton.setDisable(true);
+				listenButton.setDisable(true);
 			} else {
 				//orange ring will appear if they still have a chance remaining.
 				displayRing(_orange);
+				checkButton.setDisable(true);
+				listenButton.setDisable(true);
 			}
 		}
 
