@@ -3,7 +3,7 @@ HMMs
 recout.mlf
 foo.wav
 recordingDirectory
-GoSpeech.sh
+GoSpeech
 
 # Compiled class file
 *.class
