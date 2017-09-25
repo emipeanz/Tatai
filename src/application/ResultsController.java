@@ -167,11 +167,28 @@ public class ResultsController {
 				bw = new BufferedWriter(fw);
 				
 				BufferedReader br = new BufferedReader(new FileReader(".results.txt"));
+				String resultsLine = br.readLine();
 				
+				int[] previousResults = new int[3];
 				
+				int count = 0;
 				
+				for (String stringNum : resultsLine.split(" ")) {
+					previousResults[count] = Integer.parseInt(stringNum);
+					count++;
+				}
 				
+				int numOfTests = previousResults[2] + 1;
 				
+				int averageMark = (previousResults[0] + _test.getOverallMark()) / numOfTests;
+				
+				int highestMark = previousResults[1];
+				
+				if (_test.getOverallMark() > previousResults[1]) {
+					highestMark = _test.getOverallMark();
+				}
+				
+				results = averageMark + " " + highestMark + " " + numOfTests;
 				
 				bw.write(results); 
 
