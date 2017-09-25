@@ -1,7 +1,9 @@
 package application;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -84,6 +86,9 @@ public class ResultsController {
 			}
 		});
 		resultsLabel.setText("You got " + _test.getOverallMark() + "/10 !");
+		
+		//saves results of this round to file for use in stats menu
+		saveResults();
 	}
 
 	/**
@@ -132,21 +137,43 @@ public class ResultsController {
 		stageEventBelongsTo.setScene(scene);		
 	}
 
+	/**
+	 * Information about results is stored in a file called results.txt, first line will
+	 * be the average mark attained in the session, second line will be the highest mark 
+	 * that the user has gotten in the session, third line will be the number of tests that
+	 * have been taken in the session.
+	 */
 	private void saveResults() {
+		
 		FileWriter fw;
+		BufferedWriter bw;
+		String results;
+		
 		try {
 			if (!_resultsFile.exists()) {
 				//creates a new file to store results in
-				_resultsFile = new File(".resultsFile.txt");
-				BufferedWriter bw;
-				fw = new FileWriter(".resultsFile.txt");
+				_resultsFile = new File(".results.txt");
+				fw = new FileWriter(".results.txt");
 				bw = new BufferedWriter(fw);
 				//stores results of the test that has just passed
-				bw.write(_test.getOverallMark());
-				fw.close();
+				results = _test.getOverallMark() + " " + _test.getOverallMark() + " 1";
+				//average result and highest result are the same in first round
+				bw.write(results);
+				//close the writer
 				bw.close();
 			} else {
 				//update data in the file with overall stats
+				fw = new FileWriter(".results.txt");
+				bw = new BufferedWriter(fw);
+				
+				BufferedReader br = new BufferedReader(new FileReader(".results.txt"));
+				
+				
+				
+				
+				
+				
+				bw.write(results); 
 
 			}
 		} catch (Exception e) {
