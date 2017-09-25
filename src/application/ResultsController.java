@@ -6,6 +6,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -153,46 +158,34 @@ public class ResultsController {
 			if (_resultsFile == null) {
 				System.out.println("Making file");
 				//creates a new file to store results in
-				_resultsFile = new File(".results.txt");
-				fw = new FileWriter(".results.txt");
-				bw = new BufferedWriter(fw);
-				//stores results of the test that has just passed
-				results = _test.getOverallMark() + " " + _test.getOverallMark() + " 1";
-				//average result and highest result are the same in first round
-				bw.write(results);
-				//close the writer
-				bw.close();
+				_resultsFile = new File(".results.txt");				
+				String score = String.valueOf(_test.getOverallMark());			
+				Files.write(Paths.get(".results.txt"), Arrays.asList(score, score, "1"));
 			} else {
-				//update data in the file with overall stats
-				fw = new FileWriter(".results.txt");
-				bw = new BufferedWriter(fw);
 				
-				BufferedReader br = new BufferedReader(new FileReader(".results.txt"));
-				String resultsLine = br.readLine();
+				String line = Files.readAllLines(Paths.get("results.txt")).get(0);
 				
-				int[] previousResults = new int[3];
+				String[] lineContents = line.split(" ");
 				
-				int count = 0;
+				int previousAverageScore = Integer.parseInt(lineContents[0]);
+				int previousHighScore = Integer.parseInt(lineContents[1]);
+				int previousNumOfTests = Integer.parseInt(lineContents[2]);
 				
-				for (String stringNum : resultsLine.split(" ")) {
-					previousResults[count] = Integer.parseInt(stringNum);
-					count++;
+				List<String> newResults = new ArrayList<String>();
+				
+				int averageScore = (_test.getOverallMark() + previousAverageScore) / (previousNumOfTests + 1);
+				newResults.add(String.valueOf(averageScore));
+				
+				if (_test.getOverallMark() > previousHighScore ) {
+					newResults.add(String.valueOf(_test.getOverallMark()));
+				} else {
+					newResults.add(String.valueOf(previousHighScore));
 				}
 				
-				int numOfTests = previousResults[2] + 1;
+				newResults.add(String.valueOf(previousNumOfTests + 1));
 				
-				int averageMark = (previousResults[0] + _test.getOverallMark()) / numOfTests;
+				Files.write(Paths.get("results.txt"), newResults);
 				
-				int highestMark = previousResults[1];
-				
-				if (_test.getOverallMark() > previousResults[1]) {
-					highestMark = _test.getOverallMark();
-				}
-				
-				results = averageMark + " " + highestMark + " " + numOfTests;
-				
-				bw.write(results); 
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
