@@ -9,17 +9,25 @@ import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
+	/**
+	 * Loads in the introductory and the level scene, displays the introductory scene for two seconds
+	 * then progresses the user into the scene where they can select what level they would like to play.
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			//sets root
 			BorderPane root = new BorderPane();
 			
+			//sets both the introductory and level scenes ready for transition from introduction to levels
 			Scene mainScene = new Scene(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
 			Scene introScene = new Scene(FXMLLoader.load(getClass().getResource("IntroMenu.fxml")));
 			
+			//sets the css file with scenes
 			introScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			mainScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
+			//Sets the introductory scene
 			primaryStage.setScene(introScene);
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("Tātai");
@@ -27,9 +35,7 @@ public class Main extends Application {
 			primaryStage.setWidth(600);
 			primaryStage.show();
 			
-			//changed the scene transition to average as looking attempt at a level menu - to be changed dw
-			//wanted to fiddle around functionality of changing labels ect. Should generate a random number
-			//when pressing the button and print appropriate maori word. 
+			//Displays introductory scene for two seconds before transitioning to level scene
 			PauseTransition delay = new PauseTransition(Duration.seconds(2));
 			delay.setOnFinished( event -> primaryStage.setScene(mainScene));
 			delay.play();

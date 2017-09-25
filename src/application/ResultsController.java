@@ -1,5 +1,8 @@
 package application;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.collections.FXCollections;
@@ -19,32 +22,31 @@ import javafx.util.Callback;
 
 public class ResultsController {
 
-	@FXML
-	private Button returnButton;
+
+	@FXML private Button returnButton;
 	//will return user to the main menu
-	
-	@FXML
-	private Button tryAgainButton;
+
+	@FXML private Button tryAgainButton;
 	//will take user to the beginning of a new test
-	
-	@FXML
-	private ListView<String> resultsListView;
-	
-	@FXML
-	private Label resultsLabel;
-	
+
+	@FXML private ListView<String> resultsListView;
+
+	@FXML private Label resultsLabel;
+
+	public File _resultsFile;
+
 	// Gonna need some sort of 3D map to map together the number name, number in numeral form and if they got it right or not
 	private Test _test;
-	
+
 	private Difficulty _difficulty;
-    
-    private ObservableList<String> _dataList;
+
+	private ObservableList<String> _dataList;
 
 	public ResultsController(Test test) {
 		_test = test;
 		_difficulty = _test.getdifficulty();
 	}
-	
+
 	/**
 	 * Issue with initlization of controller and linking to FXML file, ordering is a problem which results in
 	 * null pointer excpetions
@@ -54,33 +56,33 @@ public class ResultsController {
 		this.resultsListView.setItems(_dataList);
 		this.resultsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>(){
 
-	        @Override
-	        public ListCell<String> call(ListView<String> p) {
+			@Override
+			public ListCell<String> call(ListView<String> p) {
 
-	            ListCell<String> cell = new ListCell<String>(){
+				ListCell<String> cell = new ListCell<String>(){
 
-	                @Override
-	                protected void updateItem(String t, boolean bln) {
-	                    super.updateItem(t, bln);
-	                    if (t != null ) {
-	                        setText( t);
-	                        if (t.contains("Right!")) {
-	                        	setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
-	                        }
-	                        else {
-	                        	setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
-	                        }
-	                        
-	                    } else {
-	                        setText("");
-	                    }
-	                }
+					@Override
+					protected void updateItem(String t, boolean bln) {
+						super.updateItem(t, bln);
+						if (t != null ) {
+							setText( t);
+							if (t.contains("Right!")) {
+								setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
+							}
+							else {
+								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
+							}
 
-	            };
+						} else {
+							setText("");
+						}
+					}
 
-	            return cell;
-	        }
-	    });
+				};
+
+				return cell;
+			}
+		});
 		resultsLabel.setText("You got " + _test.getOverallMark() + "/10 !");
 	}
 
@@ -114,23 +116,42 @@ public class ResultsController {
 	public void restartTest(ActionEvent event) {
 		System.out.println("Event triggering that user wishes to do another test");
 		// Get the main stage to display the scene in
-				Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-				AnchorPane hardScene = null;
-				try {
-					LevelController controller = new LevelController(_difficulty);
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
-					loader.setController(controller);
-					hardScene = loader.load();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				Scene scene = new Scene(hardScene);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				stageEventBelongsTo.setScene(scene);		
+		AnchorPane hardScene = null;
+		try {
+			LevelController controller = new LevelController(_difficulty);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
+			loader.setController(controller);
+			hardScene = loader.load();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Scene scene = new Scene(hardScene);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stageEventBelongsTo.setScene(scene);		
 	}
 
+	private void saveResults() {
+		FileWriter fw;
+		try {
+			if (!_resultsFile.exists()) {
+				//creates a new file to store results in
+				_resultsFile = new File(".resultsFile.txt");
+				BufferedWriter bw;
+				fw = new FileWriter(".resultsFile.txt");
+				bw = new BufferedWriter(fw);
+				//stores results of the test that has just passed
+				bw.write(_test.getOverallMark());
+				fw.close();
+				bw.close();
+			} else {
+				//update data in the file with overall stats
 
-
-
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

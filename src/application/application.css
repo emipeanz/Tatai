@@ -83,3 +83,9 @@
 .list-view.scroll-bar:vertical .decrement-button {
 	-fx-scale-x : 0;
 }
+
+.Rectangle {
+	-fx-background-radius: 50;
+
+}
+
