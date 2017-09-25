@@ -331,13 +331,13 @@ public class LevelController {
 				//red ring will appear if they have no more chances.
 				displayRing(_red);
 				this.nextQuestion(e);
-				checkButton.setDisable(true);
-				listenButton.setDisable(true);
+				//checkButton.setDisable(true);
+				//listenButton.setDisable(true);
 			} else {
 				//orange ring will appear if they still have a chance remaining.
 				displayRing(_orange);
-				checkButton.setDisable(true);
-				listenButton.setDisable(true);
+				//checkButton.setDisable(true);
+				//listenButton.setDisable(true);
 			}
 		}
 

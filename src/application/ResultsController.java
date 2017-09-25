@@ -150,7 +150,8 @@ public class ResultsController {
 		String results;
 		
 		try {
-			if (!_resultsFile.exists()) {
+			if (_resultsFile == null) {
+				System.out.println("Making file");
 				//creates a new file to store results in
 				_resultsFile = new File(".results.txt");
 				fw = new FileWriter(".results.txt");
