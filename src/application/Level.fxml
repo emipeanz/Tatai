@@ -5,13 +5,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Circle fx:id="ringShape" fill="#1f93ff00" layoutX="297.0" layoutY="113.0" radius="100.0" strokeType="INSIDE" strokeWidth="17.0" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="203.0" AnchorPane.topAnchor="13.0">
          <stroke>
@@ -35,14 +34,14 @@
          </font>
       </Label>
       <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" text="← Return" textAlignment="CENTER" />
-      <Button id="circleButton" fx:id="listenButton" disable="true" layoutX="108.0" layoutY="216.0" mnemonicParsing="false" onAction="#playRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: linear-gradient(to right, #f7971e, #ffd200);" text="&#10;" textAlignment="CENTER">
+      <Button id="circleButton" fx:id="listenButton" layoutX="108.0" layoutY="216.0" mnemonicParsing="false" onAction="#playRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" layoutX="10.0" layoutY="-2.0" text="Purei &#10;Tuhi" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation" layoutX="7.0" layoutY="-2.0" text="Purei &#10;Tuhi" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -50,12 +49,12 @@
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="englishTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="39.0" text="Play &#10;Reccording" textAlignment="CENTER" />
+                  <Label fx:id="englishTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="49.0" text="Play" textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="circleButton" fx:id="recordButton" disable="true" layoutX="242.0" layoutY="219.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);" text="&#10;" textAlignment="CENTER">
+      <Button id="circleButton" fx:id="recordButton" layoutX="242.0" layoutY="219.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ef473a, #cb2d3e);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -75,7 +74,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="circleButton" fx:id="checkButton" disable="true" layoutX="386.0" layoutY="215.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);" text="&#10;" textAlignment="CENTER">
+      <Button id="circleButton" fx:id="checkButton" layoutX="386.0" layoutY="215.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,  #56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -91,26 +90,6 @@
                      </padding>
                   </Label>
                   <Label fx:id="englishTranslation1" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="39.0" text="Check" textAlignment="CENTER" textFill="#514e4e" />
-               </children>
-            </AnchorPane>
-         </graphic>
-      </Button>
-      <Button id="readyCircleButton" fx:id="readyButton" layoutX="237.0" layoutY="53.0" mnemonicParsing="false" onAction="#readyButtonAction" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: linear-gradient(to right, #06beb6, #48b1bf);" text="&#10;" textAlignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <graphic>
-            <AnchorPane>
-               <children>
-                  <Label fx:id="maoriTranslation11" layoutX="4.0" layoutY="7.0" text="Kue rite!" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="19.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="15.0" />
-                     </padding>
-                  </Label>
-                  <Label fx:id="englishTranslation11" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="39.0" text="Ready" textAlignment="CENTER" textFill="#514e4e" />
                </children>
             </AnchorPane>
          </graphic>

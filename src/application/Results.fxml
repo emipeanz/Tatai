@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ListView fx:id="resultsListView" layoutX="186.0" layoutY="47.0" prefHeight="241.0" prefWidth="242.0" />
       <Label fx:id="resultsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="11.0" prefHeight="36.0" prefWidth="242.0" textAlignment="CENTER" textFill="#f8f8f8" wrapText="true">
@@ -14,7 +14,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button id="circleButton" fx:id="tryAgainButton" layoutX="250.0" layoutY="292.0" minHeight="84.0" mnemonicParsing="false" onAction="#restartTest" prefHeight="84.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(to right, #36d1dc, #5b86e5 );" text="Try Again">
+      <Button id="circleButton" fx:id="tryAgainButton" layoutX="250.0" layoutY="292.0" minHeight="71.0" minWidth="72.0" mnemonicParsing="false" onAction="#restartTest" prefHeight="71.0" prefWidth="72.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,#36d1dc, #5b86e5 );" text="Try Again">
          <font>
             <Font size="18.0" />
          </font>

@@ -33,7 +33,7 @@ import javafx.util.Duration;
  */
 
 public class LevelController {
-	@FXML private Button readyButton;
+	
 	@FXML private Label numberToTest;
 	@FXML private ProgressBar progressBar;
 	@FXML private Label progressLabel;
@@ -75,6 +75,11 @@ public class LevelController {
 	 */
 	public void initialize() {
 		ringShape.setVisible(false);
+		updateLabels();
+		updateProgressBar();
+		checkButton.setDisable(true);
+		recordButton.setDisable(false);
+		listenButton.setDisable(true);
 	}
 
 	/**
@@ -298,22 +303,6 @@ public class LevelController {
 		}
 		mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
-	}
-
-	/**
-	 * Method take an event on the ready button to start the test.  It disabled the 'ready' button
-	 * and enabled all the other control buttons so the user can submit/record/listen to recordings
-	 * before the actual test has started
-	 * @param event
-	 */
-	public void readyButtonAction(ActionEvent event){
-		readyButton.setDisable(true);
-		readyButton.setVisible(false);
-		updateLabels();
-		updateProgressBar();
-		checkButton.setDisable(true);
-		recordButton.setDisable(false);
-		listenButton.setDisable(false);
 	}
 
 
