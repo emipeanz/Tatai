@@ -159,7 +159,7 @@ public class ResultsController {
 
 				//finds previous average score and converts it to an integer
 				String averageScoreString = Files.readAllLines(Paths.get(".results.txt")).get(0);
-				int previousAverageScore = Integer.parseInt(averageScoreString);
+				double previousAverageScore = Double.parseDouble(averageScoreString);
 
 				//finds previous high score and converts it to an integer
 				String highScoreString;
@@ -174,8 +174,8 @@ public class ResultsController {
 				List<String> newResults = new ArrayList<String>();
 
 				//computes average score
-				int averageScore = (_test.getOverallMark() + previousAverageScore) / (previousNumOfTests + 1);
-				newResults.add(String.valueOf(averageScore));
+				double averageScore = (_test.getOverallMark() + previousAverageScore) / (previousNumOfTests + 1);
+				newResults.add(String.format("%.1f", averageScore));
 
 				//sees if a new highscore has been made
 				if (_test.getOverallMark() > previousHighScore ) {
