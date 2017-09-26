@@ -10,7 +10,7 @@
 }
 
 #background{
-	-fx-background-image: url("file:Resources/background.jpg");
+	-fx-background-image: url("File:Resources/background.jpg");
 	-fx-background-position: left top, center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: cover, auto;
