@@ -47,7 +47,7 @@ public class LevelController {
 	private Question _currentLevelResult;
 	private Test _test;
 	private MediaPlayer _player;
-	private String _recordingFilepath = "RecordingDir/foo.wav";
+	private final String RECORDINGFILEPATH = "RecordingDir/foo.wav";
 	private Difficulty _difficulty;
 	private int chances = 2;
 	private Color _red = Color.web("e05050");
@@ -104,7 +104,7 @@ public class LevelController {
 	 * @param e
 	 */
 	public void takeRecording(ActionEvent e) {
-		String cmd = "ffmpeg -y -f alsa -i \"default\" -t 6 " + _recordingFilepath;
+		String cmd = "arecord -d 5 -r 22050 -c 1 -i -t wav -f s16_LE  " + RECORDINGFILEPATH;
 
 		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
 
@@ -180,7 +180,7 @@ public class LevelController {
 	 * @return
 	 */
 	private MediaPlayer newMediaPlayer() {
-		Media media = new Media(Paths.get(_recordingFilepath).toUri().toString());
+		Media media = new Media(Paths.get(RECORDINGFILEPATH).toUri().toString());
 		//generates a media player to play audio
 		MediaPlayer player = new MediaPlayer(media);
 		//sets a runnable that will be called when player.onEndOfMediaProperty() called
@@ -355,10 +355,9 @@ public class LevelController {
 	private boolean checkRecordingForWord() {
 		ArrayList<String> output = new ArrayList<String>();
 		System.out.println("Checking recording HTK bash");
-		_recordingFilepath = "RecordingDir/foo.wav";
 		String cmd = "HVite -H HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -C user/configLR  "
 				+ "-w user/wordNetworkNum -o SWT -l '*' -i recout.mlf -p 0.0 -s 5.0  "
-				+ "user/dictionaryD user/tiedList " + _recordingFilepath;
+				+ "user/dictionaryD user/tiedList " + RECORDINGFILEPATH;
 		ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", cmd);
 		try {
 			System.out.println("Starting process");
@@ -368,9 +367,11 @@ public class LevelController {
 			BufferedReader br = new BufferedReader(in);
 			String line = null;
 			while((line = br.readLine()) != null) {
-				if((!(line.contains("#!MLF!#"))) && (!(line.contains("\"*/foo.rec\""))) && (!(line.contains(".")))) {
-					System.out.println(line);
-					output.add(line);
+				if((!(line.contains("#!MLF!#"))) && (!(line.contains("\"*/foo.rec\""))) && (!(line.contains("."))) && (!(line.contains("sil")))) {
+					System.out.println("old line = " + line);
+					String newLine = line.replaceAll("aa", "ā");
+					System.out.println("new line = " + newLine);
+					output.add(newLine);
 				}
 			}
 			br.close();

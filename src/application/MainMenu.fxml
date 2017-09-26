@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
       <Button id="menuCircleButtons" fx:id="easyButton" layoutX="150.0" layoutY="180.0" mnemonicParsing="false" onAction="#easyButtonEvent" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
@@ -49,7 +49,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Label layoutX="99.0" layoutY="52.0" text="Tohua he Taumata" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="59.0" layoutY="63.0" text="Tohua he Taumata" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="46.0" />
          </font>
@@ -57,7 +57,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="238.0" layoutY="112.0" text="Pick a Level" textFill="WHITE">
+      <Label layoutX="223.0" layoutY="119.0" text="Pick a Level" textFill="WHITE">
          <font>
             <Font size="26.0" />
          </font>
@@ -65,12 +65,12 @@
             <DropShadow />
          </effect>
       </Label>
-      <Button fx:id="smallCircleButton" layoutX="515.0" layoutY="22.0" mnemonicParsing="false" onAction="#enterStatsView" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #00d2ff, #3a7bd5);" text="Stats" textAlignment="CENTER">
+      <Button fx:id="smallCircleButton" layoutX="528.0" layoutY="15.0" mnemonicParsing="false" onAction="#enterStatsView" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #00d2ff, #3a7bd5);" text="Stats" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="336.0" text="You have to get 8/10 on Easy before you can do Hard!" textFill="WHITE">
+      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="334.0" text="You have to get 8/10 on Easy before you can do Hard!" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
