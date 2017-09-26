@@ -21,38 +21,33 @@ import javafx.stage.Stage;
 public class MainController{
 
 	@FXML private LevelController levelController;
-	@FXML private Button hardButton;
-	@FXML private Label hardText;
+	@FXML public Button hardButton = new Button();
+	@FXML public Label hardText = new Label();
 	@FXML private Button easyButton;
 
 	private Difficulty _difficulty;
+	private boolean unlocked = false;
 
 	/**
 	 * 
 	 */
 	public void initialize() {
-		/*
-		System.out.println("executing initialize method in main controller");
-		
 		hardText.setVisible(false);
 
-		String highScoreString;
 		try {
-			highScoreString = Files.readAllLines(Paths.get(".results.txt")).get(1);
+			//checks the current highscore
+			String highScoreString = Files.readAllLines(Paths.get(".results.txt")).get(1);
 			int highScore = Integer.parseInt(highScoreString);
 
-			//CHANGE TO 8 WHEN WE FIGURE THAT OUT
-			if (highScore >= 6) {
-				hardButton.setVisible(true);
-				
-			} else {
-				hardButton.setVisible(false);
-			}
-			
+			//hard level will only be accessible when user has got 8 questions in a round
+			if (highScore >= 8) {
+				unlocked = true;
+			} 
+
 		} catch(IOException e) {
 
 		}
-		*/
+
 	}
 
 	/**
@@ -87,25 +82,25 @@ public class MainController{
 	 * @param e ActionEvent when hardButton is clicked
 	 */
 	public void hardButtonEvent(ActionEvent e) {
-		// Get the main stage to display the scene in
-		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+		if (unlocked) {
+			// Get the main stage to display the scene in
+			Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
-		AnchorPane hardScene = null;
-		try {
-			System.out.println("hard set");
-			_difficulty = Difficulty.HARD;
-			LevelController controller = new LevelController(_difficulty);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
-			loader.setController(controller);
-			hardScene = loader.load();
-		} catch (IOException e1) {
-			e1.printStackTrace();
+			AnchorPane hardScene = null;
+			try {
+				System.out.println("hard set");
+				_difficulty = Difficulty.HARD;
+				LevelController controller = new LevelController(_difficulty);
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
+				loader.setController(controller);
+				hardScene = loader.load();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			Scene scene = new Scene(hardScene);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			stageEventBelongsTo.setScene(scene);
 		}
-		Scene scene = new Scene(hardScene);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		stageEventBelongsTo.setScene(scene);
-
-
 	}
 
 	public void enterStatsView(ActionEvent e) {
@@ -126,12 +121,17 @@ public class MainController{
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 	}
-	
-	public void displayHardLevelInfo(ActionEvent e) {
-		hardText.setVisible(true);
+
+	public void showHardText() {
+		if (!unlocked) { 
+			hardText.setVisible(true);
+		}
 	}
-	
-	public void hideHardLevelInfo(ActionEvent e) {
-		hardText.setVisible(false);
+
+	public void hideHardText() {
+		if (!unlocked) {
+			hardText.setVisible(false);
+		}
 	}
+
 }

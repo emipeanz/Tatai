@@ -71,7 +71,9 @@ public class LevelController {
 	}
 
 	/**
-	 * Makes the ring invisible until an answer is checked.
+	 * Makes the ring invisible until an answer is checked and initialises button visibility
+	 * so that user must start a level with only the option to record. Labels are updated
+	 * to display the current number and the progress bar is initialised.
 	 */
 	public void initialize() {
 		ringShape.setVisible(false);

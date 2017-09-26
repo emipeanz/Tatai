@@ -29,12 +29,12 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="menuCircleButtons" fx:id="hardButton" layoutX="321.0" layoutY="200.0" mnemonicParsing="false" onAction="#hardButtonEvent" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
+      <Button id="menuCircleButtons" fx:id="hardButton" layoutX="321.0" layoutY="200.0" mnemonicParsing="false" onAction="#hardButtonEvent" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
          <font>
             <Font size="24.0" />
          </font>
          <graphic>
-            <AnchorPane onMouseEntered="#displayHardLevelInfo" onMouseExited="#hideHardLevelInfo">
+            <AnchorPane>
                <children>
                   <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="8.0" layoutY="44.0" prefHeight="43.0" prefWidth="118.0" stylesheets="@application.css" text="He Uaua" textAlignment="CENTER">
                      <font>
