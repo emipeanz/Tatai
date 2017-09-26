@@ -29,7 +29,9 @@ public class MainController{
 	private boolean unlocked = false;
 
 	/**
-	 * 
+	 * Takes note of current high score, and sets boolean "unlocked" to true
+	 * if score is above 8. Hard level will only be accessible when unlocked has 
+	 * been set to true.
 	 */
 	public void initialize() {
 		hardText.setVisible(false);
@@ -43,11 +45,9 @@ public class MainController{
 			if (highScore >= 8) {
 				unlocked = true;
 			} 
-
 		} catch(IOException e) {
 
 		}
-
 	}
 
 	/**
@@ -122,12 +122,18 @@ public class MainController{
 		stageEventBelongsTo.setScene(scene);
 	}
 
+	/**
+	 * Displays the text telling user that they need 8+ in a round to progress to hard level.
+	 */
 	public void showHardText() {
 		if (!unlocked) { 
 			hardText.setVisible(true);
 		}
 	}
 
+	/**
+	 * Hides text telling user that they need 8+ in a roudn to progress to hard level.
+	 */
 	public void hideHardText() {
 		if (!unlocked) {
 			hardText.setVisible(false);

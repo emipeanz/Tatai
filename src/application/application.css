@@ -86,8 +86,8 @@
 
 
 #roundedSquare {
-	-fx-arc-width: 40;
-	-fx-arc-height: 40;
+	-fx-arc-width: 100;
+	-fx-arc-height: 100;
 }
 
 #smallCircleButton{
