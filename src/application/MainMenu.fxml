@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Button id="menuCircleButtons" fx:id="easyButton" layoutX="143.0" layoutY="200.0" mnemonicParsing="false" onAction="#easyButtonEvent" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
+      <Button id="menuCircleButtons" fx:id="easyButton" layoutX="151.0" layoutY="200.0" mnemonicParsing="false" onAction="#easyButtonEvent" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -29,7 +29,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="menuCircleButtons" fx:id="hardButton" layoutX="313.0" layoutY="200.0" mnemonicParsing="false" onAction="#hardButtonEvent" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
+      <Button id="menuCircleButtons" fx:id="hardButton" layoutX="321.0" layoutY="200.0" mnemonicParsing="false" onAction="#hardButtonEvent" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
          <font>
             <Font size="24.0" />
          </font>
@@ -49,7 +49,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Label layoutX="75.0" layoutY="54.0" text="Tohua he Taumata" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="99.0" layoutY="68.0" text="Tohua he Taumata" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="46.0" />
          </font>
@@ -57,7 +57,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="213.0" layoutY="103.0" text="Pick a Level" textFill="#c6c3c3">
+      <Label layoutX="237.0" layoutY="117.0" text="Pick a Level" textFill="#c6c3c3">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
@@ -65,5 +65,10 @@
             <DropShadow />
          </effect>
       </Label>
+      <Button fx:id="smallCircleButton" layoutX="515.0" layoutY="22.0" mnemonicParsing="false" onAction="#enterStatsView" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #00d2ff, #3a7bd5);" text="Stats" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

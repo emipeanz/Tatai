@@ -27,7 +27,7 @@ public class MainController{
 	private Button easyButton;
 
 	private Difficulty _difficulty;
-	
+
 	/**
 	 * This method directs the user to the easy test screen.  A custom controller is made with
 	 * the difficulty parameter and attached to the Level scene
@@ -35,22 +35,22 @@ public class MainController{
 	 */
 	public void easyButtonEvent(ActionEvent e) {
 		// Get the main stage to display the scene in
-				Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
-				AnchorPane easyScene = null;
-				try {
-					System.out.println("easy set");
-					_difficulty = Difficulty.EASY;
-					LevelController controller = new LevelController(_difficulty);
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
-					loader.setController(controller);
-					easyScene = loader.load();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				Scene scene = new Scene(easyScene);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				stageEventBelongsTo.setScene(scene);
+		AnchorPane easyScene = null;
+		try {
+			System.out.println("easy set");
+			_difficulty = Difficulty.EASY;
+			LevelController controller = new LevelController(_difficulty);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
+			loader.setController(controller);
+			easyScene = loader.load();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Scene scene = new Scene(easyScene);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stageEventBelongsTo.setScene(scene);
 
 	}
 
@@ -79,5 +79,27 @@ public class MainController{
 		stageEventBelongsTo.setScene(scene);
 
 
-}
 	}
+	
+	public void enterStatsView(ActionEvent e) {
+		// Get the main stage to display the scene in
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+
+		AnchorPane statsScene = null;
+		try {
+			System.out.println("Enterings stats view");
+			StatsController controller = new StatsController();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("StatsView.fxml"));
+			loader.setController(controller);
+			statsScene = loader.load();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Scene scene = new Scene(statsScene);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stageEventBelongsTo.setScene(scene);
+
+
+		
+	}
+}
