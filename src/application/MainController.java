@@ -1,6 +1,8 @@
 package application;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -17,16 +20,40 @@ import javafx.stage.Stage;
  */
 public class MainController{
 
-	@FXML 
-	private LevelController levelController;
-
-	@FXML
-	private Button hardButton;
-
-	@FXML
-	private Button easyButton;
+	@FXML private LevelController levelController;
+	@FXML private Button hardButton;
+	@FXML private Label hardText;
+	@FXML private Button easyButton;
 
 	private Difficulty _difficulty;
+
+	/**
+	 * 
+	 */
+	public void initialize() {
+		/*
+		System.out.println("executing initialize method in main controller");
+		
+		hardText.setVisible(false);
+
+		String highScoreString;
+		try {
+			highScoreString = Files.readAllLines(Paths.get(".results.txt")).get(1);
+			int highScore = Integer.parseInt(highScoreString);
+
+			//CHANGE TO 8 WHEN WE FIGURE THAT OUT
+			if (highScore >= 6) {
+				hardButton.setVisible(true);
+				
+			} else {
+				hardButton.setVisible(false);
+			}
+			
+		} catch(IOException e) {
+
+		}
+		*/
+	}
 
 	/**
 	 * This method directs the user to the easy test screen.  A custom controller is made with
@@ -80,7 +107,7 @@ public class MainController{
 
 
 	}
-	
+
 	public void enterStatsView(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
@@ -98,8 +125,13 @@ public class MainController{
 		Scene scene = new Scene(statsScene);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
-
-
-		
+	}
+	
+	public void displayHardLevelInfo(ActionEvent e) {
+		hardText.setVisible(true);
+	}
+	
+	public void hideHardLevelInfo(ActionEvent e) {
+		hardText.setVisible(false);
 	}
 }

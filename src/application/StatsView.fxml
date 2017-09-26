@@ -26,7 +26,7 @@
                <stops>
                   <Stop color="BLACK" />
                   <Stop color="#c9acfa" offset="0.007662835249042145" />
-                  <Stop color="#74129a" offset="1.0" />
+                  <Stop color="#bf36f5" offset="1.0" />
                </stops>
             </RadialGradient>
          </fill></Rectangle>
@@ -40,53 +40,35 @@
                </stops>
             </RadialGradient>
          </fill></Rectangle>
-      <Label fx:id="highScore" alignment="CENTER" contentDisplay="CENTER" layoutX="267.0" layoutY="124.0" text="8" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="highScore" alignment="CENTER" contentDisplay="CENTER" layoutX="272.0" layoutY="135.0" text="8" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="115.0" />
+            <Font name="System Bold" size="100.0" />
          </font>
-         <effect>
-            <DropShadow />
-         </effect>
       </Label>
-      <Label fx:id="averageScore" alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="152.0" text="5.3" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="averageScore" alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="152.0" text="5.3" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="76.0" />
          </font>
-         <effect>
-            <DropShadow />
-         </effect>
       </Label>
-      <Label fx:id="testsTaken" alignment="CENTER" contentDisplay="CENTER" layoutX="446.0" layoutY="152.0" text="14" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="testsTaken" alignment="CENTER" contentDisplay="CENTER" layoutX="446.0" layoutY="152.0" text="14" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="76.0" />
          </font>
-         <effect>
-            <DropShadow />
-         </effect>
       </Label>
-      <Label layoutX="251.0" layoutY="263.0" text="High Score!" textFill="WHITE">
+      <Label layoutX="251.0" layoutY="263.0" text="High Score!">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
-         <effect>
-            <DropShadow />
-         </effect>
       </Label>
-      <Label layoutX="50.0" layoutY="263.0" text="Average Score" textFill="WHITE">
+      <Label layoutX="50.0" layoutY="263.0" text="Average Score">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
-         <effect>
-            <DropShadow />
-         </effect>
       </Label>
-      <Label layoutX="444.0" layoutY="263.0" text="Tests Taken" textFill="WHITE">
+      <Label layoutX="444.0" layoutY="263.0" text="Tests Taken">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
-         <effect>
-            <DropShadow />
-         </effect>
       </Label>
       <Button fx:id="backButton" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#returnMainMenu" text="← Return" textAlignment="CENTER" />
       <Label layoutX="173.0" layoutY="53.0" text="Your Scores..." textFill="WHITE">

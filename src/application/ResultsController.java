@@ -31,24 +31,16 @@ public class ResultsController {
 
 
 	@FXML private Button returnButton;
-	//will return user to the main menu
-
 	@FXML private Button tryAgainButton;
-	//will take user to the beginning of a new test
-
 	@FXML private ListView<String> resultsListView;
-
 	@FXML private Label resultsLabel;
 
 	public File _resultsFile;
-
-	// Gonna need some sort of 3D map to map together the number name, number in numeral form and if they got it right or not
 	private Test _test;
-
 	private Difficulty _difficulty;
-
 	private ObservableList<String> _dataList;
 
+	
 	public ResultsController(Test test) {
 		_test = test;
 		_difficulty = _test.getdifficulty();

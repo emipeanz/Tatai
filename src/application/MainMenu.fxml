@@ -34,9 +34,9 @@
             <Font size="24.0" />
          </font>
          <graphic>
-            <AnchorPane>
+            <AnchorPane onMouseEntered="#displayHardLevelInfo" onMouseExited="#hideHardLevelInfo">
                <children>
-                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="8.0" layoutY="44.0" prefHeight="43.0" prefWidth="118.0" text="He Uaua" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="8.0" layoutY="44.0" prefHeight="43.0" prefWidth="118.0" stylesheets="@application.css" text="He Uaua" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="23.0" />
                      </font>
@@ -44,7 +44,7 @@
                         <Insets bottom="14.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="englishTranslation" layoutX="51.0" layoutY="79.0" text="Hard" />
+                  <Label fx:id="englishTranslation" layoutX="51.0" layoutY="79.0" style="-fx-text-fill: black;" text="Hard" />
                </children>
             </AnchorPane>
          </graphic>
@@ -70,5 +70,10 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
+      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="93.0" layoutY="349.0" text="You have to get 8/10 on Easy before you can do Hard!" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
