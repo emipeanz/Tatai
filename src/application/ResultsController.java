@@ -91,7 +91,7 @@ public class ResultsController {
 			}
 		});
 		resultsLabel.setText("You got " + _test.getOverallMark() + "/10 !");
-		
+
 		//saves results of this round to file for use in stats menu
 		saveResults();
 	}
@@ -149,47 +149,64 @@ public class ResultsController {
 	 * have been taken in the session.
 	 */
 	private void saveResults() {
-		
-		FileWriter fw;
-		BufferedWriter bw;
-		String results;
-		
+		//used to check if the file exists
+		File temp = new File(".results.txt");
+
 		try {
-			if (_resultsFile == null) {
-				System.out.println("Making file");
-				//creates a new file to store results in
-				_resultsFile = new File(".results.txt");				
-				String score = String.valueOf(_test.getOverallMark());			
-				Files.write(Paths.get(".results.txt"), Arrays.asList(score, score, "1"));
-			} else {
-				
-				String line = Files.readAllLines(Paths.get("results.txt")).get(0);
-				
-				String[] lineContents = line.split(" ");
-				
-				int previousAverageScore = Integer.parseInt(lineContents[0]);
-				int previousHighScore = Integer.parseInt(lineContents[1]);
-				int previousNumOfTests = Integer.parseInt(lineContents[2]);
-				
+			//if file exists update the results
+			if (temp.exists()) {
+				System.out.println("file has already been made");
+
+				//finds previous average score and converts it to an integer
+				String averageScoreString = Files.readAllLines(Paths.get(".results.txt")).get(0);
+				int previousAverageScore = Integer.parseInt(averageScoreString);
+
+				//finds previous high score and converts it to an integer
+				String highScoreString;
+				highScoreString = Files.readAllLines(Paths.get(".results.txt")).get(1);
+				int previousHighScore = Integer.parseInt(highScoreString);
+
+				//finds previous number of tests run and converts to an integer
+				String numOfTestsString = Files.readAllLines(Paths.get(".results.txt")).get(2);
+				int previousNumOfTests = Integer.parseInt(numOfTestsString);
+
+				//creates a list to store the new results in
 				List<String> newResults = new ArrayList<String>();
-				
+
+				//computes average score
 				int averageScore = (_test.getOverallMark() + previousAverageScore) / (previousNumOfTests + 1);
 				newResults.add(String.valueOf(averageScore));
-				
+
+				//sees if a new highscore has been made
 				if (_test.getOverallMark() > previousHighScore ) {
 					newResults.add(String.valueOf(_test.getOverallMark()));
 				} else {
 					newResults.add(String.valueOf(previousHighScore));
 				}
-				
+
+				//new number of tests that have been made
 				newResults.add(String.valueOf(previousNumOfTests + 1));
-				
-				Files.write(Paths.get("results.txt"), newResults);
-				
+				System.out.println(String.valueOf(previousNumOfTests + 1));	
+
+				//writes in new results to file
+				Files.write(Paths.get(".results.txt"), newResults);
+			} else {
+				System.out.println("Making file");
+				//creates a new file to store results in
+				_resultsFile = new File(".results.txt");		
+
+				//score from current round is stored
+				String score = String.valueOf(_test.getOverallMark());		
+
+				//writes information from current round to new file
+				Files.write(Paths.get(".results.txt"), Arrays.asList(score, score, "1"));
+
 			}
-		} catch (Exception e) {
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
-	
 }
