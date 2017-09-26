@@ -41,35 +41,43 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" layoutX="7.0" layoutY="-2.0" text="Purei &#10;Tuhi" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation" layoutX="7.0" layoutY="-2.0" text="Purei " textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="19.0" />
+                        <Font name="System Bold" size="22.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="englishTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="49.0" text="Play" textAlignment="CENTER" />
+                  <Label fx:id="maoriTranslation2" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="23.0" text="Tuhi" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="15.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="englishTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="54.0" text="Play" textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="circleButton" fx:id="recordButton" layoutX="242.0" layoutY="219.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ef473a, #cb2d3e);" text="&#10;" textAlignment="CENTER">
+      <Button id="circleButton" fx:id="recordButton" layoutX="242.0" layoutY="219.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ff6d6d, #cb2d3e);" text="&#10;" textAlignment="CENTER" textFill="#ff6d6d">
          <font>
             <Font size="24.0" />
          </font>
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" layoutX="4.0" layoutY="7.0" text="Tuhi" textAlignment="CENTER">
+                  <Label fx:id="englishTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="34.0" text="Record" textAlignment="CENTER" textFill="#514e4e" />
+                  <Label fx:id="maoriTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="-5.0" text="Tuhi">
                      <font>
-                        <Font name="System Bold" size="19.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="englishTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="39.0" text="Record" textAlignment="CENTER" textFill="#514e4e" />
                </children>
             </AnchorPane>
          </graphic>
@@ -81,9 +89,9 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation1" layoutX="4.0" layoutY="7.0" text="Taki" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation1" layoutX="-2.0" layoutY="2.0" text="Taki" textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="19.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" />
