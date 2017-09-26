@@ -1,10 +1,11 @@
 #Voice recongition stuff
-HMMs
+HMMs/
 recout.mlf
 foo.wav
-RecordingDirectory
+RecordingDirectory/
 GoSpeech
-user
+user/
+.results.txt
 
 # Compiled class file
 *.class
