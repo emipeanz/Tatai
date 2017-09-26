@@ -1,6 +1,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Formatter;
 
 public class Test {
 	
@@ -72,7 +73,13 @@ public class Test {
 			String pass = current.getPass();
 			String numWord = current.getNumberWord();
 			int numInt = current.getNumberInt();
-			data.add(numInt + "\t\t" + numWord + "\t\t" + pass);
+			String output = String.format("%2d  %20s  %-6s", numInt, numWord, pass);
+			System.out.println(output);
+			data.add(output);
+		}
+		
+		for(int i =0;i<data.size();i++) {
+			System.out.println(data.get(i));
 		}
 		return data;
 	}
