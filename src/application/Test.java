@@ -73,14 +73,14 @@ public class Test {
 			String pass = current.getPass();
 			String numWord = current.getNumberWord();
 			int numInt = current.getNumberInt();
-			String output = String.format("%2d  %20s  %-6s", numInt, numWord, pass);
-			System.out.println(output);
+			String output = String.format("%-2d  %-20s  %10s", numInt, numWord, pass);
 			data.add(output);
 		}
-		
+		System.out.println("Words and their formatting");
 		for(int i =0;i<data.size();i++) {
 			System.out.println(data.get(i));
 		}
 		return data;
 	}
+
 }
