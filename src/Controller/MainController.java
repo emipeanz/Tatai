@@ -1,9 +1,15 @@
-package application;
+package Controller;
 
+/**
+ * This class is the main controller for the main menu. After the first scene has shown the titles and 
+ * transitioned, this controller handles going to a hard, easy or stats page.
+ * @author Maddie Beagley and Emilie Pearce
+ */
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
+import Model.*;
+import View.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -64,14 +70,14 @@ public class MainController{
 			System.out.println("easy set");
 			_difficulty = Difficulty.EASY;
 			LevelController controller = new LevelController(_difficulty);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/Level.fxml"));
 			loader.setController(controller);
 			easyScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(easyScene);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 
 	}
@@ -91,14 +97,14 @@ public class MainController{
 				System.out.println("hard set");
 				_difficulty = Difficulty.HARD;
 				LevelController controller = new LevelController(_difficulty);
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/Level.fxml"));
 				loader.setController(controller);
 				hardScene = loader.load();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 			Scene scene = new Scene(hardScene);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stageEventBelongsTo.setScene(scene);
 		}
 	}
@@ -111,14 +117,14 @@ public class MainController{
 		try {
 			System.out.println("Enterings stats view");
 			StatsController controller = new StatsController();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("StatsView.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/StatsView.fxml"));
 			loader.setController(controller);
 			statsScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(statsScene);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 	}
 

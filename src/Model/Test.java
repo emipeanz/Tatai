@@ -1,5 +1,13 @@
-package application;
+package Model;
 
+/**
+ * This class is the model for a test. A test consists of the difficulty that is being tested and an array 
+ * of test questions, of type questions. The array's length is not fixed so that a long test can be added
+ * in the future.
+ * @author Maddie Beagley and Emilie Pearce
+ */
+import Controller.*;
+import View.*;
 import java.util.ArrayList;
 import java.util.Formatter;
 

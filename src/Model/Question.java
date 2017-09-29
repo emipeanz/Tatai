@@ -1,5 +1,13 @@
-package application;
+package Model;
 
+/**
+ * This class is the model for a question. A questions consists of the number being tested, as an int.
+ * The number being tested as a strong. And a boolean to show if they passed the question, ie. got it
+ * right.
+ * @author Maddie Beagley and Emilie Pearce
+ */
+import Controller.*;
+import View.*;
 import java.util.Arrays;
 import java.util.List;
 

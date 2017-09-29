@@ -1,6 +1,8 @@
-package application;
+package Controller;
 
 import java.io.BufferedReader;
+import Model.*;
+import View.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,7 +28,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * This class is the controller for a level ie. a test environment.
+ * This class is the controller for a level ie. a test environment. The controller handles recording, playing 
+ * recording back to the user, checking if their pronunciation was correct and then moving on to the next
+ * question in the test.
  * @author Maddie Beagley and Emilie Pearce
  *
  */
@@ -273,14 +277,14 @@ public class LevelController {
 		ResultsController controller = null;
 		try {
 			controller = new ResultsController(_test);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Results.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/Results.fxml"));
 			loader.setController(controller);
 			resultsScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(resultsScene);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		controller.setUpResultsTable();
 		stageEventBelongsTo.setScene(scene);
 	}
@@ -298,11 +302,11 @@ public class LevelController {
 
 		Scene mainMenuScene = null;
 		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
+			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("../View/MainMenu.fxml")));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 

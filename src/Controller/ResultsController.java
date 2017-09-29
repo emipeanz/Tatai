@@ -1,5 +1,14 @@
-package application;
+package Controller;
 
+/**
+ * This class is the controller for the results scene. Results is shown once the user has completed
+ * 10 questions in a test. The page shows them the number in integer and word form and if they
+ * got it right of wrong. Depending on the answer, the rows in the results table will be coloured
+ * differently to make it easy to distinguish the questions from each other.
+ * @author Maddie Beagley and Emilie Pearce
+ */
+import Model.*;
+import View.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,7 +20,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -103,11 +111,11 @@ public class ResultsController {
 
 		Scene mainMenuScene = null;
 		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
+			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("../View/MainMenu.fxml")));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 
@@ -124,14 +132,14 @@ public class ResultsController {
 		AnchorPane hardScene = null;
 		try {
 			LevelController controller = new LevelController(_difficulty);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Level.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/Level.fxml"));
 			loader.setController(controller);
 			hardScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(hardScene);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);		
 	}
 

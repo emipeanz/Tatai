@@ -1,5 +1,7 @@
-package application;
+package Model;
 import javafx.animation.PauseTransition;
+import View.*;
+import Controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -7,7 +9,12 @@ import javafx.util.Duration;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
-
+/**
+ * This class if the main class for our application. Its sets up the transition at the begining then
+ * hands control over to the controllers.
+ * @author Maddie Beagley and Emilie Pearce
+ *
+ */
 public class Main extends Application {
 	/**
 	 * Loads in the introductory and the level scene, displays the introductory scene for two seconds
@@ -20,12 +27,8 @@ public class Main extends Application {
 			BorderPane root = new BorderPane();
 			
 			//sets both the introductory and level scenes ready for transition from introduction to levels
-			Scene mainScene = new Scene(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
-			Scene introScene = new Scene(FXMLLoader.load(getClass().getResource("IntroMenu.fxml")));
-			
-			//sets the css file with scenes
-			introScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			mainScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			Scene mainScene = new Scene(FXMLLoader.load(getClass().getResource("../View/MainMenu.fxml")));
+			Scene introScene = new Scene(FXMLLoader.load(getClass().getResource("../View/IntroMenu.fxml")));
 			
 			//Sets the introductory scene
 			primaryStage.setScene(introScene);

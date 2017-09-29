@@ -1,5 +1,13 @@
-package application;
+package Controller;
 
+/**
+ * This class is the controller for the stats class. This shows the user what are their
+ * current scores for the application and writes/overrides all information to a hidden file
+ * in the top level directory.
+ * @author Maddie Beagley and Emilie Pearce
+ */
+import Model.*;
+import View.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -59,11 +67,11 @@ public class StatsController {
 
 		Scene mainMenuScene = null;
 		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
+			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("../View/MainMenu.fxml")));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 
