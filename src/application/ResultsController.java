@@ -75,6 +75,7 @@ public class ResultsController {
 						} else {
 							setText("");
 						}
+						
 					}
 
 				};

@@ -17,21 +17,11 @@
 	}
 
 #menuCircleButtons{
-	-fx-background-radius: 5em; 
-    -fx-min-width: 130px; 
-    -fx-min-height: 130px; 
-    -fx-max-width: 130px; 
-    -fx-max-height: 130px; 
-    -fx-background-insets: 0px; 
-    -fx-padding: 0px;
-}
-
-#readyCircleButton{
-	-fx-background-radius: 5em; 
-    -fx-min-width: 120px; 
-    -fx-min-height: 120px; 
-    -fx-max-width: 120px; 
-    -fx-max-height: 120px; 
+	-fx-background-radius: 10em; 
+    -fx-min-width: 170px; 
+    -fx-min-height: 170px; 
+    -fx-max-width: 170px; 
+    -fx-max-height: 170px; 
     -fx-background-insets: 0px; 
     -fx-padding: 0px;
 }
@@ -42,16 +32,16 @@
 }
 
 #englishTranslation{
-	-fx-font-size: 13;
+	-fx-font-size: 17;
 	-fx-text-fill: #424141;
 }
 
 #circleButton{
-	-fx-background-radius: 5em; 
-    -fx-min-width: 100px; 
-    -fx-min-height: 100px; 
-    -fx-max-width: 100px; 
-    -fx-max-height: 100px; 
+	-fx-background-radius: 7em; 
+    -fx-min-width: 140px; 
+    -fx-min-height: 140px; 
+    -fx-max-width: 140px; 
+    -fx-max-height: 140px; 
     -fx-background-insets: 0px; 
     -fx-padding: 0px;
 }
@@ -74,10 +64,6 @@
 	-fx-effect: innershadow( one-pass-box , grey , 4 , 0.0 , 2 , 0 ); 
 }
 
-#dialog{
-	-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);
-}
-
 .list-view.scroll-bar:vertical .decrements-arrow,
 .list-view.scroll-bar:vertical .increment-button,
 .list-view.scroll-bar:vertical .decrement-button {
@@ -86,17 +72,31 @@
 
 
 #roundedSquare {
-	-fx-arc-width: 100;
-	-fx-arc-height: 100;
+	-fx-arc-width: 210;
+	-fx-arc-height: 210;
 }
 
 #smallCircleButton{
-	-fx-background-radius: 5em; 
-    -fx-min-width: 60px; 
-    -fx-min-height: 60px; 
-    -fx-max-width: 60px; 
-    -fx-max-height: 60px; 
+	-fx-background-radius: 6em; 
+    -fx-min-width: 80px; 
+    -fx-min-height: 80px; 
+    -fx-max-width: 80px; 
+    -fx-max-height: 80px; 
     -fx-background-insets: 0px; 
     -fx-padding: 0px;
+}
+
+#tryAgainButton{
+	-fx-background-radius: 7em; 
+    -fx-min-width: 110px; 
+    -fx-min-height: 110px; 
+    -fx-max-width: 110px; 
+    -fx-max-height: 110px; 
+    -fx-background-insets: 0px; 
+    -fx-padding: 0px;
+}
+
+.list-cell{
+    -fx-font-size: 13pt;
 }
 

@@ -31,8 +31,6 @@ public class Main extends Application {
 			primaryStage.setScene(introScene);
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("Tātai");
-			primaryStage.setHeight(430);
-			primaryStage.setWidth(600);
 			primaryStage.show();
 			
 			//Displays introductory scene for two seconds before transitioning to level scene

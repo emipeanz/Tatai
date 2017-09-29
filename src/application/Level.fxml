@@ -10,9 +10,9 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Circle fx:id="ringShape" fill="#1f93ff00" layoutX="297.0" layoutY="113.0" radius="100.0" strokeType="INSIDE" strokeWidth="17.0" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="203.0" AnchorPane.topAnchor="13.0">
+      <Circle fx:id="ringShape" fill="#1f93ff00" layoutX="413.0" layoutY="150.0" radius="126.0" strokeType="INSIDE" strokeWidth="20.0" AnchorPane.leftAnchor="287.0" AnchorPane.rightAnchor="301.0" AnchorPane.topAnchor="24.0">
          <stroke>
             <RadialGradient centerX="0.48314606741573035" centerY="0.5166666666666666" radius="0.10714285714285715">
                <stops>
@@ -23,18 +23,18 @@
             </RadialGradient>
          </stroke>
       </Circle>
-      <Label fx:id="progressLabel" layoutX="236.0" layoutY="358.0" text="Round 1/10" textFill="WHITE">
+      <Label fx:id="progressLabel" layoutX="343.0" layoutY="475.0" text="Round 1/10" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="19.0" />
+            <Font name="System Bold" size="23.0" />
          </font></Label>
-      <ProgressBar fx:id="progressBar" layoutX="140.0" layoutY="338.0" prefHeight="18.0" prefWidth="319.0" progress="0.0" />
-      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="33.0" prefHeight="161.0" prefWidth="168.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="213.0" AnchorPane.rightAnchor="219.0" AnchorPane.topAnchor="33.0">
+      <ProgressBar fx:id="progressBar" layoutX="225.0" layoutY="455.0" prefHeight="20.0" prefWidth="400.0" progress="0.0" />
+      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="314.0" layoutY="42.0" prefHeight="216.0" prefWidth="199.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="42.0">
          <font>
             <Font size="110.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" text="← Return" textAlignment="CENTER" />
-      <Button id="circleButton" fx:id="listenButton" layoutX="108.0" layoutY="216.0" mnemonicParsing="false" onAction="#playRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);" text="&#10;" textAlignment="CENTER">
+      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="43.0" prefWidth="115.0" text="← Return" textAlignment="CENTER" />
+      <Button id="circleButton" fx:id="listenButton" layoutX="114.0" layoutY="286.0" mnemonicParsing="false" onAction="#playRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -43,26 +43,26 @@
                <children>
                   <Label fx:id="maoriTranslation" layoutX="7.0" layoutY="-2.0" text="Purei " textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="22.0" />
+                        <Font name="System Bold" size="29.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="maoriTranslation2" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="23.0" text="Tuhi" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation2" alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="23.0" text="Tuhi" textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="22.0" />
+                        <Font name="System Bold" size="29.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="englishTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="54.0" text="Play" textAlignment="CENTER" />
+                  <Label fx:id="englishTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="51.0" text="Play" textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="circleButton" fx:id="recordButton" layoutX="242.0" layoutY="219.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ff6d6d, #cb2d3e);" text="&#10;" textAlignment="CENTER" textFill="#ff6d6d">
+      <Button id="circleButton" fx:id="recordButton" layoutX="347.0" layoutY="286.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ff6d6d, #cb2d3e);" text="&#10;" textAlignment="CENTER" textFill="#ff6d6d">
          <font>
             <Font size="24.0" />
          </font>
@@ -72,7 +72,7 @@
                   <Label fx:id="englishTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="34.0" text="Record" textAlignment="CENTER" textFill="#514e4e" />
                   <Label fx:id="maoriTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="-5.0" text="Tuhi">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="29.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" />
@@ -82,7 +82,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="circleButton" fx:id="checkButton" layoutX="386.0" layoutY="215.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,  #56ab2f);" text="&#10;" textAlignment="CENTER">
+      <Button id="circleButton" fx:id="checkButton" layoutX="567.0" layoutY="285.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,  #56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -91,13 +91,13 @@
                <children>
                   <Label fx:id="maoriTranslation1" layoutX="-2.0" layoutY="2.0" text="Taki" textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="29.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="englishTranslation1" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="39.0" text="Check" textAlignment="CENTER" textFill="#514e4e" />
+                  <Label fx:id="englishTranslation" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="39.0" text="Check" textAlignment="CENTER" textFill="#514e4e" />
                </children>
             </AnchorPane>
          </graphic>

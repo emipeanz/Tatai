@@ -7,70 +7,70 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Button id="menuCircleButtons" fx:id="easyButton" layoutX="150.0" layoutY="180.0" mnemonicParsing="false" onAction="#easyButtonEvent" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
+      <Button id="menuCircleButtons" fx:id="easyButton" layoutX="166.0" layoutY="274.0" mnemonicParsing="false" onAction="#easyButtonEvent" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" layoutX="2.0" layoutY="6.0" text="Ngawari">
+                  <Label fx:id="maoriTranslation" layoutX="1.0" layoutY="13.0" text="Ngawari">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="29.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="englishTranslation" layoutX="43.0" layoutY="43.0" text="Easy" />
+                  <Label fx:id="englishTranslation" layoutX="50.0" layoutY="54.0" text="Easy" />
                </children>
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="menuCircleButtons" fx:id="hardButton" layoutX="320.0" layoutY="180.0" mnemonicParsing="false" onAction="#hardButtonEvent" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
+      <Button id="menuCircleButtons" fx:id="hardButton" layoutX="493.0" layoutY="264.0" mnemonicParsing="false" onAction="#hardButtonEvent" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
          <font>
             <Font size="24.0" />
          </font>
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="8.0" layoutY="44.0" prefHeight="43.0" prefWidth="118.0" stylesheets="@application.css" text="He Uaua" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="8.0" layoutY="61.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="He Uaua" textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="23.0" />
+                        <Font name="System Bold" size="29.0" />
                      </font>
                      <padding>
                         <Insets bottom="14.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="englishTranslation" layoutX="51.0" layoutY="79.0" style="-fx-text-fill: black;" text="Hard" />
+                  <Label id="englishTranslation" fx:id="englishTranslation1" layoutX="64.0" layoutY="104.0" text="Hard" />
                </children>
             </AnchorPane>
          </graphic>
       </Button>
-      <Label layoutX="59.0" layoutY="63.0" text="Tohua he Taumata" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="148.0" layoutY="103.0" text="Tohua he Taumata" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="46.0" />
+            <Font name="System Bold" size="54.0" />
          </font>
          <effect>
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="223.0" layoutY="119.0" text="Pick a Level" textFill="WHITE">
+      <Label layoutX="336.0" layoutY="179.0" text="Pick a Level" textFill="WHITE">
          <font>
-            <Font size="26.0" />
+            <Font size="34.0" />
          </font>
          <effect>
             <DropShadow />
          </effect>
       </Label>
-      <Button fx:id="smallCircleButton" layoutX="528.0" layoutY="15.0" mnemonicParsing="false" onAction="#enterStatsView" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #00d2ff, #3a7bd5);" text="Stats" textAlignment="CENTER">
+      <Button fx:id="smallCircleButton" layoutX="729.0" layoutY="26.0" maxHeight="101.0" maxWidth="101.0" mnemonicParsing="false" onAction="#enterStatsView" prefHeight="101.0" prefWidth="101.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #00d2ff, #3a7bd5);" text="Stats" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="334.0" text="You have to get 8/10 on Easy before you can do Hard!" textFill="WHITE">
+      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="134.0" layoutY="455.0" text="You have to get 8/10 on Easy before you can do Hard!" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

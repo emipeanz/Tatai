@@ -4,16 +4,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Label layoutX="53.0" layoutY="157.0" text="Uru Ki Te Tātai!" textFill="#fffafa">
+      <Label layoutX="110.0" layoutY="208.0" text="Uru Ki Te Tātai!" textFill="#fffafa">
          <font>
-            <Font name="System Bold" size="56.0" />
+            <Font name="System Bold" size="70.0" />
          </font>
       </Label>
-      <Label layoutX="204.0" layoutY="224.0" text="Welcome to Tātai!" textFill="WHITE">
+      <Label layoutX="291.0" layoutY="285.0" text="Welcome to Tātai!" textFill="#908e8e">
          <font>
-            <Font size="21.0" />
+            <Font size="28.0" />
          </font>
       </Label>
    </children>
