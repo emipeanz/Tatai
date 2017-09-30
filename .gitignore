@@ -6,6 +6,7 @@ RecordingDirectory/
 GoSpeech
 user/
 .results.txt
+readme.txt
 
 # Compiled class file
 *.class
