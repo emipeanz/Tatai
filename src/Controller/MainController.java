@@ -70,14 +70,14 @@ public class MainController{
 			System.out.println("easy set");
 			_difficulty = Difficulty.EASY;
 			LevelController controller = new LevelController(_difficulty);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/Level.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
 			easyScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(easyScene);
-		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 
 	}
@@ -97,14 +97,14 @@ public class MainController{
 				System.out.println("hard set");
 				_difficulty = Difficulty.HARD;
 				LevelController controller = new LevelController(_difficulty);
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/Level.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 				loader.setController(controller);
 				hardScene = loader.load();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 			Scene scene = new Scene(hardScene);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 			stageEventBelongsTo.setScene(scene);
 		}
 	}
@@ -117,14 +117,14 @@ public class MainController{
 		try {
 			System.out.println("Enterings stats view");
 			StatsController controller = new StatsController();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/StatsView.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/StatsView.fxml"));
 			loader.setController(controller);
 			statsScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(statsScene);
-		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 	}
 

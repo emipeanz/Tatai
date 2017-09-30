@@ -27,8 +27,11 @@ public class Main extends Application {
 			BorderPane root = new BorderPane();
 			
 			//sets both the introductory and level scenes ready for transition from introduction to levels
-			Scene mainScene = new Scene(FXMLLoader.load(getClass().getResource("../View/MainMenu.fxml")));
-			Scene introScene = new Scene(FXMLLoader.load(getClass().getResource("../View/IntroMenu.fxml")));
+			Scene mainScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
+			Scene introScene = new Scene(FXMLLoader.load(getClass().getResource("/View/IntroMenu.fxml")));
+			
+			mainScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			introScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 			
 			//Sets the introductory scene
 			primaryStage.setScene(introScene);

@@ -277,14 +277,14 @@ public class LevelController {
 		ResultsController controller = null;
 		try {
 			controller = new ResultsController(_test);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/Results.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Results.fxml"));
 			loader.setController(controller);
 			resultsScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(resultsScene);
-		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		controller.setUpResultsTable();
 		stageEventBelongsTo.setScene(scene);
 	}
@@ -302,11 +302,11 @@ public class LevelController {
 
 		Scene mainMenuScene = null;
 		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("../View/MainMenu.fxml")));
+			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 
