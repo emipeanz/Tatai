@@ -44,7 +44,6 @@ public class ResultsController {
 
 	@FXML private Button returnButton;
 	@FXML private Button tryAgainButton;
-	@FXML private ListView<String> resultsListView;
 	@FXML private Label resultsLabel;
 	@FXML private TableView<Question> tableView;
 	@FXML private TableColumn<Question, Integer> question;
@@ -78,14 +77,16 @@ public class ResultsController {
 		            @Override protected void updateItem(Question q, boolean empty) {
 		                super.updateItem(q, empty);
 
-		                if (q.getPass().equals("Right!")) {
-		                	// Colour green for getting it right
-							setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
-						}
-						else {
-							// Colour red for getting it wrong
-							setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
-						}
+		                if(q != null) {
+		                	if (q.getPass().equals("Right!")) {
+			                	// Colour green for getting it right
+								setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
+							}
+							else {
+								// Colour red for getting it wrong
+								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
+							}
+		                }
 		            }
 		        };
 		    }
