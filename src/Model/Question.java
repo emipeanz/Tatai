@@ -13,14 +13,14 @@ import java.util.List;
 
 public class Question {
 
-	public int _numberInt;
-	public String _numberWord = "";
-	public boolean _pass;
+	public int question;
+	public String answer = "";
+	public boolean pass;
 
 	/**
 	 * Constructor to store state of number currently being tested.
-	 * _numberWord stores maori word corresponding to integer number
-	 * of _numberInt
+	 * answer stores maori word corresponding to integer number
+	 * of question
 	 * @param number: number being tested
 	 */
 	public Question(Difficulty difficulty) {
@@ -37,8 +37,8 @@ public class Question {
 		int number = (int )(Math.random() * max + 1);
 
 		//stores value of random number as the maori word and as an integer.
-		_numberInt = number;
-		_numberWord = numberToWord(number);
+		question = number;
+		answer = numberToWord(number);
 
 	}
 
@@ -47,7 +47,7 @@ public class Question {
 	 * @param pass
 	 */
 	public void setPass(boolean pass) {
-		_pass = pass;
+		pass = pass;
 	}
 	
 	/**
@@ -109,8 +109,16 @@ public class Question {
 		return numberWord;	
 	}
 	
+	public void setNumberInt(int i) {
+		question = i;
+	}
+	
+	public void setNumberWord(String s) {
+		answer = s;
+	}
+	
 	public String getPass() {
-		if(_pass==true) {
+		if(pass==true) {
 			return "Right!";
 		}
 		else {
@@ -119,15 +127,15 @@ public class Question {
 	}
 
 	public int getNumberInt() {
-		return this._numberInt;
+		return this.question;
 	}
 	
 	public String getNumberWord() {
-		return this._numberWord;
+		return this.answer;
 	}
 	
 	public List<String> numberInSplitformat() {
-		String[] split = _numberWord.split("\\s+");
+		String[] split = answer.split("\\s+");
 		return Arrays.asList(split);
 	}
 }

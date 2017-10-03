@@ -96,7 +96,7 @@ public class LevelController {
 	public void updateLabels(ActionEvent event) {
 		_currentLevelResult = new Question(_test.getdifficulty());	
 		//sets labels that show a number and the maori word corresponding to it
-		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
+		numberToTest.setText(Integer.toString(_currentLevelResult.question));
 	}
 
 	/**
@@ -226,7 +226,7 @@ public class LevelController {
 		_test.addTestQuestion(_currentLevelResult);
 		//instantiates a new result for the next level of the test
 		_currentLevelResult = new Question(_test.getdifficulty());
-		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
+		numberToTest.setText(Integer.toString(_currentLevelResult.question));
 		_test.addTestQuestion(_currentLevelResult);
 	}
 
@@ -238,7 +238,7 @@ public class LevelController {
 	 */
 	public void updateLabels() {
 		_currentLevelResult = new Question(_test.getdifficulty());
-		numberToTest.setText(Integer.toString(_currentLevelResult._numberInt));
+		numberToTest.setText(Integer.toString(_currentLevelResult.question));
 		_test.addTestQuestion(_currentLevelResult);
 	}
 

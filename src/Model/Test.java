@@ -57,7 +57,7 @@ public class Test {
 		int overallMark = 0;
 		//cycles through each question checking if it was a pass
 		for (Question question : _testQuestions) {
-			if (question._pass == true) {
+			if (question.pass == true) {
 				overallMark++;
 			}
 		}

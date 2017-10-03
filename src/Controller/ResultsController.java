@@ -31,6 +31,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -42,11 +46,15 @@ public class ResultsController {
 	@FXML private Button tryAgainButton;
 	@FXML private ListView<String> resultsListView;
 	@FXML private Label resultsLabel;
+	@FXML private TableView<Question> tableView;
+	@FXML private TableColumn<Question, Integer> question;
+	@FXML private TableColumn<Question, String> answer;
+	@FXML private TableColumn<Question, Boolean> pass;
 
 	public File _resultsFile;
 	private Test _test;
 	private Difficulty _difficulty;
-	private ObservableList<String> _dataList;
+	private ObservableList<Question> _dataList;
 
 	
 	public ResultsController(Test test) {
@@ -55,42 +63,35 @@ public class ResultsController {
 	}
 
 	/**
-	 * Issue with initlization of controller and linking to FXML file, ordering is a problem which results in
-	 * null pointer excpetions
+	 * This method sets up the table view showing results from the current test. Rows change
+	 * colour depending on whether they got the question right of wrong
 	 */
 	public void setUpResultsTable() {
-		_dataList = FXCollections.observableArrayList(_test.getQuestionsToString());
-		this.resultsListView.setItems(_dataList);
-		this.resultsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>(){
+		question.setCellValueFactory(new PropertyValueFactory<>("question"));
+		answer.setCellValueFactory(new PropertyValueFactory<>("answer"));
+		pass.setCellValueFactory(new PropertyValueFactory<>("pass"));
+		_dataList = FXCollections.observableArrayList(_test.getTestquestions());
+		
+		tableView.setRowFactory(new Callback<TableView<Question>, TableRow<Question>>() {
+		    @Override public TableRow<Question> call(TableView<Question> q) {
+		        return new TableRow<Question>() {
+		            @Override protected void updateItem(Question q, boolean empty) {
+		                super.updateItem(q, empty);
 
-			@Override
-			public ListCell<String> call(ListView<String> p) {
-
-				ListCell<String> cell = new ListCell<String>(){
-
-					@Override
-					protected void updateItem(String t, boolean bln) {
-						super.updateItem(t, bln);
-						if (t != null ) {
-							setText( t);
-							if (t.contains("Right!")) {
-								setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
-							}
-							else {
-								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
-							}
-
-						} else {
-							setText("");
+		                if (q.getPass().equals("Right!")) {
+		                	// Colour green for getting it right
+							setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
 						}
-						
-					}
-
-				};
-
-				return cell;
-			}
+						else {
+							// Colour red for getting it wrong
+							setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
+						}
+		            }
+		        };
+		    }
 		});
+		
+		tableView.setItems(_dataList);
 		resultsLabel.setText("You got " + _test.getOverallMark() + "/10 !");
 
 		//saves results of this round to file for use in stats menu
