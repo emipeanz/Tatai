@@ -285,7 +285,6 @@ public class LevelController {
 		}
 		Scene scene = new Scene(resultsScene);
 		scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-		controller.setUpResultsTable();
 		stageEventBelongsTo.setScene(scene);
 	}
 

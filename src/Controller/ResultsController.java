@@ -48,41 +48,31 @@ public class ResultsController {
 	@FXML private TableView<Question> tableView;
 	@FXML private TableColumn<Question, Integer> question;
 	@FXML private TableColumn<Question, String> answer;
-	@FXML private TableColumn<Question, Boolean> pass;
+	@FXML private TableColumn<Question, String> pass;
 
 	public File _resultsFile;
 	private Test _test;
 	private Difficulty _difficulty;
 	private ObservableList<Question> _dataList;
 
-	
-	public ResultsController(Test test) {
-		_test = test;
-		_difficulty = _test.getdifficulty();
-	}
-
-	/**
-	 * This method sets up the table view showing results from the current test. Rows change
-	 * colour depending on whether they got the question right of wrong
-	 */
-	public void setUpResultsTable() {
+	public void initialize() {
 		question.setCellValueFactory(new PropertyValueFactory<>("question"));
 		answer.setCellValueFactory(new PropertyValueFactory<>("answer"));
 		pass.setCellValueFactory(new PropertyValueFactory<>("pass"));
 		_dataList = FXCollections.observableArrayList(_test.getTestquestions());
 		
-		tableView.setRowFactory(new Callback<TableView<Question>, TableRow<Question>>() {
+		
+		  tableView.setRowFactory(new Callback<TableView<Question>, TableRow<Question>>() {
 		    @Override public TableRow<Question> call(TableView<Question> q) {
 		        return new TableRow<Question>() {
 		            @Override protected void updateItem(Question q, boolean empty) {
 		                super.updateItem(q, empty);
-
 		                if(q != null) {
 		                	if (q.getPass().equals("Right!")) {
 			                	// Colour green for getting it right
 								setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
 							}
-							else {
+							if (q.getPass().equals("Wrong")){
 								// Colour red for getting it wrong
 								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
 							}
@@ -91,6 +81,8 @@ public class ResultsController {
 		        };
 		    }
 		});
+		  tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+		 
 		
 		tableView.setItems(_dataList);
 		resultsLabel.setText("You got " + _test.getOverallMark() + "/10 !");
@@ -98,6 +90,13 @@ public class ResultsController {
 		//saves results of this round to file for use in stats menu
 		saveResults();
 	}
+	
+	
+	public ResultsController(Test test) {
+		_test = test;
+		_difficulty = _test.getdifficulty();
+	}
+
 
 	/**
 	 * Method takes an action event on the return to menu button.  The main menu scene is

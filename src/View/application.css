@@ -96,7 +96,31 @@
     -fx-padding: 0px;
 }
 
-.list-cell{
-    -fx-font-size: 13pt;
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+	-fx-background-color: null;
+	-fx-background-radius: 0;
+	-fx-background-insets: 0;
+	-fx-padding: 0;
 }
+
+.table-view *.scroll-bar:horizontal *.increment-arrow,
+.table-view *.scroll-bar:horizontal *.decrement-arrow {
+	-fx-background-color: null;
+	-fx-background-radius: 0;
+	-fx-background-insets: 0;
+	-fx-padding: 0;
+	-fx-shape: null;
+} 
+
+.table-view .table-cell {
+	-fx-font-size: 15px;
+	-fx-background-color: transparent ;
+}
+
+.table-view,
+.table-row-cell{
+	-fx-background-color: transparent ;
+}
+
 

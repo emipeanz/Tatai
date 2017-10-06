@@ -57,7 +57,7 @@ public class Test {
 		int overallMark = 0;
 		//cycles through each question checking if it was a pass
 		for (Question question : _testQuestions) {
-			if (question.pass == true) {
+			if (question.pass) {
 				overallMark++;
 			}
 		}
@@ -72,23 +72,6 @@ public class Test {
 	 */
 	public int getNumberofRound() {
 		return _testQuestions.size();
-	}
-
-	public ArrayList<String> getQuestionsToString() {
-		ArrayList<String> data = new ArrayList<String>();
-		for(int i = 0 ; i < _testQuestions.size();i++) {
-			Question current = _testQuestions.get(i);
-			String pass = current.getPass();
-			String numWord = current.getNumberWord();
-			int numInt = current.getNumberInt();
-			String output = String.format("%-2d  %-20s  %10s", numInt, numWord, pass);
-			data.add(output);
-		}
-		System.out.println("Words and their formatting");
-		for(int i =0;i<data.size();i++) {
-			System.out.println(data.get(i));
-		}
-		return data;
 	}
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Question {
 
-	public int question;
+	public Integer question;
 	public String answer = "";
 	public boolean pass;
 
@@ -47,7 +47,7 @@ public class Question {
 	 * @param pass
 	 */
 	public void setPass(boolean pass) {
-		pass = pass;
+		this.pass = pass;
 	}
 	
 	/**
@@ -109,11 +109,11 @@ public class Question {
 		return numberWord;	
 	}
 	
-	public void setNumberInt(int i) {
+	public void setQuestion(int i) {
 		question = i;
 	}
 	
-	public void setNumberWord(String s) {
+	public void setAnswer(String s) {
 		answer = s;
 	}
 	
@@ -126,11 +126,11 @@ public class Question {
 		}
 	}
 
-	public int getNumberInt() {
+	public int getQuestion() {
 		return this.question;
 	}
 	
-	public String getNumberWord() {
+	public String getAnswer() {
 		return this.answer;
 	}
 	
