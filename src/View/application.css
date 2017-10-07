@@ -1,10 +1,7 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+@font-face {
+	src: url(fontawesome-webfont.ttf);
+}
 
-/* Use #ID_NAME to create styles for id
- * -fx-ATTRIBUTE_NAME:DETAILS to add attributes to an id
- * .root to change attributes to the scene
- * .OBJECT to change attributes for a whole groups or items, eg all buttons, all labels
- */
 .root {
 	-fx-background-color: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
@@ -123,4 +120,8 @@
 	-fx-background-color: transparent ;
 }
 
+#Font{
+	-fx-font-family: FontAwesome;
+	-fx-font-size: 40px;
+}
 
