@@ -21,7 +21,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" layoutX="1.0" layoutY="13.0" text="Ngawari">
+                  <Label fx:id="maoriTranslation" layoutX="2.0" layoutY="39.0" text="Ngawari">
                      <font>
                         <Font name="System Bold" size="29.0" />
                      </font>
@@ -29,8 +29,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="englishTranslation" layoutX="50.0" layoutY="54.0" text="Easy" />
-                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="-38.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#f7f7f7ab">
+                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="-24.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#f5f5f5fd">
                      <font>
                         <Font size="41.0" />
                      </font>
@@ -46,7 +45,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="8.0" layoutY="61.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="He Uaua" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="8.0" layoutY="85.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="He Uaua" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="29.0" />
                      </font>
@@ -54,8 +53,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
                         <Insets bottom="14.0" />
                      </padding>
                   </Label>
-                  <Label id="englishTranslation" fx:id="englishTranslation1" layoutX="64.0" layoutY="104.0" text="Hard" />
-                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="14.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#f7f7f7ab">
+                  <Label id="Font" fx:id="hardLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="25.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#f5f5f5">
                      <font>
                         <Font size="41.0" />
                      </font>
@@ -87,12 +85,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
          <graphic>
             <AnchorPane>
                <children>
-                  <Label layoutX="13.0" layoutY="44.0" prefHeight="25.0" prefWidth="55.0" text="Stats">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="-2.0" prefHeight="55.0" prefWidth="54.0" text="" textAlignment="CENTER" textFill="#f7f7f7ab">
+                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="12.0" prefHeight="55.0" prefWidth="54.0" text="" textAlignment="CENTER" textFill="#f5f5f5">
                      <font>
                         <Font size="41.0" />
                      </font>

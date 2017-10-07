@@ -284,7 +284,6 @@ public class LevelController {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(resultsScene);
-		scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 	}
 
@@ -305,7 +304,6 @@ public class LevelController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 
