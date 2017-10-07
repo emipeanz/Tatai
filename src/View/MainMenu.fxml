@@ -29,7 +29,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="-24.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#f5f5f5fd">
+                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="52.0" layoutY="-23.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#f5f5f5fd">
                      <font>
                         <Font size="41.0" />
                      </font>

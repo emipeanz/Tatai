@@ -12,7 +12,7 @@
 
 <AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Circle fx:id="ringShape" fill="#1f93ff00" layoutX="413.0" layoutY="150.0" radius="126.0" strokeType="INSIDE" strokeWidth="20.0" AnchorPane.leftAnchor="287.0" AnchorPane.rightAnchor="301.0" AnchorPane.topAnchor="24.0">
+      <Circle fx:id="ringShape" fill="#1f93ff00" layoutX="413.0" layoutY="139.0" radius="126.0" strokeType="INSIDE" strokeWidth="20.0" AnchorPane.leftAnchor="287.0" AnchorPane.rightAnchor="301.0" AnchorPane.topAnchor="13.0">
          <stroke>
             <RadialGradient centerX="0.48314606741573035" centerY="0.5166666666666666" radius="0.10714285714285715">
                <stops>
@@ -28,7 +28,7 @@
             <Font name="System Bold" size="23.0" />
          </font></Label>
       <ProgressBar fx:id="progressBar" layoutX="225.0" layoutY="455.0" prefHeight="20.0" prefWidth="400.0" progress="0.0" />
-      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="314.0" layoutY="42.0" prefHeight="216.0" prefWidth="199.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="42.0">
+      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="31.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="31.0">
          <font>
             <Font size="110.0" />
          </font>
@@ -102,6 +102,12 @@
             </AnchorPane>
          </graphic>
       </Button>
+      <AnchorPane layoutX="378.0" layoutY="226.0" prefHeight="23.0" prefWidth="73.0">
+         <children>
+            <Label id="Font" fx:id="firstChance" layoutX="1.0" layoutY="3.0" prefHeight="30.0" prefWidth="35.0" text="" textFill="#eeeded" />
+            <Label id="Font" fx:id="secondChance" layoutX="38.0" layoutY="2.0" prefHeight="30.0" prefWidth="35.0" text="" textFill="#eeeded" />
+         </children>
+      </AnchorPane>
    
 
    </children>

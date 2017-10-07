@@ -45,6 +45,8 @@ public class LevelController {
 	@FXML private Button checkButton;
 	@FXML private Button listenButton;
 	@FXML private Shape ringShape;
+	@FXML private Label firstChance = new Label();
+	@FXML private Label secondChance = new Label();
 
 	private int progress = 0;
 	private Question _currentLevelResult;
@@ -237,6 +239,8 @@ public class LevelController {
 	 * @param event
 	 */
 	public void updateLabels() {
+		firstChance.setText("\uf10c");
+		secondChance.setText("\uf10c");
 		_currentLevelResult = new Question(_test.getdifficulty());
 		numberToTest.setText(Integer.toString(_currentLevelResult.question));
 		_test.addTestQuestion(_currentLevelResult);
@@ -317,6 +321,13 @@ public class LevelController {
 		System.out.println("Checking recording check button");
 		Boolean correct = this.checkRecordingForWord();
 		if(correct) {
+			if(chances == 2) { // Got it right the first time
+				firstChance.setText("\uf05d");
+				// Do something to question object to show they got it right first time...
+			}
+			else { // Got it right the second time
+				secondChance.setText("\uf05d");
+			}
 			_currentLevelResult.setPass(true);
 			chances = 2;
 			//green ring will appear if they have correctly answered question.
@@ -326,6 +337,12 @@ public class LevelController {
 			//listenButton.setDisable(true);
 		}
 		else {
+			if(chances == 2) { // Got it wrong the first time
+				firstChance.setText("\uf05c");
+			}
+			else { // Got it wrong the second time
+				secondChance.setText("\uf05c");
+			}
 			chances--;
 			if(chances == 0) {
 				_currentLevelResult.setPass(false);
