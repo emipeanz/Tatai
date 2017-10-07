@@ -46,9 +46,11 @@
 #backButton{
 	-fx-border-color: #000000;
 	-fx-border-width: 2px;
-	-fx-border-radius: 10px;
-	-fx-background-radius: 10em; 
+	-fx-border-radius: 20px;
+	-fx-background-radius: 2em; 
 	-fx-font-weight: BOLD;
+	-fx-font-family: FontAwesome;
+	-fx-font-size: 30px;
 	
 }
 
@@ -60,13 +62,6 @@
 .button:pressed{
 	-fx-effect: innershadow( one-pass-box , grey , 4 , 0.0 , 2 , 0 ); 
 }
-
-.list-view.scroll-bar:vertical .decrements-arrow,
-.list-view.scroll-bar:vertical .increment-button,
-.list-view.scroll-bar:vertical .decrement-button {
-	-fx-scale-x : 0;
-}
-
 
 #roundedSquare {
 	-fx-arc-width: 210;

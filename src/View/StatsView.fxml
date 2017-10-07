@@ -70,7 +70,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="43.0" prefWidth="115.0" text="← Return" textAlignment="CENTER" />
       <Label layoutX="201.0" layoutY="81.0" text="Your Scores..." textFill="WHITE">
          <font>
             <Font name="System Bold" size="55.0" />
@@ -79,5 +78,6 @@
             <DropShadow />
          </effect>
       </Label>
+      <Button id="backButton" fx:id="backButton" layoutX="16.0" layoutY="15.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
    </children>
 </AnchorPane>
