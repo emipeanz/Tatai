@@ -29,7 +29,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="52.0" layoutY="-23.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#f5f5f5fd">
+                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="-23.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525fc">
                      <font>
                         <Font size="41.0" />
                      </font>
@@ -53,7 +53,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
                         <Insets bottom="14.0" />
                      </padding>
                   </Label>
-                  <Label id="Font" fx:id="hardLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="25.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#f5f5f5">
+                  <Label id="Font" fx:id="hardLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="20.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525">
                      <font>
                         <Font size="41.0" />
                      </font>
@@ -78,21 +78,10 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
             <DropShadow />
          </effect>
       </Label>
-      <Button fx:id="smallCircleButton" layoutX="729.0" layoutY="26.0" maxHeight="101.0" maxWidth="101.0" mnemonicParsing="false" onAction="#enterStatsView" prefHeight="101.0" prefWidth="101.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #00d2ff, #3a7bd5);" textAlignment="CENTER">
+      <Button fx:id="smallCircleButton" layoutX="729.0" layoutY="26.0" maxHeight="101.0" maxWidth="101.0" mnemonicParsing="false" onAction="#enterStatsView" prefHeight="101.0" prefWidth="101.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #00d2ff, #3a7bd5);" text="" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="FontAwesome Regular" size="44.0" />
          </font>
-         <graphic>
-            <AnchorPane>
-               <children>
-                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="12.0" prefHeight="55.0" prefWidth="54.0" text="" textAlignment="CENTER" textFill="#f5f5f5">
-                     <font>
-                        <Font size="41.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </graphic>
       </Button>
       <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="134.0" layoutY="455.0" text="You have to get 8/10 on Easy before you can do Hard!" textFill="WHITE">
          <font>
