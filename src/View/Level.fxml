@@ -4,24 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Circle fx:id="ringShape" fill="#1f93ff00" layoutX="413.0" layoutY="139.0" radius="126.0" strokeType="INSIDE" strokeWidth="20.0" AnchorPane.leftAnchor="287.0" AnchorPane.rightAnchor="301.0" AnchorPane.topAnchor="13.0">
-         <stroke>
-            <RadialGradient centerX="0.48314606741573035" centerY="0.5166666666666666" radius="0.10714285714285715">
-               <stops>
-                  <Stop color="BLACK" />
-                  <Stop color="BLACK" offset="0.007662835249042145" />
-                  <Stop color="#f19d61" offset="1.0" />
-               </stops>
-            </RadialGradient>
-         </stroke>
-      </Circle>
       <Label fx:id="progressLabel" layoutX="343.0" layoutY="475.0" text="Round 1/10" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
@@ -32,7 +18,7 @@
             <Font size="110.0" />
          </font>
       </Label>
-      <Button id="circleButton" fx:id="listenButton" layoutX="114.0" layoutY="286.0" mnemonicParsing="false" onAction="#playRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);" text="" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="listenButton" alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="286.0" mnemonicParsing="false" onAction="#playRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);" text="" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
@@ -60,6 +46,11 @@
          </children>
       </AnchorPane>
       <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="295.0" layoutY="78.0" prefHeight="113.0" prefWidth="267.0" textAlignment="CENTER" textFill="#252525">
+         <font>
+            <Font size="56.0" />
+         </font>
+      </Label>
    
 
    </children>

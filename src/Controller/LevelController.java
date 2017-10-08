@@ -44,9 +44,9 @@ public class LevelController {
 	@FXML private Button recordButton;
 	@FXML private Button checkButton;
 	@FXML private Button listenButton;
-	@FXML private Shape ringShape;
 	@FXML private Label firstChance = new Label();
 	@FXML private Label secondChance = new Label();
+	@FXML private Label feedbackMessage;
 
 	private int progress = 0;
 	private Question _currentLevelResult;
@@ -55,9 +55,6 @@ public class LevelController {
 	private final String RECORDINGFILEPATH = "RecordingDir/foo.wav";
 	private Difficulty _difficulty;
 	private int chances = 2;
-	private Color _red = Color.web("e05050");
-	private Color _green = Color.web("87e56a");
-	private Color _orange = Color.web("f19d61");
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
@@ -76,17 +73,16 @@ public class LevelController {
 	}
 
 	/**
-	 * Makes the ring invisible until an answer is checked and initialises button visibility
-	 * so that user must start a level with only the option to record. Labels are updated
-	 * to display the current number and the progress bar is initialised.
+	 * Makes the various parts of the level scene invisible until they are needed further on
+	 * in the code.
 	 */
 	public void initialize() {
-		ringShape.setVisible(false);
 		updateLabels();
 		updateProgressBar();
 		checkButton.setDisable(true);
 		recordButton.setDisable(false);
 		listenButton.setDisable(true);
+		feedbackMessage.setVisible(false);
 	}
 
 	/**
@@ -139,22 +135,6 @@ public class LevelController {
 		});
 		//starts the thread running to take the recording.
 		record.start();	
-	}
-
-	/**
-	 * Causes ring to appear around number for a second in the specified colour.
-	 * @param color
-	 */
-	private void displayRing(Color color) {
-		//sets visibility and colour of ring
-		ringShape.setStroke(color);
-		ringShape.setVisible(true);
-		//makes ring visible for a second
-		PauseTransition pause = new PauseTransition(Duration.seconds(1));
-		pause.setOnFinished(event -> {
-			ringShape.setVisible(false);
-		});
-		pause.play();
 	}
 	
 	/**
@@ -214,7 +194,6 @@ public class LevelController {
 		progressBar.setProgress((double) progress / 10);
 	}
 
-
 	/**
 	 * For now just having a play around - this method is called when the make random number
 	 * button is clicked and will show the number and the word of that number in maori.
@@ -241,6 +220,7 @@ public class LevelController {
 	public void updateLabels() {
 		firstChance.setText("\uf10c");
 		secondChance.setText("\uf10c");
+		
 		_currentLevelResult = new Question(_test.getdifficulty());
 		numberToTest.setText(Integer.toString(_currentLevelResult.question));
 		_test.addTestQuestion(_currentLevelResult);
@@ -311,7 +291,6 @@ public class LevelController {
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 
-
 	/**
 	 * Method checks if the recording the user wants tested if the correct pronunciation
 	 * for the current number and displays the respective instructions and feedback.
@@ -330,9 +309,12 @@ public class LevelController {
 			}
 			_currentLevelResult.setPass(true);
 			chances = 2;
-			//green ring will appear if they have correctly answered question.
-			displayRing(_green);
-			this.nextQuestion(e);
+			feedbackMessage(true);
+			
+			PauseTransition delay = new PauseTransition(Duration.seconds(3));
+			delay.setOnFinished( event -> this.nextQuestion(e) );
+			delay.play();
+			
 			//checkButton.setDisable(true);
 			//listenButton.setDisable(true);
 		}
@@ -348,18 +330,46 @@ public class LevelController {
 				_currentLevelResult.setPass(false);
 				chances = 2;
 				//red ring will appear if they have no more chances.
-				displayRing(_red);
-				this.nextQuestion(e);
+				feedbackMessage(false);
+				
+				PauseTransition delay = new PauseTransition(Duration.seconds(3));
+				delay.setOnFinished( event -> this.nextQuestion(e) );
+				delay.play();
+				
 				//checkButton.setDisable(true);
 				//listenButton.setDisable(true);
 			} else {
 				//orange ring will appear if they still have a chance remaining.
-				displayRing(_orange);
+				feedbackMessage(false);
 				//checkButton.setDisable(true);
 				//listenButton.setDisable(true);
 			}
 		}
 
+	}
+
+	/**
+	 * This method handles showing the user their feedback based on what they pronounced
+	 * -- NEEDS WORK TO BE NICER FOR KIDS AND GIVES DIFFERENT FEEDBACK IF THEY ARE CLOSE
+	 * @param b
+	 */
+	private void feedbackMessage(boolean b) {
+		if(b) {
+			feedbackMessage.setText("Right!");
+			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
+		}
+		else if((!b) && (chances == 1)) {
+			feedbackMessage.setText("Close...");
+			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
+		}
+		else {
+			feedbackMessage.setText("Wrong");
+			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
+		}
+		feedbackMessage.setVisible(true);
+		PauseTransition delay = new PauseTransition(Duration.seconds(3));
+		delay.setOnFinished( event -> feedbackMessage.setVisible(false) );
+		delay.play();
 	}
 
 	/**
