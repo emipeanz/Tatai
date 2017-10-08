@@ -6,6 +6,7 @@ package Model;
 public enum Difficulty {
 	EASY(9), HARD(99);
 
+	//comment
 	int max;
 	
 	private Difficulty(int max) {
