@@ -41,6 +41,8 @@
     -fx-max-height: 140px; 
     -fx-background-insets: 0px; 
     -fx-padding: 0px;
+    -fx-font-family: FontAwesome;
+	-fx-font-size: 90px;
 }
 
 #backButton{
@@ -76,6 +78,8 @@
     -fx-max-height: 80px; 
     -fx-background-insets: 0px; 
     -fx-padding: 0px;
+    -fx-font-family: FontAwesome;
+	-fx-font-size: 40px;
 }
 
 #tryAgainButton{
@@ -120,12 +124,13 @@
 	-fx-font-size: 60px;
 }
 
-#recordButton, #listenButton, #checkButton, #tryAgainButton {
-	-fx-font-family: FontAwesome;
-	-fx-font-size: 70px;
-}
-
 #feedbackMessage {
 	-fx-border-radius: 40px;
 	-fx-background-radius: 10em; 
+}
+
+#firstChance,
+#secondChance {
+	-fx-font-family: FontAwesome;
+	-fx-font-size: 40px;
 }
