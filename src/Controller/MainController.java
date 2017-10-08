@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import Model.*;
-import View.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -66,10 +65,20 @@ public class MainController{
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
 		AnchorPane easyScene = null;
+		
+		
+		/**
+		 * ARBITRARILY SETTING ENUM AS PRACTICE FOR SAKE OF TESTING 
+		 */
+		
+		TestType type = TestType.PRACTICE;
+		
 		try {
 			System.out.println("easy set");
 			_difficulty = Difficulty.EASY;
-			LevelController controller = new LevelController(_difficulty);
+			
+			//ARBITRARILY SET VALUE FOR PRACTICE AS INPUT ENUM
+			LevelController controller = new LevelController(_difficulty, type);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
 			easyScene = loader.load();
@@ -93,10 +102,17 @@ public class MainController{
 			Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
 			AnchorPane hardScene = null;
+			
+			/**
+			 * ARBITRARILY SETTING ENUM AS PRACTICE FOR SAKE OF TESTING 
+			 */
+			
+			TestType type = TestType.PRACTICE;
+			
 			try {
 				System.out.println("hard set");
 				_difficulty = Difficulty.HARD;
-				LevelController controller = new LevelController(_difficulty);
+				LevelController controller = new LevelController(_difficulty, type);
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 				loader.setController(controller);
 				hardScene = loader.load();
@@ -138,7 +154,7 @@ public class MainController{
 	}
 
 	/**
-	 * Hides text telling user that they need 8+ in a roudn to progress to hard level.
+	 * Hides text telling user that they need 8+ in a round to progress to hard level.
 	 */
 	public void hideHardText() {
 		if (!unlocked) {

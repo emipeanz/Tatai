@@ -6,8 +6,7 @@ package Controller;
  * in the top level directory.
  * @author Maddie Beagley and Emilie Pearce
  */
-import Model.*;
-import View.*;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;

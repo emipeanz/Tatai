@@ -8,12 +8,7 @@ package Controller;
  * @author Maddie Beagley and Emilie Pearce
  */
 import Model.*;
-import View.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -29,8 +24,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -132,8 +125,15 @@ public class ResultsController {
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
 		AnchorPane hardScene = null;
+		
+		/*
+		 * ARBITRARILY ASSIGNING ENUM TO TEST TYPE AS PRACTICE FOR TESTING PURPOSES
+		 */
+		TestType type = TestType.PRACTICE;
+		
 		try {
-			LevelController controller = new LevelController(_difficulty);
+			//ARBITRARY ASSIGNMENT OF ENUM
+			LevelController controller = new LevelController(_difficulty, type);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
 			hardScene = loader.load();

@@ -4,5 +4,15 @@ package Model;
  * @author Maddie Beagley and Emilie Pearce
  */
 public enum Difficulty {
-	EASY, HARD
+	EASY(9), HARD(99);
+
+	int max;
+	
+	private Difficulty(int max) {
+		this.max = max;
+	}
+	
+	public int getMax() {
+		return this.max;
+	}
 }

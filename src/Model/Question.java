@@ -13,9 +13,19 @@ import java.util.List;
 
 public class Question {
 
+	//integer value of the number that is the answer
 	public Integer question;
+	//maori word expecting to hear back
 	public String answer = "";
 	public boolean pass;
+
+	//String that is displayed onscreen during a level
+	protected String displayString;
+	//Answer as a maori word
+	protected String answerString;
+	//Answer as an integer
+	protected int answerInt;
+	protected Difficulty _difficulty;
 
 	/**
 	 * Constructor to store state of number currently being tested.
@@ -24,22 +34,14 @@ public class Question {
 	 * @param number: number being tested
 	 */
 	public Question(Difficulty difficulty) {
-		int max = 0;
+		_difficulty = difficulty;
 
-		//specifies maximum value of random number to be generated
-		if (difficulty == difficulty.HARD) {
-			max = 99;
-		} else if (difficulty == difficulty.EASY) {
-			max = 9;
-		}
-
+	}
+	
+	public int randomNumber(int max) {
 		//generates a random number within the desired range
 		int number = (int )(Math.random() * max + 1);
-
-		//stores value of random number as the maori word and as an integer.
-		question = number;
-		answer = numberToWord(number);
-
+		return number;
 	}
 
 	/**
@@ -55,7 +57,7 @@ public class Question {
 	 * @param number: number to be converted
 	 * @return String associated to that number
 	 */
-	private String numberToWord(int number) {
+	protected String numberToWord(int number) {
 		String _numberWord = "";
 
 		//if number is only a single digit
@@ -138,4 +140,19 @@ public class Question {
 		String[] split = answer.split("\\s+");
 		return Arrays.asList(split);
 	}
+	
+	
+	public String getDisplayString() {
+		return displayString;
+	}
+	
+	public String getAnswerString() {
+		return answerString;
+	}
+	
+	public int getAnswerInt() {
+		return answerInt;
+	}
+	
+	
 }

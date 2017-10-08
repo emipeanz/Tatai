@@ -2,7 +2,6 @@ package Controller;
 
 import java.io.BufferedReader;
 import Model.*;
-import View.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -46,8 +45,9 @@ public class LevelController {
 	@FXML private Button listenButton;
 	@FXML private Shape ringShape;
 
+	private TestType type;
 	private int progress = 0;
-	private Question _currentLevelResult;
+	private Question _currentQuestion;
 	private Test _test;
 	private MediaPlayer _player;
 	private final String RECORDINGFILEPATH = "RecordingDir/foo.wav";
@@ -62,10 +62,11 @@ public class LevelController {
 	 * the difficulty is set and a new test is made
 	 * @param diff Difficulty of the test user wants to run (enum)
 	 */
-	public LevelController(Difficulty diff) {
+	public LevelController(Difficulty diff, TestType testType) {
 		_difficulty = diff;
 		_test = new Test(_difficulty);
-
+		type = testType;
+		
 		//generates a new directory
 		File recordingDir = new File("RecordingDir/");
 		if(!recordingDir.exists()) {
@@ -93,12 +94,18 @@ public class LevelController {
 	 * Learning how to use events.
 	 * @param event
 	 */
-	public void updateLabels(ActionEvent event) {
-		_currentLevelResult = new Question(_test.getdifficulty());	
-		//sets labels that show a number and the maori word corresponding to it
-		numberToTest.setText(Integer.toString(_currentLevelResult.question));
+	public void updateLabels() {
+		if (type == type.EQUATION) {
+			_currentQuestion = new Equation(_test.getdifficulty());
+		} else {
+			_currentQuestion = new Practice(_test.getdifficulty());
+		}
+		
+		
+		numberToTest.setText(_currentQuestion.getDisplayString());
+		_test.addTestQuestion(_currentQuestion);
 	}
-
+	
 	/**
 	 * Uses a bash command to take a new recording. This functionality will be run in a 
 	 * backgroud thread. Buttons (except return to main menu) will be disabled during the
@@ -214,35 +221,6 @@ public class LevelController {
 
 
 	/**
-	 * For now just having a play around - this method is called when the make random number
-	 * button is clicked and will show the number and the word of that number in maori.
-	 * Learning how to use events.
-	 * @param event
-	 */
-	public void nextLevel(ActionEvent event) {
-		//player will have to be initialised when the user takes a new recording.
-		_player = null;
-		//stores result of previous test in test model
-		_test.addTestQuestion(_currentLevelResult);
-		//instantiates a new result for the next level of the test
-		_currentLevelResult = new Question(_test.getdifficulty());
-		numberToTest.setText(Integer.toString(_currentLevelResult.question));
-		_test.addTestQuestion(_currentLevelResult);
-	}
-
-	/**
-	 * For now just having a play around - this method is called when the make random number
-	 * button is clicked and will show the number and the word of that number in maori.
-	 * Learning how to use events.
-	 * @param event
-	 */
-	public void updateLabels() {
-		_currentLevelResult = new Question(_test.getdifficulty());
-		numberToTest.setText(Integer.toString(_currentLevelResult.question));
-		_test.addTestQuestion(_currentLevelResult);
-	}
-
-	/**
 	 * Called only when the user is advancing to another question
 	 */
 	public void nextQuestion(ActionEvent event) {
@@ -255,7 +233,7 @@ public class LevelController {
 		if(progress == 10) {
 			showResults(event);
 		}
-		if(progress>10) {
+		if(progress > 10) {
 			throw new RuntimeException("Too many tests have been logged");
 		}
 
@@ -319,7 +297,7 @@ public class LevelController {
 		System.out.println("Checking recording check button");
 		Boolean correct = this.checkRecordingForWord();
 		if(correct) {
-			_currentLevelResult.setPass(true);
+			_currentQuestion.setPass(true);
 			chances = 2;
 			//green ring will appear if they have correctly answered question.
 			displayRing(_green);
@@ -330,7 +308,7 @@ public class LevelController {
 		else {
 			chances--;
 			if(chances == 0) {
-				_currentLevelResult.setPass(false);
+				_currentQuestion.setPass(false);
 				chances = 2;
 				//red ring will appear if they have no more chances.
 				displayRing(_red);
@@ -381,7 +359,7 @@ public class LevelController {
 			e.printStackTrace();
 		}
 
-		List<String> numberWord = _currentLevelResult.numberInSplitformat();
+		List<String> numberWord = _currentQuestion.numberInSplitformat();
 		for(String s:numberWord) {
 			if(!(output.contains(s))) {
 				System.out.println("word not there, exiting FALSE");
