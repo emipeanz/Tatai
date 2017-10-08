@@ -63,8 +63,8 @@ public class LevelController {
 	 */
 	public LevelController(Difficulty diff, TestType testType) {
 		_difficulty = diff;
-		_test = new Test(_difficulty);
 		type = testType;
+		_test = new Test(_difficulty);
 		
 		//generates a new directory
 		File recordingDir = new File("RecordingDir/");

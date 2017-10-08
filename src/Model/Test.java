@@ -6,10 +6,8 @@ package Model;
  * in the future.
  * @author Maddie Beagley and Emilie Pearce
  */
-import Controller.*;
-import View.*;
+
 import java.util.ArrayList;
-import java.util.Formatter;
 
 public class Test {
 	

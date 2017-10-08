@@ -69,7 +69,7 @@ public class DifficultyController {
 
 			// Get the main stage to display the scene in
 			Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
-			AnchorPane easyScene = null;
+			AnchorPane levelScene = null;
 
 			if (e.getSource().equals(easyButton)) {
 				difficulty = Difficulty.EASY;
@@ -85,11 +85,11 @@ public class DifficultyController {
 				LevelController controller = new LevelController(difficulty, testType);
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 				loader.setController(controller);
-				easyScene = loader.load();
+				levelScene = loader.load();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			Scene scene = new Scene(easyScene);
+			Scene scene = new Scene(levelScene);
 			stageEventBelongsTo.setScene(scene);
 		}
 
