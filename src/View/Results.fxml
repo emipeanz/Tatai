@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="resultsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="14.0" prefHeight="51.0" prefWidth="463.0" stylesheets="@application.css" textAlignment="CENTER" textFill="#f8f8f8" wrapText="true">
          <font>
@@ -20,11 +20,12 @@
          </font>
       </Button>
       <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="43.0" prefWidth="115.0" text="← Return" textAlignment="CENTER" />
-      <TableView fx:id="tableView" layoutX="191.0" layoutY="78.0" prefHeight="300.0" prefWidth="441.0">
+      <TableView fx:id="tableView" layoutX="191.0" layoutY="78.0" prefHeight="300.0" prefWidth="500.0">
          <columns>
             <TableColumn fx:id="question" prefWidth="144.0" text="Question" />
-            <TableColumn fx:id="answer" minWidth="6.0" prefWidth="215.0" text="Answer" />
-            <TableColumn fx:id="pass" editable="false" minWidth="0.0" prefWidth="78.0" sortable="false" text="Pass" />
+            <TableColumn fx:id="answerString" minWidth="6.0" prefWidth="199.0" text="Answer" />
+            <TableColumn fx:id="answerInt" editable="false" minWidth="0.0" prefWidth="90.0" sortable="false" />
+            <TableColumn fx:id="pass" prefWidth="75.0" text="Pass" />
          </columns>
       </TableView>
    </children>

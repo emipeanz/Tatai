@@ -25,6 +25,7 @@ public class Question {
 	protected String answerString;
 	//Answer as an integer
 	protected int answerInt;
+	
 	protected Difficulty _difficulty;
 
 	/**
@@ -152,6 +153,18 @@ public class Question {
 	
 	public int getAnswerInt() {
 		return answerInt;
+	}
+	
+	public void setDisplayString(String s) {
+		displayString = s;
+	}
+	
+	public void setAnswerString(String s) {
+		answerString = s;
+	}
+	
+	public void setAnswerInt(int i) {
+		answerInt = i;
 	}
 	
 	

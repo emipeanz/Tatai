@@ -40,7 +40,8 @@ public class ResultsController {
 	@FXML private Label resultsLabel;
 	@FXML private TableView<Question> tableView;
 	@FXML private TableColumn<Question, Integer> question;
-	@FXML private TableColumn<Question, String> answer;
+	@FXML private TableColumn<Question, String> answerString;
+	@FXML private TableColumn<Question, String> answerInt;
 	@FXML private TableColumn<Question, String> pass;
 
 	public File _resultsFile;
@@ -49,8 +50,9 @@ public class ResultsController {
 	private ObservableList<Question> _dataList;
 
 	public void initialize() {
-		question.setCellValueFactory(new PropertyValueFactory<>("question"));
-		answer.setCellValueFactory(new PropertyValueFactory<>("answer"));
+		question.setCellValueFactory(new PropertyValueFactory<>("displayString"));
+		answerString.setCellValueFactory(new PropertyValueFactory<>("answerString"));
+		answerInt.setCellValueFactory(new PropertyValueFactory<>("answerInt"));
 		pass.setCellValueFactory(new PropertyValueFactory<>("pass"));
 		_dataList = FXCollections.observableArrayList(_test.getTestquestions());
 		
