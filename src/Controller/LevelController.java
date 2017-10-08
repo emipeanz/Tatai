@@ -43,7 +43,9 @@ public class LevelController {
 	@FXML private Button recordButton;
 	@FXML private Button checkButton;
 	@FXML private Button listenButton;
-	@FXML private Shape ringShape;
+	@FXML private Label firstChance = new Label();
+	@FXML private Label secondChance = new Label();
+	@FXML private Label feedbackMessage;
 
 	private TestType type;
 	private int progress = 0;
@@ -53,9 +55,6 @@ public class LevelController {
 	private final String RECORDINGFILEPATH = "RecordingDir/foo.wav";
 	private Difficulty _difficulty;
 	private int chances = 2;
-	private Color _red = Color.web("e05050");
-	private Color _green = Color.web("87e56a");
-	private Color _orange = Color.web("f19d61");
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
@@ -75,17 +74,16 @@ public class LevelController {
 	}
 
 	/**
-	 * Makes the ring invisible until an answer is checked and initialises button visibility
-	 * so that user must start a level with only the option to record. Labels are updated
-	 * to display the current number and the progress bar is initialised.
+	 * Makes the various parts of the level scene invisible until they are needed further on
+	 * in the code.
 	 */
 	public void initialize() {
-		ringShape.setVisible(false);
 		updateLabels();
 		updateProgressBar();
 		checkButton.setDisable(true);
 		recordButton.setDisable(false);
 		listenButton.setDisable(true);
+		feedbackMessage.setVisible(false);
 	}
 
 	/**
@@ -95,6 +93,9 @@ public class LevelController {
 	 * @param event
 	 */
 	public void updateLabels() {
+		firstChance.setText("\uf10c");
+		secondChance.setText("\uf10c");
+		
 		if (type == type.EQUATION) {
 			_currentQuestion = new Equation(_test.getdifficulty());
 		} else {
@@ -144,22 +145,6 @@ public class LevelController {
 		});
 		//starts the thread running to take the recording.
 		record.start();	
-	}
-
-	/**
-	 * Causes ring to appear around number for a second in the specified colour.
-	 * @param color
-	 */
-	private void displayRing(Color color) {
-		//sets visibility and colour of ring
-		ringShape.setStroke(color);
-		ringShape.setVisible(true);
-		//makes ring visible for a second
-		PauseTransition pause = new PauseTransition(Duration.seconds(1));
-		pause.setOnFinished(event -> {
-			ringShape.setVisible(false);
-		});
-		pause.play();
 	}
 	
 	/**
@@ -219,8 +204,28 @@ public class LevelController {
 		progressBar.setProgress((double) progress / 10);
 	}
 
+	/**
+<<<<<<< HEAD
+=======
+	 * For now just having a play around - this method is called when the make random number
+	 * button is clicked and will show the number and the word of that number in maori.
+	 * Learning how to use events.
+	 * @param event
+	 */
+	public void nextLevel(ActionEvent event) {
+		//player will have to be initialised when the user takes a new recording.
+		_player = null;
+		//stores result of previous test in test model
+		_test.addTestQuestion(_currentQuestion);
+		//instantiates a new result for the next level of the test
+		_currentQuestion = new Question(_test.getdifficulty());
+		numberToTest.setText(Integer.toString(_currentQuestion.question));
+		_test.addTestQuestion(_currentQuestion);
+	}
+
 
 	/**
+>>>>>>> ChancesBranch
 	 * Called only when the user is advancing to another question
 	 */
 	public void nextQuestion(ActionEvent event) {
@@ -262,7 +267,6 @@ public class LevelController {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(resultsScene);
-		scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 	}
 
@@ -283,10 +287,8 @@ public class LevelController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
-
 
 	/**
 	 * Method checks if the recording the user wants tested if the correct pronunciation
@@ -297,32 +299,80 @@ public class LevelController {
 		System.out.println("Checking recording check button");
 		Boolean correct = this.checkRecordingForWord();
 		if(correct) {
+
 			_currentQuestion.setPass(true);
+
+			if(chances == 2) { // Got it right the first time
+				firstChance.setText("\uf05d");
+				// Do something to question object to show they got it right first time...
+			}
+			else { // Got it right the second time
+				secondChance.setText("\uf05d");
+			}
+			_currentQuestion.setPass(true);
+
 			chances = 2;
-			//green ring will appear if they have correctly answered question.
-			displayRing(_green);
-			this.nextQuestion(e);
+			feedbackMessage(true);
+			
+			PauseTransition delay = new PauseTransition(Duration.seconds(3));
+			delay.setOnFinished( event -> this.nextQuestion(e) );
+			delay.play();
+			
 			//checkButton.setDisable(true);
 			//listenButton.setDisable(true);
 		}
 		else {
+			if(chances == 2) { // Got it wrong the first time
+				firstChance.setText("\uf05c");
+			}
+			else { // Got it wrong the second time
+				secondChance.setText("\uf05c");
+			}
 			chances--;
 			if(chances == 0) {
 				_currentQuestion.setPass(false);
 				chances = 2;
 				//red ring will appear if they have no more chances.
-				displayRing(_red);
-				this.nextQuestion(e);
+				feedbackMessage(false);
+				
+				PauseTransition delay = new PauseTransition(Duration.seconds(3));
+				delay.setOnFinished( event -> this.nextQuestion(e) );
+				delay.play();
+				
 				//checkButton.setDisable(true);
 				//listenButton.setDisable(true);
 			} else {
 				//orange ring will appear if they still have a chance remaining.
-				displayRing(_orange);
+				feedbackMessage(false);
 				//checkButton.setDisable(true);
 				//listenButton.setDisable(true);
 			}
 		}
 
+	}
+
+	/**
+	 * This method handles showing the user their feedback based on what they pronounced
+	 * -- NEEDS WORK TO BE NICER FOR KIDS AND GIVES DIFFERENT FEEDBACK IF THEY ARE CLOSE
+	 * @param b
+	 */
+	private void feedbackMessage(boolean b) {
+		if(b) {
+			feedbackMessage.setText("Right!");
+			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
+		}
+		else if((!b) && (chances == 1)) {
+			feedbackMessage.setText("Close...");
+			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
+		}
+		else {
+			feedbackMessage.setText("Wrong");
+			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
+		}
+		feedbackMessage.setVisible(true);
+		PauseTransition delay = new PauseTransition(Duration.seconds(3));
+		delay.setOnFinished( event -> feedbackMessage.setVisible(false) );
+		delay.play();
 	}
 
 	/**

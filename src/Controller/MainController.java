@@ -26,10 +26,11 @@ import javafx.stage.Stage;
 public class MainController{
 
 	@FXML private LevelController levelController;
-	@FXML public Button hardButton = new Button();
-	@FXML public Label hardText = new Label();
+	@FXML private Button hardButton = new Button();
+	@FXML private Label hardText = new Label();
 	@FXML private Button easyButton;
-
+	@FXML private Label hardLockSymbol = new Label();
+	
 	private Difficulty _difficulty;
 	private boolean unlocked = false;
 
@@ -49,6 +50,7 @@ public class MainController{
 			//hard level will only be accessible when user has got 8 questions in a round
 			if (highScore >= 8) {
 				unlocked = true;
+				hardLockSymbol.setText("\uf09c");
 			} 
 		} catch(IOException e) {
 
@@ -86,7 +88,6 @@ public class MainController{
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(easyScene);
-		scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 
 	}
@@ -120,7 +121,6 @@ public class MainController{
 				e1.printStackTrace();
 			}
 			Scene scene = new Scene(hardScene);
-			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 			stageEventBelongsTo.setScene(scene);
 		}
 	}
@@ -140,7 +140,6 @@ public class MainController{
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(statsScene);
-		scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 	}
 

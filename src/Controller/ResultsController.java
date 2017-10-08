@@ -108,7 +108,6 @@ public class ResultsController {
 		Scene mainMenuScene = null;
 		try {
 			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
-			mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -143,7 +142,6 @@ public class ResultsController {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(hardScene);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);		
 	}
 

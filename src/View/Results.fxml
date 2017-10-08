@@ -14,18 +14,19 @@
             <Font size="42.0" />
          </font>
       </Label>
-      <Button fx:id="tryAgainButton" layoutX="345.0" layoutY="399.0" minHeight="115.0" minWidth="115.0" mnemonicParsing="false" onAction="#restartTest" prefHeight="115.0" prefWidth="115.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,#36d1dc, #5b86e5 );" text="Try Again">
+      <Button fx:id="tryAgainButton" layoutX="345.0" layoutY="399.0" minHeight="115.0" minWidth="115.0" mnemonicParsing="false" onAction="#restartTest" prefHeight="115.0" prefWidth="115.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,#36d1dc, #5b86e5 );" text="">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
-      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="43.0" prefWidth="115.0" text="← Return" textAlignment="CENTER" />
-      <TableView fx:id="tableView" layoutX="191.0" layoutY="78.0" prefHeight="300.0" prefWidth="500.0">
+      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <TableView fx:id="tableView" layoutX="103.0" layoutY="77.0" prefHeight="300.0" prefWidth="650.0">
+
          <columns>
             <TableColumn fx:id="question" prefWidth="144.0" text="Question" />
-            <TableColumn fx:id="answerString" minWidth="6.0" prefWidth="199.0" text="Answer" />
-            <TableColumn fx:id="answerInt" editable="false" minWidth="0.0" prefWidth="90.0" sortable="false" />
-            <TableColumn fx:id="pass" prefWidth="75.0" text="Pass" />
+            <TableColumn fx:id="answerString" minWidth="6.0" prefWidth="336.0" text="Answer" />
+            <TableColumn fx:id="answerInt" editable="false" minWidth="0.0" prefWidth="65.0" sortable="false" />
+            <TableColumn fx:id="pass" prefWidth="99.0" text="Pass" />
          </columns>
       </TableView>
    </children>

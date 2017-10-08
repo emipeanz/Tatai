@@ -67,7 +67,6 @@ public class StatsController {
 		Scene mainMenuScene = null;
 		try {
 			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
-			mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
