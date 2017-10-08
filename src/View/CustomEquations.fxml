@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="128.0" layoutY="25.0" text="Enter questions below!" textAlignment="CENTER" textFill="WHITE">
          <font>
@@ -17,56 +16,69 @@
             <DropShadow />
          </effect>
       </Label>
-      <TextField alignment="CENTER" layoutX="107.0" layoutY="96.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
+      <TextField alignment="CENTER" layoutX="98.0" layoutY="99.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="107.0" layoutY="290.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
+      <TextField alignment="CENTER" layoutX="98.0" layoutY="293.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="107.0" layoutY="241.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
+      <TextField alignment="CENTER" layoutX="98.0" layoutY="244.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="107.0" layoutY="193.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
+      <TextField alignment="CENTER" layoutX="98.0" layoutY="196.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="107.0" layoutY="145.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
+      <TextField alignment="CENTER" layoutX="98.0" layoutY="148.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="332.0" layoutY="96.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
+      <TextField alignment="CENTER" layoutX="323.0" layoutY="99.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="332.0" layoutY="290.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
+      <TextField alignment="CENTER" layoutX="323.0" layoutY="293.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="332.0" layoutY="241.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
+      <TextField alignment="CENTER" layoutX="323.0" layoutY="244.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="332.0" layoutY="193.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
+      <TextField alignment="CENTER" layoutX="323.0" layoutY="196.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="332.0" layoutY="145.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
+      <TextField alignment="CENTER" layoutX="323.0" layoutY="148.0" prefHeight="29.0" prefWidth="140.0" promptText="equation">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="222.0" layoutY="357.0" text="blah blah error message label" textAlignment="CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="359.0" text="blah blah error message label" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="equation1" layoutX="253.0" layoutY="110.0" text="Label" />
+      <Label fx:id="equation2" layoutX="253.0" layoutY="159.0" text="Label" />
+      <Label fx:id="equation3" layoutX="253.0" layoutY="207.0" text="Label" />
+      <Label fx:id="equation4" layoutX="253.0" layoutY="255.0" text="Label" />
+      <Label fx:id="equation5" layoutX="253.0" layoutY="304.0" text="Label" />
+      <Label fx:id="equation6" layoutX="482.0" layoutY="110.0" text="Label" />
+      <Label fx:id="equation7" layoutX="482.0" layoutY="159.0" text="Label" />
+      <Label fx:id="equation8" layoutX="482.0" layoutY="207.0" text="Label" />
+      <Label fx:id="equation9" layoutX="482.0" layoutY="255.0" text="Label" />
+      <Label fx:id="equation10" layoutX="482.0" layoutY="304.0" text="Label" />
    </children>
 </AnchorPane>

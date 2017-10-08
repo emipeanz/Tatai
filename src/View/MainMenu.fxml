@@ -12,16 +12,16 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
    <children>
-      <Button id="menuCircleButtons" fx:id="easyButton" layoutX="166.0" layoutY="274.0" mnemonicParsing="false" onAction="#easyButtonEvent" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
+      <Button id="menuCircleButtons" fx:id="practiceButton" layoutX="166.0" layoutY="274.0" mnemonicParsing="false" onAction="#enterDifficultyOption" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" layoutX="2.0" layoutY="39.0" text="Ngawari">
+                  <Label fx:id="maoriTranslation" layoutX="2.0" layoutY="39.0" text="Practice">
                      <font>
                         <Font name="System Bold" size="29.0" />
                      </font>
@@ -38,14 +38,14 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="menuCircleButtons" fx:id="hardButton" layoutX="493.0" layoutY="264.0" mnemonicParsing="false" onAction="#hardButtonEvent" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
+      <Button id="menuCircleButtons" fx:id="playButton" layoutX="493.0" layoutY="264.0" mnemonicParsing="false" onAction="#enterDifficultyOption" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
          <font>
             <Font size="24.0" />
          </font>
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="8.0" layoutY="85.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="He Uaua" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="8.0" layoutY="85.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="Play" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="29.0" />
                      </font>
@@ -53,7 +53,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
                         <Insets bottom="14.0" />
                      </padding>
                   </Label>
-                  <Label id="Font" fx:id="hardLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="20.0" prefHeight="52.0" prefWidth="39.0" text="&#xf023;" textAlignment="CENTER" textFill="#252525">
+                  <Label id="Font" fx:id="hardLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="20.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525">
                      <font>
                         <Font size="41.0" />
                      </font>
@@ -70,7 +70,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="336.0" layoutY="179.0" text="Pick a Level" textFill="WHITE">
+      <Label layoutX="336.0" layoutY="179.0" text="Pick a Game" textFill="WHITE">
          <font>
             <Font size="34.0" />
          </font>
@@ -83,10 +83,5 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
             <Font name="FontAwesome Regular" size="44.0" />
          </font>
       </Button>
-      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="134.0" layoutY="455.0" text="You have to get 8/10 on Easy before you can do Hard!" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
