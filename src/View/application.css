@@ -140,3 +140,14 @@
 	-fx-font-family: FontAwesome;
 	-fx-font-size: 80px;
 }
+
+#dialogueCircleButton{
+	-fx-background-radius: 6em; 
+    -fx-min-width: 100px; 
+    -fx-min-height: 100px; 
+    -fx-max-width: 100px; 
+    -fx-max-height: 100px; 
+    -fx-background-insets: 0px; 
+    -fx-padding: 0px;
+}
+

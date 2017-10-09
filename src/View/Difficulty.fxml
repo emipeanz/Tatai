@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button id="menuCircleButtons" fx:id="easyButton" layoutX="163.0" layoutY="228.0" mnemonicParsing="false" onAction="#enterTest" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
@@ -61,7 +61,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button id="menuCircleButtons" fx:id="customButton" layoutX="335.0" layoutY="41.0" mnemonicParsing="false" onAction="#enterCustom" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
+      <Button id="menuCircleButtons" fx:id="customButton" layoutX="335.0" layoutY="41.0" mnemonicParsing="false" onAction="#enterCustom" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #00c6ff,#0072ff);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -76,7 +76,7 @@
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="-23.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525fc">
+                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="-23.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525fc">
                      <font>
                         <Font size="41.0" />
                      </font>

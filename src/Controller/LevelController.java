@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
@@ -47,7 +48,10 @@ public class LevelController {
 	@FXML private Label firstChance = new Label();
 	@FXML private Label secondChance = new Label();
 	@FXML private Label feedbackMessage;
-
+	@FXML private DialogPane dialogueCheckExit;
+	@FXML private Button dialogueCheckExitExit;
+	@FXML private Button dialogueCheckExitStay;
+	
 	private TestType type;
 	private int progress = 0;
 	private Question _currentQuestion;
@@ -276,11 +280,19 @@ public class LevelController {
 	 * displayed and the level view is taken away
 	 * @param event
 	 */
-	public void returnMainMenu(ActionEvent event) {
+	public void backButtonEvent(ActionEvent event) {
 		System.out.println("Event triggering return to main menu");
 
-		// Get the main stage to display the scene in
-		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		dialogueCheckExit.setVisible(true);
+	}
+	
+	public void returnToGame(ActionEvent e) {
+		dialogueCheckExit.setVisible(false);
+		return;
+	}
+	
+	public void returnToMainMenu(ActionEvent e) {
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
 		Scene mainMenuScene = null;
 		try {
@@ -288,6 +300,7 @@ public class LevelController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 
