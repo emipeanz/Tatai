@@ -21,9 +21,11 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -39,7 +41,6 @@ import javafx.util.Duration;
 public class LevelController {
 	
 	@FXML private Label numberToTest;
-	@FXML private ProgressBar progressBar;
 	@FXML private Label progressLabel;
 	@FXML private Button backButton;
 	@FXML private Button recordButton;
@@ -52,7 +53,9 @@ public class LevelController {
 	@FXML private Button dialogueCheckExitExit;
 	@FXML private Button dialogueCheckExitStay;
 	@FXML private AnchorPane helpWindow;
-	
+	@FXML private Circle circle1, circle2, circle3, circle4, 
+		circle5, circle6, circle7, circle8, circle9, circle10;
+
 	private TestType type;
 	private int progress = 0;
 	private Question _currentQuestion;
@@ -61,6 +64,10 @@ public class LevelController {
 	private final String RECORDINGFILEPATH = "RecordingDir/foo.wav";
 	private Difficulty _difficulty;
 	private int chances = 2;
+	private Color red = Color.web("ef473a");
+	private Color green = Color.web("56ab2f");
+	private List<Circle> progressCircles;
+	
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
@@ -85,11 +92,13 @@ public class LevelController {
 	 */
 	public void initialize() {
 		updateLabels();
-		updateProgressBar();
 		checkButton.setDisable(true);
 		recordButton.setDisable(false);
 		listenButton.setDisable(true);
 		feedbackMessage.setVisible(false);
+		
+		progressCircles = new ArrayList<Circle>(Arrays.asList(circle1, circle2,
+				circle3, circle4, circle5, circle6, circle7, circle8, circle9, circle10));
 	}
 
 	/**
@@ -203,16 +212,17 @@ public class LevelController {
 	 * Updates the state of the progress bar. Tracks how many rounds of the
 	 * level have been made.
 	 */
-	private void updateProgressBar() {
+	private void updateProgressBar(Color color) {
 		progress = _test.getNumberofRound();
 		System.out.println("test round = " + _test.getNumberofRound());
 		progressLabel.setText("Round " + progress + "/10");
-		progressBar.setProgress((double) progress / 10);
+		
+		Circle circle =	progressCircles.get(_test.getNumberofRound());
+		
+		circle.setFill(color);
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * For now just having a play around - this method is called when the make random number
 	 * button is clicked and will show the number and the word of that number in maori.
 	 * Learning how to use events.
@@ -239,7 +249,12 @@ public class LevelController {
 		System.out.println("next level progress = " + progress);
 		progress += 0.1;
 		this.updateLabels();
-		this.updateProgressBar();
+		
+		if (_currentQuestion.getPassBoolean() == false) {
+			updateProgressBar(red);
+		} else {
+			updateProgressBar(green);
+		}
 
 		if(progress == 10) {
 			showResults(event);
@@ -314,7 +329,7 @@ public class LevelController {
 		System.out.println("Checking recording check button");
 		Boolean correct = this.checkRecordingForWord();
 		if(correct) {
-
+			
 			_currentQuestion.setPass(true);
 
 			if(chances == 2) { // Got it right the first time
