@@ -122,6 +122,10 @@ public class Question {
 			return "Wrong";
 		}
 	}
+	
+	public boolean getPassBoolean() {
+		return pass;
+	}
 
 	public int getQuestion() {
 		return this.question;
