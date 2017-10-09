@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.nio.file.Paths;
 
@@ -409,8 +410,10 @@ public class LevelController {
 			e.printStackTrace();
 		}
 
-		List<String> numberWord = _currentQuestion.numberInSplitformat();
-		for(String s:numberWord) {
+		String numberWord = _currentQuestion.getAnswerString();
+		String[] split = numberWord.split("\\s+");
+		List<String> list = Arrays.asList(split);
+		for(String s:split) {
 			if(!(output.contains(s))) {
 				System.out.println("word not there, exiting FALSE");
 				return false;

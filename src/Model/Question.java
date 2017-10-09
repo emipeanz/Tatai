@@ -16,7 +16,6 @@ public class Question {
 	//integer value of the number that is the answer
 	public Integer question;
 	//maori word expecting to hear back
-	public String answer = "";
 	public boolean pass;
 
 	//String that is displayed onscreen during a level
@@ -36,7 +35,6 @@ public class Question {
 	 */
 	public Question(Difficulty difficulty) {
 		_difficulty = difficulty;
-
 	}
 	
 	public int randomNumber(int max) {
@@ -116,10 +114,6 @@ public class Question {
 		question = i;
 	}
 	
-	public void setAnswer(String s) {
-		answer = s;
-	}
-	
 	public String getPass() {
 		if(pass==true) {
 			return "Right!";
@@ -132,16 +126,6 @@ public class Question {
 	public int getQuestion() {
 		return this.question;
 	}
-	
-	public String getAnswer() {
-		return this.answer;
-	}
-	
-	public List<String> numberInSplitformat() {
-		String[] split = answer.split("\\s+");
-		return Arrays.asList(split);
-	}
-	
 	
 	public String getDisplayString() {
 		return displayString;

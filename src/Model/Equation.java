@@ -13,32 +13,35 @@ public class Equation extends Question {
 
 	public Equation(Difficulty difficulty) {
 		super(difficulty);
-
-		if (difficulty == difficulty.HARD) {
-			equationOperator = operators[randomNumber(3) - 1];
-		} else {
-			equationOperator = operators[randomNumber(2) - 1];
-		}
+		max = difficulty.getMax();
+		System.out.println("max = " + (max));
 		
-		equationString = randomNumber(max) + equationOperator + randomNumber(max);
-
-		//evaluates equation
-		try {
-			ScriptEngineManager mgr = new ScriptEngineManager();
-			ScriptEngine engine = mgr.getEngineByName("JavaScript");
-			answerInt = (int) engine.eval(equationString);
-			
-			while ((answerInt <= 0) && (answerInt >= max)){
-				equationString = randomNumber(max) + equationOperator + randomNumber(max);
-				answerInt = (int) engine.eval(equationString);
+		while (!((answerInt>0) && (answerInt<max+1))) {
+			if (difficulty == difficulty.HARD) {
+				equationOperator = operators[randomNumber(3) - 1];
+			} else {
+				equationOperator = operators[randomNumber(2) - 1];
 			}
-		} catch (ScriptException e) {
+			System.out.println("EQUASION-----------------------------------------------------");
+			System.out.println("operator = " + equationOperator);
+			equationString = randomNumber(max) + equationOperator + randomNumber(max);
+			System.out.println("equasion string = " + equationString);
+
+			//evaluates equation
+			try {
+				ScriptEngineManager mgr = new ScriptEngineManager();
+				ScriptEngine engine = mgr.getEngineByName("JavaScript");
+				answerInt = (int) engine.eval(equationString);
+				System.out.println("answer int = " + answerInt);
+
+			} catch (ScriptException e) {
+			}
 		}
 
 		//stores answer as a string
 		answerString = numberToWord(answerInt);
 		//stores equation as a string to display - doesn't have * 
-		displayString = equationString.replaceAll("*", "x");
+		displayString = equationString.replaceAll("\\*", "x");
 	}
 
 }
