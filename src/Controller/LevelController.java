@@ -217,9 +217,11 @@ public class LevelController {
 		System.out.println("test round = " + _test.getNumberofRound());
 		progressLabel.setText("Round " + progress + "/10");
 		
-		Circle circle =	progressCircles.get(_test.getNumberofRound());
+		System.out.println("number of round: " + _test.getNumberofRound());
+		Circle circle =	progressCircles.get(_test.getNumberofRound() - 1);
 		
 		circle.setFill(color);
+		circle.setStroke(color);
 	}
 
 	/**
@@ -250,11 +252,6 @@ public class LevelController {
 		progress += 0.1;
 		this.updateLabels();
 		
-		if (_currentQuestion.getPassBoolean() == false) {
-			updateProgressBar(red);
-		} else {
-			updateProgressBar(green);
-		}
 
 		if(progress == 10) {
 			showResults(event);
@@ -331,6 +328,7 @@ public class LevelController {
 		if(correct) {
 			
 			_currentQuestion.setPass(true);
+			updateProgressBar(green);
 
 			if(chances == 2) { // Got it right the first time
 				firstChance.setText("\uf05d");
@@ -361,6 +359,7 @@ public class LevelController {
 			chances--;
 			if(chances == 0) {
 				_currentQuestion.setPass(false);
+				updateProgressBar(red);
 				chances = 2;
 				//red ring will appear if they have no more chances.
 				feedbackMessage(false);
