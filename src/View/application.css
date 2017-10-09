@@ -55,7 +55,7 @@
 	-fx-font-size: 30px;
 }
 
-.button:hover{
+.button:hover, #infoIcon{
 	-fx-scale-y: 1.1;
     -fx-scale-x: 1.1;
 }
