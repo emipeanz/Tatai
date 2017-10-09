@@ -51,6 +51,7 @@ public class LevelController {
 	@FXML private DialogPane dialogueCheckExit;
 	@FXML private Button dialogueCheckExitExit;
 	@FXML private Button dialogueCheckExitStay;
+	@FXML private AnchorPane helpWindow;
 	
 	private TestType type;
 	private int progress = 0;
@@ -434,6 +435,14 @@ public class LevelController {
 		}
 		System.out.println("word there, exiting TRUE");
 		return true;
+	}
+	
+	public void showInstructions() {
+		helpWindow.setVisible(true);
+	}
+	
+	public void hideInstructions() {
+		helpWindow.setVisible(false);
 	}
 
 

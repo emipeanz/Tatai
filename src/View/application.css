@@ -48,13 +48,11 @@
 #backButton{
 	-fx-border-color: #000000;
 	-fx-border-width: 2px;
-	-fx-border-radius: 20px;
-	-fx-background-radius: 2em; 
+	-fx-border-radius: 60px;
+	-fx-background-radius: 5em; 
 	-fx-font-weight: BOLD;
 	-fx-font-family: FontAwesome;
 	-fx-font-size: 30px;
-	
-	
 }
 
 .button:hover{
@@ -151,3 +149,7 @@
     -fx-padding: 0px;
 }
 
+#smallFont{
+	-fx-font-family: FontAwesome;
+	-fx-font-size: 15px;
+}
