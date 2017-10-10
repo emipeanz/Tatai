@@ -17,7 +17,7 @@
          <font>
             <Font name="System Bold" size="23.0" />
          </font></Label>
-      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="31.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="31.0">
+      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="17.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="17.0">
          <font>
             <Font size="110.0" />
          </font>
@@ -67,7 +67,12 @@
             <Circle fx:id="chanceCircle2" fill="#ffffff00" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
          </children>
       </HBox>
-      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="60.0" prefHeight="222.0" prefWidth="803.0" textAlignment="CENTER" textFill="#252525">
+      <Label layoutX="367.0" layoutY="210.0" text="Chances" textFill="#f5f3f3">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="53.0" prefHeight="222.0" prefWidth="803.0" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="56.0" />
          </font>
