@@ -20,13 +20,17 @@ public class DifficultyController {
 
 	@FXML private Button easyButton;
 	@FXML private Button hardButton;
+	@FXML private Button mediumButton;
 	@FXML private Button customButton;
 	@FXML private Label hardText;
 	@FXML private Label hardLockSymbol = new Label();
+	@FXML private Label medLockSymbol = new Label();
+	
 
 	private TestType testType;
 	private Difficulty difficulty;
-	private boolean unlocked = false;
+	private boolean hardUnlocked = false;
+	private boolean medUnlocked = false;
 
 	public DifficultyController(TestType type) {
 		testType = type;
@@ -46,12 +50,22 @@ public class DifficultyController {
 
 		try {
 			//checks the current highscore
-			String highScoreString = Files.readAllLines(Paths.get(".results.txt")).get(1);
-			int highScore = Integer.parseInt(highScoreString);
+			String highScoreMedString = Files.readAllLines(Paths.get(".mediumResults.txt")).get(1);
+			int highScoreMed = Integer.parseInt(highScoreMedString);
 
 			//hard level will only be accessible when user has got 8 questions in a round
-			if (highScore >= 8) {
-				unlocked = true;
+			if (highScoreMed >= 8) {
+				medUnlocked = true;
+				medLockSymbol.setText("\uf09c");
+			}
+			
+			//checks the current highscore
+			String highScoreHardString = Files.readAllLines(Paths.get(".hardResults.txt")).get(1);
+			int highScoreHard = Integer.parseInt(highScoreHardString);
+
+			//hard level will only be accessible when user has got 8 questions in a round
+			if (highScoreHard >= 8) {
+				hardUnlocked = true;
 				hardLockSymbol.setText("\uf09c");
 			} 
 		} catch(IOException e) {
@@ -65,7 +79,9 @@ public class DifficultyController {
 	 * @param e ActionEvent when easyButton is clicked
 	 */
 	public void enterTest(ActionEvent e) {
-		if ((e.getSource().equals(hardButton) && unlocked) || (e.getSource().equals(easyButton))) {
+		if ((e.getSource().equals(hardButton) && hardUnlocked) ||
+				(e.getSource().equals(mediumButton) && medUnlocked) || 
+				(e.getSource().equals(easyButton))) {
 
 			// Get the main stage to display the scene in
 			Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
@@ -75,6 +91,8 @@ public class DifficultyController {
 				difficulty = Difficulty.EASY;
 			} else if (e.getSource().equals(hardButton)) {
 				difficulty = Difficulty.HARD;
+			} else if (e.getSource().equals(mediumButton)) {
+				difficulty = Difficulty.MEDIUM;
 			}
 
 			System.out.println(testType);
@@ -133,7 +151,7 @@ public class DifficultyController {
 	 * Displays the text telling user that they need 8+ in a round to progress to hard level.
 	 */
 	public void showHardText() {
-		if (!unlocked) { 
+		if (!hardUnlocked) { 
 			hardText.setVisible(true);
 		}
 	}
@@ -142,7 +160,7 @@ public class DifficultyController {
 	 * Hides text telling user that they need 8+ in a round to progress to hard level.
 	 */
 	public void hideHardText() {
-		if (!unlocked) {
+		if (!hardUnlocked) {
 			hardText.setVisible(false);
 		}
 	}

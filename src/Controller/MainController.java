@@ -38,11 +38,14 @@ public class MainController{
 		File tmpfile;
 		String filename;
 
+		//cycles through to ensure that there is a file ready to store results
 		for (String difficulty : difficulties) {
 			filename = "." + difficulty + "Results.txt";
 			tmpfile = new File(filename);
+			//checks if file exists
 			if (!tmpfile.exists()) {
 				try {
+					//if file doesn't exist write all zeroes as initial results
 					Files.write(Paths.get(filename), Arrays.asList("0", "0", "0", "0"));
 				} catch (IOException e) {
 					e.printStackTrace();
