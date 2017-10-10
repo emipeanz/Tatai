@@ -32,10 +32,18 @@
             <Font size="80.0" />
          </font>
       </Button>
-      <Button id="circleButton" fx:id="checkButton" layoutX="567.0" layoutY="285.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ec79f4,  #a250ff);" text="" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="checkButton" layoutX="567.0" layoutY="285.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ec79f4,  #a250ff);" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
+         <graphic>
+            <AnchorPane id="circleButton" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="7.0" layoutY="-7.0" text="" />
+                  <Label layoutX="56.0" layoutY="37.0" text="" />
+               </children>
+            </AnchorPane>
+         </graphic>
       </Button>
       <Label id="Font" fx:id="infoIcon" layoutX="779.0" layoutY="-2.0" onMouseEntered="#showInstructions" onMouseExited="#hideInstructions" text="" textFill="#f8f8f8" />
       <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
