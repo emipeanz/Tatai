@@ -19,7 +19,7 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <TableView fx:id="tableView" layoutX="103.0" layoutY="77.0" prefHeight="300.0" prefWidth="650.0">
 
          <columns>

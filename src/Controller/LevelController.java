@@ -374,15 +374,15 @@ public class LevelController {
 	 */
 	private void feedbackMessage(boolean b) {
 		if(b) {
-			feedbackMessage.setText("Right!");
+			feedbackMessage.setText("You got the answer right!");
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
 		}
 		else if((!b) && (chances == 1)) {
-			feedbackMessage.setText("Close...");
+			feedbackMessage.setText("Close... try agian");
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
 		}
 		else {
-			feedbackMessage.setText("Wrong");
+			feedbackMessage.setText("Oops, wrong. \nThe answer is " + _currentQuestion.getAnswerInt());
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
 		}
 		feedbackMessage.setVisible(true);
@@ -447,4 +447,5 @@ public class LevelController {
 	}
 
 
+	
 }

@@ -37,8 +37,8 @@
             <Font size="80.0" />
          </font>
       </Button>
-      <Label id="Font" fx:id="infoIcon" layoutX="772.0" layoutY="10.0" onMouseEntered="#showInstructions" onMouseExited="#hideInstructions" text="" textFill="#f8f8f8" />
-      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <Label id="Font" fx:id="infoIcon" layoutX="779.0" layoutY="-2.0" onMouseEntered="#showInstructions" onMouseExited="#hideInstructions" text="" textFill="#f8f8f8" />
+      <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <HBox fx:id="progressBar" layoutX="224.0" layoutY="447.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
          <children>
             <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
@@ -59,7 +59,7 @@
             <Circle fx:id="chanceCircle2" fill="#ffffff00" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
          </children>
       </HBox>
-      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="165.0" layoutY="78.0" prefHeight="113.0" prefWidth="528.0" textAlignment="CENTER" textFill="#252525">
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="60.0" prefHeight="222.0" prefWidth="803.0" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="56.0" />
          </font>
