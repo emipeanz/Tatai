@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="resultsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="14.0" prefHeight="51.0" prefWidth="463.0" stylesheets="@application.css" textAlignment="CENTER" textFill="#f8f8f8" wrapText="true">
          <font>
@@ -19,14 +19,14 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <TableView fx:id="tableView" layoutX="103.0" layoutY="77.0" prefHeight="300.0" prefWidth="650.0">
 
          <columns>
-            <TableColumn fx:id="question" prefWidth="144.0" text="Question" />
-            <TableColumn fx:id="answerString" minWidth="6.0" prefWidth="336.0" text="Answer" />
-            <TableColumn fx:id="answerInt" editable="false" minWidth="0.0" prefWidth="65.0" sortable="false" />
-            <TableColumn fx:id="pass" prefWidth="99.0" text="Pass" />
+            <TableColumn fx:id="question" editable="false" prefWidth="144.0" sortable="false" text="Question" />
+            <TableColumn fx:id="answerString" editable="false" minWidth="6.0" prefWidth="320.0" sortable="false" text="Answer" />
+            <TableColumn fx:id="answerInt" editable="false" minWidth="0.0" prefWidth="81.0" sortable="false" />
+            <TableColumn fx:id="pass" editable="false" prefWidth="99.0" sortable="false" text="Pass" />
          </columns>
       </TableView>
    </children>

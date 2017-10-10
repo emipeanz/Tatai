@@ -21,6 +21,8 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class CustomEquationController {
@@ -28,20 +30,22 @@ public class CustomEquationController {
 	@FXML private TextField equation1,equation2, equation3, equation4, equation5, 
 	equation6, equation7, equation8, equation9, equation10;
 	@FXML private List<TextField> equationList;
-	@FXML private Label equationLabel1, equationLabel2, equationLabel3, equationLabel4, equationLabel5, 
-	equationLabel6, equationLabel7, equationLabel8, equationLabel9, equationLabel10;
-	@FXML private List<Label> labelList;
+	@FXML private Circle equationCircle1, equationCircle2, equationCircle3, equationCircle4, equationCircle5, 
+	equationCircle6, equationCircle7, equationCircle8, equationCircle9, equationCircle10;
+	@FXML private List<Circle> circleList;
 	@FXML private AnchorPane helpWindow;
 	@FXML private DialogPane dialogueCheckExit;
 	@FXML private Button dialogueCheckExitExit;
 	@FXML private Button dialogueCheckExitStay;
 	@FXML private Button checkEquationsButton;
+	@FXML private Label errorMessage;
 	
 	public void initialize() {
+		errorMessage.setVisible(false);
 		equationList = new ArrayList<TextField>(Arrays.asList(equation1,equation2, equation3, equation4, equation5, 
 				equation6, equation7, equation8, equation9, equation10));
-		labelList = new ArrayList<Label>(Arrays.asList(equationLabel1, equationLabel2, equationLabel3, equationLabel4, equationLabel5, 
-				equationLabel6, equationLabel7, equationLabel8, equationLabel9, equationLabel10));
+		circleList = new ArrayList<Circle>(Arrays.asList(equationCircle1, equationCircle2, equationCircle3, equationCircle4, equationCircle5, 
+				equationCircle6, equationCircle7, equationCircle8, equationCircle9, equationCircle10));
 		
 		BooleanBinding bool = equation1.textProperty().isEmpty().or(equation2.textProperty().isEmpty())
 				.or(equation3.textProperty().isEmpty()).or(equation4.textProperty().isEmpty())
@@ -54,6 +58,7 @@ public class CustomEquationController {
 	
 	public void checkEquations(ActionEvent e) {
 		int i = 0;
+		int corrrectEquations = 0;
 		for (TextField t : equationList) {
 			String currentEquation = t.getText();
 			try {
@@ -64,14 +69,25 @@ public class CustomEquationController {
 				System.out.println("answer int = " + answerInt);
 				
 				if((answerInt>0) && (answerInt<100)) {
-					this.changeFeedbackIcon(labelList.get(i), true);
+					this.changeFeedbackIcon(circleList.get(i), true);
+					corrrectEquations++;
 				}
 				else {
-					this.changeFeedbackIcon(labelList.get(i), false);
+					this.changeFeedbackIcon(circleList.get(i), false);
 				}
 			} catch (ScriptException e1) {
-				e1.printStackTrace();
+				System.out.println("non equasion entered on equasion " + (i + 1));
+				this.changeFeedbackIcon(circleList.get(i), false);
 			}
+			i++;
+		}
+		if(corrrectEquations != 10) {
+			errorMessage.setText("There are some problems with some equation, please fix and try again");
+			errorMessage.setVisible(true);
+		}
+		else {
+			errorMessage.setText("All your equations are good");
+			errorMessage.setVisible(true);
 		}
 	}
 	
@@ -112,12 +128,14 @@ public class CustomEquationController {
 		helpWindow.setVisible(false);
 	}
 	
-	public void changeFeedbackIcon(Label iconLabel, boolean pass) {
+	public void changeFeedbackIcon(Circle iconCircle, boolean pass) {
 		if(pass) { // Sets circle to tick
-			iconLabel.setText("\uf05d");
+			iconCircle.setStroke(Color.web("56ab2f"));
+			iconCircle.setFill(Color.web("56ab2f"));
 		}
 		else { // Sets circle to cross
-			iconLabel.setText("\uf05c");
+			iconCircle.setStroke(Color.web("ef473a"));
+			iconCircle.setFill(Color.web("ef473a"));
 		}
 	}
 	

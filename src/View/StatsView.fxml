@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle id="roundedSquare" arcHeight="5.0" arcWidth="5.0" height="213.0" layoutX="51.0" layoutY="209.0" stroke="#00000002" strokeType="INSIDE" width="214.0">
          <fill>
@@ -40,37 +40,59 @@
                </stops>
             </RadialGradient>
          </fill></Rectangle>
+
       <Label fx:id="highScore" alignment="CENTER" contentDisplay="CENTER" layoutX="334.0" layoutY="184.0" prefHeight="204.0" prefWidth="153.0" text="0" textAlignment="CENTER">
+      <Label fx:id="highScore" alignment="CENTER" contentDisplay="CENTER" layoutX="301.0" layoutY="190.0" prefHeight="191.0" prefWidth="220.0" text="0" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="140.0" />
          </font>
       </Label>
+
       <Label fx:id="averageScore" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="232.0" prefHeight="146.0" prefWidth="142.0" text="0" textAlignment="CENTER">
+
+      <Label fx:id="averageScore" alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="230.0" prefHeight="111.0" prefWidth="170.0" text="0" textAlignment="CENTER">
+
          <font>
             <Font name="System Bold" size="100.0" />
          </font>
       </Label>
+
       <Label fx:id="testsTaken" alignment="CENTER" contentDisplay="CENTER" layoutX="590.0" layoutY="230.0" prefHeight="111.0" prefWidth="153.0" text="0" textAlignment="CENTER">
+
+      <Label fx:id="testsTaken" alignment="CENTER" contentDisplay="CENTER" layoutX="549.0" layoutY="223.0" prefHeight="118.0" prefWidth="198.0" text="0" textAlignment="CENTER">
+
          <font>
             <Font name="System Bold" size="100.0" />
          </font>
       </Label>
+
       <Label layoutX="354.0" layoutY="358.0" text="Tohu Nui!">
+
+      <Label layoutX="364.0" layoutY="350.0" text="Tohu Nui!">
+
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+
       <Label layoutX="115.0" layoutY="361.0" text="Toharite">
+
+      <Label layoutX="130.0" layoutY="336.0" text="Toharite">
+
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
+
       <Label layoutX="606.0" layoutY="351.0" text="Te maha o nga &#10;whakamatautau" textAlignment="CENTER">
+
+      <Label layoutX="584.0" layoutY="325.0" text="Te maha o nga &#10;whakamatautau" textAlignment="CENTER">
+
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button id="backButton" fx:id="backButton" layoutX="16.0" layoutY="15.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <Slider fx:id="slider" blockIncrement="1.0" layoutX="295.0" layoutY="95.0" majorTickUnit="1.0" max="2.0" minorTickCount="0" prefHeight="14.0" prefWidth="231.0" showTickMarks="true" snapToTicks="true" />
       <Label layoutX="274.0" layoutY="56.0" text="Easy" textFill="WHITE">
          <font>
