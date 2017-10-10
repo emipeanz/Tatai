@@ -13,7 +13,7 @@
 
 <AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="progressLabel" layoutX="343.0" layoutY="475.0" text="Round 1/10" textFill="WHITE">
+      <Label fx:id="progressLabel" layoutX="291.0" layoutY="475.0" text="A tawhio noa 1/10" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font></Label>
@@ -67,12 +67,12 @@
             <Circle fx:id="chanceCircle2" fill="#ffffff00" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
          </children>
       </HBox>
-      <Label layoutX="367.0" layoutY="210.0" text="Chances" textFill="#f5f3f3">
+      <Label layoutX="387.0" layoutY="210.0" text="āhei" textFill="#f5f3f3">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="53.0" prefHeight="222.0" prefWidth="803.0" textAlignment="CENTER" textFill="#252525">
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="23.0" layoutY="53.0" prefHeight="222.0" prefWidth="803.0" textAlignment="CENTER" textFill="#252525" visible="false">
          <font>
             <Font size="56.0" />
          </font>
@@ -102,17 +102,17 @@
          <content>
             <AnchorPane prefHeight="205.0" prefWidth="382.0">
                <children>
-                  <Label layoutX="29.0" layoutY="25.0" text="Are you sure you want to quit?&#10;Your progress will not be saved">
+                  <Label layoutX="29.0" layoutY="25.0" text="Kei te hiahia koe kia mutu?&#10;Kaore to maangaranga e tiakina." textAlignment="CENTER">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Button id="dialogueCircleButton" fx:id="dialogueCheckExitExit" layoutX="34.0" layoutY="111.0" mnemonicParsing="false" onAction="#returnToMainMenu" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #e0eafc, #cfdef3);" text="Exit">
+                  <Button id="dialogueCircleButton" fx:id="dialogueCheckExitExit" layoutX="34.0" layoutY="111.0" mnemonicParsing="false" onAction="#returnToMainMenu" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #e0eafc, #cfdef3);" text="Haere&#10;atu" textAlignment="CENTER">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button id="dialogueCircleButton" fx:id="dialogueCheckExitStay" layoutX="245.0" layoutY="111.0" mnemonicParsing="false" onAction="#returnToGame" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ece9e6, #ffffff);" text="Stay &#10;Here">
+                  <Button id="dialogueCircleButton" fx:id="dialogueCheckExitStay" layoutX="245.0" layoutY="111.0" mnemonicParsing="false" onAction="#returnToGame" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ece9e6, #ffffff);" text="Noho i&#10;konei">
                      <font>
                         <Font size="22.0" />
                      </font>
