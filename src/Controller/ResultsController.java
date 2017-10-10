@@ -49,7 +49,7 @@ public class ResultsController {
 	private Difficulty _difficulty;
 	private ObservableList<Question> _dataList;
 	private TestType _testType;
-	
+
 
 	public void initialize() {
 		question.setCellValueFactory(new PropertyValueFactory<>("displayString"));
@@ -158,7 +158,7 @@ public class ResultsController {
 		//will only store results if the test was using equations
 		if (_testType == _testType.EQUATION) {
 			String filename;
-			
+
 			if (_difficulty == _difficulty.EASY) {
 				filename = ".easyResults.txt";
 			} else if (_difficulty == _difficulty.HARD) {
@@ -172,54 +172,45 @@ public class ResultsController {
 
 			try {
 				//if file exists update the results
-				if (temp.exists()) {
-					System.out.println("file has already been made");
 
-					//finds previous high score and converts it to an integer
-					String highScoreString;
-					highScoreString = Files.readAllLines(Paths.get(filename)).get(1);
-					int previousHighScore = Integer.parseInt(highScoreString);
+				System.out.println("file has already been made");
 
-					//finds previous number of tests run and converts to an integer
-					String numOfTestsString = Files.readAllLines(Paths.get(filename)).get(2);
-					int previousNumOfTests = Integer.parseInt(numOfTestsString);
+				//finds previous high score and converts it to an integer
+				String highScoreString;
+				highScoreString = Files.readAllLines(Paths.get(filename)).get(1);
+				int previousHighScore = Integer.parseInt(highScoreString);
 
-					//finds previous number of tests run and converts to an integer
-					String cumulativeResultsString = Files.readAllLines(Paths.get(filename)).get(3);
-					int cumulativeResults = Integer.parseInt(cumulativeResultsString);
+				//finds previous number of tests run and converts to an integer
+				String numOfTestsString = Files.readAllLines(Paths.get(filename)).get(2);
+				int previousNumOfTests = Integer.parseInt(numOfTestsString);
 
-					//creates a list to store the new results in
-					List<String> newResults = new ArrayList<String>();
+				//finds previous number of tests run and converts to an integer
+				String cumulativeResultsString = Files.readAllLines(Paths.get(filename)).get(3);
+				int cumulativeResults = Integer.parseInt(cumulativeResultsString);
 
-					//computes average score
-					double averageScore = (_test.getOverallMark() + cumulativeResults) / (previousNumOfTests + 1);
-					newResults.add(String.format("%.1f", averageScore));
+				//creates a list to store the new results in
+				List<String> newResults = new ArrayList<String>();
 
-					//sees if a new highscore has been made
-					if (_test.getOverallMark() > previousHighScore ) {
-						newResults.add(String.valueOf(_test.getOverallMark()));
-					} else {
-						newResults.add(String.valueOf(previousHighScore));
-					}
+				//computes average score
+				double averageScore = (_test.getOverallMark() + cumulativeResults) / (previousNumOfTests + 1);
+				newResults.add(String.format("%.1f", averageScore));
 
-					//new number of tests that have been made
-					newResults.add(String.valueOf(previousNumOfTests + 1));
-					System.out.println(String.valueOf(previousNumOfTests + 1));	
-
-					//writes in new results to file
-					Files.write(Paths.get(filename), newResults);
+				//sees if a new highscore has been made
+				if (_test.getOverallMark() > previousHighScore ) {
+					newResults.add(String.valueOf(_test.getOverallMark()));
 				} else {
-					System.out.println("Making file");
-					//creates a new file to store results in
-					_resultsFile = new File(filename);		
-
-					//score from current round is stored
-					String score = String.valueOf(_test.getOverallMark());		
-
-					//writes information from current round to new file
-					//highscore, averagescore, number of tests, cumulative score
-					Files.write(Paths.get(filename), Arrays.asList(score, score, "1", score));
+					newResults.add(String.valueOf(previousHighScore));
 				}
+
+				//new number of tests that have been made
+				newResults.add(String.valueOf(previousNumOfTests + 1));
+				System.out.println(String.valueOf(previousNumOfTests + 1));	
+				
+				newResults.add(String.valueOf(cumulativeResults + _test.getOverallMark()));
+
+				//writes in new results to file
+				Files.write(Paths.get(filename), newResults);
+
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

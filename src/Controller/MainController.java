@@ -1,11 +1,16 @@
 package Controller;
 
+import java.io.File;
 /**
  * This class is the main controller for the main menu. After the first scene has shown the titles and 
  * transitioned, this controller handles going to a hard, easy or stats page.
  * @author Maddie Beagley and Emilie Pearce
  */
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
 import Model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,8 +29,27 @@ public class MainController{
 
 	@FXML private Button practiceButton;
 	@FXML private Button playButton;
-	
+
 	private TestType testType;
+
+	//makes sure files exist for results to be stored in for easy hard and medium
+	public void initialize() {
+		String[] difficulties = {"easy", "medium", "hard"};		
+		File tmpfile;
+		String filename;
+
+		for (String difficulty : difficulties) {
+			filename = "." + difficulty + "Results.txt";
+			tmpfile = new File(filename);
+			if (!tmpfile.exists()) {
+				try {
+					Files.write(Paths.get(filename), Arrays.asList("0", "0", "0", "0"));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
 	/**
 	 * This method directs the user to the easy test screen.  A custom controller is made with
@@ -36,13 +60,13 @@ public class MainController{
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 		AnchorPane difficultyScene = null;
-		
+
 		if (e.getSource().equals(practiceButton)) {
 			testType = TestType.PRACTICE;
 		} else if (e.getSource().equals(playButton)) {
 			testType = TestType.EQUATION;
 		}
-		
+
 		try {
 			DifficultyController controller = new DifficultyController(testType);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Difficulty.fxml"));
