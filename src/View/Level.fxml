@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="progressLabel" layoutX="343.0" layoutY="475.0" text="Round 1/10" textFill="WHITE">
          <font>
@@ -27,12 +27,12 @@
             <Font size="80.0" />
          </font>
       </Button>
-      <Button id="circleButton" fx:id="recordButton" layoutX="347.0" layoutY="286.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ff6d6d, #cb2d3e);" text="" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="recordButton" layoutX="347.0" layoutY="286.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #44ffd3, #0fb7ff);" text="" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
       </Button>
-      <Button id="circleButton" fx:id="checkButton" layoutX="567.0" layoutY="285.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,  #56ab2f);" text="" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="checkButton" layoutX="567.0" layoutY="285.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ec79f4,  #a250ff);" text="" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
