@@ -8,9 +8,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import java.nio.file.Paths;
 
 import javafx.animation.PauseTransition;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +56,7 @@ public class LevelController {
 	@FXML private Button dialogueCheckExitExit;
 	@FXML private Button dialogueCheckExitStay;
 	@FXML private AnchorPane helpWindow;
+	@FXML private ProgressBar recordingProgress;
 	@FXML private Circle chanceCircle1, chanceCircle2;
 	@FXML private Circle circle1, circle2, circle3, circle4, 
 		circle5, circle6, circle7, circle8, circle9, circle10;
@@ -93,11 +97,13 @@ public class LevelController {
 	 * in the code.
 	 */
 	public void initialize() {
+
 		addNewQuestionToTest();
 		checkButton.setDisable(true);
 		recordButton.setDisable(false);
 		listenButton.setDisable(true);
 		feedbackMessage.setVisible(false);
+		recordingProgress.setVisible(false);
 		
 		progressCircles = new ArrayList<Circle>(Arrays.asList(circle1, circle2,
 				circle3, circle4, circle5, circle6, circle7, circle8, circle9, circle10));
@@ -130,6 +136,7 @@ public class LevelController {
 	 * @param e
 	 */
 	public void takeRecording(ActionEvent e) {
+		recordingProgressBar();
 		String cmd = "arecord -d 5 -r 22050 -c 1 -i -t wav -f s16_LE  " + RECORDINGFILEPATH;
 
 		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
@@ -436,6 +443,39 @@ public class LevelController {
 		}
 		System.out.println("word there, exiting TRUE");
 		return true;
+	}
+	
+	public void recordingProgressBar() {
+		System.out.println("entering progress bar method");
+		
+		recordingProgress.setVisible(true);
+		
+		int recordingTimeSecs = 5;
+		int recordingTimeMsecs = recordingTimeSecs * 100;
+		int max = 100;
+		
+        Task<Void> task = new Task<Void>(){
+            @Override
+            public Void call(){
+                for (int i = 1; i <= 100; i++)    {
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    updateProgress(i , 100);
+                }
+            recordingProgress.setVisible(false);
+            return null;                
+            }
+        };
+
+        
+        recordingProgress.progressProperty().bind(task.progressProperty());
+
+        Thread th = new Thread(task);
+        th.setDaemon(true);
+        th.start();
 	}
 	
 	public void showInstructions() {
