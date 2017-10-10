@@ -72,17 +72,17 @@
       </Label>
       <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <Slider fx:id="slider" blockIncrement="1.0" layoutX="295.0" layoutY="95.0" majorTickUnit="1.0" max="2.0" minorTickCount="0" prefHeight="14.0" prefWidth="231.0" showTickMarks="true" snapToTicks="true" />
-      <Label layoutX="274.0" layoutY="56.0" text="Easy" textFill="WHITE">
+      <Label layoutX="245.0" layoutY="56.0" text="Ngawari" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="363.0" layoutY="56.0" text="Medium" textFill="WHITE">
+      <Label layoutX="369.0" layoutY="56.0" text="Waenga" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="491.0" layoutY="56.0" text="Hard" textFill="WHITE">
+      <Label layoutX="491.0" layoutY="56.0" text="He pakeke" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
