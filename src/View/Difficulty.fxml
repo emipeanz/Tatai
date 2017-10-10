@@ -2,11 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button id="menuCircleButtons" fx:id="easyButton" layoutX="152.0" layoutY="179.0" mnemonicParsing="false" onAction="#enterTest" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
@@ -61,7 +62,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button id="menuCircleButtons" fx:id="customButton" layoutX="335.0" layoutY="41.0" mnemonicParsing="false" onAction="#enterCustom" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #00c6ff,#0072ff);" text="&#10;" textAlignment="CENTER">
+      <Button id="menuCircleButtons" fx:id="customButton" layoutX="335.0" layoutY="41.0" mnemonicParsing="false" onAction="#customButtonEvent" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #00c6ff,#0072ff);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -86,14 +87,14 @@
          </graphic>
       </Button>
       <Button id="backButton" fx:id="backButton" layoutX="24.0" layoutY="26.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
-      <Button id="menuCircleButtons" fx:id="mediumButton" layoutX="336.0" layoutY="275.0" mnemonicParsing="false" onAction="#enterTest" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
+      <Button id="menuCircleButtons" fx:id="mediumButton" layoutX="336.0" layoutY="275.0" mnemonicParsing="false" onAction="#enterTest" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #98f263,#b1d802);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation2" layoutX="25.0" layoutY="42.0" text="Reo" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation2" layoutX="8.0" layoutY="54.0" text="Reo" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="29.0" />
                      </font>
@@ -101,7 +102,7 @@
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label id="Font" fx:id="medLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="-23.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525fc">
+                  <Label id="Font" fx:id="medLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="-11.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525fc">
                      <font>
                         <Font size="41.0" />
                      </font>
@@ -110,5 +111,28 @@
             </AnchorPane>
          </graphic>
       </Button>
+      <DialogPane fx:id="customDialog" layoutX="233.0" layoutY="99.0" prefHeight="232.0" prefWidth="392.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 5em; -fx-background-radius: 6em;" visible="false">
+         <content>
+            <AnchorPane prefHeight="205.0" prefWidth="382.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="79.0" layoutY="23.0" text="Do you want to Play or&#10;Create?" textAlignment="CENTER">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+                  <Button id="dialogueCircleButton" fx:id="playCustomButton" layoutX="34.0" layoutY="111.0" mnemonicParsing="false" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,#ff6a00, #ee0979);" text="Play">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+                  <Button id="dialogueCircleButton" fx:id="createCustomButton" layoutX="245.0" layoutY="111.0" mnemonicParsing="false" onAction="#enterCustom" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #6dd5ed, #2193b0);" text="Create">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content>
+      </DialogPane>
    </children>
 </AnchorPane>

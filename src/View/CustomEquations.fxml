@@ -7,11 +7,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomEquationController">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomEquationController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="35.0" text="Enter questions below!" textAlignment="CENTER" textFill="WHITE">
          <font>
@@ -71,20 +72,10 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="450.0" text="blah blah error message label" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="errorMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="421.0" prefHeight="21.0" prefWidth="647.0" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label id="smallFont" fx:id="equationLabel1" layoutX="308.0" layoutY="135.0" text="" textFill="#fcfafa" />
-      <Label id="smallFont" fx:id="equationLabel2" layoutX="308.0" layoutY="184.0" text="" textFill="#fcfafa" />
-      <Label id="smallFont" fx:id="equationLabel3" layoutX="308.0" layoutY="232.0" text="" textFill="#fcfafa" />
-      <Label id="smallFont" fx:id="equationLabel4" layoutX="308.0" layoutY="280.0" text="" textFill="#fcfafa" />
-      <Label id="smallFont" fx:id="equationLabel5" layoutX="308.0" layoutY="329.0" text="" textFill="#fcfafa" />
-      <Label id="smallFont" fx:id="equationLabel6" layoutX="594.0" layoutY="135.0" text="" textFill="#fcfafa" />
-      <Label id="smallFont" fx:id="equationLabel7" layoutX="594.0" layoutY="184.0" text="" textFill="#fcfafa" />
-      <Label id="smallFont" fx:id="equationLabel8" layoutX="594.0" layoutY="232.0" text="" textFill="#fcfafa" />
-      <Label id="smallFont" fx:id="equationLabel9" layoutX="594.0" layoutY="280.0" text="" textFill="#fcfafa" />
-      <Label id="smallFont" fx:id="equationLabel10" layoutX="594.0" layoutY="329.0" text="" textFill="#fcfafa" />
       <Button id="circleButton" fx:id="checkEquationsButton" layoutX="647.0" layoutY="176.0" mnemonicParsing="false" onAction="#checkEquations" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,  #56ab2f);" text="">
          <font>
             <Font size="7.0" />
@@ -92,6 +83,16 @@
       </Button>
       <Label id="Font" fx:id="infoIcon" layoutX="780.0" layoutY="2.0" onMouseEntered="#showInstructions" onMouseExited="#hideInstructions" text="" textFill="#f8f8f8" />
       <Button id="backButton" fx:id="backButton" layoutX="8.0" layoutY="9.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <Circle fx:id="equationCircle1" fill="#ffffff00" layoutX="317.0" layoutY="152.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+      <Circle fx:id="equationCircle2" fill="#ffffff00" layoutX="316.0" layoutY="202.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+      <Circle fx:id="equationCircle3" fill="#ffffff00" layoutX="317.0" layoutY="251.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+      <Circle fx:id="equationCircle4" fill="#ffffff00" layoutX="317.0" layoutY="298.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+      <Circle fx:id="equationCircle5" fill="#ffffff00" layoutX="318.0" layoutY="345.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+      <Circle fx:id="equationCircle6" fill="#ffffff00" layoutX="606.0" layoutY="150.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+      <Circle fx:id="equationCircle7" fill="#ffffff00" layoutX="605.0" layoutY="200.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+      <Circle fx:id="equationCircle8" fill="#ffffff00" layoutX="606.0" layoutY="249.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+      <Circle fx:id="equationCircle9" fill="#ffffff00" layoutX="606.0" layoutY="296.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+      <Circle fx:id="equationCircle10" fill="#ffffff00" layoutX="607.0" layoutY="343.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
       <AnchorPane fx:id="helpWindow" layoutX="383.0" layoutY="19.0" prefHeight="150.0" prefWidth="397.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="32.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
