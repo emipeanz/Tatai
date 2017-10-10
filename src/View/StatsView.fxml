@@ -12,66 +12,66 @@
 
 <AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle id="roundedSquare" arcHeight="5.0" arcWidth="5.0" height="220.0" layoutX="60.0" layoutY="208.0" stroke="#00000002" strokeType="INSIDE" width="220.0">
+      <Rectangle id="roundedSquare" arcHeight="5.0" arcWidth="5.0" height="191.0" layoutX="76.0" layoutY="171.0" stroke="#00000002" strokeType="INSIDE" width="189.0">
          <fill>
             <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                <stops>
-                  <Stop color="WHITE" />
+                  <Stop color="#ffbb47" />
                   <Stop color="#fffc00" offset="1.0" />
                </stops>
             </RadialGradient>
          </fill></Rectangle>
-      <Rectangle id="roundedSquare" arcHeight="5.0" arcWidth="5.0" height="220.0" layoutX="543.0" layoutY="208.0" stroke="#00000003" strokeType="INSIDE" width="220.0">
+      <Rectangle id="roundedSquare" arcHeight="5.0" arcWidth="5.0" height="191.0" layoutX="559.0" layoutY="171.0" stroke="#00000003" strokeType="INSIDE" width="189.0">
          <fill>
             <RadialGradient centerX="0.5055555555555555" centerY="0.5" radius="0.5">
                <stops>
                   <Stop color="BLACK" />
-                  <Stop color="#c9acfa" offset="0.007662835249042145" />
+                  <Stop color="#ff6bf5" offset="0.007662835249042145" />
                   <Stop color="#bf36f5" offset="1.0" />
                </stops>
             </RadialGradient>
          </fill></Rectangle>
-      <Rectangle id="roundedSquare" fx:id="roundedSquare" arcHeight="5.0" arcWidth="5.0" height="220.0" layoutX="300.0" layoutY="208.0" stroke="#827f7f00" strokeType="INSIDE" width="220.0">
+      <Rectangle id="roundedSquare" fx:id="roundedSquare" arcHeight="5.0" arcWidth="5.0" height="220.0" layoutX="300.0" layoutY="156.0" stroke="#827f7f00" strokeType="INSIDE" width="220.0">
          <fill>
             <RadialGradient centerX="0.5055555555555555" centerY="0.5" radius="0.5">
                <stops>
                   <Stop color="BLACK" />
-                  <Stop color="#fbfffc" offset="0.007662835249042145" />
+                  <Stop color="#93ff59" offset="0.007662835249042145" />
                   <Stop color="#25b254" offset="1.0" />
                </stops>
             </RadialGradient>
          </fill></Rectangle>
-      <Label fx:id="highScore" alignment="CENTER" contentDisplay="CENTER" layoutX="373.0" layoutY="204.0" text="0" textAlignment="CENTER">
+      <Label fx:id="highScore" alignment="CENTER" contentDisplay="CENTER" layoutX="373.0" layoutY="152.0" text="0" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="130.0" />
          </font>
       </Label>
-      <Label fx:id="averageScore" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="244.0" text="0" textAlignment="CENTER">
+      <Label fx:id="averageScore" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="192.0" text="0" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="76.0" />
          </font>
       </Label>
-      <Label fx:id="testsTaken" alignment="CENTER" contentDisplay="CENTER" layoutX="631.0" layoutY="244.0" text="0" textAlignment="CENTER">
+      <Label fx:id="testsTaken" alignment="CENTER" contentDisplay="CENTER" layoutX="630.0" layoutY="187.0" text="0" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="76.0" />
          </font>
       </Label>
-      <Label layoutX="361.0" layoutY="358.0" text="High Score!">
+      <Label layoutX="361.0" layoutY="306.0" text="High Score!">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="109.0" layoutY="358.0" text="Average Score">
+      <Label layoutX="110.0" layoutY="298.0" text="Average Score">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="602.0" layoutY="363.0" text="Tests Taken">
+      <Label layoutX="602.0" layoutY="298.0" text="Tests Taken">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="236.0" layoutY="101.0" text="Your Scores..." textFill="WHITE">
+      <Label layoutX="237.0" layoutY="407.0" text="Your Scores..." textFill="WHITE">
          <font>
             <Font name="System Bold" size="55.0" />
          </font>
@@ -80,7 +80,7 @@
          </effect>
       </Label>
       <Button id="backButton" fx:id="backButton" layoutX="16.0" layoutY="15.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
-      <Slider fx:id="slider" blockIncrement="1.0" layoutX="296.0" layoutY="77.0" majorTickUnit="1.0" max="2.0" minorTickCount="0" onDragDone="#showResults" prefHeight="14.0" prefWidth="231.0" showTickMarks="true" snapToTicks="true" />
+      <Slider fx:id="slider" blockIncrement="1.0" layoutX="296.0" layoutY="77.0" majorTickUnit="1.0" max="2.0" minorTickCount="0" prefHeight="14.0" prefWidth="231.0" showTickMarks="true" snapToTicks="true" />
       <Label layoutX="275.0" layoutY="38.0" text="Easy" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
