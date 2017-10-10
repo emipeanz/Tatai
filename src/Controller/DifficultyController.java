@@ -42,8 +42,10 @@ public class DifficultyController {
 	 * been set to true.
 	 */
 	public void initialize() {
+		//these are not valid options for a practice test
 		if (testType == testType.PRACTICE) {
 			customButton.setVisible(false);
+			mediumButton.setVisible(false);
 		}
 
 		hardText.setVisible(false);
