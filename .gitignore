@@ -7,6 +7,9 @@ GoSpeech
 user/
 .results.txt
 readme.txt
+.easyResults.txt
+.hardResults.txt
+.mediumResults.txt
 
 # Compiled class file
 *.class
