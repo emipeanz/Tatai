@@ -14,7 +14,7 @@
 
 <AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomEquationController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="26.0" text="Enter questions below!" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="21.0" text="Tāurutia ngā pātai i raro nei!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
@@ -22,52 +22,52 @@
             <DropShadow />
          </effect>
       </Label>
-      <TextField fx:id="equation1" alignment="CENTER" layoutX="79.0" layoutY="208.0" prefHeight="33.0" prefWidth="216.0" promptText="equation">
+      <TextField fx:id="equation1" alignment="CENTER" layoutX="79.0" layoutY="208.0" prefHeight="33.0" prefWidth="216.0" promptText="Whārite 1">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation5" alignment="CENTER" layoutX="79.0" layoutY="402.0" prefHeight="29.0" prefWidth="216.0" promptText="equation">
+      <TextField fx:id="equation5" alignment="CENTER" layoutX="79.0" layoutY="402.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 5">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation4" alignment="CENTER" layoutX="79.0" layoutY="353.0" prefHeight="29.0" prefWidth="216.0" promptText="equation">
+      <TextField fx:id="equation4" alignment="CENTER" layoutX="79.0" layoutY="353.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 4">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation3" alignment="CENTER" layoutX="79.0" layoutY="305.0" prefHeight="29.0" prefWidth="216.0" promptText="equation">
+      <TextField fx:id="equation3" alignment="CENTER" layoutX="79.0" layoutY="305.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 3">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation2" alignment="CENTER" layoutX="79.0" layoutY="257.0" prefHeight="29.0" prefWidth="216.0" promptText="equation">
+      <TextField fx:id="equation2" alignment="CENTER" layoutX="79.0" layoutY="257.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 2">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation6" alignment="CENTER" layoutX="366.0" layoutY="207.0" prefHeight="29.0" prefWidth="216.0" promptText="equation">
+      <TextField fx:id="equation6" alignment="CENTER" layoutX="366.0" layoutY="207.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 6">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation10" alignment="CENTER" layoutX="366.0" layoutY="401.0" prefHeight="29.0" prefWidth="216.0" promptText="equation">
+      <TextField fx:id="equation10" alignment="CENTER" layoutX="366.0" layoutY="401.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 10">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation9" alignment="CENTER" layoutX="366.0" layoutY="352.0" prefHeight="29.0" prefWidth="216.0" promptText="equation">
+      <TextField fx:id="equation9" alignment="CENTER" layoutX="366.0" layoutY="352.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 9">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation8" alignment="CENTER" layoutX="366.0" layoutY="304.0" prefHeight="29.0" prefWidth="216.0" promptText="equation">
+      <TextField fx:id="equation8" alignment="CENTER" layoutX="366.0" layoutY="304.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 8">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation7" alignment="CENTER" layoutX="366.0" layoutY="256.0" prefHeight="29.0" prefWidth="216.0" promptText="equation">
+      <TextField fx:id="equation7" alignment="CENTER" layoutX="366.0" layoutY="256.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 7">
          <font>
             <Font size="18.0" />
          </font>
@@ -93,11 +93,6 @@
       <Circle fx:id="equationCircle8" fill="#ffffff00" layoutX="607.0" layoutY="321.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
       <Circle fx:id="equationCircle9" fill="#ffffff00" layoutX="607.0" layoutY="368.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
       <Circle fx:id="equationCircle10" fill="#ffffff00" layoutX="608.0" layoutY="415.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-      <Label alignment="CENTER" layoutX="76.0" layoutY="60.0" prefHeight="131.0" prefWidth="692.0" text="Make 10 equations with answers between 1-99&#10;Use symbols +, - and *&#10;Click the check when you want to check your equations. Any red &#10;circles means the equation does not have an answer between 1-99 or&#10;it is not a valid equation" textAlignment="CENTER" textFill="#f5f5f5">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
       <AnchorPane fx:id="helpWindow" layoutX="383.0" layoutY="19.0" prefHeight="150.0" prefWidth="397.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="32.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
@@ -123,17 +118,17 @@
          <content>
             <AnchorPane prefHeight="205.0" prefWidth="382.0">
                <children>
-                  <Label layoutX="29.0" layoutY="25.0" text="Are you sure you want to quit?&#10;Your test will not be saved">
+                  <Label layoutX="29.0" layoutY="25.0" text="Kei te hiahia koe kia mutu?&#10;Kaore e tiakina to whakamatau" textAlignment="CENTER">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Button id="dialogueCircleButton" fx:id="dialogueCheckExitExit" layoutX="34.0" layoutY="111.0" mnemonicParsing="false" onAction="#returnToMainMenu" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #e0eafc, #cfdef3);" text="Exit">
+                  <Button id="dialogueCircleButton" fx:id="dialogueCheckExitExit" layoutX="34.0" layoutY="111.0" mnemonicParsing="false" onAction="#returnToMainMenu" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #e0eafc, #cfdef3);" text="Tuhinga">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button id="dialogueCircleButton" fx:id="dialogueCheckExitStay" layoutX="245.0" layoutY="111.0" mnemonicParsing="false" onAction="#returnToGame" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ece9e6, #ffffff);" text="Stay &#10;Here">
+                  <Button id="dialogueCircleButton" fx:id="dialogueCheckExitStay" layoutX="245.0" layoutY="111.0" mnemonicParsing="false" onAction="#returnToGame" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ece9e6, #ffffff);" text="Haere &#10;atu" textAlignment="CENTER">
                      <font>
                         <Font size="22.0" />
                      </font>

@@ -82,7 +82,7 @@ public class ResultsController {
 
 
 		tableView.setItems(_dataList);
-		resultsLabel.setText("You got " + _test.getOverallMark() + "/10 !");
+		resultsLabel.setText("Kua " + _test.getOverallMark() + "/10 koe!");
 
 		//saves results of this round to file for use in stats menu
 		saveResults();

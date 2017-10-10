@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
    <children>
       <Label layoutX="110.0" layoutY="208.0" text="Uru Ki Te Tātai!" textFill="#fffafa">
          <font>
@@ -14,11 +14,6 @@
          <effect>
             <DropShadow />
          </effect>
-      </Label>
-      <Label layoutX="288.0" layoutY="300.0" text="Welcome to Tātai!" textFill="WHITE">
-         <font>
-            <Font size="28.0" />
-         </font>
       </Label>
    </children>
 </AnchorPane>

@@ -244,7 +244,7 @@ public class LevelController {
 			throw new RuntimeException("Too many tests have been logged");
 		}
 		this.addNewQuestionToTest();
-		progressLabel.setText("Round " + progress + "/10");
+		progressLabel.setText("A tawhio noa" + progress + "/10");
 		
 		// Resets chances
 		chanceCircle1.setStroke(white);
@@ -381,15 +381,15 @@ public class LevelController {
 	 */
 	private void feedbackMessage(boolean b) {
 		if(b) {
-			feedbackMessage.setText("You got the answer right!");
+			feedbackMessage.setText("I tika koe i te whakautu!");
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
 		}
 		else if((!b) && (chances == 1)) {
-			feedbackMessage.setText("Close... try agian");
+			feedbackMessage.setText("Kati ... tamata ano");
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
 		}
 		else {
-			feedbackMessage.setText("Oops, wrong. \nThe answer is " + _currentQuestion.getAnswerInt());
+			feedbackMessage.setText("Kaore, he he. \nKo te whakautu he " + _currentQuestion.getAnswerInt());
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
 		}
 		feedbackMessage.setVisible(true);

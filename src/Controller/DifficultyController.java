@@ -61,7 +61,6 @@ public class DifficultyController {
 			//hard level will only be accessible when user has got 8 questions in a round
 			if (highScoreMed >= 8) {
 				medUnlocked = true;
-				medLockSymbol.setText("\uf09c");
 			}
 			
 			//checks the current highscore
@@ -71,7 +70,6 @@ public class DifficultyController {
 			//hard level will only be accessible when user has got 8 questions in a round
 			if (highScoreHard >= 8) {
 				hardUnlocked = true;
-				hardLockSymbol.setText("\uf09c");
 			} 
 		} catch(IOException e) {
 		}
@@ -119,20 +117,16 @@ public class DifficultyController {
 	}
 
 	public void customButtonEvent(ActionEvent e) {
-		customDialog.setVisible(true);
-	}
-
-	public void enterCustom(ActionEvent e) {
 		System.out.println("Enter Custom view");
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
 		Scene mainMenuScene = null;
 		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/CustomEquations.fxml")));
+			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/CustomMenu.fxml")));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		stageEventBelongsTo.setScene(mainMenuScene);		
+		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 
 	/**

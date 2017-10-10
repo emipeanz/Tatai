@@ -23,10 +23,10 @@
       <TableView fx:id="tableView" layoutX="103.0" layoutY="77.0" prefHeight="300.0" prefWidth="650.0">
 
          <columns>
-            <TableColumn fx:id="question" editable="false" prefWidth="144.0" sortable="false" text="Question" />
-            <TableColumn fx:id="answerString" editable="false" minWidth="6.0" prefWidth="320.0" sortable="false" text="Answer" />
+            <TableColumn fx:id="question" editable="false" prefWidth="144.0" sortable="false" text="Pātai" />
+            <TableColumn fx:id="answerString" editable="false" minWidth="6.0" prefWidth="320.0" sortable="false" text="Whakautu" />
             <TableColumn fx:id="answerInt" editable="false" minWidth="0.0" prefWidth="81.0" sortable="false" />
-            <TableColumn fx:id="pass" editable="false" prefWidth="99.0" sortable="false" text="Pass" />
+            <TableColumn fx:id="pass" editable="false" prefWidth="99.0" sortable="false" text="Taka" />
          </columns>
       </TableView>
    </children>
