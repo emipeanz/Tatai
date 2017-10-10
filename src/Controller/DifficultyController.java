@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -25,6 +27,7 @@ public class DifficultyController {
 	@FXML private Label hardText;
 	@FXML private Label hardLockSymbol = new Label();
 	@FXML private Label medLockSymbol = new Label();
+	@FXML private DialogPane customDialog;
 	
 
 	private TestType testType;
@@ -115,6 +118,9 @@ public class DifficultyController {
 
 	}
 
+	public void customButtonEvent(ActionEvent e) {
+		customDialog.setVisible(true);
+	}
 
 	public void enterCustom(ActionEvent e) {
 		System.out.println("Enter Custom view");

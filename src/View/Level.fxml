@@ -11,13 +11,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="progressLabel" layoutX="343.0" layoutY="475.0" text="Round 1/10" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font></Label>
-      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="31.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="31.0">
+      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="17.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="17.0">
          <font>
             <Font size="110.0" />
          </font>
@@ -27,18 +27,26 @@
             <Font size="80.0" />
          </font>
       </Button>
-      <Button id="circleButton" fx:id="recordButton" layoutX="347.0" layoutY="286.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ff6d6d, #cb2d3e);" text="" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="recordButton" layoutX="347.0" layoutY="286.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #44ffd3, #0fb7ff);" text="" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
       </Button>
-      <Button id="circleButton" fx:id="checkButton" layoutX="567.0" layoutY="285.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,  #56ab2f);" text="" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="checkButton" layoutX="567.0" layoutY="285.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ec79f4,  #a250ff);" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
+         <graphic>
+            <AnchorPane id="circleButton" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="7.0" layoutY="-7.0" text="" />
+                  <Label layoutX="56.0" layoutY="37.0" text="" />
+               </children>
+            </AnchorPane>
+         </graphic>
       </Button>
-      <Label id="Font" fx:id="infoIcon" layoutX="772.0" layoutY="10.0" onMouseEntered="#showInstructions" onMouseExited="#hideInstructions" text="" textFill="#f8f8f8" />
-      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <Label id="Font" fx:id="infoIcon" layoutX="779.0" layoutY="-2.0" onMouseEntered="#showInstructions" onMouseExited="#hideInstructions" text="" textFill="#f8f8f8" />
+      <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <HBox fx:id="progressBar" layoutX="224.0" layoutY="447.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
          <children>
             <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
@@ -59,7 +67,12 @@
             <Circle fx:id="chanceCircle2" fill="#ffffff00" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
          </children>
       </HBox>
-      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="165.0" layoutY="78.0" prefHeight="113.0" prefWidth="528.0" textAlignment="CENTER" textFill="#252525">
+      <Label layoutX="367.0" layoutY="210.0" text="Chances" textFill="#f5f3f3">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="53.0" prefHeight="222.0" prefWidth="803.0" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="56.0" />
          </font>
@@ -85,7 +98,7 @@
             <Label id="smallFont" layoutX="50.0" layoutY="46.0" prefHeight="86.0" prefWidth="311.0" text="  Will play a recording&#10;  Will record you speaking&#10;  Will check to see if you are right&#10;  Goes back to main menu&#10;  Shows your chances" />
          </children>
       </AnchorPane>
-      <DialogPane fx:id="dialogueCheckExit" layoutX="221.0" layoutY="107.0" prefHeight="232.0" prefWidth="392.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 5em; -fx-background-radius: 6em;" visible="false">
+      <DialogPane fx:id="dialogueCheckExit" layoutX="223.0" layoutY="89.0" prefHeight="232.0" prefWidth="392.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 5em; -fx-background-radius: 6em;" visible="false">
          <content>
             <AnchorPane prefHeight="205.0" prefWidth="382.0">
                <children>
