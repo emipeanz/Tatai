@@ -15,7 +15,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="291.0" layoutY="285.0" text="Welcome to Tātai!" textFill="WHITE">
+      <Label layoutX="288.0" layoutY="300.0" text="Welcome to Tātai!" textFill="WHITE">
          <font>
             <Font size="28.0" />
          </font>
