@@ -53,6 +53,7 @@ public class LevelController {
 	@FXML private Button dialogueCheckExitExit;
 	@FXML private Button dialogueCheckExitStay;
 	@FXML private AnchorPane helpWindow;
+	@FXML private Circle chanceCircle1, chanceCircle2;
 	@FXML private Circle circle1, circle2, circle3, circle4, 
 		circle5, circle6, circle7, circle8, circle9, circle10;
 
@@ -66,6 +67,7 @@ public class LevelController {
 	private int chances = 2;
 	private Color red = Color.web("ef473a");
 	private Color green = Color.web("56ab2f");
+	private Color white = Color.web("ffffff");
 	private List<Circle> progressCircles;
 	
 
@@ -252,6 +254,11 @@ public class LevelController {
 		progress += 0.1;
 		this.updateLabels();
 		
+		chanceCircle1.setStroke(white);
+		chanceCircle1.setFill(Color.TRANSPARENT);
+		chanceCircle2.setStroke(white);
+		chanceCircle2.setFill(Color.TRANSPARENT);
+		
 
 		if(progress == 10) {
 			showResults(event);
@@ -328,14 +335,17 @@ public class LevelController {
 		if(correct) {
 			
 			_currentQuestion.setPass(true);
+			
 			updateProgressBar(green);
 
 			if(chances == 2) { // Got it right the first time
-				firstChance.setText("\uf05d");
+				chanceCircle1.setStroke(green);
+				chanceCircle1.setFill(green);
 				// Do something to question object to show they got it right first time...
 			}
 			else { // Got it right the second time
-				secondChance.setText("\uf05d");
+				chanceCircle2.setStroke(green);
+				chanceCircle2.setFill(green);
 			}
 			_currentQuestion.setPass(true);
 
@@ -351,10 +361,12 @@ public class LevelController {
 		}
 		else {
 			if(chances == 2) { // Got it wrong the first time
-				firstChance.setText("\uf05c");
+				chanceCircle1.setStroke(red);
+				chanceCircle1.setFill(red);
 			}
 			else { // Got it wrong the second time
-				secondChance.setText("\uf05c");
+				chanceCircle2.setStroke(red);
+				chanceCircle2.setFill(red);
 			}
 			chances--;
 			if(chances == 0) {
