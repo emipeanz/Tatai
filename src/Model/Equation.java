@@ -11,6 +11,10 @@ public class Equation extends Question {
 	private String equationOperator;
 	private int max;
 
+	/**
+	 * Generates an equation of a specified difficulty level
+	 * @param difficulty
+	 */
 	public Equation(Difficulty difficulty) {
 		super(difficulty);
 		max = difficulty.getMax();
