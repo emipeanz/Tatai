@@ -48,6 +48,8 @@ public class ResultsController {
 	private Test _test;
 	private Difficulty _difficulty;
 	private ObservableList<Question> _dataList;
+	private TestType _testType;
+	
 
 	public void initialize() {
 		question.setCellValueFactory(new PropertyValueFactory<>("displayString"));
@@ -55,41 +57,42 @@ public class ResultsController {
 		answerInt.setCellValueFactory(new PropertyValueFactory<>("answerInt"));
 		pass.setCellValueFactory(new PropertyValueFactory<>("pass"));
 		_dataList = FXCollections.observableArrayList(_test.getTestquestions());
-		
-		
-		  tableView.setRowFactory(new Callback<TableView<Question>, TableRow<Question>>() {
-		    @Override public TableRow<Question> call(TableView<Question> q) {
-		        return new TableRow<Question>() {
-		            @Override protected void updateItem(Question q, boolean empty) {
-		                super.updateItem(q, empty);
-		                if(q != null) {
-		                	if (q.getPass().equals("Right!")) {
-			                	// Colour green for getting it right
+
+
+		tableView.setRowFactory(new Callback<TableView<Question>, TableRow<Question>>() {
+			@Override public TableRow<Question> call(TableView<Question> q) {
+				return new TableRow<Question>() {
+					@Override protected void updateItem(Question q, boolean empty) {
+						super.updateItem(q, empty);
+						if(q != null) {
+							if (q.getPass().equals("Right!")) {
+								// Colour green for getting it right
 								setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
 							}
 							if (q.getPass().equals("Wrong")){
 								// Colour red for getting it wrong
 								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
 							}
-		                }
-		            }
-		        };
-		    }
+						}
+					}
+				};
+			}
 		});
-		  tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-		 
-		
+		tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+
 		tableView.setItems(_dataList);
 		resultsLabel.setText("You got " + _test.getOverallMark() + "/10 !");
 
 		//saves results of this round to file for use in stats menu
 		saveResults();
 	}
-	
-	
-	public ResultsController(Test test) {
+
+
+	public ResultsController(Test test, TestType testType) {
 		_test = test;
 		_difficulty = _test.getdifficulty();
+		_testType = testType;
 	}
 
 
@@ -125,90 +128,103 @@ public class ResultsController {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-		AnchorPane hardScene = null;
-		
-		/*
-		 * ARBITRARILY ASSIGNING ENUM TO TEST TYPE AS PRACTICE FOR TESTING PURPOSES
-		 */
-		TestType type = TestType.PRACTICE;
-		
+		AnchorPane levelScene = null;
+
 		try {
 			//ARBITRARY ASSIGNMENT OF ENUM
-			LevelController controller = new LevelController(_difficulty, type);
+			LevelController controller = new LevelController(_difficulty, _testType);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
-			hardScene = loader.load();
+			levelScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Scene scene = new Scene(hardScene);
+		Scene scene = new Scene(levelScene);
 		stageEventBelongsTo.setScene(scene);		
 	}
+
+
 
 	/**
 	 * Information about results is stored in a file called results.txt, first line will
 	 * be the average mark attained in the session, second line will be the highest mark 
 	 * that the user has gotten in the session, third line will be the number of tests that
-	 * have been taken in the session.
+	 * have been taken in the session, fourth line will be a running total of all the scores
+	 * the user has had.
 	 */
 	private void saveResults() {
-		//used to check if the file exists
-		File temp = new File(".results.txt");
 
-		try {
-			//if file exists update the results
-			if (temp.exists()) {
-				System.out.println("file has already been made");
 
-				//finds previous average score and converts it to an integer
-				String averageScoreString = Files.readAllLines(Paths.get(".results.txt")).get(0);
-				double previousAverageScore = Double.parseDouble(averageScoreString);
-
-				//finds previous high score and converts it to an integer
-				String highScoreString;
-				highScoreString = Files.readAllLines(Paths.get(".results.txt")).get(1);
-				int previousHighScore = Integer.parseInt(highScoreString);
-
-				//finds previous number of tests run and converts to an integer
-				String numOfTestsString = Files.readAllLines(Paths.get(".results.txt")).get(2);
-				int previousNumOfTests = Integer.parseInt(numOfTestsString);
-
-				//creates a list to store the new results in
-				List<String> newResults = new ArrayList<String>();
-
-				//computes average score
-				double averageScore = (_test.getOverallMark() + previousAverageScore) / (previousNumOfTests + 1);
-				newResults.add(String.format("%.1f", averageScore));
-
-				//sees if a new highscore has been made
-				if (_test.getOverallMark() > previousHighScore ) {
-					newResults.add(String.valueOf(_test.getOverallMark()));
-				} else {
-					newResults.add(String.valueOf(previousHighScore));
-				}
-
-				//new number of tests that have been made
-				newResults.add(String.valueOf(previousNumOfTests + 1));
-				System.out.println(String.valueOf(previousNumOfTests + 1));	
-
-				//writes in new results to file
-				Files.write(Paths.get(".results.txt"), newResults);
+		//will only store results if the test was using equations
+		if (_testType == _testType.EQUATION) {
+			String filename;
+			
+			if (_difficulty == _difficulty.EASY) {
+				filename = ".easyResults.txt";
+			} else if (_difficulty == _difficulty.HARD) {
+				filename = ".hardResults.txt";
 			} else {
-				System.out.println("Making file");
-				//creates a new file to store results in
-				_resultsFile = new File(".results.txt");		
-
-				//score from current round is stored
-				String score = String.valueOf(_test.getOverallMark());		
-
-				//writes information from current round to new file
-				Files.write(Paths.get(".results.txt"), Arrays.asList(score, score, "1"));
-
+				filename = ".mediumResults.txt";
 			}
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//used to check if the file exists
+			File temp = new File(filename);
+
+			try {
+				//if file exists update the results
+				if (temp.exists()) {
+					System.out.println("file has already been made");
+
+					//finds previous high score and converts it to an integer
+					String highScoreString;
+					highScoreString = Files.readAllLines(Paths.get(filename)).get(1);
+					int previousHighScore = Integer.parseInt(highScoreString);
+
+					//finds previous number of tests run and converts to an integer
+					String numOfTestsString = Files.readAllLines(Paths.get(filename)).get(2);
+					int previousNumOfTests = Integer.parseInt(numOfTestsString);
+
+					//finds previous number of tests run and converts to an integer
+					String cumulativeResultsString = Files.readAllLines(Paths.get(filename)).get(3);
+					int cumulativeResults = Integer.parseInt(cumulativeResultsString);
+
+					//creates a list to store the new results in
+					List<String> newResults = new ArrayList<String>();
+
+					//computes average score
+					double averageScore = (_test.getOverallMark() + cumulativeResults) / (previousNumOfTests + 1);
+					newResults.add(String.format("%.1f", averageScore));
+
+					//sees if a new highscore has been made
+					if (_test.getOverallMark() > previousHighScore ) {
+						newResults.add(String.valueOf(_test.getOverallMark()));
+					} else {
+						newResults.add(String.valueOf(previousHighScore));
+					}
+
+					//new number of tests that have been made
+					newResults.add(String.valueOf(previousNumOfTests + 1));
+					System.out.println(String.valueOf(previousNumOfTests + 1));	
+
+					//writes in new results to file
+					Files.write(Paths.get(filename), newResults);
+				} else {
+					System.out.println("Making file");
+					//creates a new file to store results in
+					_resultsFile = new File(filename);		
+
+					//score from current round is stored
+					String score = String.valueOf(_test.getOverallMark());		
+
+					//writes information from current round to new file
+					//highscore, averagescore, number of tests, cumulative score
+					Files.write(Paths.get(filename), Arrays.asList(score, score, "1", score));
+				}
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}

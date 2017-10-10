@@ -284,7 +284,7 @@ public class LevelController {
 		AnchorPane resultsScene = null;
 		ResultsController controller = null;
 		try {
-			controller = new ResultsController(_test);
+			controller = new ResultsController(_test, type);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Results.fxml"));
 			loader.setController(controller);
 			resultsScene = loader.load();

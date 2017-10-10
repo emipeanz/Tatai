@@ -4,7 +4,7 @@ package Model;
  * @author Maddie Beagley and Emilie Pearce
  */
 public enum Difficulty {
-	EASY(9), HARD(99);
+	EASY(9), HARD(99), MEDIUM(10);
 
 	//comment
 	int max;
