@@ -237,7 +237,7 @@ public class LevelController {
 			throw new RuntimeException("Too many tests have been logged");
 		}
 		this.addNewQuestionToTest();
-		progressLabel.setText("Round " + progress + "/10");
+		progressLabel.setText("A tawhio noa" + progress + "/10");
 		
 		// Resets chances
 		chanceCircle1.setStroke(white);

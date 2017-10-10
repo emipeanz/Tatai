@@ -72,7 +72,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="23.0" layoutY="53.0" prefHeight="222.0" prefWidth="803.0" textAlignment="CENTER" textFill="#252525" visible="false">
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="53.0" prefHeight="222.0" prefWidth="803.0" textAlignment="CENTER" textFill="#252525" visible="false">
          <font>
             <Font size="56.0" />
          </font>
