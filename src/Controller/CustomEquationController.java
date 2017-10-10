@@ -85,6 +85,10 @@ public class CustomEquationController {
 			errorMessage.setText("There are some problems with some equation, please fix and try again");
 			errorMessage.setVisible(true);
 		}
+		else {
+			errorMessage.setText("All your equations are good");
+			errorMessage.setVisible(true);
+		}
 	}
 	
 	/**
