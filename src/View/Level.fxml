@@ -37,11 +37,54 @@
             <Font size="80.0" />
          </font>
       </Button>
-      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="295.0" layoutY="78.0" prefHeight="113.0" prefWidth="267.0" textAlignment="CENTER" textFill="#252525">
+      <Label id="Font" fx:id="infoIcon" layoutX="772.0" layoutY="10.0" onMouseEntered="#showInstructions" onMouseExited="#hideInstructions" text="" textFill="#f8f8f8" />
+      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <HBox fx:id="progressBar" layoutX="224.0" layoutY="447.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
+         <children>
+            <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle2" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle3" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle4" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle5" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle6" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle7" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle8" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle9" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle10" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+         </children>
+      </HBox>
+      <HBox layoutX="376.0" layoutY="238.0" prefHeight="36.0" prefWidth="79.0" spacing="10.0">
+         <children>
+            <Circle fx:id="chanceCircle1" fill="#ffffff00" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="chanceCircle2" fill="#ffffff00" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+         </children>
+      </HBox>
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="165.0" layoutY="78.0" prefHeight="113.0" prefWidth="528.0" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="56.0" />
          </font>
       </Label>
+      <AnchorPane fx:id="helpWindow" layoutX="375.0" layoutY="27.0" prefHeight="150.0" prefWidth="397.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="32.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+            <Polygon fill="WHITE" layoutX="380.0" layoutY="25.0" rotate="90.0" scaleX="0.2" scaleY="0.2" stroke="#f5f5f5" strokeType="INSIDE">
+              <points>
+                <Double fx:value="-50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="0.0" />
+                <Double fx:value="-60.0" />
+              </points>
+            </Polygon>
+            <Label alignment="CENTER" layoutX="37.0" layoutY="2.0" prefHeight="30.0" prefWidth="335.0" text="Instructions:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label id="smallFont" layoutX="50.0" layoutY="46.0" prefHeight="86.0" prefWidth="311.0" text="  Will play a recording&#10;  Will record you speaking&#10;  Will check to see if you are right&#10;  Goes back to main menu&#10;  Shows your chances" />
+         </children>
+      </AnchorPane>
       <DialogPane fx:id="dialogueCheckExit" layoutX="221.0" layoutY="107.0" prefHeight="232.0" prefWidth="392.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 5em; -fx-background-radius: 6em;" visible="false">
          <content>
             <AnchorPane prefHeight="205.0" prefWidth="382.0">
@@ -65,49 +108,6 @@
             </AnchorPane>
          </content>
       </DialogPane>
-      <Label id="Font" fx:id="infoIcon" layoutX="772.0" layoutY="10.0" onMouseEntered="#showInstructions" onMouseExited="#hideInstructions" text="" textFill="#f8f8f8" />
-      <AnchorPane fx:id="helpWindow" layoutX="375.0" layoutY="27.0" prefHeight="150.0" prefWidth="397.0" visible="false">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="32.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
-            <Polygon fill="WHITE" layoutX="380.0" layoutY="25.0" rotate="90.0" scaleX="0.2" scaleY="0.2" stroke="#f5f5f5" strokeType="INSIDE">
-              <points>
-                <Double fx:value="-50.0" />
-                <Double fx:value="40.0" />
-                <Double fx:value="50.0" />
-                <Double fx:value="40.0" />
-                <Double fx:value="0.0" />
-                <Double fx:value="-60.0" />
-              </points>
-            </Polygon>
-            <Label alignment="CENTER" layoutX="37.0" layoutY="2.0" prefHeight="30.0" prefWidth="335.0" text="Instructions:">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label id="smallFont" layoutX="50.0" layoutY="46.0" prefHeight="86.0" prefWidth="311.0" text="  Will play a recording&#10;  Will record you speaking&#10;  Will check to see if you are right&#10;  Goes back to main menu&#10;  Shows your chances" />
-         </children>
-      </AnchorPane>
-      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
-      <HBox fx:id="progressBar" layoutX="224.0" layoutY="447.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
-         <children>
-            <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle2" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle3" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle4" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle5" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle6" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle7" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle8" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle9" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle10" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-         </children>
-      </HBox>
-      <HBox layoutX="376.0" layoutY="238.0" prefHeight="36.0" prefWidth="79.0" spacing="10.0">
-         <children>
-            <Circle fx:id="chanceCircle1" fill="#ffffff00" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="chanceCircle2" fill="#ffffff00" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-         </children>
-      </HBox>
    
 
    </children>

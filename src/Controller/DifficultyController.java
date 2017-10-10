@@ -97,7 +97,16 @@ public class DifficultyController {
 
 
 	public void enterCustom(ActionEvent e) {
-		System.out.println("Enter custom view");
+		System.out.println("Enter Custom view");
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+
+		Scene mainMenuScene = null;
+		try {
+			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/CustomEquations.fxml")));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		stageEventBelongsTo.setScene(mainMenuScene);		
 	}
 
 	/**

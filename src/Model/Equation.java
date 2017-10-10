@@ -22,7 +22,7 @@ public class Equation extends Question {
 			} else {
 				equationOperator = operators[randomNumber(2) - 1];
 			}
-			System.out.println("EQUASION-----------------------------------------------------");
+			System.out.println("EQUAtION-----------------------------------------------------");
 			System.out.println("operator = " + equationOperator);
 			equationString = randomNumber(max) + equationOperator + randomNumber(max);
 			System.out.println("equasion string = " + equationString);
