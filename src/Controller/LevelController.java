@@ -58,7 +58,7 @@ public class LevelController {
 		circle5, circle6, circle7, circle8, circle9, circle10;
 
 	private TestType type;
-	private int progress = 0;
+	private int progress = 1;
 	private Question _currentQuestion;
 	private Test _test;
 	private MediaPlayer _player;
@@ -93,7 +93,7 @@ public class LevelController {
 	 * in the code.
 	 */
 	public void initialize() {
-		updateLabels();
+		addNewQuestionToTest();
 		checkButton.setDisable(true);
 		recordButton.setDisable(false);
 		listenButton.setDisable(true);
@@ -109,9 +109,7 @@ public class LevelController {
 	 * Learning how to use events.
 	 * @param event
 	 */
-	public void updateLabels() {
-		firstChance.setText("\uf10c");
-		secondChance.setText("\uf10c");
+	public void addNewQuestionToTest() {
 		
 		if (type == type.EQUATION) {
 			_currentQuestion = new Equation(_test.getdifficulty());
@@ -119,9 +117,9 @@ public class LevelController {
 			_currentQuestion = new Practice(_test.getdifficulty());
 		}
 		
-		
-		numberToTest.setText(_currentQuestion.getDisplayString());
 		_test.addTestQuestion(_currentQuestion);
+		numberToTest.setText(_currentQuestion.getDisplayString());
+		
 	}
 	
 	/**
@@ -217,7 +215,6 @@ public class LevelController {
 	private void updateProgressBar(Color color) {
 		progress = _test.getNumberofRound();
 		System.out.println("test round = " + _test.getNumberofRound());
-		progressLabel.setText("Round " + progress + "/10");
 		
 		System.out.println("number of round: " + _test.getNumberofRound());
 		Circle circle =	progressCircles.get(_test.getNumberofRound() - 1);
@@ -227,46 +224,27 @@ public class LevelController {
 	}
 
 	/**
-	 * For now just having a play around - this method is called when the make random number
-	 * button is clicked and will show the number and the word of that number in maori.
-	 * Learning how to use events.
-	 * @param event
-	 */
-	public void nextLevel(ActionEvent event) {
-		//player will have to be initialised when the user takes a new recording.
-		_player = null;
-		//stores result of previous test in test model
-		_test.addTestQuestion(_currentQuestion);
-		//instantiates a new result for the next level of the test
-		_currentQuestion = new Question(_test.getdifficulty());
-		numberToTest.setText(Integer.toString(_currentQuestion.question));
-		_test.addTestQuestion(_currentQuestion);
-	}
-
-
-	/**
->>>>>>> ChancesBranch
 	 * Called only when the user is advancing to another question
 	 */
 	public void nextQuestion(ActionEvent event) {
-
-		System.out.println("next level progress = " + progress);
-		progress += 0.1;
-		this.updateLabels();
+		System.out.println("NXTQUESTION-----------------------------------------------------");
+		System.out.println("current progress = " + progress);
+		progress += 1; // Add 1 question to progress bar
+		if(progress == 11) {
+			showResults(event);
+		}
+		if(progress - 1 > 10) {
+			throw new RuntimeException("Too many tests have been logged");
+		}
+		this.addNewQuestionToTest();
+		progressLabel.setText("Round " + progress + "/10");
 		
+		// Resets chances
 		chanceCircle1.setStroke(white);
 		chanceCircle1.setFill(Color.TRANSPARENT);
 		chanceCircle2.setStroke(white);
 		chanceCircle2.setFill(Color.TRANSPARENT);
 		
-
-		if(progress == 10) {
-			showResults(event);
-		}
-		if(progress > 10) {
-			throw new RuntimeException("Too many tests have been logged");
-		}
-
 		listenButton.setDisable(true);
 		_player = null;
 	}
@@ -331,12 +309,9 @@ public class LevelController {
 	 */
 	public void checkRecording(ActionEvent e) {
 		System.out.println("Checking recording check button");
+		System.out.println("chances = " + chances);
 		Boolean correct = this.checkRecordingForWord();
 		if(correct) {
-			
-			_currentQuestion.setPass(true);
-			
-			updateProgressBar(green);
 
 			if(chances == 2) { // Got it right the first time
 				chanceCircle1.setStroke(green);
@@ -369,11 +344,11 @@ public class LevelController {
 				chanceCircle2.setFill(red);
 			}
 			chances--;
-			if(chances == 0) {
+			
+			if(chances == 0) { // If they have no more chances left
 				_currentQuestion.setPass(false);
 				updateProgressBar(red);
 				chances = 2;
-				//red ring will appear if they have no more chances.
 				feedbackMessage(false);
 				
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));
@@ -382,12 +357,12 @@ public class LevelController {
 				
 				//checkButton.setDisable(true);
 				//listenButton.setDisable(true);
-			} else {
-				//orange ring will appear if they still have a chance remaining.
+			} else { // If they have one more chance left
 				feedbackMessage(false);
 				//checkButton.setDisable(true);
 				//listenButton.setDisable(true);
 			}
+			
 		}
 
 	}

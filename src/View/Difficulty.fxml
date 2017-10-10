@@ -120,12 +120,12 @@
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Button id="dialogueCircleButton" fx:id="playCustomButton" layoutX="34.0" layoutY="111.0" mnemonicParsing="false" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,#ff6a00, #ee0979);" text="Play">
+                  <Button id="dialogueCircleButton" fx:id="playCustomButton" layoutX="34.0" layoutY="111.0" mnemonicParsing="false" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,#f16529, #e44d26);" text="Play">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button id="dialogueCircleButton" fx:id="createCustomButton" layoutX="245.0" layoutY="111.0" mnemonicParsing="false" onAction="#enterCustom" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #6dd5ed, #2193b0);" text="Create">
+                  <Button id="dialogueCircleButton" fx:id="createCustomButton" layoutX="245.0" layoutY="111.0" mnemonicParsing="false" onAction="#enterCustom" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #9d50bb, #6e48aa);" text="Create">
                      <font>
                         <Font size="22.0" />
                      </font>
