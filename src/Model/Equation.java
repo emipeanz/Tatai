@@ -39,7 +39,7 @@ public class Equation extends Question {
 		String operator = operators[randomNumber(2) - 1];
 		int left, right;
 
-		while (!((answerInt >= 10) && (answerInt < 100))) {
+		while (!((answerInt > 0) && (answerInt < 100))) {
 			left = randomNumber(10);
 			right = randomNumber(10);
 			
