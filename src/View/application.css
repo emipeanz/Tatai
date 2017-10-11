@@ -153,3 +153,13 @@
 	-fx-font-family: FontAwesome;
 	-fx-font-size: 15px;
 }
+
+#submitButton{
+	-fx-background-radius: 7em; 
+    -fx-min-width: 140px; 
+    -fx-min-height: 140px; 
+    -fx-max-width: 140px; 
+    -fx-max-height: 140px; 
+    -fx-background-insets: 0px; 
+    -fx-padding: 0px;
+}

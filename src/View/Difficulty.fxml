@@ -51,7 +51,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="472.0" text="Me whiwhi koe i te 8/10 ki runga i te Waewari i mua i te mahinga o Hard!" textFill="WHITE">
+      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="466.0" text="Me whiwhi koe i te 8/10 i te taumata o raro i mua i te whakatangi i tenei" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -81,7 +81,7 @@
          </graphic>
       </Button>
       <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
-      <Button id="menuCircleButtons" fx:id="mediumButton" layoutX="336.0" layoutY="275.0" mnemonicParsing="false" onAction="#enterTest" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #98f263,#b1d802);" text="&#10;" textAlignment="CENTER">
+      <Button id="menuCircleButtons" fx:id="mediumButton" layoutX="336.0" layoutY="275.0" mnemonicParsing="false" onAction="#enterTest" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #98f263,#b1d802);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -96,7 +96,7 @@
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label id="Font" fx:id="medLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="-11.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525fc">
+                  <Label id="Font" fx:id="medLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="-11.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525fc">
                      <font>
                         <Font size="41.0" />
                      </font>
