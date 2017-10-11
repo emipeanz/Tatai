@@ -452,11 +452,8 @@ public class LevelController {
 	public void recordingProgressBar(String progressStyle) {
 		System.out.println("entering progress bar method");
 		recordingProgress.setStyle(progressStyle);
-		
 		recordingProgress.setVisible(true);
 		
-		int recordingTimeSecs = 5;
-		int recordingTimeMsecs = recordingTimeSecs * 100;
 		int max = 100;
 		
         Task<Void> task = new Task<Void>(){

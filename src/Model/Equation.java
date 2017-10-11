@@ -26,10 +26,10 @@ public class Equation extends Question {
 			} else {
 				equationOperator = operators[randomNumber(2) - 1];
 			}
-			System.out.println("EQUAtION-----------------------------------------------------");
+			System.out.println("EQUATION-----------------------------------------------------");
 			System.out.println("operator = " + equationOperator);
 			equationString = randomNumber(max) + equationOperator + randomNumber(max);
-			System.out.println("equasion string = " + equationString);
+			System.out.println("equation string = " + equationString);
 
 			//evaluates equation
 			try {

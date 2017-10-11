@@ -52,6 +52,14 @@ public class MainController{
 				}
 			}
 		}
+		
+		File tmpdir = new File(".CustomEquations");
+		tmpdir.mkdir();
+		
+		if (!tmpdir.exists()) {
+			File customEquations = new File(".CustomEquations");
+			customEquations.mkdir();
+		}
 	}
 
 	/**
