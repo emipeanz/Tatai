@@ -139,7 +139,7 @@ public class LevelController {
 	 */
 	public void takeRecording(ActionEvent e) {
 		recordingProgressBar(blueProgressBar);
-		String cmd = "arecord -d 5 -r 22050 -c 1 -i -t wav -f s16_LE  " + RECORDINGFILEPATH;
+		String cmd = "arecord -d 4 -r 22050 -c 1 -i -t wav -f s16_LE  " + RECORDINGFILEPATH;
 
 		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
 
@@ -461,7 +461,7 @@ public class LevelController {
             public Void call(){
                 for (int i = 1; i <= 100; i++)    {
                     try {
-                        Thread.sleep(50);
+                        Thread.sleep(40);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

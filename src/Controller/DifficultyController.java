@@ -55,21 +55,23 @@ public class DifficultyController {
 
 		try {
 			//checks the current highscore
+			String highScoreEasyString = Files.readAllLines(Paths.get(".easyResults.txt")).get(1);
+			int highScoreEasy = Integer.parseInt(highScoreEasyString);
+
+			//hard level will only be accessible when user has got 8 questions in a round
+			if (highScoreEasy >= 8) {
+				medUnlocked = true;
+				medLockSymbol.setText("");
+			}
+			
+			//checks the current highscore
 			String highScoreMedString = Files.readAllLines(Paths.get(".mediumResults.txt")).get(1);
 			int highScoreMed = Integer.parseInt(highScoreMedString);
 
 			//hard level will only be accessible when user has got 8 questions in a round
 			if (highScoreMed >= 8) {
-				medUnlocked = true;
-			}
-			
-			//checks the current highscore
-			String highScoreHardString = Files.readAllLines(Paths.get(".hardResults.txt")).get(1);
-			int highScoreHard = Integer.parseInt(highScoreHardString);
-
-			//hard level will only be accessible when user has got 8 questions in a round
-			if (highScoreHard >= 8) {
 				hardUnlocked = true;
+				hardLockSymbol.setText("");
 			} 
 		} catch(IOException e) {
 		}

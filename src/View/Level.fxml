@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="progressLabel" layoutX="291.0" layoutY="475.0" text="A tawhio noa 1/10" textFill="WHITE">
          <font>
@@ -69,16 +69,21 @@
             <Circle fx:id="chanceCircle2" fill="#ffffff00" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
          </children>
       </HBox>
-      <Label layoutX="387.0" layoutY="210.0" text="āhei" textFill="#f5f3f3">
+      <Label layoutX="388.0" layoutY="206.0" text="āhei" textFill="#f5f3f3">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="53.0" prefHeight="222.0" prefWidth="803.0" textAlignment="CENTER" textFill="#252525" visible="false">
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="45.0" prefHeight="186.0" prefWidth="678.0" textAlignment="CENTER" textFill="#252525">
          <font>
-            <Font size="56.0" />
+            <Font size="49.0" />
          </font>
       </Label>
+      <ProgressBar fx:id="recordingProgress" layoutX="265.0" layoutY="31.0" prefHeight="18.0" prefWidth="311.0" progress="0.38">
+         <effect>
+            <DropShadow />
+         </effect>
+      </ProgressBar>
       <AnchorPane fx:id="helpWindow" layoutX="375.0" layoutY="27.0" prefHeight="150.0" prefWidth="397.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="32.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
@@ -123,11 +128,6 @@
             </AnchorPane>
          </content>
       </DialogPane>
-      <ProgressBar fx:id="recordingProgress" layoutX="265.0" layoutY="31.0" prefHeight="18.0" prefWidth="311.0" progress="0.38">
-         <effect>
-            <DropShadow />
-         </effect>
-      </ProgressBar>
    
 
    </children>
