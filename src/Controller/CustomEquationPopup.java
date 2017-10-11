@@ -13,21 +13,23 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 
 public class CustomEquationPopup {
-	
+
 	@FXML private TextField listName;
 	@FXML private Label invalidNameText;
+	@FXML private Label addedMessage;
 	@FXML private Button submitNameButton;
 	@FXML private List<String> equationList = new ArrayList<String>();
-	
+
 	public CustomEquationPopup(List<TextField> equations) {
 		for (TextField equation : equations) {
 			equationList.add(equation.getText());
 		}
 	}
-	
+
 	public void checkName(ActionEvent e) {
 		System.out.println("checking name method");
 		if (listName.getText().isEmpty()) {
@@ -37,9 +39,20 @@ public class CustomEquationPopup {
 			System.out.println("valid name");
 			invalidNameText.setVisible(false);
 			createStorageFile();
+			
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			Stage stage = (Stage) submitNameButton.getScene().getWindow();
+			stage.close();
+
 		}
 	}
-	
+
 	public void createStorageFile() {
 		String filename = ".CustomEquations/." + listName.getText();
 		File listFile = new File(filename);
@@ -51,6 +64,6 @@ public class CustomEquationPopup {
 		}
 	}
 
-	
+
 
 }
