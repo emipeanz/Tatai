@@ -62,8 +62,10 @@ public class Question {
 		//if number is only a single digit
 		if (number < 10) {
 			_numberWord = digitToMaori(number);
+		} else if (number == 10) {
+			_numberWord = "tekau";
 		//if number is between 10 and 19 does not have prefix tahi
-		} else if ((number >= 10) && (number < 20)) {
+		} else if ((number > 10) && (number < 20)) {
 			_numberWord = "tekau mā " + digitToMaori(number % 10);
 		//case for when number is between 20-100
 		} else if ((number > 10) && (number < 100)) {
