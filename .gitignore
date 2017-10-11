@@ -10,6 +10,7 @@ readme.txt
 .easyResults.txt
 .hardResults.txt
 .mediumResults.txt
+/.CustomEquations
 
 # Compiled class file
 *.class
