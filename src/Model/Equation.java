@@ -22,6 +22,8 @@ public class Equation extends Question {
 
 		if (difficulty == difficulty.MEDIUM) {
 			mediumEquation();
+		} else if (difficulty == difficulty.HARD) {
+			hardEquation();
 		} else {
 
 			while (!((answerInt>0) && (answerInt<max+1))) {
@@ -66,6 +68,25 @@ public class Equation extends Question {
 			} else { 
 				left = basicMultiples[randomNumber(3) -1];
 				right = randomNumber(10);
+			}
+			equationString = left + operator + right;
+			System.out.println("equation = " + equationString);
+			answerInt = evaluateEquation(equationString);
+		}
+	}
+	
+	public void hardEquation() {
+		//choosing between all possible operators
+		String operator = operators[randomNumber(3) - 1];
+		int left, right;
+
+		while (!((answerInt >= 10) && (answerInt < 100))) {
+			if ((operator.equals("+") || (operator.equals("-")))) {
+				left = randomNumber(85) + 15;
+				right = randomNumber(85) + 15;
+			} else { 
+				left = randomNumber(12);
+				right = randomNumber(6);
 			}
 			equationString = left + operator + right;
 			System.out.println("equation = " + equationString);
