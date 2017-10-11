@@ -19,17 +19,58 @@ public class Equation extends Question {
 		super(difficulty);
 		max = difficulty.getMax();
 		System.out.println("max = " + (max));
-		
-		while (!((answerInt>0) && (answerInt<max+1))) {
-			if (difficulty == difficulty.HARD) {
-				equationOperator = operators[randomNumber(3) - 1];
-			} else {
-				equationOperator = operators[randomNumber(2) - 1];
+
+		if (difficulty == difficulty.MEDIUM) {
+			mediumEquation();
+		} else {
+
+			while (!((answerInt>0) && (answerInt<max+1))) {
+				if (difficulty == difficulty.HARD) {
+					equationOperator = operators[randomNumber(3) - 1];
+				} else {
+					equationOperator = operators[randomNumber(2) - 1];
+				}
+				System.out.println("EQUATION-----------------------------------------------------");
+				System.out.println("operator = " + equationOperator);
+				equationString = randomNumber(max) + equationOperator + randomNumber(max);
+				System.out.println("equation string = " + equationString);
+
+				//evaluates equation
+				try {
+					ScriptEngineManager mgr = new ScriptEngineManager();
+					ScriptEngine engine = mgr.getEngineByName("JavaScript");
+					answerInt = (int) engine.eval(equationString);
+					System.out.println("answer int = " + answerInt);
+
+				} catch (ScriptException e) {
+				}
 			}
-			System.out.println("EQUATION-----------------------------------------------------");
-			System.out.println("operator = " + equationOperator);
-			equationString = randomNumber(max) + equationOperator + randomNumber(max);
-			System.out.println("equation string = " + equationString);
+		}
+
+		//stores answer as a string
+		answerString = numberToWord(answerInt);
+		//stores equation as a string to display - doesn't have * 
+		displayString = equationString.replaceAll("\\*", "x");
+	}
+
+	public void mediumEquation() {
+		//choosing between all possible operators
+		String operator = operators[randomNumber(3) - 1];
+		int left;
+		int right;
+
+		int[] basicMultiples = {2,5,10};
+
+		while (!(answerInt >= 10) && (answerInt < 100)) {
+			if ((operator.equals("+") || (operator.equals("-")))) {
+				left = randomNumber(9) * 5;
+				right = randomNumber(9) * 5;
+			} else { 
+				left = basicMultiples[randomNumber(3) -1];
+				right = randomNumber(10);
+			}
+			equationString = left + operator + right;
+			System.out.println("equation = " + equationString);
 
 			//evaluates equation
 			try {
@@ -41,11 +82,7 @@ public class Equation extends Question {
 			} catch (ScriptException e) {
 			}
 		}
-
-		//stores answer as a string
-		answerString = numberToWord(answerInt);
-		//stores equation as a string to display - doesn't have * 
-		displayString = equationString.replaceAll("\\*", "x");
 	}
+
 
 }

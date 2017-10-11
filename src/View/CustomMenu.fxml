@@ -63,7 +63,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <DialogPane fx:id="dialogChooseTest" layoutX="233.0" layoutY="99.0" prefHeight="294.0" prefWidth="394.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 5em; -fx-background-radius: 6em;" visible="false">
+      <DialogPane fx:id="dialogChooseTest" layoutX="233.0" layoutY="99.0" prefHeight="294.0" prefWidth="394.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 5em; -fx-background-radius: 6em;">
          <content>
             <AnchorPane prefHeight="304.0" prefWidth="382.0">
                <children>

@@ -74,7 +74,6 @@ public class CustomMenuController {
 		}
 		equationLists = FXCollections.observableArrayList(equationListNames);
 		comboBox.getItems().addAll(equationLists);
-		
 	}
 
 
