@@ -42,7 +42,7 @@ import javafx.util.Duration;
  */
 
 public class LevelController {
-	
+
 	@FXML private Label numberToTest;
 	@FXML private Label progressLabel;
 	@FXML private Button backButton;
@@ -59,7 +59,7 @@ public class LevelController {
 	@FXML private ProgressBar recordingProgress;
 	@FXML private Circle chanceCircle1, chanceCircle2;
 	@FXML private Circle circle1, circle2, circle3, circle4, 
-		circle5, circle6, circle7, circle8, circle9, circle10;
+	circle5, circle6, circle7, circle8, circle9, circle10;
 
 	private TestType type;
 	private int progress = 1;
@@ -75,7 +75,8 @@ public class LevelController {
 	private String blueProgressBar = "-fx-accent: blue;";
 	private String orangeProgressBar = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
-	
+	private Circle[] chanceCircles = new Circle[] {chanceCircle1, chanceCircle2};
+
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
@@ -86,7 +87,7 @@ public class LevelController {
 		_difficulty = diff;
 		type = testType;
 		_test = new Test(_difficulty);
-		
+
 		//generates a new directory
 		File recordingDir = new File("RecordingDir/");
 		if(!recordingDir.exists()) {
@@ -106,7 +107,7 @@ public class LevelController {
 		listenButton.setDisable(true);
 		feedbackMessage.setVisible(false);
 		recordingProgress.setVisible(false);
-		
+
 		progressCircles = new ArrayList<Circle>(Arrays.asList(circle1, circle2,
 				circle3, circle4, circle5, circle6, circle7, circle8, circle9, circle10));
 	}
@@ -118,18 +119,18 @@ public class LevelController {
 	 * @param event
 	 */
 	public void addNewQuestionToTest() {
-		
+
 		if (type == type.EQUATION) {
 			_currentQuestion = new Equation(_test.getdifficulty());
 		} else {
 			_currentQuestion = new Practice(_test.getdifficulty());
 		}
-		
+
 		_test.addTestQuestion(_currentQuestion);
 		numberToTest.setText(_currentQuestion.getDisplayString());
-		
+
 	}
-	
+
 	/**
 	 * Uses a bash command to take a new recording. This functionality will be run in a 
 	 * backgroud thread. Buttons (except return to main menu) will be disabled during the
@@ -170,7 +171,7 @@ public class LevelController {
 		//starts the thread running to take the recording.
 		record.start();	
 	}
-	
+
 	/**
 	 * Uses the media player to play the current recording as long as that player has been
 	 * correctly set. Nothing will play if the media player is set to null (or has not been set).
@@ -225,10 +226,10 @@ public class LevelController {
 	private void updateProgressBar(Color color) {
 		progress = _test.getNumberofRound();
 		System.out.println("test round = " + _test.getNumberofRound());
-		
+
 		System.out.println("number of round: " + _test.getNumberofRound());
 		Circle circle =	progressCircles.get(_test.getNumberofRound() - 1);
-		
+
 		circle.setFill(color);
 		circle.setStroke(color);
 	}
@@ -248,13 +249,13 @@ public class LevelController {
 		}
 		this.addNewQuestionToTest();
 		progressLabel.setText("A tawhio noa " + progress + "/10");
-		
+
 		// Resets chances
 		chanceCircle1.setStroke(white);
 		chanceCircle1.setFill(Color.TRANSPARENT);
 		chanceCircle2.setStroke(white);
 		chanceCircle2.setFill(Color.TRANSPARENT);
-		
+
 		listenButton.setDisable(true);
 		_player = null;
 	}
@@ -293,12 +294,12 @@ public class LevelController {
 
 		dialogueCheckExit.setVisible(true);
 	}
-	
+
 	public void returnToGame(ActionEvent e) {
 		dialogueCheckExit.setVisible(false);
 		return;
 	}
-	
+
 	public void returnToMainMenu(ActionEvent e) {
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
@@ -321,51 +322,35 @@ public class LevelController {
 		System.out.println("Checking recording check button");
 		System.out.println("chances = " + chances);
 		Boolean correct = this.checkRecordingForWord();
-		if(correct) {
-
-			if(chances == 2) { // Got it right the first time
-				chanceCircle1.setStroke(green);
-				chanceCircle1.setFill(green);
-				// Do something to question object to show they got it right first time...
-			}
-			else { // Got it right the second time
-				chanceCircle2.setStroke(green);
-				chanceCircle2.setFill(green);
-			}
+		if(correct) {		
+			chanceCircles[2-chances].setStroke(green);
+			chanceCircles[2-chances].setFill(green);
+			
 			_currentQuestion.setPass(true);
-
 			chances = 2;
+			
 			feedbackMessage(true);
 			updateProgressBar(green);
-			
+
 			PauseTransition delay = new PauseTransition(Duration.seconds(3));
 			delay.setOnFinished( event -> this.nextQuestion(e) );
 			delay.play();
-			
 			//checkButton.setDisable(true);
 			//listenButton.setDisable(true);
 		}
 		else {
-			if(chances == 2) { // Got it wrong the first time
-				chanceCircle1.setStroke(red);
-				chanceCircle1.setFill(red);
-			}
-			else { // Got it wrong the second time
-				chanceCircle2.setStroke(red);
-				chanceCircle2.setFill(red);
-			}
+			chanceCircles[2-chances].setStroke(red);
+			chanceCircles[2-chances].setFill(red);
 			chances--;
-			
+
 			if(chances == 0) { // If they have no more chances left
 				_currentQuestion.setPass(false);
 				updateProgressBar(red);
 				chances = 2;
 				feedbackMessage(false);
-				
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));
 				delay.setOnFinished( event -> this.nextQuestion(e) );
 				delay.play();
-				
 				//checkButton.setDisable(true);
 				//listenButton.setDisable(true);
 			} else { // If they have one more chance left
@@ -373,7 +358,7 @@ public class LevelController {
 				//checkButton.setDisable(true);
 				//listenButton.setDisable(true);
 			}
-			
+
 		}
 
 	}
@@ -448,46 +433,39 @@ public class LevelController {
 		System.out.println("word there, exiting TRUE");
 		return true;
 	}
-	
+
 	public void recordingProgressBar(String progressStyle) {
-		System.out.println("entering progress bar method");
 		recordingProgress.setStyle(progressStyle);
 		recordingProgress.setVisible(true);
-		
-		int max = 100;
-		
-        Task<Void> task = new Task<Void>(){
-            @Override
-            public Void call(){
-                for (int i = 1; i <= 100; i++)    {
-                    try {
-                        Thread.sleep(40);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    updateProgress(i , 100);
-                }
-            recordingProgress.setVisible(false);
-            return null;                
-            }
-        };
-
-        
-        recordingProgress.progressProperty().bind(task.progressProperty());
-
-        Thread th = new Thread(task);
-        th.setDaemon(true);
-        th.start();
+		Task<Void> task = new Task<Void>(){
+			@Override
+			public Void call(){
+				for (int i = 1; i <= 100; i++)    {
+					try {
+						Thread.sleep(40);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					updateProgress(i , 100);
+				}
+				recordingProgress.setVisible(false);
+				return null;                
+			}
+		};
+		recordingProgress.progressProperty().bind(task.progressProperty());
+		Thread th = new Thread(task);
+		th.setDaemon(true);
+		th.start();
 	}
-	
+
 	public void showInstructions() {
 		helpWindow.setVisible(true);
 	}
-	
+
 	public void hideInstructions() {
 		helpWindow.setVisible(false);
 	}
 
 
-	
+
 }
