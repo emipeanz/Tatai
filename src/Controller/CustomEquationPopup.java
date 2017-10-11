@@ -39,17 +39,8 @@ public class CustomEquationPopup {
 			System.out.println("valid name");
 			invalidNameText.setVisible(false);
 			createStorageFile();
-			
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
 			Stage stage = (Stage) submitNameButton.getScene().getWindow();
 			stage.close();
-
 		}
 	}
 

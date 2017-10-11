@@ -122,6 +122,22 @@ public class CustomEquationController {
 			System.out.println("exception thrown");
 			e1.printStackTrace();
 		}
+		
+		returntoCreationsMenu(e);
+	}
+	
+	public void returntoCreationsMenu(ActionEvent e) {
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+
+		Scene mainMenuScene = null;
+		try {
+			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/CustomMenu.fxml")));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stageEventBelongsTo.setScene(mainMenuScene);
+		
 	}
 
 	
@@ -131,8 +147,6 @@ public class CustomEquationController {
 	 * @param event
 	 */
 	public void backButtonEvent(ActionEvent event) {
-		System.out.println("Event triggering return to main menu");
-
 		dialogueCheckExit.setVisible(true);
 	}
 
