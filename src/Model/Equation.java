@@ -56,12 +56,10 @@ public class Equation extends Question {
 	public void mediumEquation() {
 		//choosing between all possible operators
 		String operator = operators[randomNumber(3) - 1];
-		int left;
-		int right;
-
+		int left, right;
 		int[] basicMultiples = {2,5,10};
 
-		while (!(answerInt >= 10) && (answerInt < 100)) {
+		while (!((answerInt >= 10) && (answerInt < 100))) {
 			if ((operator.equals("+") || (operator.equals("-")))) {
 				left = randomNumber(9) * 5;
 				right = randomNumber(9) * 5;
@@ -71,17 +69,24 @@ public class Equation extends Question {
 			}
 			equationString = left + operator + right;
 			System.out.println("equation = " + equationString);
-
-			//evaluates equation
-			try {
-				ScriptEngineManager mgr = new ScriptEngineManager();
-				ScriptEngine engine = mgr.getEngineByName("JavaScript");
-				answerInt = (int) engine.eval(equationString);
-				System.out.println("answer int = " + answerInt);
-
-			} catch (ScriptException e) {
-			}
+			answerInt = evaluateEquation(equationString);
 		}
+	}
+	
+	public int evaluateEquation(String equation) {
+		//evaluates equation
+		int answer = 0;
+		
+		try {
+			ScriptEngineManager mgr = new ScriptEngineManager();
+			ScriptEngine engine = mgr.getEngineByName("JavaScript");
+			answer = (int) engine.eval(equationString);
+			System.out.println("answer int = " + answerInt);
+
+		} catch (ScriptException e) {
+		}
+		
+		return answer;
 	}
 
 
