@@ -464,7 +464,7 @@ public class LevelController {
             public Void call(){
                 for (int i = 1; i <= 100; i++)    {
                     try {
-                        Thread.sleep(50);
+                        Thread.sleep(40);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
