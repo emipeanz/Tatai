@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle id="roundedSquare" arcHeight="5.0" arcWidth="5.0" height="213.0" layoutX="51.0" layoutY="209.0" stroke="#00000002" strokeType="INSIDE" width="214.0">
          <fill>
@@ -40,7 +40,7 @@
                </stops>
             </RadialGradient>
          </fill></Rectangle>
-      <Label fx:id="highScore" alignment="CENTER" contentDisplay="CENTER" layoutX="334.0" layoutY="184.0" prefHeight="204.0" prefWidth="153.0" text="0" textAlignment="CENTER">
+      <Label fx:id="highScore" alignment="CENTER" contentDisplay="CENTER" layoutX="300.0" layoutY="182.0" prefHeight="204.0" prefWidth="231.0" text="0" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="140.0" />
          </font>

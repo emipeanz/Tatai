@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomMenuController">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomMenuController">
    <children>
       <Button id="menuCircleButtons" fx:id="createCustomButton" layoutX="162.0" layoutY="205.0" mnemonicParsing="false" onAction="#openCreateCustom" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #00c6ff,#0072ff);" text="&#10;" textAlignment="CENTER">
          <font>
@@ -63,7 +63,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <DialogPane fx:id="dialogChooseTest" layoutX="233.0" layoutY="99.0" prefHeight="294.0" prefWidth="394.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 5em; -fx-background-radius: 6em;">
+      <DialogPane fx:id="dialogChooseTest" layoutX="233.0" layoutY="99.0" prefHeight="294.0" prefWidth="394.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 5em; -fx-background-radius: 6em;" visible="false">
          <content>
             <AnchorPane prefHeight="304.0" prefWidth="382.0">
                <children>

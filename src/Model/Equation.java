@@ -36,12 +36,12 @@ public class Equation extends Question {
 
 	public void easyEquation() {
 		//choosing between all possible operators
-		String operator = operators[randomNumber(2) - 1];
+		String operator = operators[randomNumber(3) - 1];
 		int left, right;
 
-		while (!((answerInt > 0) && (answerInt < 100))) {
-			left = randomNumber(10);
-			right = randomNumber(10);
+		while (!((answerInt > 0) && (answerInt <= 10))) {
+			left = randomNumber(9) + 1;
+			right = randomNumber(9) + 1;
 			
 			equationString = left + operator + right;
 			System.out.println("equation = " + equationString);
