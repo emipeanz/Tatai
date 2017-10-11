@@ -1,18 +1,30 @@
 package Controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 
 public class CustomMenuController {
 	
 	@FXML private DialogPane dialogChooseTest;
+	@FXML private ComboBox comboBox;
+	
+	private ObservableList<String> equationLists;
+	
+	public void initialize() {
+		populateComboBox();
+	}
 
 	public void openCreateCustom(ActionEvent e) {
 		System.out.println("Enter Custom view");
@@ -49,6 +61,20 @@ public class CustomMenuController {
 	
 	public void playCustomTestEvent(ActionEvent e) {
 		dialogChooseTest.setVisible(true);
+	}
+	
+	public void populateComboBox() {
+		ArrayList<String> equationListNames = new ArrayList<String>();
+		
+		File dir = new File(".CustomEquations");
+		File[] lists = dir.listFiles();
+		
+		for (File equationList : lists) {
+			equationListNames.add(equationList.getName().substring(1));
+		}
+		equationLists = FXCollections.observableArrayList(equationListNames);
+		comboBox.getItems().addAll(equationLists);
+		
 	}
 
 
