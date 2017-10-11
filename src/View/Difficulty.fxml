@@ -15,18 +15,13 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" layoutX="2.0" layoutY="39.0" text="Ngawari">
+                  <Label fx:id="maoriTranslation" layoutX="2.0" layoutY="23.0" text="Ngawari">
                      <font>
                         <Font name="System Bold" size="29.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" />
                      </padding>
-                  </Label>
-                  <Label id="Font" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="-23.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525fc">
-                     <font>
-                        <Font size="41.0" />
-                     </font>
                   </Label>
                </children>
             </AnchorPane>

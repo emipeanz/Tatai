@@ -139,7 +139,7 @@ public class LevelController {
 	 */
 	public void takeRecording(ActionEvent e) {
 		recordingProgressBar(blueProgressBar);
-		String cmd = "arecord -d 5 -r 22050 -c 1 -i -t wav -f s16_LE  " + RECORDINGFILEPATH;
+		String cmd = "arecord -d 4 -r 22050 -c 1 -i -t wav -f s16_LE  " + RECORDINGFILEPATH;
 
 		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
 
