@@ -72,8 +72,8 @@ public class LevelController {
 	private Color red = Color.web("ef473a");
 	private Color green = Color.web("56ab2f");
 	private Color white = Color.web("ffffff");
-	private String blueProgressBar = "kajn";
-	private String orangeProgressBar = "lakjf";
+	private String blueProgressBar = "-fx-accent: blue;";
+	private String orangeProgressBar = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
 	
 
@@ -138,8 +138,7 @@ public class LevelController {
 	 * @param e
 	 */
 	public void takeRecording(ActionEvent e) {
-		recordingProgress.setStyle("-fx-accent: green;");
-		recordingProgressBar();
+		recordingProgressBar(blueProgressBar);
 		String cmd = "arecord -d 5 -r 22050 -c 1 -i -t wav -f s16_LE  " + RECORDINGFILEPATH;
 
 		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
@@ -177,7 +176,7 @@ public class LevelController {
 	 * correctly set. Nothing will play if the media player is set to null (or has not been set).
 	 */
 	public void playRecording() {	
-		recordingProgressBar();
+		recordingProgressBar(orangeProgressBar);
 		//if recording has been set for a level...
 		if (_player == null) {
 			System.out.println("recording/mediaplayer has not been properly initialised");
@@ -450,8 +449,9 @@ public class LevelController {
 		return true;
 	}
 	
-	public void recordingProgressBar() {
+	public void recordingProgressBar(String progressStyle) {
 		System.out.println("entering progress bar method");
+		recordingProgress.setStyle(progressStyle);
 		
 		recordingProgress.setVisible(true);
 		
