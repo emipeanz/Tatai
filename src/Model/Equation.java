@@ -49,7 +49,9 @@ public class Equation extends Question {
 			answer = evaluateEquation(left, right, operator);
 		}
 
-		return new Equation(left, operator, right);
+		Equation equation = new Equation(left, operator, right);
+		equation.setAnswerInt(answer);
+		return equation;
 	}
 
 
@@ -69,9 +71,12 @@ public class Equation extends Question {
 				right = randomNumber(1,10);
 			}
 			answerInt = evaluateEquation(left, right, operator);
+			System.out.println("supposefuly the answer is... " + answerInt);
 		} while (answerInt < 10 || answerInt > 100);
 
-		return new Equation(left, operator, right);
+		Equation equation = new Equation(left, operator, right);
+		equation.setAnswerInt(answerInt);
+		return equation;
 	}
 
 	private static Equation hardEquation() {
@@ -91,7 +96,9 @@ public class Equation extends Question {
 			answerInt = evaluateEquation(left, right, operator);
 		} while (answerInt < 10 || answerInt > 100);
 
-		return new Equation(left, operator, right);
+		Equation equation = new Equation(left, operator, right);
+		equation.setAnswerInt(answerInt);
+		return equation;
 	}
 
 	public static int evaluateEquation(int left, int right, Operator operator) {
