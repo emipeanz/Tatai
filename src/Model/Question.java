@@ -17,7 +17,6 @@ public class Question {
 	public Integer question;
 	//maori word expecting to hear back
 	public boolean pass;
-
 	//String that is displayed onscreen during a level
 	protected String displayString;
 	//Answer as a maori word
@@ -25,22 +24,10 @@ public class Question {
 	//Answer as an integer
 	protected int answerInt;
 	
-	protected Difficulty _difficulty;
-
-	/**
-	 * Constructor to store state of number currently being tested.
-	 * answer stores maori word corresponding to integer number
-	 * of question
-	 * @param number: number being tested
-	 */
-	public Question(Difficulty difficulty) {
-		_difficulty = difficulty;
-	}
-	
 	/**
 	 * Generates a random number between min and max (inclusive)
 	 */
-	public int randomNumber(int min, int max) {
+	public static int randomNumber(int min, int max) {
 		return (int)(Math.random() * (max - min + 1)) + min;
 	}
 

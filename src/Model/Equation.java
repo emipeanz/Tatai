@@ -5,119 +5,102 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 public class Equation extends Question {
-
-	private String[] operators = {"-", "+", "*"};
+	
 	private String equationString;
-	private String equationOperator;
-	private int max;
 
 	/**
 	 * Generates an equation of a specified difficulty level
 	 * @param difficulty
 	 */
-	public Equation(Difficulty difficulty) {
-		super(difficulty);
-		max = difficulty.getMax();
-		System.out.println("max = " + (max));
-
-		if (difficulty == difficulty.MEDIUM) {
-			mediumEquation();
-		} else if (difficulty == difficulty.HARD) {
-			hardEquation();
-		} else {
-			easyEquation();
-		}
-
+	public Equation(int left, Operator op, int right) {
 		//stores answer as a string
-		answerString = numberToWord(answerInt);
+		answerString = numberToWord(evaluateEquation(left, right, op));
+
 		//stores equation as a string to display - doesn't have * 
-		displayString = equationString.replaceAll("\\*", "x");
+		displayString = Integer.toString(left) + " " + op.symbol + " " + Integer.toString(right);
 	}
 
-	public void easyEquation() {
+	static public Equation create(Difficulty difficulty) {
+		switch(difficulty) {
+		case EASY:
+			return easyEquation();
+		case MEDIUM:
+			return mediumEquation();
+		case HARD:
+			return hardEquation();
+		default:
+			throw new IllegalArgumentException("Given difficulty " + difficulty + " is not a proper one");
+		}
+	}
+	
+	public static Equation easyEquation() {
 		//choosing between all possible operators
-		String operator = operators[randomNumber(0, operators.length -1)];
-		int left, right;
+		Operator operator = Operator.choose();
+		int left = 0, right = 0;
 
-		while (!((answerInt > 0) && (answerInt <= 10))) {
+		int answer = -1;
+		while (answer < 0 || answer > 10) {
 			left = randomNumber(1,9);
 			right = randomNumber(1,9);
-
-			equationString = left + operator + right;
-			System.out.println("equation = " + equationString);
-			answerInt = evaluateEquation(equationString);
+			answer = evaluateEquation(left, right, operator);
 		}
+		
+		return new Equation(left, operator, right);
 	}
 
 
-	public void mediumEquation() {
+	private static Equation mediumEquation() {
 		//choosing between all possible operators
-		String operator = operators[randomNumber(0, operators.length - 1)];
+		Operator operator = Operator.choose();
 		int left, right;
 		int[] basicMultiples = {2,5,10};
 
-		while (!((answerInt >= 10) && (answerInt < 100))) {
-			if ((operator.equals("+") || (operator.equals("-")))) {
+		int answerInt = 101;
+		do {
+			if (operator == Operator.ADD || operator == Operator.SUBTRACT) {
 				left = randomNumber(1,9) * 5;
 				right = randomNumber(1,9) * 5;
 			} else { 
 				left = basicMultiples[randomNumber(0, basicMultiples.length - 1)];
 				right = randomNumber(1,10);
 			}
-			equationString = left + operator + right;
-			System.out.println("equation = " + equationString);
-			answerInt = evaluateEquation(equationString);
-		}
+			answerInt = evaluateEquation(left, right, operator);
+		} while (answerInt < 10 || answerInt > 100);
+		
+		return new Equation(left, operator, right);
 	}
 
-	public void hardEquation() {
+	private static Equation hardEquation() {
 		//choosing between all possible operators
-		String operator = operators[randomNumber(0, operators.length - 1)];
 		int left, right;
+		Operator operator = Operator.choose();
 
-		while (!((answerInt >= 10) && (answerInt < 100))) {
-			if ((operator.equals("+") || (operator.equals("-")))) {
+		int answerInt = 0;
+		do {
+			if (operator == Operator.ADD || operator == Operator.SUBTRACT) {
 				left = randomNumber(15,99);
 				right = randomNumber(15,99);
 			} else { 
 				left = randomNumber(1,12);
 				right = randomNumber(1,6);
 			}
-			equationString = left + operator + right;
-			System.out.println("equation = " + equationString);
-			answerInt = evaluateEquation(equationString);
-		}
+			answerInt = evaluateEquation(left, right, operator);
+		} while (answerInt < 10 || answerInt > 100);
+		
+		return new Equation(left, operator, right);
 	}
 
-	public int evaluateEquation(int left, int right, String operator) {
+	public static int evaluateEquation(int left, int right, Operator operator) {
 		switch(operator) {
-		case "+":
+		case ADD:
 			return left + right;
-		case "-":
+		case SUBTRACT:
 			return left - right;
-		case "*":
+		case MULTIPLY:
 			return left * right;
 		default:
 			throw new IllegalArgumentException("Invalid operator entered: " + operator);
 		}
 	}
-
-	public int evaluateEquation(String equation) {
-		//evaluates equation
-		int answer = 0;
-
-		try {
-			ScriptEngineManager mgr = new ScriptEngineManager();
-			ScriptEngine engine = mgr.getEngineByName("JavaScript");
-			answer = (int) engine.eval(equationString);
-			System.out.println("answer int = " + answerInt);
-
-		} catch (ScriptException e) {
-
-		}
-
-		return answer;
-	}
-
 
 }

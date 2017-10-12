@@ -121,9 +121,9 @@ public class LevelController {
 	public void addNewQuestionToTest() {
 
 		if (type == type.EQUATION) {
-			_currentQuestion = new Equation(_test.getdifficulty());
+			_currentQuestion = Equation.create(_test.getdifficulty());
 		} else {
-			_currentQuestion = new Practice(_test.getdifficulty());
+			_currentQuestion = new Practice();
 		}
 
 		_test.addTestQuestion(_currentQuestion);
@@ -251,10 +251,10 @@ public class LevelController {
 		progressLabel.setText("A tawhio noa " + progress + "/10");
 
 		// Resets chances
-		chanceCircle1.setStroke(white);
-		chanceCircle1.setFill(Color.TRANSPARENT);
-		chanceCircle2.setStroke(white);
-		chanceCircle2.setFill(Color.TRANSPARENT);
+		for (Circle circle : chanceCircles) {
+			circle.setStroke(white);
+			circle.setFill(Color.TRANSPARENT);
+		}
 
 		listenButton.setDisable(true);
 		_player = null;
@@ -266,10 +266,7 @@ public class LevelController {
 	 * @param event
 	 */
 	public void showResults(ActionEvent event) {
-		System.out.println("in method that sets the scene to results");
-
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
 		AnchorPane resultsScene = null;
 		ResultsController controller = null;
 		try {
@@ -290,8 +287,6 @@ public class LevelController {
 	 * @param event
 	 */
 	public void backButtonEvent(ActionEvent event) {
-		System.out.println("Event triggering return to main menu");
-
 		dialogueCheckExit.setVisible(true);
 	}
 
@@ -319,8 +314,6 @@ public class LevelController {
 	 * @param e
 	 */
 	public void checkRecording(ActionEvent e) {
-		System.out.println("Checking recording check button");
-		System.out.println("chances = " + chances);
 		Boolean correct = this.checkRecordingForWord();
 		if(correct) {		
 			chanceCircles[2-chances].setStroke(green);
