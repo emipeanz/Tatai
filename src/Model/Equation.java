@@ -36,13 +36,13 @@ public class Equation extends Question {
 
 	public void easyEquation() {
 		//choosing between all possible operators
-		String operator = operators[randomNumber(3) - 1];
+		String operator = operators[randomNumber(0, operators.length -1)];
 		int left, right;
 
 		while (!((answerInt > 0) && (answerInt <= 10))) {
-			left = randomNumber(9) + 1;
-			right = randomNumber(9) + 1;
-			
+			left = randomNumber(1,9);
+			right = randomNumber(1,9);
+
 			equationString = left + operator + right;
 			System.out.println("equation = " + equationString);
 			answerInt = evaluateEquation(equationString);
@@ -52,17 +52,17 @@ public class Equation extends Question {
 
 	public void mediumEquation() {
 		//choosing between all possible operators
-		String operator = operators[randomNumber(3) - 1];
+		String operator = operators[randomNumber(0, operators.length - 1)];
 		int left, right;
 		int[] basicMultiples = {2,5,10};
 
 		while (!((answerInt >= 10) && (answerInt < 100))) {
 			if ((operator.equals("+") || (operator.equals("-")))) {
-				left = randomNumber(9) * 5;
-				right = randomNumber(9) * 5;
+				left = randomNumber(1,9) * 5;
+				right = randomNumber(1,9) * 5;
 			} else { 
-				left = basicMultiples[randomNumber(3) -1];
-				right = randomNumber(10);
+				left = basicMultiples[randomNumber(0, basicMultiples.length - 1)];
+				right = randomNumber(1,10);
 			}
 			equationString = left + operator + right;
 			System.out.println("equation = " + equationString);
@@ -72,20 +72,33 @@ public class Equation extends Question {
 
 	public void hardEquation() {
 		//choosing between all possible operators
-		String operator = operators[randomNumber(3) - 1];
+		String operator = operators[randomNumber(0, operators.length - 1)];
 		int left, right;
 
 		while (!((answerInt >= 10) && (answerInt < 100))) {
 			if ((operator.equals("+") || (operator.equals("-")))) {
-				left = randomNumber(85) + 15;
-				right = randomNumber(85) + 15;
+				left = randomNumber(15,99);
+				right = randomNumber(15,99);
 			} else { 
-				left = randomNumber(12);
-				right = randomNumber(6);
+				left = randomNumber(1,12);
+				right = randomNumber(1,6);
 			}
 			equationString = left + operator + right;
 			System.out.println("equation = " + equationString);
 			answerInt = evaluateEquation(equationString);
+		}
+	}
+
+	public int evaluateEquation(int left, int right, String operator) {
+		switch(operator) {
+		case "+":
+			return left + right;
+		case "-":
+			return left - right;
+		case "*":
+			return left * right;
+		default:
+			throw new IllegalArgumentException("Invalid operator entered: " + operator);
 		}
 	}
 
@@ -100,6 +113,7 @@ public class Equation extends Question {
 			System.out.println("answer int = " + answerInt);
 
 		} catch (ScriptException e) {
+
 		}
 
 		return answer;

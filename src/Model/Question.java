@@ -37,10 +37,11 @@ public class Question {
 		_difficulty = difficulty;
 	}
 	
-	public int randomNumber(int max) {
-		//generates a random number within the desired range
-		int number = (int )(Math.random() * max + 1);
-		return number;
+	/**
+	 * Generates a random number between min and max (inclusive)
+	 */
+	public int randomNumber(int min, int max) {
+		return (int)(Math.random() * (max - min + 1)) + min;
 	}
 
 	/**
