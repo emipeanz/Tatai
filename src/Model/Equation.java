@@ -5,7 +5,7 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 public class Equation extends Question {
-	
+
 	private String equationString;
 
 	/**
@@ -17,7 +17,11 @@ public class Equation extends Question {
 		answerString = numberToWord(evaluateEquation(left, right, op));
 
 		//stores equation as a string to display - doesn't have * 
-		displayString = Integer.toString(left) + " " + op.symbol + " " + Integer.toString(right);
+		if (op == op.MULTIPLY) {
+			displayString = Integer.toString(left) + " x " + Integer.toString(right); 
+		} else {
+			displayString = Integer.toString(left) + " " + op.symbol + " " + Integer.toString(right);
+		}
 	}
 
 	static public Equation create(Difficulty difficulty) {
@@ -32,7 +36,7 @@ public class Equation extends Question {
 			throw new IllegalArgumentException("Given difficulty " + difficulty + " is not a proper one");
 		}
 	}
-	
+
 	public static Equation easyEquation() {
 		//choosing between all possible operators
 		Operator operator = Operator.choose();
@@ -44,7 +48,7 @@ public class Equation extends Question {
 			right = randomNumber(1,9);
 			answer = evaluateEquation(left, right, operator);
 		}
-		
+
 		return new Equation(left, operator, right);
 	}
 
@@ -66,7 +70,7 @@ public class Equation extends Question {
 			}
 			answerInt = evaluateEquation(left, right, operator);
 		} while (answerInt < 10 || answerInt > 100);
-		
+
 		return new Equation(left, operator, right);
 	}
 
@@ -86,7 +90,7 @@ public class Equation extends Question {
 			}
 			answerInt = evaluateEquation(left, right, operator);
 		} while (answerInt < 10 || answerInt > 100);
-		
+
 		return new Equation(left, operator, right);
 	}
 
