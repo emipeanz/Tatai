@@ -30,6 +30,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -52,9 +53,6 @@ public class LevelController {
 	@FXML private Label firstChance = new Label();
 	@FXML private Label secondChance = new Label();
 	@FXML private Label feedbackMessage;
-	@FXML private DialogPane dialogueCheckExit;
-	@FXML private Button dialogueCheckExitExit;
-	@FXML private Button dialogueCheckExitStay;
 	@FXML private AnchorPane helpWindow;
 	@FXML private ProgressBar recordingProgress;
 	@FXML private Circle chanceCircle1, chanceCircle2;
@@ -289,25 +287,26 @@ public class LevelController {
 	 * @param event
 	 */
 	public void backButtonEvent(ActionEvent event) {
-		dialogueCheckExit.setVisible(true);
-	}
-
-	public void returnToGame(ActionEvent e) {
-		dialogueCheckExit.setVisible(false);
-		return;
-	}
-
-	public void returnToMainMenu(ActionEvent e) {
-		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
-
-		Scene mainMenuScene = null;
+		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Button eventButton = (Button)event.getSource();
+		
 		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
+			Stage stage = new Stage(); 
+			AnchorPane root;
+			ExitPopupController popupController = new ExitPopupController(stageEventBelongsTo, "/View/MainMenu.fxml");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ExitPopup.fxml"));
+			loader.setController(popupController);
+			root = (AnchorPane)loader.load();
+			
+			stage.setScene(new Scene(root));
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.initOwner(eventButton.getScene().getWindow());
+			stage.showAndWait();
 		} catch (IOException e1) {
+			System.out.println("exception thrown");
 			e1.printStackTrace();
 		}
-		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		stageEventBelongsTo.setScene(mainMenuScene);
+		
 	}
 
 	/**
@@ -360,7 +359,6 @@ public class LevelController {
 
 	/**
 	 * This method handles showing the user their feedback based on what they pronounced
-	 * -- NEEDS WORK TO BE NICER FOR KIDS AND GIVES DIFFERENT FEEDBACK IF THEY ARE CLOSE
 	 * @param b
 	 */
 	private void feedbackMessage(boolean b) {

@@ -154,7 +154,7 @@
 	-fx-font-size: 15px;
 }
 
-#submitButton{
+#submitButton, #exitButton, #stayButton {
 	-fx-background-radius: 7em; 
     -fx-min-width: 140px; 
     -fx-min-height: 140px; 

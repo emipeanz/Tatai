@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-public class CustomEquationPopup {
+public class CustomEquationPopupController {
 
 	@FXML private TextField listName;
 	@FXML private Label invalidNameText;
@@ -24,7 +24,7 @@ public class CustomEquationPopup {
 	@FXML private Button submitNameButton;
 	@FXML private List<String> equationList = new ArrayList<String>();
 
-	public CustomEquationPopup(List<TextField> equations) {
+	public CustomEquationPopupController(List<TextField> equations) {
 		for (TextField equation : equations) {
 			equationList.add(equation.getText());
 		}

@@ -37,9 +37,6 @@ public class CustomEquationController {
 	equationCircle6, equationCircle7, equationCircle8, equationCircle9, equationCircle10;
 	@FXML private List<Circle> circleList;
 	@FXML private AnchorPane helpWindow;
-	@FXML private DialogPane dialogueCheckExit;
-	@FXML private Button dialogueCheckExitExit;
-	@FXML private Button dialogueCheckExitStay;
 	@FXML private Button checkEquationsButton;
 	@FXML private Button submitButton;
 	@FXML private Label errorMessage;
@@ -109,7 +106,7 @@ public class CustomEquationController {
 		try {
 			Stage stage = new Stage(); 
 			AnchorPane root;
-			CustomEquationPopup popupController = new CustomEquationPopup(equationList);
+			CustomEquationPopupController popupController = new CustomEquationPopupController(equationList);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(filename));
 			loader.setController(popupController);
 			root = (AnchorPane)loader.load();
@@ -135,7 +132,6 @@ public class CustomEquationController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 		
 	}
@@ -147,26 +143,28 @@ public class CustomEquationController {
 	 * @param event
 	 */
 	public void backButtonEvent(ActionEvent event) {
-		dialogueCheckExit.setVisible(true);
-	}
-
-	public void returnToGame(ActionEvent e) {
-		dialogueCheckExit.setVisible(false);
-		return;
-	}
-
-	public void returnToMainMenu(ActionEvent e) {
-		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
-
-		Scene mainMenuScene = null;
+		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Button eventButton = (Button)event.getSource();
+		
 		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
+			Stage stage = new Stage(); 
+			AnchorPane root;
+			ExitPopupController popupController = new ExitPopupController(stageEventBelongsTo, "/View/CustomMenu.fxml");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ExitPopup.fxml"));
+			loader.setController(popupController);
+			root = (AnchorPane)loader.load();
+			
+			stage.setScene(new Scene(root));
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.initOwner(eventButton.getScene().getWindow());
+			stage.showAndWait();
 		} catch (IOException e1) {
+			System.out.println("exception thrown");
 			e1.printStackTrace();
 		}
-		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		stageEventBelongsTo.setScene(mainMenuScene);
+		
 	}
+
 
 	public void showInstructions() {
 		helpWindow.setVisible(true);
