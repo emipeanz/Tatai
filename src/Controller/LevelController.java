@@ -75,7 +75,7 @@ public class LevelController {
 	private String blueProgressBar = "-fx-accent: blue;";
 	private String orangeProgressBar = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
-	private Circle[] chanceCircles = new Circle[] {chanceCircle1, chanceCircle2};
+	private Circle[] chanceCircles;
 
 
 	/**
@@ -107,6 +107,8 @@ public class LevelController {
 		listenButton.setDisable(true);
 		feedbackMessage.setVisible(false);
 		recordingProgress.setVisible(false);
+		
+		chanceCircles = new Circle[] {chanceCircle1, chanceCircle2};
 
 		progressCircles = new ArrayList<Circle>(Arrays.asList(circle1, circle2,
 				circle3, circle4, circle5, circle6, circle7, circle8, circle9, circle10));
