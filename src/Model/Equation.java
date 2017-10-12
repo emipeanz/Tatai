@@ -43,7 +43,7 @@ public class Equation extends Question {
 		int left = 0, right = 0;
 
 		int answer = -1;
-		while (answer < 0 || answer > 10) {
+		while (answer <= 0 || answer > 10) {
 			left = randomNumber(1,9);
 			right = randomNumber(1,9);
 			answer = evaluateEquation(left, right, operator);
