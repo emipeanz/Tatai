@@ -64,7 +64,6 @@ public class LevelController {
 	private int questionNumber = 1;
 	private Color red = Color.web("ef473a");
 	private Color green = Color.web("56ab2f");
-	private Color white = Color.web("ffffff");
 	private String blueProgressBar = "-fx-accent: blue;";
 	private String orangeProgressBar = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
@@ -139,6 +138,10 @@ public class LevelController {
 		_currentRound.getRecording().getMediaPlayer().play(); 
 		//invokes a runnable that resets the mediaplayer and updates buttons
 		_currentRound.getRecording().getMediaPlayer().onEndOfMediaProperty();
+		
+		listenButton.setDisable(false);
+		checkButton.setDisable(false);
+		recordButton.setDisable(false);
 	}
 
 
