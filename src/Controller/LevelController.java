@@ -94,6 +94,7 @@ public class LevelController {
 		listenButton.setDisable(true);
 		feedbackMessage.setVisible(false);
 		recordingProgress.setVisible(false);
+		numberToTest.setText(_currentRound.getQuestion().getDisplayString());
 
 		progressCircles = new ArrayList<Circle>(Arrays.asList(circle1, circle2,
 				circle3, circle4, circle5, circle6, circle7, circle8, circle9, circle10));
@@ -134,14 +135,23 @@ public class LevelController {
 		listenButton.setDisable(true);
 		checkButton.setDisable(true);
 		recordButton.setDisable(true);
+
+
+		new Runnable() {
+			@Override
+			public void run() {
+				//ensures media can be replayed.
+				
+				listenButton.setDisable(false);
+				checkButton.setDisable(false);
+				recordButton.setDisable(false);
+			}}
+		;
 		//plays media
 		_currentRound.getRecording().getMediaPlayer().play(); 
 		//invokes a runnable that resets the mediaplayer and updates buttons
 		_currentRound.getRecording().getMediaPlayer().onEndOfMediaProperty();
-		
-		listenButton.setDisable(false);
-		checkButton.setDisable(false);
-		recordButton.setDisable(false);
+
 	}
 
 
@@ -174,10 +184,8 @@ public class LevelController {
 		}
 
 		_currentRound = _test.getTestRound(questionNumber - 1);
-
 		numberToTest.setText(_currentRound.getQuestion().getDisplayString());
 		progressLabel.setText("A tawhio noa " + questionNumber + "/10");
-
 		listenButton.setDisable(true);
 	}
 
