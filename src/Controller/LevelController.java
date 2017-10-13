@@ -251,12 +251,6 @@ public class LevelController {
 		this.addNewQuestionToTest();
 		progressLabel.setText("A tawhio noa " + progress + "/10");
 
-		// Resets chances
-		for (Circle circle : chanceCircles) {
-			circle.setStroke(white);
-			circle.setFill(Color.TRANSPARENT);
-		}
-
 		listenButton.setDisable(true);
 		_player = null;
 	}
