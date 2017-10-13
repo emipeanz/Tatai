@@ -71,10 +71,9 @@ public class MainController{
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 		AnchorPane difficultyScene = null;
-		testType = TestType.EQUATION;
 
 		try {
-			DifficultyController controller = new DifficultyController(testType);
+			DifficultyController controller = new DifficultyController();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Difficulty.fxml"));
 			loader.setController(controller);
 			difficultyScene = loader.load();
@@ -93,7 +92,7 @@ public class MainController{
 		AnchorPane statsScene = null;
 		try {
 			System.out.println("Enterings practice mode");
-			LevelController controller = new LevelController(Difficulty.HARD, TestType.PRACTICE);
+			LevelController controller = new LevelController(TestType.PRACTICE);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
 			statsScene = loader.load();

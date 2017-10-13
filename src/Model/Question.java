@@ -92,15 +92,6 @@ public class Question {
 		return numberWord;	
 	}
 	
-	public String getPass() {
-		if(pass==true) {
-			return "Right!";
-		}
-		else {
-			return "Wrong";
-		}
-	}
-	
 	public String getDisplayString() {
 		return displayString;
 	}

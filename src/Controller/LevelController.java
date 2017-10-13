@@ -68,7 +68,7 @@ public class LevelController {
 	private String blueProgressBar = "-fx-accent: blue;";
 	private String orangeProgressBar = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
-	
+
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
@@ -90,8 +90,6 @@ public class LevelController {
 	 * in the code.
 	 */
 	public void initialize() {
-
-		addNewQuestionToTest();
 		checkButton.setDisable(true);
 		recordButton.setDisable(false);
 		listenButton.setDisable(true);
@@ -111,38 +109,20 @@ public class LevelController {
 	 */
 	public void takeRecording(ActionEvent e) {
 		recordingProgressBar(blueProgressBar);
-		
-		
-		String cmd = "arecord -d 4 -r 22050 -c 1 -i -t wav -f s16_LE  " + RECORDINGFILEPATH;
 
-		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
+		listenButton.setDisable(true);					
+		checkButton.setDisable(true);		
+		recordButton.setDisable(true);
 
-		//generates a new thread to execute the recording functionality
 		Thread record = new Thread(() -> {
-			try {
-				listenButton.setDisable(true);					
-				checkButton.setDisable(true);					
-				recordButton.setDisable(true);
-
-				pb.start().waitFor();
-				//when recording has completed, run the onRecordComplete with the input 
-				//being the recording file that has just been generated.
-				System.out.println("recording ready to update");
-
-				listenButton.setDisable(false);
-				checkButton.setDisable(false);
-				recordButton.setDisable(false);
-
-				//instantiates a new media player with the new media recording set.
-				_player = newMediaPlayer();
-
-			} catch (InterruptedException ignored) { // if process is prematurely terminated
-			} catch (IOException ioEvent) { //if process is incorrect (likely programmer error)
-				throw new RuntimeException("Programmer messed up command...");
-			}
+			_currentRound.takeRecording();
 		});
-		//starts the thread running to take the recording.
-		record.start();	
+
+		record.start();
+
+		listenButton.setDisable(false);
+		checkButton.setDisable(false);
+		recordButton.setDisable(false);
 	}
 
 	/**
@@ -151,46 +131,16 @@ public class LevelController {
 	 */
 	public void playRecording() {	
 		recordingProgressBar(orangeProgressBar);
-		//if recording has been set for a level...
-		if (_player == null) {
-			System.out.println("recording/mediaplayer has not been properly initialised");
-		} else {
-			//for now just disabling all buttons so can't call listen while already listening.
-			//if we have the time could be cool to 
-			listenButton.setDisable(true);
-			checkButton.setDisable(true);
-			recordButton.setDisable(true);
-			//plays media
-			_player.play(); 
-			//invokes a runnable that resets the mediaplayer and updates buttons
-			_player.onEndOfMediaProperty();
-		}
+
+		listenButton.setDisable(true);
+		checkButton.setDisable(true);
+		recordButton.setDisable(true);
+		//plays media
+		_currentRound.getRecording().getMediaPlayer().play(); 
+		//invokes a runnable that resets the mediaplayer and updates buttons
+		_currentRound.getRecording().getMediaPlayer().onEndOfMediaProperty();
 	}
 
-	/**
-	 * Creates a new media player which loads in the current media. player.setOnEndOfMedia(...)
-	 * creates a runnable that should be executed each time player.onEndOfMediaProperty() method 
-	 * called. Will be instantiated each time a new recording is taken.
-	 * @return
-	 */
-	private MediaPlayer newMediaPlayer() {
-		Media media = new Media(Paths.get(RECORDINGFILEPATH).toUri().toString());
-		//generates a media player to play audio
-		MediaPlayer player = new MediaPlayer(media);
-		//sets a runnable that will be called when player.onEndOfMediaProperty() called
-		player.setOnEndOfMedia(new Runnable() {
-			@Override
-			public void run() {
-				//ensures media can be replayed.
-				_player.stop();
-				//reenables buttons for use
-				recordButton.setDisable(false);
-				checkButton.setDisable(false);
-				listenButton.setDisable(false);
-			}
-		});
-		return player;
-	}
 
 	/**
 	 * Updates the state of the progress bar. Tracks how many rounds of the
@@ -200,13 +150,14 @@ public class LevelController {
 		Circle circle =	progressCircles.get(questionNumber - 1);
 		circle.setFill(color);
 		circle.setStroke(color);
-		questionNumber++;
 	}
 
 	/**
 	 * Called only when the user is advancing to another question
 	 */
 	public void nextQuestion(ActionEvent event) {
+		questionNumber++;
+
 		if((questionNumber == 11) && (!_testType.equals(TestType.PRACTICE))) {
 			System.out.println("Results showing");
 			showResults(event);
@@ -218,14 +169,13 @@ public class LevelController {
 		if(questionNumber - 1 > 10) {
 			throw new RuntimeException("Too many tests have been logged");
 		}
-		
-		_currentRound = _test.getTestRound(questionNumber -1);
-		
+
+		_currentRound = _test.getTestRound(questionNumber - 1);
+
 		numberToTest.setText(_currentRound.getQuestion().getDisplayString());
 		progressLabel.setText("A tawhio noa " + questionNumber + "/10");
 
 		listenButton.setDisable(true);
-		_player = null;
 	}
 
 	private void clearAndStartAgain(ActionEvent e) {
@@ -253,6 +203,8 @@ public class LevelController {
 	 * @param event
 	 */
 	public void showResults(ActionEvent event) {
+		System.out.println("Going to the results page");
+		/*
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		AnchorPane resultsScene = null;
 		ResultsController controller = null;
@@ -266,6 +218,7 @@ public class LevelController {
 		}
 		Scene scene = new Scene(resultsScene);
 		stageEventBelongsTo.setScene(scene);
+		 */
 	}
 
 	/**
@@ -301,14 +254,12 @@ public class LevelController {
 	 * @param e
 	 */
 	public void checkRecording(ActionEvent e) {
-		Boolean correct = this.checkRecordingForWord();
-		if(correct) {		
-			_currentQuestion.setPass(true);
-			chances = 2;
+		boolean correct = _currentRound.getRecording().checkRecording();
 
+		if(correct) {		
+			_currentRound.setPass(true);
 			feedbackMessage(true);
 			updateProgressBar(green);
-
 			PauseTransition delay = new PauseTransition(Duration.seconds(3));
 			delay.setOnFinished( event -> this.nextQuestion(e) );
 			delay.play();
@@ -316,12 +267,10 @@ public class LevelController {
 			//listenButton.setDisable(true);
 		}
 		else {
-			chances--;
-
-			if(chances == 0) { // If they have no more chances left
-				_currentQuestion.setPass(false);
+			_currentRound.decreaseChances();
+			if(_currentRound.getChances() == 0) { // If they have no more chances left
+				_currentRound.setPass(false);
 				updateProgressBar(red);
-				chances = 2;
 				feedbackMessage(false);
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));
 				delay.setOnFinished( event -> this.nextQuestion(e) );
@@ -343,6 +292,7 @@ public class LevelController {
 	 * @param b
 	 */
 	private void feedbackMessage(boolean b) {
+		int chances = _currentRound.getChances();
 		if(b) {
 			feedbackMessage.setText("I tika koe i te whakautu!");
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
@@ -352,7 +302,7 @@ public class LevelController {
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
 		}
 		else {
-			feedbackMessage.setText("Kaore, he he. \nKo te whakautu he " + _currentQuestion.getAnswerInt());
+			feedbackMessage.setText("Kaore, he he. \nKo te whakautu he " + _currentRound.getQuestion().getAnswerInt());
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
 		}
 		feedbackMessage.setVisible(true);
@@ -361,56 +311,10 @@ public class LevelController {
 		delay.play();
 	}
 
-	/**
-	 * Method checks if the recording that is currently in the recording directory is the
-	 * word that is the current test that it is on.  Uses back commands to run the wav file
-	 * through HTK and reads from the recout.lmf file to see if all parts of the word have
-	 * been picked up in the analysis
-	 * @return boolean if the recording is the correct number of now=t
-	 */
-	private boolean checkRecordingForWord() {
-		ArrayList<String> output = new ArrayList<String>();
-		System.out.println("Checking recording HTK bash");
-		String cmd = "HVite -H HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -C user/configLR  "
-				+ "-w user/wordNetworkNum -o SWT -l '*' -i recout.mlf -p 0.0 -s 5.0  "
-				+ "user/dictionaryD user/tiedList " + RECORDINGFILEPATH;
-		ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", cmd);
-		try {
-			System.out.println("Starting process");
-			Process process = processBuilder.start();
-			process.waitFor();
-			FileReader in = new FileReader("recout.mlf");
-			BufferedReader br = new BufferedReader(in);
-			String line = null;
-			while((line = br.readLine()) != null) {
-				if((!(line.contains("#!MLF!#"))) && (!(line.contains("\"*/foo.rec\""))) && (!(line.contains("."))) && (!(line.contains("sil")))) {
-					System.out.println("old line = " + line);
-					String newLine = line.replaceAll("aa", "ā");
-					System.out.println("new line = " + newLine);
-					output.add(newLine);
-				}
-			}
-			br.close();
-		} catch (IOException | InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		String numberWord = _currentQuestion.getAnswerString();
-		String[] split = numberWord.split("\\s+");
-		List<String> list = Arrays.asList(split);
-		for(String s:split) {
-			if(!(output.contains(s))) {
-				System.out.println("word not there, exiting FALSE");
-				return false;
-			}
-		}
-		System.out.println("word there, exiting TRUE");
-		return true;
-	}
-
 	public void recordingProgressBar(String progressStyle) {
 		recordingProgress.setStyle(progressStyle);
 		recordingProgress.setVisible(true);
+
 		Task<Void> task = new Task<Void>(){
 			@Override
 			public Void call(){

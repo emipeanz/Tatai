@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import Model.Difficulty;
 import Model.TestType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,12 +30,10 @@ public class DifficultyController {
 	
 
 	private TestType testType;
-	private Difficulty difficulty;
 	private boolean hardUnlocked = false;
 	private boolean medUnlocked = false;
 
-	public DifficultyController(TestType type) {
-		testType = type;
+	public DifficultyController() {
 	}
 
 	/**
@@ -87,19 +84,16 @@ public class DifficultyController {
 			AnchorPane levelScene = null;
 
 			if (e.getSource().equals(easyButton)) {
-				difficulty = Difficulty.EASY;
+				testType = TestType.EASY;
 			} else if (e.getSource().equals(hardButton)) {
-				difficulty = Difficulty.HARD;
+				testType = TestType.HARD;
 			} else if (e.getSource().equals(mediumButton)) {
-				difficulty = Difficulty.MEDIUM;
+				testType = TestType.MEDIUM;
 			}
-
-			System.out.println(testType);
-			System.out.println(difficulty);
 
 			try {
 				System.out.println("easy set");
-				LevelController controller = new LevelController(difficulty, testType);
+				LevelController controller = new LevelController(testType);
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 				loader.setController(controller);
 				levelScene = loader.load();

@@ -36,9 +36,9 @@ public class Round {
 	public Question getQuestion() {
 		return _question;
 	}
-
-	public void setRecording(Recording recording) {
-		this._recording = recording;
+	
+	public void takeRecording() {
+		_recording.takeRecording();
 	}
 
 	public Recording getRecording() {

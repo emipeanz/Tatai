@@ -9,27 +9,47 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javafx.event.ActionEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Recording {
 	
-	private File _recordingFile;
-	private MediaPlayer _player;
+	private MediaPlayer _player = newMediaPlayer();
 	private final String RECORDINGFILEPATH = "RecordingDir/foo.wav";
-	
+
+	/**
+	 * Uses a bash command to take a new recording. This functionality will be run in a 
+	 * backgroud thread. Buttons (except return to main menu) will be disabled during the
+	 * recording process and reenabled after. A new media player storing the current 
+	 * recording will be instantiated once this recording has been taken.
+	 * @param e
+	 */
 	public void takeRecording() {
-		
+		String cmd = "arecord -d 4 -r 22050 -c 1 -i -t wav -f s16_LE  " + RECORDINGFILEPATH;
+		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
+		try {
+			pb.start().waitFor();
+			//when recording has completed, run the onRecordComplete with the input 
+			//being the recording file that has just been generated.
+			System.out.println("recording ready to update");
+			//instantiates a new media player with the new media recording set.
+			_player = newMediaPlayer();
+		} catch (InterruptedException ignored) { // if process is prematurely terminated
+		} catch (IOException ioEvent) { //if process is incorrect (likely programmer error)
+			throw new RuntimeException("Programmer messed up command...");
+		}
 	}
-	
+
+
 	public boolean checkRecording() {
 		return false;
 	}
 	
-	public void playRecording() {
-		
+	public MediaPlayer getMediaPlayer() {
+		return _player;
 	}
-	
+
 	/**
 	 * Creates a new media player which loads in the current media. player.setOnEndOfMedia(...)
 	 * creates a runnable that should be executed each time player.onEndOfMediaProperty() method 
@@ -70,12 +90,10 @@ public class Recording {
 			System.out.println("Starting process");
 			Process process = processBuilder.start();
 			process.waitFor();
-			FileReader in = new FileReader("recout.mlf");
-			BufferedReader br = new BufferedReader(in);
+			BufferedReader br = new BufferedReader(new FileReader("recout.mlf"));
 			String line = null;
 			while((line = br.readLine()) != null) {
 				if((!(line.contains("#!MLF!#"))) && (!(line.contains("\"*/foo.rec\""))) && (!(line.contains("."))) && (!(line.contains("sil")))) {
-					System.out.println("old line = " + line);
 					String newLine = line.replaceAll("aa", "ā");
 					System.out.println("new line = " + newLine);
 					output.add(newLine);
@@ -85,7 +103,7 @@ public class Recording {
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		String[] split = numberWord.split("\\s+");
 		List<String> list = Arrays.asList(split);
 		for(String s : split) {
@@ -97,5 +115,4 @@ public class Recording {
 		System.out.println("word there, exiting TRUE");
 		return true;
 	}
-	
 }

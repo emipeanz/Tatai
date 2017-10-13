@@ -25,7 +25,7 @@ public class Test {
 		_testType = testType;
 		if (_testType == TestType.CUSTOM) {
 			for (int i = 0; i < _numRounds; i++) {
-				_testRounds.add(new Round(LKAJGLAOIUQRGN;AOIGN));
+				_testRounds.add(new Round("hello"));
 			}
 		} else {
 			for (int i = 0; i < _numRounds; i++) {

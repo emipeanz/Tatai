@@ -46,12 +46,12 @@ public class ResultsController {
 
 	public File _resultsFile;
 	private Test _test;
-	private Difficulty _difficulty;
 	private ObservableList<Question> _dataList;
 	private TestType _testType;
 
 
 	public void initialize() {
+		/*
 		question.setCellValueFactory(new PropertyValueFactory<>("displayString"));
 		answerString.setCellValueFactory(new PropertyValueFactory<>("answerString"));
 		answerInt.setCellValueFactory(new PropertyValueFactory<>("answerInt"));
@@ -86,12 +86,12 @@ public class ResultsController {
 
 		//saves results of this round to file for use in stats menu
 		saveResults();
+		*/
 	}
 
 
 	public ResultsController(Test test, TestType testType) {
 		_test = test;
-		_difficulty = _test.getdifficulty();
 		_testType = testType;
 	}
 
@@ -132,7 +132,7 @@ public class ResultsController {
 
 		try {
 			//ARBITRARY ASSIGNMENT OF ENUM
-			LevelController controller = new LevelController(_difficulty, _testType);
+			LevelController controller = new LevelController(_testType);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
 			levelScene = loader.load();
@@ -153,15 +153,13 @@ public class ResultsController {
 	 * the user has had.
 	 */
 	private void saveResults() {
-
-
 		//will only store results if the test was using equations
-		if (_testType == _testType.EQUATION) {
+		if (!((_testType.equals(TestType.CUSTOM)) || (_testType.equals(TestType.PRACTICE)))) {
 			String filename;
 
-			if (_difficulty == _difficulty.EASY) {
+			if (_testType.equals(TestType.EASY)) {
 				filename = ".easyResults.txt";
-			} else if (_difficulty == _difficulty.HARD) {
+			} else if (_testType.equals(TestType.HARD)) {
 				filename = ".hardResults.txt";
 			} else {
 				filename = ".mediumResults.txt";
