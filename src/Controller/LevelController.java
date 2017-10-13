@@ -135,8 +135,7 @@ public class LevelController {
 		listenButton.setDisable(true);
 		checkButton.setDisable(true);
 		recordButton.setDisable(true);
-
-
+		
 		new Runnable() {
 			@Override
 			public void run() {
@@ -265,7 +264,8 @@ public class LevelController {
 	 * @param e
 	 */
 	public void checkRecording(ActionEvent e) {
-		boolean correct = _currentRound.getRecording().checkRecording();
+		String numberString = _currentRound.getQuestion().getAnswerString();
+		boolean correct = _currentRound.getRecording().checkRecordingForWord(numberString);
 
 		if(correct) {		
 			_currentRound.setPass(true);

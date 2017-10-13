@@ -14,9 +14,10 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Recording {
-	
-	private MediaPlayer _player = newMediaPlayer();
+
+	private MediaPlayer _player;
 	private final String RECORDINGFILEPATH = "RecordingDir/foo.wav";
+
 
 	/**
 	 * Uses a bash command to take a new recording. This functionality will be run in a 
@@ -34,18 +35,17 @@ public class Recording {
 			//being the recording file that has just been generated.
 			System.out.println("recording ready to update");
 			//instantiates a new media player with the new media recording set.
-			_player = newMediaPlayer();
+			_player = new MediaPlayer();
 		} catch (InterruptedException ignored) { // if process is prematurely terminated
 		} catch (IOException ioEvent) { //if process is incorrect (likely programmer error)
 			throw new RuntimeException("Programmer messed up command...");
 		}
 	}
-
-
-	public boolean checkRecording() {
-		return false;
-	}
 	
+	public void setMediaPlayer(Runnable runnable) {
+		_player = newMediaPlayer(runnable);
+	}
+
 	public MediaPlayer getMediaPlayer() {
 		return _player;
 	}
@@ -66,10 +66,9 @@ public class Recording {
 			public void run() {
 				//ensures media can be replayed.
 				_player.stop();
-				//reenables buttons for use
-			}
-		});
+			};
 		return player;
+		}
 	}
 
 	/**
@@ -79,7 +78,7 @@ public class Recording {
 	 * been picked up in the analysis
 	 * @return boolean if the recording is the correct number of now=t
 	 */
-	private boolean checkRecordingForWord(String numberWord) {
+	public boolean checkRecordingForWord(String numberWord) {
 		ArrayList<String> output = new ArrayList<String>();
 		System.out.println("Checking recording HTK bash");
 		String cmd = "HVite -H HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -C user/configLR  "
