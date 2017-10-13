@@ -10,41 +10,42 @@ package Model;
 import java.util.ArrayList;
 
 public class Test {
-	
-	private ArrayList<Question> _testQuestions;
-	private Difficulty _difficulty;
-	
+
+	private ArrayList<Round> _testRounds = new ArrayList<Round>();
+	private TestType _testType;
+	private final int _numRounds = 10;
+
 	/**
 	 * Stores the difficulty level of the particular test being 
 	 * carried out and initialises an array list to store 
 	 * the questions of that test.
 	 * @param difficulty: difficulty level of the test (enum)
 	 */
-	public Test(Difficulty difficulty) {
-		_difficulty = difficulty;
-		_testQuestions = new ArrayList<Question>();
+	public Test(TestType testType) {
+		_testType = testType;
+		if (_testType == TestType.CUSTOM) {
+			for (int i = 0; i < _numRounds; i++) {
+				_testRounds.add(new Round(LKAJGLAOIUQRGN;AOIGN));
+			}
+		} else {
+			for (int i = 0; i < _numRounds; i++) {
+				_testRounds.add(new Round(_testType));
+			}
+		}
 	}
-	
-	public Difficulty getdifficulty() {
-		return _difficulty;
+
+	public TestType getTestType() {
+		return _testType;
 	}
-	
+
 	/**
 	 * Returns the questions of the test being carried out.
 	 * @return: arraylist of test questions
 	 */
-	public ArrayList<Question> getTestquestions() {
-		return _testQuestions;
+	public Round getTestRound(int index) {
+		return _testRounds.get(index);
 	}
 
-	/**
-	 * Adds a question to the test being carried out.
-	 * @param question
-	 */
-	public void addTestQuestion(Question question) {
-		_testQuestions.add(question);
-	}
-	
 	/**
 	 * Will return an integer value representing the number
 	 * of questions answered correctly out of ten in the 
@@ -54,22 +55,11 @@ public class Test {
 	public int getOverallMark() {
 		int overallMark = 0;
 		//cycles through each question checking if it was a pass
-		for (Question question : _testQuestions) {
-			if (question.pass) {
+		for (Round round : _testRounds) {
+			if (round.getPass()) {
 				overallMark++;
 			}
 		}
 		return overallMark;
 	}
-
-	/**
-	 * Returns the number of questions stored in the test model, 
-	 * this will determine how many rounds of the test have been
-	 * carried out by the user.
-	 * @return
-	 */
-	public int getNumberofRound() {
-		return _testQuestions.size();
-	}
-
 }

@@ -58,38 +58,31 @@ public class LevelController {
 	@FXML private Circle circle1, circle2, circle3, circle4, 
 	circle5, circle6, circle7, circle8, circle9, circle10;
 
-	private TestType type;
-	private int progress = 1;
-	private Question _currentQuestion;
 	private Test _test;
-	private MediaPlayer _player;
-	private final String RECORDINGFILEPATH = "RecordingDir/foo.wav";
-	private Difficulty _difficulty;
-	private int chances = 2;
+	private TestType _testType;
+	private Round _currentRound;
+	private int questionNumber = 1;
 	private Color red = Color.web("ef473a");
 	private Color green = Color.web("56ab2f");
 	private Color white = Color.web("ffffff");
 	private String blueProgressBar = "-fx-accent: blue;";
 	private String orangeProgressBar = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
-	private Circle[] chanceCircles;
-
+	
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
 	 * the difficulty is set and a new test is made
 	 * @param diff Difficulty of the test user wants to run (enum)
 	 */
-	public LevelController(Difficulty diff, TestType testType) {
-		_difficulty = diff;
-		type = testType;
-		_test = new Test(_difficulty);
-		System.out.println(_difficulty.toString() + " & " + type.toString());
-		//generates a new directory
+	public LevelController(TestType testType) {
+		_testType = testType;
+		_test = new Test(testType);
 		File recordingDir = new File("RecordingDir/");
 		if(!recordingDir.exists()) {
 			recordingDir.mkdir();
 		}
+		_currentRound = _test.getTestRound(questionNumber - 1);
 	}
 
 	/**
@@ -110,25 +103,6 @@ public class LevelController {
 	}
 
 	/**
-	 * For now just having a play around - this method is called when the make random number
-	 * button is clicked and will show the number and the word of that number in maori.
-	 * Learning how to use events.
-	 * @param event
-	 */
-	public void addNewQuestionToTest() {
-
-		if (type == type.EQUATION) {
-			_currentQuestion = Equation.create(_test.getdifficulty());
-		} else {
-			_currentQuestion = new Practice();
-		}
-
-		_test.addTestQuestion(_currentQuestion);
-		numberToTest.setText(_currentQuestion.getDisplayString());
-
-	}
-
-	/**
 	 * Uses a bash command to take a new recording. This functionality will be run in a 
 	 * backgroud thread. Buttons (except return to main menu) will be disabled during the
 	 * recording process and reenabled after. A new media player storing the current 
@@ -137,6 +111,8 @@ public class LevelController {
 	 */
 	public void takeRecording(ActionEvent e) {
 		recordingProgressBar(blueProgressBar);
+		
+		
 		String cmd = "arecord -d 4 -r 22050 -c 1 -i -t wav -f s16_LE  " + RECORDINGFILEPATH;
 
 		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
@@ -221,35 +197,32 @@ public class LevelController {
 	 * level have been made.
 	 */
 	private void updateProgressBar(Color color) {
-		progress = _test.getNumberofRound();
-		System.out.println("test round = " + _test.getNumberofRound());
-
-		System.out.println("number of round: " + _test.getNumberofRound());
-		Circle circle =	progressCircles.get(_test.getNumberofRound() - 1);
-
+		Circle circle =	progressCircles.get(questionNumber - 1);
 		circle.setFill(color);
 		circle.setStroke(color);
+		questionNumber++;
 	}
 
 	/**
 	 * Called only when the user is advancing to another question
 	 */
 	public void nextQuestion(ActionEvent event) {
-		progress += 1; // Add 1 question to progress bar
-		System.out.println("Progress = " + progress + " TestType = " + type.toString());
-		if((progress == 11) && (type.equals(TestType.EQUATION))) {
+		if((questionNumber == 11) && (!_testType.equals(TestType.PRACTICE))) {
 			System.out.println("Results showing");
 			showResults(event);
 		}
-		if((progress == 11) && (type.equals(TestType.PRACTICE))) {
+		if((questionNumber == 11) && (_testType.equals(TestType.PRACTICE))) {
 			System.out.println("Restarting");
 			clearAndStartAgain(event);
 		}
-		if(progress - 1 > 10) {
+		if(questionNumber - 1 > 10) {
 			throw new RuntimeException("Too many tests have been logged");
 		}
-		this.addNewQuestionToTest();
-		progressLabel.setText("A tawhio noa " + progress + "/10");
+		
+		_currentRound = _test.getTestRound(questionNumber -1);
+		
+		numberToTest.setText(_currentRound.getQuestion().getDisplayString());
+		progressLabel.setText("A tawhio noa " + questionNumber + "/10");
 
 		listenButton.setDisable(true);
 		_player = null;
@@ -262,7 +235,7 @@ public class LevelController {
 		AnchorPane statsScene = null;
 		try {
 			System.out.println("Entering practice mode");
-			LevelController controller = new LevelController(Difficulty.HARD, TestType.PRACTICE);
+			LevelController controller = new LevelController(TestType.HARD);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
 			statsScene = loader.load();
@@ -311,7 +284,6 @@ public class LevelController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ExitPopup.fxml"));
 			loader.setController(popupController);
 			root = (AnchorPane)loader.load();
-
 			stage.setScene(new Scene(root));
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.initOwner(eventButton.getScene().getWindow());

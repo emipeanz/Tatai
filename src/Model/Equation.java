@@ -24,8 +24,12 @@ public class Equation extends Question {
 		}
 	}
 
-	static public Equation create(Difficulty difficulty) {
-		switch(difficulty) {
+	public Equation(String equation) {
+		displayString = equation;
+	}
+	
+	static public Equation create(TestType testType) {
+		switch(testType) {
 		case EASY:
 			return easyEquation();
 		case MEDIUM:
@@ -33,7 +37,7 @@ public class Equation extends Question {
 		case HARD:
 			return hardEquation();
 		default:
-			throw new IllegalArgumentException("Given difficulty " + difficulty + " is not a proper one");
+			throw new IllegalArgumentException("Given difficulty " + testType + " is not a proper one");
 		}
 	}
 

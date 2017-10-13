@@ -32,14 +32,6 @@ public class Question {
 	}
 
 	/**
-	 * Stores the result of the test that has been taken.
-	 * @param pass
-	 */
-	public void setPass(boolean pass) {
-		this.pass = pass;
-	}
-	
-	/**
 	 * Converts an integer to the maori word associated to that integer.
 	 * @param number: number to be converted
 	 * @return String associated to that number
@@ -100,10 +92,6 @@ public class Question {
 		return numberWord;	
 	}
 	
-	public void setQuestion(int i) {
-		question = i;
-	}
-	
 	public String getPass() {
 		if(pass==true) {
 			return "Right!";
@@ -111,14 +99,6 @@ public class Question {
 		else {
 			return "Wrong";
 		}
-	}
-	
-	public boolean getPassBoolean() {
-		return pass;
-	}
-
-	public int getQuestion() {
-		return this.question;
 	}
 	
 	public String getDisplayString() {
