@@ -12,28 +12,28 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="progressLabel" layoutX="291.0" layoutY="475.0" text="A tawhio noa 1/10" textFill="WHITE">
+      <Label fx:id="progressLabel" layoutX="308.0" layoutY="461.0" text="A tawhio noa 1/10" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font></Label>
-      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="17.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="17.0">
+      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="134.0" layoutY="46.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="46.0">
          <font>
-            <Font size="110.0" />
+            <Font size="120.0" />
          </font>
       </Label>
-      <Button id="circleButton" fx:id="listenButton" alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="286.0" mnemonicParsing="false" onAction="#playRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);" text="" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="listenButton" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="251.0" mnemonicParsing="false" onAction="#playRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);" text="" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
       </Button>
-      <Button id="circleButton" fx:id="recordButton" layoutX="347.0" layoutY="286.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #44ffd3, #0fb7ff);" text="" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="recordButton" layoutX="339.0" layoutY="251.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #44ffd3, #0fb7ff);" text="" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
       </Button>
-      <Button id="circleButton" fx:id="checkButton" layoutX="567.0" layoutY="285.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ec79f4,  #a250ff);" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="checkButton" layoutX="565.0" layoutY="250.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ec79f4,  #a250ff);" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
@@ -48,7 +48,7 @@
       </Button>
       <Label id="Font" fx:id="infoIcon" layoutX="779.0" layoutY="-2.0" onMouseEntered="#showInstructions" onMouseExited="#hideInstructions" text="" textFill="#f8f8f8" />
       <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
-      <HBox fx:id="progressBar" layoutX="224.0" layoutY="447.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
+      <HBox fx:id="progressBar" layoutX="225.0" layoutY="426.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
          <children>
             <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
             <Circle fx:id="circle2" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
@@ -62,12 +62,7 @@
             <Circle fx:id="circle10" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
          </children>
       </HBox>
-      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="45.0" prefHeight="186.0" prefWidth="678.0" textAlignment="CENTER" textFill="#252525">
-         <font>
-            <Font size="49.0" />
-         </font>
-      </Label>
-      <ProgressBar fx:id="recordingProgress" layoutX="265.0" layoutY="31.0" prefHeight="18.0" prefWidth="311.0" progress="0.0">
+      <ProgressBar fx:id="recordingProgress" layoutX="265.0" layoutY="36.0" prefHeight="18.0" prefWidth="311.0" progress="0.0">
          <effect>
             <DropShadow />
          </effect>
@@ -93,6 +88,11 @@
             <Label id="smallFont" layoutX="50.0" layoutY="46.0" prefHeight="86.0" prefWidth="311.0" text="  Will play a recording&#10;  Will record you speaking&#10;  Will check to see if you are right&#10;  Goes back to main menu&#10;  Shows your chances" />
          </children>
       </AnchorPane>
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="47.0" prefHeight="186.0" prefWidth="678.0" textAlignment="CENTER" textFill="#252525">
+         <font>
+            <Font size="49.0" />
+         </font>
+      </Label>
    
 
    </children>
