@@ -55,7 +55,6 @@ public class LevelController {
 	@FXML private Label feedbackMessage;
 	@FXML private AnchorPane helpWindow;
 	@FXML private ProgressBar recordingProgress;
-	@FXML private Circle chanceCircle1, chanceCircle2;
 	@FXML private Circle circle1, circle2, circle3, circle4, 
 	circle5, circle6, circle7, circle8, circle9, circle10;
 
@@ -85,7 +84,7 @@ public class LevelController {
 		_difficulty = diff;
 		type = testType;
 		_test = new Test(_difficulty);
-
+		System.out.println(_difficulty.toString() + " & " + type.toString());
 		//generates a new directory
 		File recordingDir = new File("RecordingDir/");
 		if(!recordingDir.exists()) {
@@ -105,8 +104,6 @@ public class LevelController {
 		listenButton.setDisable(true);
 		feedbackMessage.setVisible(false);
 		recordingProgress.setVisible(false);
-		
-		chanceCircles = new Circle[] {chanceCircle1, chanceCircle2};
 
 		progressCircles = new ArrayList<Circle>(Arrays.asList(circle1, circle2,
 				circle3, circle4, circle5, circle6, circle7, circle8, circle9, circle10));
@@ -238,11 +235,15 @@ public class LevelController {
 	 * Called only when the user is advancing to another question
 	 */
 	public void nextQuestion(ActionEvent event) {
-		System.out.println("NXTQUESTION-----------------------------------------------------");
-		System.out.println("current progress = " + progress);
 		progress += 1; // Add 1 question to progress bar
-		if(progress == 11) {
+		System.out.println("Progress = " + progress + " TestType = " + type.toString());
+		if((progress == 11) && (type.equals(TestType.EQUATION))) {
+			System.out.println("Results showing");
 			showResults(event);
+		}
+		if((progress == 11) && (type.equals(TestType.PRACTICE))) {
+			System.out.println("Restarting");
+			clearAndStartAgain(event);
 		}
 		if(progress - 1 > 10) {
 			throw new RuntimeException("Too many tests have been logged");
@@ -258,6 +259,25 @@ public class LevelController {
 
 		listenButton.setDisable(true);
 		_player = null;
+	}
+
+	private void clearAndStartAgain(ActionEvent e) {
+		// Get the main stage to display the scene in
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+
+		AnchorPane statsScene = null;
+		try {
+			System.out.println("Entering practice mode");
+			LevelController controller = new LevelController(Difficulty.HARD, TestType.PRACTICE);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
+			loader.setController(controller);
+			statsScene = loader.load();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Scene scene = new Scene(statsScene);
+		stageEventBelongsTo.setScene(scene);
+
 	}
 
 	/**
@@ -289,7 +309,7 @@ public class LevelController {
 	public void backButtonEvent(ActionEvent event) {
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Button eventButton = (Button)event.getSource();
-		
+
 		try {
 			Stage stage = new Stage(); 
 			AnchorPane root;
@@ -297,7 +317,7 @@ public class LevelController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ExitPopup.fxml"));
 			loader.setController(popupController);
 			root = (AnchorPane)loader.load();
-			
+
 			stage.setScene(new Scene(root));
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.initOwner(eventButton.getScene().getWindow());
@@ -306,7 +326,7 @@ public class LevelController {
 			System.out.println("exception thrown");
 			e1.printStackTrace();
 		}
-		
+
 	}
 
 	/**
@@ -317,12 +337,9 @@ public class LevelController {
 	public void checkRecording(ActionEvent e) {
 		Boolean correct = this.checkRecordingForWord();
 		if(correct) {		
-			chanceCircles[2-chances].setStroke(green);
-			chanceCircles[2-chances].setFill(green);
-			
 			_currentQuestion.setPass(true);
 			chances = 2;
-			
+
 			feedbackMessage(true);
 			updateProgressBar(green);
 
@@ -333,8 +350,6 @@ public class LevelController {
 			//listenButton.setDisable(true);
 		}
 		else {
-			chanceCircles[2-chances].setStroke(red);
-			chanceCircles[2-chances].setFill(red);
 			chances--;
 
 			if(chances == 0) { // If they have no more chances left

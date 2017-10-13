@@ -71,12 +71,7 @@ public class MainController{
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 		AnchorPane difficultyScene = null;
-
-		if (e.getSource().equals(practiceButton)) {
-			testType = TestType.PRACTICE;
-		} else if (e.getSource().equals(playButton)) {
-			testType = TestType.EQUATION;
-		}
+		testType = TestType.EQUATION;
 
 		try {
 			DifficultyController controller = new DifficultyController(testType);
@@ -90,8 +85,25 @@ public class MainController{
 		stageEventBelongsTo.setScene(scene);
 
 	}
+	
+	public void enterPracticeMode(ActionEvent e) {
+		// Get the main stage to display the scene in
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
-
+		AnchorPane statsScene = null;
+		try {
+			System.out.println("Enterings practice mode");
+			LevelController controller = new LevelController(Difficulty.HARD, TestType.PRACTICE);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
+			loader.setController(controller);
+			statsScene = loader.load();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Scene scene = new Scene(statsScene);
+		stageEventBelongsTo.setScene(scene);
+	}
+	
 	public void enterStatsView(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
