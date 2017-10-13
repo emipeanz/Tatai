@@ -131,26 +131,17 @@ public class LevelController {
 	 */
 	public void playRecording() {	
 		recordingProgressBar(orangeProgressBar);
-
-		listenButton.setDisable(true);
-		checkButton.setDisable(true);
-		recordButton.setDisable(true);
-
-
-		new Runnable() {
-			@Override
-			public void run() {
-				//ensures media can be replayed.
-				
-				listenButton.setDisable(false);
-				checkButton.setDisable(false);
-				recordButton.setDisable(false);
-			}}
-		;
-		//plays media
-		_currentRound.getRecording().getMediaPlayer().play(); 
-		//invokes a runnable that resets the mediaplayer and updates buttons
-		_currentRound.getRecording().getMediaPlayer().onEndOfMediaProperty();
+		//if recording has been set for a level...
+			//for now just disabling all buttons so can't call listen while already listening.
+			//if we have the time could be cool to 
+			listenButton.setDisable(true);
+			checkButton.setDisable(true);
+			recordButton.setDisable(true);
+			//plays media
+			_currentRound.getRecording().newMediaPlayer(recordButton, checkButton, listenButton); 
+			_currentRound.getRecording().getMediaPlayer().play();
+			//invokes a runnable that resets the mediaplayer and updates buttons
+			_currentRound.getRecording().getMediaPlayer().onEndOfMediaProperty();
 
 	}
 

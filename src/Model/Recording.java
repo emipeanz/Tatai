@@ -10,12 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Recording {
 	
-	private MediaPlayer _player = newMediaPlayer();
+	private MediaPlayer _player;
 	private final String RECORDINGFILEPATH = "RecordingDir/foo.wav";
 
 	/**
@@ -34,14 +35,13 @@ public class Recording {
 			//being the recording file that has just been generated.
 			System.out.println("recording ready to update");
 			//instantiates a new media player with the new media recording set.
-			_player = newMediaPlayer();
 		} catch (InterruptedException ignored) { // if process is prematurely terminated
 		} catch (IOException ioEvent) { //if process is incorrect (likely programmer error)
 			throw new RuntimeException("Programmer messed up command...");
 		}
 	}
 
-
+	
 	public boolean checkRecording() {
 		return false;
 	}
@@ -56,7 +56,8 @@ public class Recording {
 	 * called. Will be instantiated each time a new recording is taken.
 	 * @return
 	 */
-	private MediaPlayer newMediaPlayer() {
+	public void newMediaPlayer(Button a, Button b, Button c) {
+		
 		Media media = new Media(Paths.get(RECORDINGFILEPATH).toUri().toString());
 		//generates a media player to play audio
 		MediaPlayer player = new MediaPlayer(media);
@@ -67,9 +68,12 @@ public class Recording {
 				//ensures media can be replayed.
 				_player.stop();
 				//reenables buttons for use
+				a.setDisable(false);
+				b.setDisable(false);
+				c.setDisable(false);
 			}
 		});
-		return player;
+		_player = player;
 	}
 
 	/**
