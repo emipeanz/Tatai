@@ -83,7 +83,7 @@ public class Recording {
 	 * been picked up in the analysis
 	 * @return boolean if the recording is the correct number of now=t
 	 */
-	private boolean checkRecordingForWord(String numberWord) {
+	public boolean checkRecordingForWord(String numberWord) {
 		ArrayList<String> output = new ArrayList<String>();
 		System.out.println("Checking recording HTK bash");
 		String cmd = "HVite -H HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -C user/configLR  "

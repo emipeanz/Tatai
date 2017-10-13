@@ -131,6 +131,7 @@ public class LevelController {
 	 */
 	public void playRecording() {	
 		recordingProgressBar(orangeProgressBar);
+
 		//if recording has been set for a level...
 			//for now just disabling all buttons so can't call listen while already listening.
 			//if we have the time could be cool to 
@@ -256,7 +257,8 @@ public class LevelController {
 	 * @param e
 	 */
 	public void checkRecording(ActionEvent e) {
-		boolean correct = _currentRound.getRecording().checkRecording();
+		String numberString = _currentRound.getQuestion().getAnswerString();
+		boolean correct = _currentRound.getRecording().checkRecordingForWord(numberString);
 
 		if(correct) {		
 			_currentRound.setPass(true);
