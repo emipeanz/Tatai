@@ -109,20 +109,14 @@ public class LevelController {
 	 */
 	public void takeRecording(ActionEvent e) {
 		recordingProgressBar(blueProgressBar);
-
-		listenButton.setDisable(true);					
-		checkButton.setDisable(true);		
-		recordButton.setDisable(true);
+		setDisableButtons(true, true, true);
 
 		Thread record = new Thread(() -> {
 			_currentRound.takeRecording();
 		});
 
 		record.start();
-
-		listenButton.setDisable(false);
-		checkButton.setDisable(false);
-		recordButton.setDisable(false);
+		setDisableButtons(false, false, false);
 	}
 
 	/**
@@ -135,9 +129,7 @@ public class LevelController {
 		//if recording has been set for a level...
 			//for now just disabling all buttons so can't call listen while already listening.
 			//if we have the time could be cool to 
-			listenButton.setDisable(true);
-			checkButton.setDisable(true);
-			recordButton.setDisable(true);
+			setDisableButtons(true, true, true);
 			//plays media
 			_currentRound.getRecording().newMediaPlayer(recordButton, checkButton, listenButton); 
 			_currentRound.getRecording().getMediaPlayer().play();
@@ -145,7 +137,12 @@ public class LevelController {
 			_currentRound.getRecording().getMediaPlayer().onEndOfMediaProperty();
 
 	}
-
+	
+	public void setDisableButtons(boolean listenDisable, boolean checkDisable, boolean recordDisable) {
+		listenButton.setDisable(listenDisable);
+		checkButton.setDisable(checkDisable);
+		recordButton.setDisable(recordDisable);
+	}
 
 	/**
 	 * Updates the state of the progress bar. Tracks how many rounds of the
@@ -267,10 +264,8 @@ public class LevelController {
 			PauseTransition delay = new PauseTransition(Duration.seconds(3));
 			delay.setOnFinished( event -> this.nextQuestion(e) );
 			delay.play();
-			//checkButton.setDisable(true);
-			//listenButton.setDisable(true);
-		}
-		else {
+			//setDisableButtons(true, true, false);
+		} else {
 			_currentRound.decreaseChances();
 			if(_currentRound.getChances() == 0) { // If they have no more chances left
 				_currentRound.setPass(false);
@@ -279,13 +274,10 @@ public class LevelController {
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));
 				delay.setOnFinished( event -> this.nextQuestion(e) );
 				delay.play();
-				//checkButton.setDisable(true);
-				//listenButton.setDisable(true);
-			} else { // If they have one more chance left
+				} else { // If they have one more chance left
 				feedbackMessage(false);
-				//checkButton.setDisable(true);
-				//listenButton.setDisable(true);
 			}
+			//setDisableButtons(true, true, true);
 
 		}
 
