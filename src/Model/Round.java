@@ -46,6 +46,7 @@ public class Round {
 
 	public void setPass(Boolean pass) {
 		this._pass = pass;
+		_question.setPassString(pass);
 	}
 
 	public Boolean getPass() {

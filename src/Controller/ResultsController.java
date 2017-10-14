@@ -73,13 +73,13 @@ public class ResultsController {
 							boolean pass = (_test.getTestRound(questions.indexOf(q))).getPass();
 							if (pass) {
 								// Colour green for getting it right
-								setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
+								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
+								
 								setText("Right!");
 							}
 							if (!pass){
 								// Colour red for getting it wrong
-								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
-								setText("Wrong");
+								setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");								setText("Wrong");
 							}
 						}
 					}

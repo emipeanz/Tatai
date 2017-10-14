@@ -278,7 +278,6 @@ public class LevelController {
 
 		if(correct) {		
 			_currentRound.setPass(true);
-			_currentRound.getQuestion().setPassString(true);
 			feedbackMessage(true);
 			updateProgressBar(green);
 			PauseTransition delay = new PauseTransition(Duration.seconds(3));
@@ -289,7 +288,6 @@ public class LevelController {
 			_currentRound.decreaseChances();
 			if(_currentRound.getChances() == 0) { // If they have no more chances left
 				_currentRound.setPass(false);
-				_currentRound.getQuestion().setPassString(true);
 				updateProgressBar(red);
 				feedbackMessage(false);
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));

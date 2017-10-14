@@ -123,10 +123,10 @@ public class Question {
 	
 	public void setPassString(boolean pass) {
 		if(pass) {
-			passString = "Right!";
+			passString = "Wrong";
 		}
 		else {
-			passString = "Wrong";
+			passString = "Right!";
 		}
 	}
 	
