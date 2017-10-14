@@ -71,13 +71,13 @@ public class ResultsController {
 						
 						if(q != null) {
 							boolean pass = (_test.getTestRound(questions.indexOf(q))).getPass();
-							if (pass) {
+							if (!pass) {
 								// Colour green for getting it right
 								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
 								
 								setText("Right!");
 							}
-							if (!pass){
+							if (pass){
 								// Colour red for getting it wrong
 								setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");								setText("Wrong");
 							}
@@ -140,7 +140,7 @@ public class ResultsController {
 
 		try {
 			//ARBITRARY ASSIGNMENT OF ENUM
-			LevelController controller = new LevelController(_testType);
+			LevelController controller = new LevelController(_testType, true);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
 			levelScene = loader.load();

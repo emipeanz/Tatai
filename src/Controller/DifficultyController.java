@@ -93,7 +93,7 @@ public class DifficultyController {
 
 			try {
 				System.out.println("easy set");
-				LevelController controller = new LevelController(testType);
+				LevelController controller = new LevelController(testType, true);
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 				loader.setController(controller);
 				levelScene = loader.load();

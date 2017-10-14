@@ -67,14 +67,16 @@ public class LevelController {
 	private String blueProgressBar = "-fx-accent: blue;";
 	private String orangeProgressBar = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
+	private boolean equationPlay;
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
 	 * the difficulty is set and a new test is made
 	 * @param diff Difficulty of the test user wants to run (enum)
 	 */
-	public LevelController(TestType testType) {
+	public LevelController(TestType testType, boolean b) {
 		_testType = testType;
+		equationPlay = b;
 		_test = new Test(testType);
 		makeRecordingDir();
 		_currentRound = _test.getTestRound(questionNumber - 1);
@@ -144,9 +146,6 @@ public class LevelController {
 	public void playRecording() {	
 		recordingProgressBar(orangeProgressBar);
 
-		//if recording has been set for a level...
-			//for now just disabling all buttons so can't call listen while already listening.
-			//if we have the time could be cool to 
 			setDisableButtons(true, true, true);
 			//plays media
 			_currentRound.getRecording().newMediaPlayer(recordButton, checkButton, listenButton); 
@@ -178,12 +177,12 @@ public class LevelController {
 	public void nextQuestion(ActionEvent event) {
 		questionNumber++;
 
-		if((questionNumber == 11) && (!_testType.equals(TestType.PRACTICE))) {
+		if((questionNumber == 11) && (equationPlay)) {
 			System.out.println("Results showing");
 			showResults(event);
 			return;
 		}
-		if((questionNumber == 11) && (_testType.equals(TestType.PRACTICE))) {
+		if((questionNumber == 11) && (!equationPlay)) {
 			System.out.println("Restarting");
 			clearAndStartAgain(event);
 			return;
@@ -204,7 +203,7 @@ public class LevelController {
 		AnchorPane statsScene = null;
 		try {
 			System.out.println("Entering practice mode");
-			LevelController controller = new LevelController(TestType.HARD);
+			LevelController controller = new LevelController(TestType.EASY, false);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
 			statsScene = loader.load();

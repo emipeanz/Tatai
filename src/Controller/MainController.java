@@ -92,7 +92,7 @@ public class MainController{
 		AnchorPane statsScene = null;
 		try {
 			System.out.println("Enterings practice mode");
-			LevelController controller = new LevelController(TestType.PRACTICE);
+			LevelController controller = new LevelController(TestType.EASY, false);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
 			statsScene = loader.load();

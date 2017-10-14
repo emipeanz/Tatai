@@ -122,7 +122,7 @@ public class Question {
 	}
 	
 	public void setPassString(boolean pass) {
-		if(pass) {
+		if(!pass) {
 			passString = "Wrong";
 		}
 		else {
