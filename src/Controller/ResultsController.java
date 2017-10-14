@@ -24,6 +24,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -48,15 +49,18 @@ public class ResultsController {
 	private Test _test;
 	private ObservableList<Question> _dataList;
 	private TestType _testType;
+	private ArrayList<Question> questions;
 
 
 	public void initialize() {
-		/*
+		
+		questions = _test.getTestQuestions();
+		
 		question.setCellValueFactory(new PropertyValueFactory<>("displayString"));
 		answerString.setCellValueFactory(new PropertyValueFactory<>("answerString"));
 		answerInt.setCellValueFactory(new PropertyValueFactory<>("answerInt"));
-		pass.setCellValueFactory(new PropertyValueFactory<>("pass"));
-		_dataList = FXCollections.observableArrayList(_test.getTestquestions());
+		pass.setCellValueFactory(new PropertyValueFactory<>("passString"));
+		_dataList = FXCollections.observableArrayList(questions);
 
 
 		tableView.setRowFactory(new Callback<TableView<Question>, TableRow<Question>>() {
@@ -64,14 +68,18 @@ public class ResultsController {
 				return new TableRow<Question>() {
 					@Override protected void updateItem(Question q, boolean empty) {
 						super.updateItem(q, empty);
+						
 						if(q != null) {
-							if (q.getPass().equals("Right!")) {
+							boolean pass = (_test.getTestRound(questions.indexOf(q))).getPass();
+							if (pass) {
 								// Colour green for getting it right
 								setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
+								setText("Right!");
 							}
-							if (q.getPass().equals("Wrong")){
+							if (!pass){
 								// Colour red for getting it wrong
 								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
+								setText("Wrong");
 							}
 						}
 					}
@@ -86,7 +94,7 @@ public class ResultsController {
 
 		//saves results of this round to file for use in stats menu
 		saveResults();
-		*/
+		
 	}
 
 

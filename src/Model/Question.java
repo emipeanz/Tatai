@@ -23,6 +23,7 @@ public class Question {
 	protected String answerString;
 	//Answer as an integer
 	protected int answerInt;
+	protected String passString;
 	
 	/**
 	 * Generates a random number between min and max (inclusive)
@@ -116,5 +117,17 @@ public class Question {
 		answerInt = i;
 	}
 	
+	public String getPassString() {
+		return passString;
+	}
+	
+	public void setPassString(boolean pass) {
+		if(pass) {
+			passString = "Right!";
+		}
+		else {
+			passString = "Wrong";
+		}
+	}
 	
 }
