@@ -31,7 +31,6 @@ public class CustomMenuController {
 	}
 
 	public void openCreateCustom(ActionEvent e) {
-		System.out.println("Enter Custom view");
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
 		Scene mainMenuScene = null;
@@ -49,8 +48,6 @@ public class CustomMenuController {
 	 * @param event
 	 */
 	public void returnMainMenu(ActionEvent event) {
-		System.out.println("Event triggering return to main menu");
-
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Scene mainMenuScene = null;
@@ -99,6 +96,4 @@ public class CustomMenuController {
 		equationLists = FXCollections.observableArrayList(equationListNames);
 		comboBox.getItems().addAll(equationLists);
 	}
-
-
 }
