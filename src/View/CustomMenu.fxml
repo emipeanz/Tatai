@@ -73,7 +73,7 @@
                      </font>
                   </Label>
                   <ComboBox fx:id="comboBox" layoutX="24.0" layoutY="97.0" prefHeight="43.0" prefWidth="339.0" />
-                  <Button id="tryAgainButton" fx:id="playCustomTestButton" layoutX="133.0" layoutY="159.0" mnemonicParsing="false" onAction="#playCustomTestEvent" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #98f263,#b1d802);" text="&#10;" textAlignment="CENTER">
+                  <Button id="tryAgainButton" fx:id="playCustomTestButton" layoutX="133.0" layoutY="159.0" mnemonicParsing="false" onAction="#playCustomTest" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #98f263,#b1d802);" text="&#10;" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
