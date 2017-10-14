@@ -25,9 +25,19 @@ public class Equation extends Question {
 	}
 
 	public Equation(String equation) {
+		try {
+			ScriptEngineManager mgr = new ScriptEngineManager();
+			ScriptEngine engine = mgr.getEngineByName("JavaScript");
+			int answerInt = (int)engine.eval(equation);
+			setAnswerInt(answerInt);
+			
+		} catch (Exception e) {
+			System.out.println("Invalid custom equation - exception thrown");
+		}
+		answerString = numberToWord(answerInt);
 		displayString = equation;
 	}
-	
+
 	static public Equation create(TestType testType) {
 		switch(testType) {
 		case EASY:
