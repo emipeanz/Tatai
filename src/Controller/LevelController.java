@@ -166,15 +166,16 @@ public class LevelController {
 		if((questionNumber == 11) && (!_testType.equals(TestType.PRACTICE))) {
 			System.out.println("Results showing");
 			showResults(event);
+			return;
 		}
 		if((questionNumber == 11) && (_testType.equals(TestType.PRACTICE))) {
 			System.out.println("Restarting");
 			clearAndStartAgain(event);
+			return;
 		}
 		if(questionNumber - 1 > 10) {
 			throw new RuntimeException("Too many tests have been logged");
 		}
-
 		_currentRound = _test.getTestRound(questionNumber - 1);
 		numberToTest.setText(_currentRound.getQuestion().getDisplayString());
 		progressLabel.setText("A tawhio noa " + questionNumber + "/10");
@@ -207,12 +208,12 @@ public class LevelController {
 	 */
 	public void showResults(ActionEvent event) {
 		System.out.println("Going to the results page");
-		/*
+		
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		AnchorPane resultsScene = null;
 		ResultsController controller = null;
 		try {
-			controller = new ResultsController(_test, type);
+			controller = new ResultsController(_test, _testType);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Results.fxml"));
 			loader.setController(controller);
 			resultsScene = loader.load();
@@ -221,7 +222,7 @@ public class LevelController {
 		}
 		Scene scene = new Scene(resultsScene);
 		stageEventBelongsTo.setScene(scene);
-		 */
+		 
 	}
 
 	/**
@@ -262,6 +263,7 @@ public class LevelController {
 
 		if(correct) {		
 			_currentRound.setPass(true);
+			_currentRound.getQuestion().setPassString(true);
 			feedbackMessage(true);
 			updateProgressBar(green);
 			PauseTransition delay = new PauseTransition(Duration.seconds(3));
@@ -274,6 +276,7 @@ public class LevelController {
 			_currentRound.decreaseChances();
 			if(_currentRound.getChances() == 0) { // If they have no more chances left
 				_currentRound.setPass(false);
+				_currentRound.getQuestion().setPassString(true);
 				updateProgressBar(red);
 				feedbackMessage(false);
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));

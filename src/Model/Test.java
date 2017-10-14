@@ -9,6 +9,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import javafx.util.Callback;
+
 public class Test {
 
 	private ArrayList<Round> _testRounds = new ArrayList<Round>();
@@ -43,6 +45,7 @@ public class Test {
 	 * @return: arraylist of test questions
 	 */
 	public Round getTestRound(int index) {
+		System.out.println("testRounds.get(index) index = " + index);
 		return _testRounds.get(index);
 	}
 
@@ -62,4 +65,15 @@ public class Test {
 		}
 		return overallMark;
 	}
+	
+	public ArrayList<Question> getTestQuestions() {
+		ArrayList<Question> questions = new ArrayList<Question>();
+		for(Round r : _testRounds) {
+			questions.add(r.getQuestion());
+		}
+		
+		return questions;
+	}
+	
+
 }
