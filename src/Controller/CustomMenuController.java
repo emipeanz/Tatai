@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class CustomMenuController {
@@ -23,13 +24,7 @@ public class CustomMenuController {
 	@FXML private DialogPane dialogChooseTest;
 	@FXML private ComboBox comboBox;
 	@FXML private Button PlayCustomTestButton;
-
-	private ObservableList<String> equationLists;
-
-	public void initialize() {
-		populateComboBox();
-	}
-
+	
 	public void openCreateCustom(ActionEvent e) {
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
@@ -60,40 +55,28 @@ public class CustomMenuController {
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 
-	public void selectCustomTest() {
-		dialogChooseTest.setVisible(true);
+	public void selectCustomTest(ActionEvent event) {
+		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Button eventButton = (Button)event.getSource();
+		
+		try {
+			Stage stage = new Stage(); 
+			AnchorPane root;
+			ChoseCustomListController c = new ChoseCustomListController(stageEventBelongsTo);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ChoseCustomList.fxml"));
+			loader.setController(c);
+			root = (AnchorPane)loader.load();
+			
+			stage.setScene(new Scene(root));
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.initOwner(eventButton.getScene().getWindow());
+			stage.showAndWait();
+		} catch (IOException e1) {
+			System.out.println("exception thrown");
+			e1.printStackTrace();
+		}
+		
 	}		
 
-	public void playCustomTest(ActionEvent e) {
-		if (!(comboBox.getValue() == null)) {
-			// Get the main stage to display the scene in
-			Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
-			AnchorPane levelScene = null;
-			String listName = comboBox.getValue().toString();
-			try {
-				LevelController controller = new LevelController(listName);
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
-				loader.setController(controller);
-				levelScene = loader.load();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-			Scene scene = new Scene(levelScene);
-			stageEventBelongsTo.setScene(scene);
-		}
-	}
-
-
-	public void populateComboBox() {
-		ArrayList<String> equationListNames = new ArrayList<String>();
-
-		File dir = new File(".CustomEquations");
-		File[] lists = dir.listFiles();
-
-		for (File equationList : lists) {
-			equationListNames.add(equationList.getName());
-		}
-		equationLists = FXCollections.observableArrayList(equationListNames);
-		comboBox.getItems().addAll(equationLists);
-	}
+	
 }

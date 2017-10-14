@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.Double?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Polygon?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomEquationController">
@@ -92,27 +89,6 @@
       <Circle fx:id="equationCircle8" fill="#ffffff00" layoutX="593.0" layoutY="288.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
       <Circle fx:id="equationCircle9" fill="#ffffff00" layoutX="593.0" layoutY="335.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
       <Circle fx:id="equationCircle10" fill="#ffffff00" layoutX="594.0" layoutY="382.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-      <AnchorPane fx:id="helpWindow" layoutX="383.0" layoutY="19.0" prefHeight="150.0" prefWidth="397.0" visible="false">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="32.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
-            <Polygon fill="WHITE" layoutX="380.0" layoutY="25.0" rotate="90.0" scaleX="0.2" scaleY="0.2" stroke="#f5f5f5" strokeType="INSIDE">
-               <points>
-                  <Double fx:value="-50.0" />
-                  <Double fx:value="40.0" />
-                  <Double fx:value="50.0" />
-                  <Double fx:value="40.0" />
-                  <Double fx:value="0.0" />
-                  <Double fx:value="-60.0" />
-               </points>
-            </Polygon>
-            <Label alignment="CENTER" layoutX="37.0" layoutY="2.0" prefHeight="30.0" prefWidth="335.0" text="Instructions:">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label id="smallFont" layoutX="50.0" layoutY="46.0" prefHeight="86.0" prefWidth="311.0" text="  Will check to see if your equations &#10;     are valid and make a test&#10;  Goes back to main menu&#10;  Shows if the equation is valid" />
-         </children>
-      </AnchorPane>
       <Button fx:id="submitButton" layoutX="633.0" layoutY="292.0" mnemonicParsing="false" onAction="#getCustomListName" prefHeight="65.0" prefWidth="150.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200,  #f7971e);" text="Submit">
          <font>
             <Font name="System Bold" size="29.0" />
