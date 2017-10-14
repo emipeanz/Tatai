@@ -17,8 +17,7 @@ public class Round {
 	 * @param equation
 	 */
 	public Round(String equation) {
-		//GENERATE AN EQUATION FROM THE STRING THAT REPRESENTS IT
-		//CUSTOM EQUATION
+		_question = new Equation(equation);
 	}
 
 	public void decreaseChances() {

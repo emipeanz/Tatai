@@ -94,7 +94,7 @@ public class CustomMenuController {
 		File[] lists = dir.listFiles();
 
 		for (File equationList : lists) {
-			equationListNames.add(equationList.getName().substring(1));
+			equationListNames.add(equationList.getName());
 		}
 		equationLists = FXCollections.observableArrayList(equationListNames);
 		comboBox.getItems().addAll(equationLists);

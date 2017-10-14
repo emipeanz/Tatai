@@ -45,7 +45,7 @@ public class CustomEquationPopupController {
 	}
 
 	public void createStorageFile() {
-		String filename = ".CustomEquations/." + listName.getText();
+		String filename = ".CustomEquations/" + listName.getText();
 		File listFile = new File(filename);
 		try {
 			Files.write(Paths.get(filename), equationList);

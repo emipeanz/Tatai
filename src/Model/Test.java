@@ -54,6 +54,7 @@ public class Test {
 			e.printStackTrace();
 		}
 		for (String equation : _customEquationList) {
+			System.out.println("adding equation: " + equation);
 			_testRounds.add(new Round(equation));
 		}
 	}
