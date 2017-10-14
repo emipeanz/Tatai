@@ -1,5 +1,9 @@
 package Model;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 /**
  * This class is the model for a test. A test consists of the difficulty that is being tested and an array 
  * of test questions, of type questions. The array's length is not fixed so that a long test can be added
@@ -8,12 +12,16 @@ package Model;
  */
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Test {
 
 	private ArrayList<Round> _testRounds = new ArrayList<Round>();
 	private TestType _testType;
 	private final int _numRounds = 10;
+	private List<String> _customEquationList = new ArrayList<String>();
+	private String listName;
+
 
 	/**
 	 * Stores the difficulty level of the particular test being 
@@ -23,14 +31,30 @@ public class Test {
 	 */
 	public Test(TestType testType) {
 		_testType = testType;
-		if (_testType == TestType.CUSTOM) {
-			for (int i = 0; i < _numRounds; i++) {
-				_testRounds.add(new Round("hello"));
-			}
+		if (testType.equals(TestType.CUSTOM)) {
+			System.out.println("You are in the wrong constructor for custom!");
 		} else {
 			for (int i = 0; i < _numRounds; i++) {
 				_testRounds.add(new Round(_testType));
 			}
+		}
+	}
+
+	/**
+	 * Constructor is used only for creating a custom test
+	 * @param customListName
+	 */
+	public Test(String customListName) {
+		_testType = TestType.CUSTOM;
+		listName = customListName;
+		String filename = ".CustomEquations/" + listName;
+		try {
+			_customEquationList = Files.readAllLines(Paths.get(filename));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		for (String equation : _customEquationList) {
+			_testRounds.add(new Round(equation));
 		}
 	}
 

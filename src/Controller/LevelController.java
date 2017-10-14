@@ -68,7 +68,6 @@ public class LevelController {
 	private String orangeProgressBar = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
 
-
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
 	 * the difficulty is set and a new test is made
@@ -77,12 +76,31 @@ public class LevelController {
 	public LevelController(TestType testType) {
 		_testType = testType;
 		_test = new Test(testType);
+		makeRecordingDir();
+		_currentRound = _test.getTestRound(questionNumber - 1);
+	}
+
+	/**
+	 * Used only when a custom list is being used
+	 * @param customListName
+	 */
+	public LevelController(String customListName) {
+		_testType = TestType.CUSTOM;
+		_test = new Test(customListName);
+		makeRecordingDir();
+		_currentRound = _test.getTestRound(questionNumber - 1);
+	}
+	
+	/**
+	 * Generates a directory to store recordings in
+	 */
+	public void makeRecordingDir() {
 		File recordingDir = new File("RecordingDir/");
 		if(!recordingDir.exists()) {
 			recordingDir.mkdir();
 		}
-		_currentRound = _test.getTestRound(questionNumber - 1);
 	}
+
 
 	/**
 	 * Makes the various parts of the level scene invisible until they are needed further on
