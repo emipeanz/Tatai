@@ -95,12 +95,14 @@ public class DifficultyController {
 				System.out.println("easy set");
 				LevelController controller = new LevelController(testType, true);
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
+				
 				loader.setController(controller);
 				levelScene = loader.load();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 			Scene scene = new Scene(levelScene);
+			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 			stageEventBelongsTo.setScene(scene);
 		}
 
@@ -136,6 +138,7 @@ public class DifficultyController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 

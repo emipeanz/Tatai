@@ -47,6 +47,7 @@ public class ChoseCustomListController {
 			Stage stage = (Stage) playCustomTestButton.getScene().getWindow();
 			stage.close();
 			Scene scene = new Scene(levelScene);
+			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 			root.setScene(scene);
 		}
 	}

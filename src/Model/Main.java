@@ -31,6 +31,7 @@ public class Main extends Application {
 			Scene introScene = new Scene(FXMLLoader.load(getClass().getResource("/View/IntroMenu.fxml")));
 			
 			introScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			mainScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 			
 			//Sets the introductory scene
 			primaryStage.setScene(introScene);

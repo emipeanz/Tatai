@@ -85,7 +85,7 @@ public class StatsController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 

@@ -38,6 +38,7 @@ public class ExitPopupController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		rootScene.setScene(mainMenuScene);
 	}
 

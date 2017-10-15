@@ -110,8 +110,9 @@ public class CustomEquationController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(filename));
 			loader.setController(popupController);
 			root = (AnchorPane)loader.load();
-			
-			stage.setScene(new Scene(root));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.initOwner(eventButton.getScene().getWindow());
 			stage.showAndWait();
@@ -129,6 +130,7 @@ public class CustomEquationController {
 		Scene mainMenuScene = null;
 		try {
 			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/CustomMenu.fxml")));
+			mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -153,8 +155,9 @@ public class CustomEquationController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ExitPopup.fxml"));
 			loader.setController(popupController);
 			root = (AnchorPane)loader.load();
-			
-			stage.setScene(new Scene(root));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.initOwner(eventButton.getScene().getWindow());
 			stage.showAndWait();

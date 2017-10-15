@@ -31,6 +31,8 @@ public class CustomMenuController {
 		Scene mainMenuScene = null;
 		try {
 			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/CustomEquations.fxml")));
+			mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -49,6 +51,7 @@ public class CustomMenuController {
 
 		try {
 			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
+			mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -66,8 +69,9 @@ public class CustomMenuController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ChoseCustomList.fxml"));
 			loader.setController(c);
 			root = (AnchorPane)loader.load();
-			
-			stage.setScene(new Scene(root));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.initOwner(eventButton.getScene().getWindow());
 			stage.showAndWait();

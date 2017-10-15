@@ -122,7 +122,7 @@ public class ResultsController {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		//mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(mainMenuScene);
 	}
 
@@ -148,6 +148,7 @@ public class ResultsController {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(levelScene);
+		levelScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);		
 	}
 

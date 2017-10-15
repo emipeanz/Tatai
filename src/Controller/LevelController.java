@@ -211,6 +211,7 @@ public class LevelController {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(statsScene);
+		scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 
 	}
@@ -235,6 +236,7 @@ public class LevelController {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(resultsScene);
+		resultsScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 		 
 	}
@@ -255,7 +257,9 @@ public class LevelController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ExitPopup.fxml"));
 			loader.setController(popupController);
 			root = (AnchorPane)loader.load();
-			stage.setScene(new Scene(root));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.initOwner(eventButton.getScene().getWindow());
 			stage.showAndWait();

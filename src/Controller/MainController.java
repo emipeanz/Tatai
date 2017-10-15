@@ -81,6 +81,7 @@ public class MainController{
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(difficultyScene);
+		difficultyScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 
 	}
@@ -89,17 +90,18 @@ public class MainController{
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
-		AnchorPane statsScene = null;
+		AnchorPane practiceScene = null;
 		try {
 			System.out.println("Enterings practice mode");
 			LevelController controller = new LevelController(TestType.EASY, false);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 			loader.setController(controller);
-			statsScene = loader.load();
+			practiceScene = loader.load();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Scene scene = new Scene(statsScene);
+		Scene scene = new Scene(practiceScene);
+		practiceScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 	}
 	
@@ -118,6 +120,7 @@ public class MainController{
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(statsScene);
+		statsScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 		stageEventBelongsTo.setScene(scene);
 	}
 
