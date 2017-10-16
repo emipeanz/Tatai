@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 /**
  * This class if the main class for our application. Its sets up the transition at the begining then
  * hands control over to the controllers.
+ * 
  * @author Maddie Beagley and Emilie Pearce
  *
  */
