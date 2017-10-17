@@ -14,10 +14,6 @@
 
 <AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="progressLabel" layoutX="308.0" layoutY="461.0" text="A tawhio noa 1/10" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="23.0" />
-         </font></Label>
       <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="134.0" layoutY="46.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="46.0">
          <font>
             <Font size="120.0" />
@@ -48,7 +44,7 @@
       </Button>
       <Label id="Font" fx:id="infoIcon" layoutX="779.0" layoutY="-2.0" onMouseEntered="#showInstructions" onMouseExited="#hideInstructions" text="" textFill="#f8f8f8" />
       <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
-      <HBox fx:id="progressBar" layoutX="225.0" layoutY="426.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
+      <HBox fx:id="progressBar" layoutX="236.0" layoutY="449.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
          <children>
             <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
             <Circle fx:id="circle2" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />

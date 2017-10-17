@@ -45,7 +45,6 @@ import javafx.util.Duration;
 public class LevelController {
 
 	@FXML private Label numberToTest;
-	@FXML private Label progressLabel;
 	@FXML private Button backButton;
 	@FXML private Button recordButton;
 	@FXML private Button checkButton;
@@ -192,7 +191,6 @@ public class LevelController {
 		}
 		_currentRound = _test.getTestRound(questionNumber - 1);
 		numberToTest.setText(_currentRound.getQuestion().getDisplayString());
-		progressLabel.setText("A tawhio noa " + questionNumber + "/10");
 		listenButton.setDisable(true);
 	}
 
