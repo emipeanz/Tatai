@@ -27,7 +27,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="menuCircleButtons" fx:id="hardButton" layoutX="519.0" layoutY="179.0" mnemonicParsing="false" onAction="#enterTest" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
+      <Button id="menuCircleButtons" fx:id="hardButton" layoutX="519.0" layoutY="179.0" mnemonicParsing="false" onAction="#enterTest" onMouseEntered="#showHardText" onMouseExited="#hideText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
          <font>
             <Font size="24.0" />
          </font>
@@ -51,7 +51,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="466.0" text="Me whiwhi koe i te 8/10 i te taumata o raro i mua i te whakatangi i tenei" textFill="WHITE">
+      <Label id="hardText" fx:id="mediumText" alignment="CENTER" contentDisplay="CENTER" layoutX="202.0" layoutY="466.0" text="Me tango te 8/10 ki te timatanga tuatahi!" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -81,7 +81,7 @@
          </graphic>
       </Button>
       <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
-      <Button id="menuCircleButtons" fx:id="mediumButton" layoutX="336.0" layoutY="275.0" mnemonicParsing="false" onAction="#enterTest" onMouseEntered="#showHardText" onMouseExited="#hideHardText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #98f263,#b1d802);" text="&#10;" textAlignment="CENTER">
+      <Button id="menuCircleButtons" fx:id="mediumButton" layoutX="336.0" layoutY="275.0" mnemonicParsing="false" onAction="#enterTest" onMouseEntered="#showMedText" onMouseExited="#hideText" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #98f263,#b1d802);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -105,5 +105,10 @@
             </AnchorPane>
          </graphic>
       </Button>
+      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="211.0" layoutY="466.0" text="Me whiwhi koe i te 8/10 i te reo tuatahi!" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

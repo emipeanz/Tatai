@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -24,6 +26,7 @@ public class DifficultyController {
 	@FXML private Button mediumButton;
 	@FXML private Button customButton;
 	@FXML private Label hardText;
+	@FXML private Label mediumText;
 	@FXML private Label hardLockSymbol = new Label();
 	@FXML private Label medLockSymbol = new Label();
 	@FXML private DialogPane customDialog;
@@ -43,6 +46,7 @@ public class DifficultyController {
 	 */
 	public void initialize() {
 		hardText.setVisible(false);
+		mediumText.setVisible(false);
 
 		try {
 			//checks the current highscore
@@ -53,6 +57,7 @@ public class DifficultyController {
 			if (highScoreEasy >= 8) {
 				medUnlocked = true;
 				medLockSymbol.setText("");
+				System.out.println("Medium unlocked");
 			}
 			
 			//checks the current highscore
@@ -63,6 +68,7 @@ public class DifficultyController {
 			if (highScoreMed >= 8) {
 				hardUnlocked = true;
 				hardLockSymbol.setText("");
+				System.out.println("Hard unlocked");
 			} 
 		} catch(IOException e) {
 		}
@@ -147,18 +153,28 @@ public class DifficultyController {
 	 * Displays the text telling user that they need 8+ in a round to progress to hard level.
 	 */
 	public void showHardText() {
-		if (!hardUnlocked) { 
+		if (!hardUnlocked) {
 			hardText.setVisible(true);
+		}
+	}
+	
+	/**
+	 * Displays the text telling user that they need 8+ in a round to progress to hard level.
+	 */
+	public void showMedText() {
+		if (!medUnlocked) {
+			mediumText.setVisible(true);
 		}
 	}
 
 	/**
 	 * Hides text telling user that they need 8+ in a round to progress to hard level.
 	 */
-	public void hideHardText() {
-		if (!hardUnlocked) {
+	public void hideText() {
 			hardText.setVisible(false);
-		}
+
+			mediumText.setVisible(false);
+
 	}
 
 
