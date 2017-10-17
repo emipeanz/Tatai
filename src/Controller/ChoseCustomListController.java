@@ -37,7 +37,7 @@ public class ChoseCustomListController {
 			AnchorPane levelScene = null;
 			String listName = customListOptions.getValue().toString();
 			try {
-				LevelController controller = new LevelController(listName);
+				LevelController controller = new LevelController(listName, true);
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
 				loader.setController(controller);
 				levelScene = loader.load();
