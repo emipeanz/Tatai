@@ -86,9 +86,10 @@ public class LevelController {
 	 * Used only when a custom list is being used
 	 * @param customListName
 	 */
-	public LevelController(String customListName) {
+	public LevelController(String customListName, boolean b) {
 		_testType = TestType.CUSTOM;
 		_test = new Test(customListName);
+		equationPlay = b;
 		makeRecordingDir();
 		_currentRound = _test.getTestRound(questionNumber - 1);
 	}
