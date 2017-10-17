@@ -35,7 +35,7 @@ public class Equation extends Question {
 			System.out.println("Invalid custom equation - exception thrown");
 		}
 		answerString = numberToWord(answerInt);
-		displayString = equation;
+		displayString = equation.replace("*", " x ");
 	}
 
 	static public Equation create(TestType testType) {
