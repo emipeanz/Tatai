@@ -27,29 +27,19 @@ public class HelpPageController extends BaseController{
 	@FXML private ImageView screenImage;
 	@FXML private Label title, explanation;
 	@FXML private Circle circle1, circle2, circle3, circle4, circle5, circle6, circle7;
-	@FXML private Button next = new Button(), previous = new Button();
+	@FXML private Button nextButton , previousButton ;
 
 	private ArrayList<String> titles = new ArrayList<String>();
 	private Map<String, Image> imageList = new HashMap<String, Image>();
 	private Map<String, String> textList = new HashMap<String, String>();
 	private ArrayList<Circle> progressCircles;
-	private String[] text = new String[] {"Blah1", "Blah2", "Blah3", "Blah4", "Blah5", "Blah6", "Blah7"};
 	private Integer currentPage = 0;
-	IntegerProperty above = new SimpleIntegerProperty();
-	IntegerProperty below = new SimpleIntegerProperty();
 	private Color GREEN = Color.web("56ab2f");
 	private Color TRANSPARENT = Color.TRANSPARENT;
 	private Color WHITE = Color.WHITE;
 
 	public void initialize() {
-		
-		above = new SimpleIntegerProperty(currentPage);
-		below = new SimpleIntegerProperty(currentPage);
-		BooleanBinding boolAbove = above.greaterThan(6);
-		BooleanBinding boolBelow = above.lessThan(1);
 
-		next.disableProperty().bind(boolAbove);
-		previous.disableProperty().bind(boolBelow);
 		
 		File dir = new File("src/View/Images");
 		String extension = "png";
@@ -59,6 +49,12 @@ public class HelpPageController extends BaseController{
 		titles.add("Playing a Level");
 		titles.add("Play Menu");
 		titles.add("Results");
+		
+		textList.put("Main Menu", "Maori translation for Maori menu description");
+		textList.put("Playing a Custom List", "Maori translation for Maori Playing a Custom List description");
+		textList.put("Playing a Level", "Maori translation for Maori Playing a Level description");
+		textList.put("Play Menu", "Maori translation for Maori Play Menu description");
+		textList.put("Results", "Maori translation for Maori Results description");
 
 		FilenameFilter imagesFilter = new FilenameFilter() {
 			@Override
@@ -78,8 +74,6 @@ public class HelpPageController extends BaseController{
 				String imageName = f.getName().replaceFirst("[.][^.]+$", "");
 				imageList.put(imageName, image);
 
-				textList.put(imageName, text[i]);
-				i++;
 			}
 		}
 		
@@ -93,16 +87,12 @@ public class HelpPageController extends BaseController{
 
 	public void next(ActionEvent e) {
 		currentPage++;
-		above.add(1);
-		below.add(1);
 		this.refresh();
 		this.colourCircle();
 	}
 
 	public void previous(ActionEvent e) {
 		currentPage--;
-		above.subtract(1);
-		below.subtract(1);
 		this.refresh();
 		this.uncolourCircle();
 	}
@@ -123,6 +113,16 @@ public class HelpPageController extends BaseController{
 	
 
 	private void refresh(){
+		if(currentPage > 6) {
+			nextButton.setDisable(true);
+		} else {
+			nextButton.setDisable(false);
+		}
+		if(currentPage < 1) {
+			previousButton.setDisable(true);
+		} else {
+			previousButton.setDisable(false);
+		}
 		title.setText(titles.get(currentPage));
 		explanation.setText(textList.get(titles.get(currentPage)));
 		screenImage.setImage(imageList.get(titles.get(currentPage)));
