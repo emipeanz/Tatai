@@ -13,7 +13,7 @@
    <children>
       <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <ImageView fx:id="screenImage" fitHeight="210.0" fitWidth="373.0" layoutX="277.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
-      <HBox fx:id="progressBar" layoutX="242.0" layoutY="448.0" prefHeight="35.0" prefWidth="200.0" spacing="25.0">
+      <HBox fx:id="progressBar" layoutX="238.0" layoutY="448.0" prefHeight="35.0" prefWidth="200.0" spacing="15.0">
          <children>
             <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
             <Circle fx:id="circle2" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
@@ -23,9 +23,11 @@
             <Circle fx:id="circle6" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
             <Circle fx:id="circle7" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
             <Circle fx:id="circle8" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle9" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle10" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
          </children>
       </HBox>
-      <Button id="smallCircleButton" fx:id="previousButton" layoutX="153.0" layoutY="432.0" mnemonicParsing="false" onAction="#previous" prefHeight="65.0" prefWidth="62.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #dce35b,#f7ff00);" text="" textAlignment="CENTER" />
+      <Button id="smallCircleButton" fx:id="previousButton" layoutX="147.0" layoutY="432.0" mnemonicParsing="false" onAction="#previous" prefHeight="65.0" prefWidth="62.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #dce35b,#f7ff00);" text="" textAlignment="CENTER" />
       <Button id="smallCircleButton" fx:id="nextButton" layoutX="636.0" layoutY="433.0" mnemonicParsing="false" onAction="#next" prefHeight="65.0" prefWidth="62.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #dce35b,#45b649);" text="" textAlignment="CENTER" />
       <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="111.0" layoutY="13.0" prefHeight="41.0" prefWidth="658.0" textAlignment="CENTER" textFill="WHITE">
          <font>
@@ -35,9 +37,9 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label fx:id="explanation" alignment="CENTER" contentDisplay="CENTER" layoutX="163.0" layoutY="296.0" prefHeight="118.0" prefWidth="514.0" textAlignment="CENTER" textFill="#f5f5f5" wrapText="true">
+      <Label fx:id="explanation" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="278.0" prefHeight="136.0" prefWidth="781.0" textAlignment="CENTER" textFill="#f5f5f5" wrapText="true">
          <font>
-            <Font size="19.0" />
+            <Font size="15.0" />
          </font></Label>
    </children>
 </AnchorPane>

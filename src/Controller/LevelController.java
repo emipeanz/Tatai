@@ -58,6 +58,7 @@ public class LevelController extends BaseController {
 	@FXML private ProgressBar recordingProgress;
 	@FXML private Circle circle1, circle2, circle3, circle4, 
 	circle5, circle6, circle7, circle8, circle9, circle10;
+	@FXML private Button skipButton;
 
 	private Test _test;
 	private TestType _testType;
@@ -189,6 +190,7 @@ public class LevelController extends BaseController {
 	 */
 	public void nextQuestion(ActionEvent event) {
 		questionNumber++;
+		skipButton.setVisible(false);
 
 		if((questionNumber == 11) && (goToResultsOnceFinished)) {
 			System.out.println("Results showing");
@@ -261,22 +263,23 @@ public class LevelController extends BaseController {
 
 		if(correct) {		
 			_currentRound.setPass(true);
-			feedbackMessage(true);
+			feedbackMessage(true, false);
 			updateProgressBar(GREEN);
 			PauseTransition delay = new PauseTransition(Duration.seconds(3));
 			delay.setOnFinished( event -> this.nextQuestion(e) );
 			delay.play();
 		} else {
 			_currentRound.decreaseChances();
+			skipButton.setVisible(true);
 			if(_currentRound.getChances() == 0) { // If they have no more chances left
 				_currentRound.setPass(false);
 				updateProgressBar(RED);
-				feedbackMessage(false);
+				feedbackMessage(false, false);
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));
 				delay.setOnFinished( event -> this.nextQuestion(e) );
 				delay.play();
 			} else { // If they have one more chance left
-				feedbackMessage(false);
+				feedbackMessage(false, false);
 			}
 
 		}
@@ -287,19 +290,25 @@ public class LevelController extends BaseController {
 	 * This method handles showing the user their feedback based on what they pronounced
 	 * @param b
 	 */
-	private void feedbackMessage(boolean b) {
+	private void feedbackMessage(boolean b, boolean skip) {
 		int chances = _currentRound.getChances();
-		if(b) {
-			feedbackMessage.setText("I tika koe i te whakautu!");
-			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
+		if(skip == false) {
+			if(b) {
+				feedbackMessage.setText("I tika koe i te whakautu!");
+				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
+			}
+			else if((!b) && (chances == 1)) {
+				feedbackMessage.setText("Kati ... tamata ano");
+				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
+			}
+			else {
+				feedbackMessage.setText("Kaore, he he. \nKo te whakautu he " + _currentRound.getQuestion().getAnswerInt());
+				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
+			}
 		}
-		else if((!b) && (chances == 1)) {
-			feedbackMessage.setText("Kati ... tamata ano");
-			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
-		}
-		else {
-			feedbackMessage.setText("Kaore, he he. \nKo te whakautu he " + _currentRound.getQuestion().getAnswerInt());
-			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
+		else{
+			feedbackMessage.setText("ngaro i tenei patai!");
+			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ece9e6, #ffffff);");
 		}
 		feedbackMessage.setVisible(true);
 		setDisableButtons(true, true, true);
@@ -342,4 +351,13 @@ public class LevelController extends BaseController {
 		th.start();
 	}
 
+	
+	public void skipQuestion(ActionEvent e) {
+		_currentRound.setPass(false);
+		updateProgressBar(RED);
+		feedbackMessage(false, true);
+		PauseTransition delay = new PauseTransition(Duration.seconds(3));
+		delay.setOnFinished( event -> this.nextQuestion(e) );
+		delay.play();
+	}
 }
