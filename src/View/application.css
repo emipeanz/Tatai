@@ -163,3 +163,11 @@
     -fx-background-insets: 0px; 
     -fx-padding: 0px;
 }
+
+.slider .track {
+	-fx-padding: 7;
+}
+
+.slider .thumb {
+	-fx-padding: 11;
+}

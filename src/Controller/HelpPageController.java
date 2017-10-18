@@ -26,7 +26,7 @@ public class HelpPageController extends BaseController{
 
 	@FXML private ImageView screenImage;
 	@FXML private Label title, explanation;
-	@FXML private Circle circle1, circle2, circle3, circle4, circle5, circle6, circle7;
+	@FXML private Circle circle1, circle2, circle3, circle4, circle5, circle6, circle7, circle8;
 	@FXML private Button nextButton , previousButton ;
 
 	private ArrayList<String> titles = new ArrayList<String>();
@@ -45,16 +45,23 @@ public class HelpPageController extends BaseController{
 		String extension = "png";
 
 		titles.add("Main Menu");
+		titles.add("Play Menu");
+		titles.add("Making a Custom List");
 		titles.add("Playing a Custom List");
 		titles.add("Playing a Level");
-		titles.add("Play Menu");
+		titles.add("Getting it wrong the first time");
+		titles.add("Getting it wrong the second time");
 		titles.add("Results");
 		
+		
 		textList.put("Main Menu", "Maori translation for Maori menu description");
+		textList.put("Making a Custom List", "Maori translation for making a lit instructions");
 		textList.put("Playing a Custom List", "Maori translation for Maori Playing a Custom List description");
 		textList.put("Playing a Level", "Maori translation for Maori Playing a Level description");
 		textList.put("Play Menu", "Maori translation for Maori Play Menu description");
 		textList.put("Results", "Maori translation for Maori Results description");
+		textList.put("Getting it wrong the second time", "Maori translaitong for getting it wrong the second time");
+		textList.put("Getting it wrong the first time", "Maori translaitong for getting it wrong the first time");
 
 		FilenameFilter imagesFilter = new FilenameFilter() {
 			@Override
@@ -78,7 +85,7 @@ public class HelpPageController extends BaseController{
 		}
 		
 		progressCircles = new ArrayList<Circle>(Arrays.asList(circle1, circle2,
-				circle3, circle4, circle5, circle6, circle7));
+				circle3, circle4, circle5, circle6, circle7, circle8));
 
 		this.refresh();
 		this.colourCircle();
@@ -113,7 +120,8 @@ public class HelpPageController extends BaseController{
 	
 
 	private void refresh(){
-		if(currentPage > 6) {
+		if(currentPage >= 7) {
+			System.out.println(currentPage);
 			nextButton.setDisable(true);
 		} else {
 			nextButton.setDisable(false);

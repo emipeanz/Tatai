@@ -92,14 +92,14 @@ public class CustomEquationController {
 		}
 		if(corrrectEquations != 10) {
 			submitButton.setVisible(false);
-			String output = "There are some problems with equations";
+			String output = "He raruraru kei te whārite";
 			for(int in = 0; in< wrongEquations.size() ; in++) {
 				output = output + (" " + wrongEquations.get(in));
 				if(!(in == wrongEquations.size()-1)) {
 					output = output + (",");
 				}
 			}
-			output = output + ". Dont forget to make sure the answer is between 1 - 99, make you only use +, -, * and / symbols and no letters!";
+			output = output + ". Kaua e wareware ki te whakautu i te whakautu i waenganui i te 1 - 99, me whakamahi anake koe, +, * me / tohu me nga reta!";
 			System.out.println(output);
 			errorMessage.setText(output);
 			errorMessage.setVisible(true);
