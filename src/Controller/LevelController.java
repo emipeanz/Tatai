@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import javafx.animation.PauseTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -64,7 +65,7 @@ public class LevelController extends BaseController {
 	private int questionNumber = 1;
 	private Color RED = Color.web("ef473a");
 	private Color GREEN = Color.web("56ab2f");
-	private String BLUEPROGRESSBAR = "-fx-accent: blue;";
+	private String BLUEPROGRESSBAR = "-fx-accent: #0fb7ff;";
 	private String ORANGEPROGRESSBAR = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
 	private boolean goToResultsOnceFinished;
@@ -129,17 +130,27 @@ public class LevelController extends BaseController {
 	 * recording will be instantiated once this recording has been taken.
 	 * @param e
 	 */
-	public void takeRecording(ActionEvent e) {
-		recordingProgressBar(BLUEPROGRESSBAR);
+	public void takeRecording(ActionEvent event) {
 		setDisableButtons(true, true, true);
+		recordingProgressBar(BLUEPROGRESSBAR);
+		
+		Task task = new Task() {
 
-		Thread record = new Thread(() -> {
-			_currentRound.takeRecording();
+			@Override
+			protected Object call() throws Exception {
+				_currentRound.takeRecording();
+				return null;
+			}
+		};
+
+		task.setOnSucceeded(e -> {
+			setDisableButtons(false, false, false);
 		});
 
-		record.start();
-		setDisableButtons(false, false, false);
+		new Thread(task).start();
+	
 	}
+	
 
 	/**
 	 * Uses the media player to play the current recording as long as that player has been
@@ -194,7 +205,6 @@ public class LevelController extends BaseController {
 		}
 		_currentRound = _test.getTestRound(questionNumber - 1);
 		numberToTest.setText(_currentRound.getQuestion().getDisplayString());
-		listenButton.setDisable(true);
 	}
 
 	private void clearAndStartAgain(ActionEvent e) {
@@ -245,6 +255,7 @@ public class LevelController extends BaseController {
 	 * @param e
 	 */
 	public void checkRecording(ActionEvent e) {
+		setDisableButtons(true, true, true);
 		String numberString = _currentRound.getQuestion().getAnswerString();
 		boolean correct = _currentRound.getRecording().checkRecordingForWord(numberString);
 
@@ -255,7 +266,6 @@ public class LevelController extends BaseController {
 			PauseTransition delay = new PauseTransition(Duration.seconds(3));
 			delay.setOnFinished( event -> this.nextQuestion(e) );
 			delay.play();
-			//setDisableButtons(true, true, false);
 		} else {
 			_currentRound.decreaseChances();
 			if(_currentRound.getChances() == 0) { // If they have no more chances left
@@ -268,7 +278,6 @@ public class LevelController extends BaseController {
 			} else { // If they have one more chance left
 				feedbackMessage(false);
 			}
-			//setDisableButtons(true, true, true);
 
 		}
 
@@ -293,8 +302,18 @@ public class LevelController extends BaseController {
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
 		}
 		feedbackMessage.setVisible(true);
+		setDisableButtons(true, true, true);
 		PauseTransition delay = new PauseTransition(Duration.seconds(3));
-		delay.setOnFinished( event -> feedbackMessage.setVisible(false) );
+		delay.setOnFinished( new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				feedbackMessage.setVisible(false);
+				setDisableButtons(true, true, false);
+			}
+			
+			
+		});
 		delay.play();
 	}
 
