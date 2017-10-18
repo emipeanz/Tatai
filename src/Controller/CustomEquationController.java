@@ -41,6 +41,8 @@ public class CustomEquationController {
 	@FXML private Button checkEquationsButton;
 	@FXML private Button submitButton;
 	@FXML private Label errorMessage;
+	
+	private ArrayList<Integer> wrongEquations = new ArrayList<Integer>();
 
 	public void initialize() {
 		submitButton.setVisible(false);
@@ -60,6 +62,7 @@ public class CustomEquationController {
 	}
 
 	public void checkEquations(ActionEvent e) {
+		wrongEquations.clear();
 		int i = 0;
 		int corrrectEquations = 0;
 		for (TextField t : equationList) {
@@ -79,16 +82,26 @@ public class CustomEquationController {
 				}
 				else {
 					this.changeFeedbackIcon(circleList.get(i), false);
+					wrongEquations.add(Integer.parseInt(t.getId().split("equation")[1]));
 				}
 			} catch (ScriptException | ClassCastException e1) {
-				System.out.println("non equation or not integer answer, entered on equation " + (i + 1));
+				wrongEquations.add(i);
 				this.changeFeedbackIcon(circleList.get(i), false);
 			}
 			i++;
 		}
 		if(corrrectEquations != 10) {
 			submitButton.setVisible(false);
-			errorMessage.setText("There are some problems with some equation, please fix and try again");
+			String output = "There are some problems with equations";
+			for(int in = 0; in< wrongEquations.size() ; in++) {
+				output = output + (" " + wrongEquations.get(in));
+				if(!(in == wrongEquations.size()-1)) {
+					output = output + (",");
+				}
+			}
+			output = output + ". Dont forget to make sure the answer is between 1 - 99, make you only use +, -, * and / symbols and no letters!";
+			System.out.println(output);
+			errorMessage.setText(output);
 			errorMessage.setVisible(true);
 		}
 		else {
