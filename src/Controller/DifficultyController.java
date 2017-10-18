@@ -3,7 +3,7 @@ package Controller;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
+import View.*;
 import Model.TestType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class DifficultyController {
+public class DifficultyController extends BaseController {
 
 	@FXML private Button easyButton;
 	@FXML private Button hardButton;
@@ -36,8 +36,6 @@ public class DifficultyController {
 	private boolean hardUnlocked = false;
 	private boolean medUnlocked = false;
 
-	public DifficultyController() {
-	}
 
 	/**
 	 * Takes note of current high score, and sets boolean "unlocked" to true
@@ -97,18 +95,7 @@ public class DifficultyController {
 				testType = TestType.MEDIUM;
 			}
 
-			try {
-				System.out.println("easy set");
-				LevelController controller = new LevelController(testType, true);
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
-				
-				loader.setController(controller);
-				levelScene = loader.load();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-			Scene scene = new Scene(levelScene);
-			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			Scene scene = new Loader("Level.fxml", new LevelController(testType, true)).load();
 			stageEventBelongsTo.setScene(scene);
 		}
 
@@ -117,37 +104,10 @@ public class DifficultyController {
 	public void customButtonEvent(ActionEvent e) {
 		System.out.println("Enter Custom view");
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
-
-		Scene mainMenuScene = null;
-		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/CustomMenu.fxml")));
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-		stageEventBelongsTo.setScene(mainMenuScene);
+		Scene scene = new Loader("CustomMenu.fxml", null).load();
+		stageEventBelongsTo.setScene(scene);
 	}
 
-	/**
-	 * Method takes an action event on the return to menu button.  The main menu scene is
-	 * displayed and the level view is taken away
-	 * @param event
-	 */
-	public void returnMainMenu(ActionEvent event) {
-		System.out.println("Event triggering return to main menu");
-
-		// Get the main stage to display the scene in
-		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		Scene mainMenuScene = null;
-
-		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-		stageEventBelongsTo.setScene(mainMenuScene);
-	}
 
 	/**
 	 * Displays the text telling user that they need 8+ in a round to progress to hard level.

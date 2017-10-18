@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 
+import View.Loader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class ExitPopupController {
+public class ExitPopupController extends BaseController {
 	
 	@FXML private Button stayButton;
 	@FXML private Button exitButton;
@@ -32,14 +33,8 @@ public class ExitPopupController {
 		Stage stage = (Stage) stayButton.getScene().getWindow();
 		stage.close();
 		
-		Scene mainMenuScene = null;
-		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource(FXMLMainSceneLocation)));
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-		rootScene.setScene(mainMenuScene);
+		Scene scene = new Loader(FXMLMainSceneLocation, null).load();
+		rootScene.setScene(scene);
 	}
 
 }

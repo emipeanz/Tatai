@@ -8,6 +8,8 @@ package Controller;
  * @author Maddie Beagley and Emilie Pearce
  */
 import Model.*;
+import View.Loader;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -33,7 +35,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class ResultsController {
+public class ResultsController extends BaseController{
 
 
 	@FXML private Button returnButton;
@@ -53,9 +55,9 @@ public class ResultsController {
 
 
 	public void initialize() {
-		
+
 		questions = _test.getTestQuestions();
-		
+
 		question.setCellValueFactory(new PropertyValueFactory<>("displayString"));
 		answerString.setCellValueFactory(new PropertyValueFactory<>("answerString"));
 		answerInt.setCellValueFactory(new PropertyValueFactory<>("answerInt"));
@@ -68,13 +70,13 @@ public class ResultsController {
 				return new TableRow<Question>() {
 					@Override protected void updateItem(Question q, boolean empty) {
 						super.updateItem(q, empty);
-						
+
 						if(q != null) {
 							boolean pass = (_test.getTestRound(questions.indexOf(q))).getPass();
 							if (!pass) {
 								// Colour green for getting it right
 								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
-								
+
 								setText("Right!");
 							}
 							if (pass){
@@ -94,7 +96,7 @@ public class ResultsController {
 
 		//saves results of this round to file for use in stats menu
 		saveResults();
-		
+
 	}
 
 
@@ -103,28 +105,6 @@ public class ResultsController {
 		_testType = testType;
 	}
 
-
-	/**
-	 * Method takes an action event on the return to menu button.  The main menu scene is
-	 * displayed and the level view is taken away
-	 * @param event
-	 */
-	public void returnMainMenu(ActionEvent event) {
-		System.out.println("Event triggering return to main menu");
-		//main scene should be reloaded.
-
-		// Get the main stage to display the scene in
-		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-		Scene mainMenuScene = null;
-		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-		stageEventBelongsTo.setScene(mainMenuScene);
-	}
 
 	/**
 	 * Takes the user back to the start of a new round. Need to check that a new
@@ -136,19 +116,9 @@ public class ResultsController {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-		AnchorPane levelScene = null;
 
-		try {
-			//ARBITRARY ASSIGNMENT OF ENUM
-			LevelController controller = new LevelController(_testType, true);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
-			loader.setController(controller);
-			levelScene = loader.load();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		Scene scene = new Scene(levelScene);
-		levelScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+		Scene scene = new Loader("Level.fxml", new LevelController(_testType, true)).load();
+
 		stageEventBelongsTo.setScene(scene);		
 	}
 
@@ -212,7 +182,7 @@ public class ResultsController {
 				//new number of tests that have been made
 				newResults.add(String.valueOf(previousNumOfTests + 1));
 				System.out.println(String.valueOf(previousNumOfTests + 1));	
-				
+
 				newResults.add(String.valueOf(cumulativeResults + _test.getOverallMark()));
 
 				//writes in new results to file

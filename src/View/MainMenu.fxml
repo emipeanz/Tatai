@@ -12,7 +12,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
    <children>
       <Button id="menuCircleButtons" fx:id="practiceButton" layoutX="172.0" layoutY="264.0" mnemonicParsing="false" onAction="#enterPracticeMode" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
@@ -61,6 +61,11 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
          </effect>
       </Label>
       <Button fx:id="smallCircleButton" layoutX="729.0" layoutY="26.0" maxHeight="101.0" maxWidth="101.0" mnemonicParsing="false" onAction="#enterStatsView" prefHeight="101.0" prefWidth="101.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #00d2ff, #3a7bd5);" text="" textAlignment="CENTER">
+         <font>
+            <Font name="FontAwesome Regular" size="44.0" />
+         </font>
+      </Button>
+      <Button id="smallCircleButton" fx:id="helpButton" layoutX="9.0" layoutY="26.0" maxHeight="101.0" maxWidth="101.0" mnemonicParsing="false" onAction="#enterStatsView" prefHeight="101.0" prefWidth="101.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #00d2ff, #3a7bd5);" text="&#xf128;" textAlignment="CENTER">
          <font>
             <Font name="FontAwesome Regular" size="44.0" />
          </font>

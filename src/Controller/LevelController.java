@@ -2,6 +2,8 @@ package Controller;
 
 import java.io.BufferedReader;
 import Model.*;
+import View.Loader;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -42,7 +44,7 @@ import javafx.util.Duration;
  *
  */
 
-public class LevelController {
+public class LevelController extends BaseController {
 
 	@FXML private Label numberToTest;
 	@FXML private Button backButton;
@@ -52,7 +54,6 @@ public class LevelController {
 	@FXML private Label firstChance = new Label();
 	@FXML private Label secondChance = new Label();
 	@FXML private Label feedbackMessage;
-	@FXML private AnchorPane helpWindow;
 	@FXML private ProgressBar recordingProgress;
 	@FXML private Circle circle1, circle2, circle3, circle4, 
 	circle5, circle6, circle7, circle8, circle9, circle10;
@@ -66,7 +67,7 @@ public class LevelController {
 	private String blueProgressBar = "-fx-accent: blue;";
 	private String orangeProgressBar = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
-	private boolean equationPlay;
+	private boolean goToResultsOnceFinished;
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
@@ -75,9 +76,10 @@ public class LevelController {
 	 */
 	public LevelController(TestType testType, boolean b) {
 		_testType = testType;
-		equationPlay = b;
+		goToResultsOnceFinished = b;
 		_test = new Test(testType);
 		makeRecordingDir();
+		System.out.println(goToResultsOnceFinished);
 		_currentRound = _test.getTestRound(questionNumber - 1);
 	}
 
@@ -88,11 +90,11 @@ public class LevelController {
 	public LevelController(String customListName, boolean b) {
 		_testType = TestType.CUSTOM;
 		_test = new Test(customListName);
-		equationPlay = b;
+		goToResultsOnceFinished = b;
 		makeRecordingDir();
 		_currentRound = _test.getTestRound(questionNumber - 1);
 	}
-	
+
 	/**
 	 * Generates a directory to store recordings in
 	 */
@@ -146,15 +148,15 @@ public class LevelController {
 	public void playRecording() {	
 		recordingProgressBar(orangeProgressBar);
 
-			setDisableButtons(true, true, true);
-			//plays media
-			_currentRound.getRecording().newMediaPlayer(recordButton, checkButton, listenButton); 
-			_currentRound.getRecording().getMediaPlayer().play();
-			//invokes a runnable that resets the mediaplayer and updates buttons
-			_currentRound.getRecording().getMediaPlayer().onEndOfMediaProperty();
+		setDisableButtons(true, true, true);
+		//plays media
+		_currentRound.getRecording().newMediaPlayer(recordButton, checkButton, listenButton); 
+		_currentRound.getRecording().getMediaPlayer().play();
+		//invokes a runnable that resets the mediaplayer and updates buttons
+		_currentRound.getRecording().getMediaPlayer().onEndOfMediaProperty();
 
 	}
-	
+
 	public void setDisableButtons(boolean listenDisable, boolean checkDisable, boolean recordDisable) {
 		listenButton.setDisable(listenDisable);
 		checkButton.setDisable(checkDisable);
@@ -177,12 +179,12 @@ public class LevelController {
 	public void nextQuestion(ActionEvent event) {
 		questionNumber++;
 
-		if((questionNumber == 11) && (equationPlay)) {
+		if((questionNumber == 11) && (goToResultsOnceFinished)) {
 			System.out.println("Results showing");
 			showResults(event);
 			return;
 		}
-		if((questionNumber == 11) && (!equationPlay)) {
+		if((questionNumber == 11) && (!goToResultsOnceFinished)) {
 			System.out.println("Restarting");
 			clearAndStartAgain(event);
 			return;
@@ -199,18 +201,7 @@ public class LevelController {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
-		AnchorPane statsScene = null;
-		try {
-			System.out.println("Entering practice mode");
-			LevelController controller = new LevelController(TestType.EASY, false);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
-			loader.setController(controller);
-			statsScene = loader.load();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		Scene scene = new Scene(statsScene);
-		scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+		Scene scene = new Loader("Level.fxml", new LevelController(TestType.EASY, false)).load();
 		stageEventBelongsTo.setScene(scene);
 
 	}
@@ -222,22 +213,13 @@ public class LevelController {
 	 */
 	public void showResults(ActionEvent event) {
 		System.out.println("Going to the results page");
-		
+
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		AnchorPane resultsScene = null;
-		ResultsController controller = null;
-		try {
-			controller = new ResultsController(_test, _testType);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Results.fxml"));
-			loader.setController(controller);
-			resultsScene = loader.load();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		Scene scene = new Scene(resultsScene);
-		resultsScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+
+		Scene scene = new Loader("Results.fxml", new ResultsController(_test, _testType)).load();
+
 		stageEventBelongsTo.setScene(scene);
-		 
+
 	}
 
 	/**
@@ -249,23 +231,11 @@ public class LevelController {
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Button eventButton = (Button)event.getSource();
 
-		try {
-			Stage stage = new Stage(); 
-			AnchorPane root;
-			ExitPopupController popupController = new ExitPopupController(stageEventBelongsTo, "/View/MainMenu.fxml");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ExitPopup.fxml"));
-			loader.setController(popupController);
-			root = (AnchorPane)loader.load();
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.initOwner(eventButton.getScene().getWindow());
-			stage.showAndWait();
-		} catch (IOException e1) {
-			System.out.println("exception thrown");
-			e1.printStackTrace();
-		}
+		Stage stage = new Loader("ExitPopup.fxml",new ExitPopupController(stageEventBelongsTo, "/View/MainMenu.fxml")).loadPopup();
+
+		stage.initOwner(eventButton.getScene().getWindow());
+		stage.showAndWait();
+
 
 	}
 
@@ -295,7 +265,7 @@ public class LevelController {
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));
 				delay.setOnFinished( event -> this.nextQuestion(e) );
 				delay.play();
-				} else { // If they have one more chance left
+			} else { // If they have one more chance left
 				feedbackMessage(false);
 			}
 			//setDisableButtons(true, true, true);
@@ -352,15 +322,5 @@ public class LevelController {
 		th.setDaemon(true);
 		th.start();
 	}
-
-	public void showInstructions() {
-		helpWindow.setVisible(true);
-	}
-
-	public void hideInstructions() {
-		helpWindow.setVisible(false);
-	}
-
-
 
 }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Model.TestType;
+import View.Loader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,15 +29,8 @@ public class CustomMenuController {
 	public void openCreateCustom(ActionEvent e) {
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
-		Scene mainMenuScene = null;
-		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/CustomEquations.fxml")));
-			mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-			
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		stageEventBelongsTo.setScene(mainMenuScene);		
+		Scene scene = new Loader("CustomEquations.fxml", null).load();
+		stageEventBelongsTo.setScene(scene);		
 	}
 
 	/**

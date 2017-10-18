@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 import Model.*;
+import View.Loader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +26,7 @@ import javafx.stage.Stage;
  * This class is the controller for the main class and handles button events
  *
  */
-public class MainController{
+public class MainController extends BaseController {
 
 	@FXML private Button practiceButton;
 	@FXML private Button playButton;
@@ -52,10 +53,10 @@ public class MainController{
 				}
 			}
 		}
-		
+
 		File tmpdir = new File(".CustomEquations");
 		tmpdir.mkdir();
-		
+
 		if (!tmpdir.exists()) {
 			File customEquations = new File(".CustomEquations");
 			customEquations.mkdir();
@@ -70,57 +71,25 @@ public class MainController{
 	public void enterDifficultyOption(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
-		AnchorPane difficultyScene = null;
 
-		try {
-			DifficultyController controller = new DifficultyController();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Difficulty.fxml"));
-			loader.setController(controller);
-			difficultyScene = loader.load();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		Scene scene = new Scene(difficultyScene);
-		difficultyScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+		Scene scene = new Loader("Difficulty.fxml",  new DifficultyController()).load();
 		stageEventBelongsTo.setScene(scene);
 
 	}
-	
+
 	public void enterPracticeMode(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
-		AnchorPane practiceScene = null;
-		try {
-			System.out.println("Enterings practice mode");
-			LevelController controller = new LevelController(TestType.EASY, false);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Level.fxml"));
-			loader.setController(controller);
-			practiceScene = loader.load();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		Scene scene = new Scene(practiceScene);
-		practiceScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+		Scene scene = new Loader("Level.fxml", new LevelController(TestType.EASY, false)).load();
 		stageEventBelongsTo.setScene(scene);
 	}
-	
+
 	public void enterStatsView(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
-		AnchorPane statsScene = null;
-		try {
-			System.out.println("Enterings stats view");
-			StatsController controller = new StatsController();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/StatsView.fxml"));
-			loader.setController(controller);
-			statsScene = loader.load();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		Scene scene = new Scene(statsScene);
-		statsScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+		Scene scene = new Loader("StatsView.fxml", new StatsController()).load();
 		stageEventBelongsTo.setScene(scene);
 	}
 

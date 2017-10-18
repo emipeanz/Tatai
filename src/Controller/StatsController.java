@@ -23,7 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 
-public class StatsController {
+public class StatsController extends BaseController{
 
 	double _averageMark;
 	int _numberOfTests;
@@ -70,24 +70,6 @@ public class StatsController {
 		});
 	}
 
-	/**
-	 * Method takes an action event on the return to menu button.  The main menu scene is
-	 * displayed and the level view is taken away
-	 * @param event
-	 */
-	public void returnMainMenu(ActionEvent event) {
-		// Get the main stage to display the scene in
-		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-		Scene mainMenuScene = null;
-		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-		stageEventBelongsTo.setScene(mainMenuScene);
-	}
 
 	public void displayResults() {
 		String filename = "";

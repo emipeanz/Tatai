@@ -10,6 +10,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+import View.Loader;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -98,47 +99,24 @@ public class CustomEquationController {
 	}
 
 	public void getCustomListName(ActionEvent e) { 
-		String filename = "/View/CustomEquationName.fxml";
-		System.out.println("in get custom list name method");
-		
+
 		Button eventButton = (Button)e.getSource();
-		
-		try {
-			Stage stage = new Stage(); 
-			AnchorPane root;
-			CustomEquationPopupController popupController = new CustomEquationPopupController(equationList);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(filename));
-			loader.setController(popupController);
-			root = (AnchorPane)loader.load();
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.initOwner(eventButton.getScene().getWindow());
-			stage.showAndWait();
-		} catch (IOException e1) {
-			System.out.println("exception thrown");
-			e1.printStackTrace();
-		}
-		
+		Stage stage = new Loader("CustomEquationName.fxml", new CustomEquationPopupController(equationList)).loadPopup();
+		stage.initOwner(eventButton.getScene().getWindow());
+		stage.showAndWait();
+
 		returntoCreationsMenu(e);
 	}
-	
+
 	public void returntoCreationsMenu(ActionEvent e) {
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
-		Scene mainMenuScene = null;
-		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/CustomMenu.fxml")));
-			mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		stageEventBelongsTo.setScene(mainMenuScene);
-		
+		Scene scene = new Loader("CustomMenu.fxml", null).load();
+		stageEventBelongsTo.setScene(scene);
+
 	}
 
-	
+
 	/**
 	 * Method takes an action event on the return to menu button.  The main menu scene is
 	 * displayed and the level view is taken away
@@ -147,25 +125,12 @@ public class CustomEquationController {
 	public void backButtonEvent(ActionEvent event) {
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Button eventButton = (Button)event.getSource();
-		
-		try {
-			Stage stage = new Stage(); 
-			AnchorPane root;
-			ExitPopupController popupController = new ExitPopupController(stageEventBelongsTo, "/View/CustomMenu.fxml");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ExitPopup.fxml"));
-			loader.setController(popupController);
-			root = (AnchorPane)loader.load();
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.initOwner(eventButton.getScene().getWindow());
-			stage.showAndWait();
-		} catch (IOException e1) {
-			System.out.println("exception thrown");
-			e1.printStackTrace();
-		}
-		
+
+		Stage stage = new Loader("ExitPopup.fxml", new ExitPopupController(stageEventBelongsTo, "/View/CustomMenu.fxml")).loadPopup();
+		stage.initOwner(eventButton.getScene().getWindow());
+		stage.showAndWait();
+
+
 	}
 
 
