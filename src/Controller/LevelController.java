@@ -62,10 +62,10 @@ public class LevelController extends BaseController {
 	private TestType _testType;
 	private Round _currentRound;
 	private int questionNumber = 1;
-	private Color red = Color.web("ef473a");
-	private Color green = Color.web("56ab2f");
-	private String blueProgressBar = "-fx-accent: blue;";
-	private String orangeProgressBar = "-fx-accent: orange;";
+	private Color RED = Color.web("ef473a");
+	private Color GREEN = Color.web("56ab2f");
+	private String BLUEPROGRESSBAR = "-fx-accent: blue;";
+	private String ORANGEPROGRESSBAR = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
 	private boolean goToResultsOnceFinished;
 
@@ -130,7 +130,7 @@ public class LevelController extends BaseController {
 	 * @param e
 	 */
 	public void takeRecording(ActionEvent e) {
-		recordingProgressBar(blueProgressBar);
+		recordingProgressBar(BLUEPROGRESSBAR);
 		setDisableButtons(true, true, true);
 
 		Thread record = new Thread(() -> {
@@ -146,7 +146,7 @@ public class LevelController extends BaseController {
 	 * correctly set. Nothing will play if the media player is set to null (or has not been set).
 	 */
 	public void playRecording() {	
-		recordingProgressBar(orangeProgressBar);
+		recordingProgressBar(ORANGEPROGRESSBAR);
 
 		setDisableButtons(true, true, true);
 		//plays media
@@ -251,7 +251,7 @@ public class LevelController extends BaseController {
 		if(correct) {		
 			_currentRound.setPass(true);
 			feedbackMessage(true);
-			updateProgressBar(green);
+			updateProgressBar(GREEN);
 			PauseTransition delay = new PauseTransition(Duration.seconds(3));
 			delay.setOnFinished( event -> this.nextQuestion(e) );
 			delay.play();
@@ -260,7 +260,7 @@ public class LevelController extends BaseController {
 			_currentRound.decreaseChances();
 			if(_currentRound.getChances() == 0) { // If they have no more chances left
 				_currentRound.setPass(false);
-				updateProgressBar(red);
+				updateProgressBar(RED);
 				feedbackMessage(false);
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));
 				delay.setOnFinished( event -> this.nextQuestion(e) );

@@ -65,7 +65,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
             <Font name="FontAwesome Regular" size="44.0" />
          </font>
       </Button>
-      <Button id="smallCircleButton" fx:id="helpButton" layoutX="9.0" layoutY="26.0" maxHeight="101.0" maxWidth="101.0" mnemonicParsing="false" onAction="#enterStatsView" prefHeight="101.0" prefWidth="101.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #00d2ff, #3a7bd5);" text="&#xf128;" textAlignment="CENTER">
+      <Button id="smallCircleButton" fx:id="helpButton" layoutX="9.0" layoutY="26.0" maxHeight="101.0" maxWidth="101.0" mnemonicParsing="false" onAction="#enterHelpPage" prefHeight="101.0" prefWidth="101.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect,  #56ccf2, #2f80ed);" text="" textAlignment="CENTER">
          <font>
             <Font name="FontAwesome Regular" size="44.0" />
          </font>

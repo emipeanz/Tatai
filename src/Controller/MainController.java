@@ -92,5 +92,12 @@ public class MainController extends BaseController {
 		Scene scene = new Loader("StatsView.fxml", new StatsController()).load();
 		stageEventBelongsTo.setScene(scene);
 	}
+	
+	public void enterHelpPage(ActionEvent e) {
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+
+		Scene scene = new Loader("HelpPage.fxml", null).load();
+		stageEventBelongsTo.setScene(scene);
+	}
 
 }

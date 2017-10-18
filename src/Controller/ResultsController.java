@@ -148,9 +148,6 @@ public class ResultsController extends BaseController{
 			File temp = new File(filename);
 
 			try {
-				//if file exists update the results
-
-				System.out.println("file has already been made");
 
 				//finds previous high score and converts it to an integer
 				String highScoreString;
