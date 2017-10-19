@@ -29,6 +29,12 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * This class handles everything to do with making a custom equation list. This includes checking that all the equations are valid
+ * and then passing control over to another scene to get the equation list name
+ * @author Emilie Pearce and Maddie Beagley
+ *
+ */
 public class CustomEquationController {
 
 	@FXML private TextField equation1,equation2, equation3, equation4, equation5, 
@@ -44,6 +50,10 @@ public class CustomEquationController {
 	
 	private ArrayList<Integer> wrongEquations = new ArrayList<Integer>();
 
+	/**
+	 * Sets up the scene by binding the check button to all equation fields ie. it isnt enabled and user isnt able
+	 * to check their equations until all fields have been filled.
+	 */
 	public void initialize() {
 		submitButton.setVisible(false);
 		errorMessage.setVisible(false);
@@ -61,6 +71,13 @@ public class CustomEquationController {
 		checkEquationsButton.disableProperty().bind(bool);
 	}
 
+	/**
+	 * Method handles the check button event to check all equations are valid. Uses a javascript engine to evaluate
+	 * a string equation to an int. Colors the respective circle next to the equation to show if it is correct 
+	 * or incorrect. If there are some incorrect one then an error message with hints is shown. If all the equations
+	 * are valid then the submit button is shown.
+	 * @param e
+	 */
 	public void checkEquations(ActionEvent e) {
 		wrongEquations.clear();
 		int i = 0;
@@ -111,6 +128,10 @@ public class CustomEquationController {
 		}
 	}
 
+	/**
+	 * Method loads the popup asking the user for a name for the custom equation list
+	 * @param e
+	 */
 	public void getCustomListName(ActionEvent e) { 
 
 		Button eventButton = (Button)e.getSource();
@@ -121,6 +142,11 @@ public class CustomEquationController {
 		returntoCreationsMenu(e);
 	}
 
+	/**
+	 * Back button doesnt return to main screen, but rather the custom lists menu and prompts the user
+	 * asking if they are sure they want to quit as their list will not be saved
+	 * @param e
+	 */
 	public void returntoCreationsMenu(ActionEvent e) {
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
@@ -147,14 +173,12 @@ public class CustomEquationController {
 	}
 
 
-	public void showInstructions() {
-		helpWindow.setVisible(true);
-	}
-
-	public void hideInstructions() {
-		helpWindow.setVisible(false);
-	}
-
+	/**
+	 * Method changes the given circle to red or green depending on if the respective equation is valid
+	 * or not
+	 * @param iconCircle Circle to be colored to show feedback
+	 * @param pass To indicate if the equation is valid or not
+	 */
 	public void changeFeedbackIcon(Circle iconCircle, boolean pass) {
 		if(pass) { // Sets circle to tick
 			iconCircle.setStroke(Color.web("56ab2f"));

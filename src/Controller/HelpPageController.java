@@ -22,6 +22,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+/**
+ * This class handles everything to do wit the help page. This includes holding all the images and
+ * information related to each page description.
+ * @author Emilie Pearce and Maddie Beagley
+ *
+ */
 public class HelpPageController extends BaseController{
 
 	@FXML private ImageView screenImage;
@@ -38,6 +44,10 @@ public class HelpPageController extends BaseController{
 	private Color TRANSPARENT = Color.TRANSPARENT;
 	private Color WHITE = Color.WHITE;
 
+	/**
+	 * Sets up the page which includes loading images and storing them in hashmaps along with their respective
+	 * descriptions
+	 */
 	public void initialize() {
 
 		
@@ -95,18 +105,31 @@ public class HelpPageController extends BaseController{
 
 	}
 
+	/**
+	 * Method handles changing to another scene description by increasing the count of 
+	 * currentPage
+	 * @param e
+	 */
 	public void next(ActionEvent e) {
 		currentPage++;
 		this.refresh();
 		this.colourCircle();
 	}
 
+	/**
+	 * Method handles changing to another scene description by decreasing the count of
+	 * currentPage
+	 * @param e
+	 */
 	public void previous(ActionEvent e) {
 		currentPage--;
 		this.refresh();
 		this.uncolourCircle();
 	}
 
+	/**
+	 * Colors a progress circle down the bottom when a page is increased to the next
+	 */
 	public void colourCircle() {
 			Circle circle =	progressCircles.get(currentPage);
 			circle.setFill(GREEN);
@@ -114,14 +137,20 @@ public class HelpPageController extends BaseController{
 
 	}
 
+	/**
+	 * Empties a circles color when the user goes back a page
+	 */
 	public void uncolourCircle() {
 		Circle circle =	progressCircles.get(currentPage + 1);
 		circle.setFill(TRANSPARENT);
 		circle.setStroke(WHITE);
 	}
 	
-	
-
+	/**
+	 * Is called whenever the user changed a scene description. It checks if they are on the first or last scene - and if
+	 * so disables the respective button so they cant continue going forward/back. It also changes the title of the page 
+	 * and updates the image and description from the respective hashmaps
+	 */
 	private void refresh(){
 		if(currentPage >= 9) {
 			System.out.println(currentPage);

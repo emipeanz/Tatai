@@ -53,7 +53,11 @@ public class ResultsController extends BaseController{
 	private TestType _testType;
 	private ArrayList<Question> questions;
 
-
+	/**
+	 * Method handles the initlization of the results scene. Sets up the table and adds row factories to 
+	 * change the colour of a row depending on if the user got it right or not. Also hides the scroll bar
+	 * and makes sure nothing is resizable.
+	 */
 	public void initialize() {
 
 		questions = _test.getTestQuestions();
@@ -99,7 +103,11 @@ public class ResultsController extends BaseController{
 
 	}
 
-
+	/**
+	 * Creates a new resultsController with the respective test
+	 * @param test The test the user has just done and is about to be shown in results
+	 * @param testType The type of test the user just did
+	 */
 	public ResultsController(Test test, TestType testType) {
 		_test = test;
 		_testType = testType;
