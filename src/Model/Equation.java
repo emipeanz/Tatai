@@ -6,15 +6,14 @@ import javax.script.ScriptException;
 
 public class Equation extends Question {
 
-	private String equationString;
 	private Operator _operator;
 	private int left = 0, right = 0, answer = 0;
 	private Operator[] _operators = {Operator.ADD, Operator.SUBTRACT, Operator.MULTIPLY, Operator.DIVIDE};
 	private int[] basicMultiples = {2,5,10};
 
 	/**
-	 * This equation constructor is only called for a practice test with a
-	 * specified operator.
+	 * This equation constructor is only called for a practice test which will
+	 * have a specified operator.
 	 * @param operator: operator for particular practice round
 	 */
 	public Equation(Operator operator) {
@@ -59,6 +58,12 @@ public class Equation extends Question {
 		displayString = equation.replace("*", " x ");
 	}
 
+	/**
+	 * Generates a "standard" test based on the difficulty level specified
+	 * by the user. Will randomly generate numbers and operators for the equation
+	 * which will be defined by the difficulty level.
+	 * @param testType
+	 */
 	public Equation (TestType testType) {
 		switch(testType) {
 		case EASY:
@@ -71,13 +76,13 @@ public class Equation extends Question {
 			hardEquation();
 			break;
 		default:
-			throw new IllegalArgumentException("Given difficulty " + testType + " is not a proper one");
+			throw new IllegalArgumentException("You are in the wrong test constructor for TestType: " + testType);
 		}
 	}
 
 	/**
-	 * Method called to generate an easy equation.
-	 * @return
+	 * Method called to generate an easy equation. Numerical answers are
+	 * only between 1 and 10 and only +, - and x are possible operators.
 	 */
 	private void easyEquation() {
 		System.out.println("generating an easy equation");
@@ -93,8 +98,9 @@ public class Equation extends Question {
 	}
 
 	/**
-	 * Method called to create a medium difficulty equation
-	 * @return
+	 * Method called to generate a medium equation. Numerical answers are
+	 * between 1 and 99 and all operators are possible. Division and 
+	 * multiplication is only implemented for divisor and multiples of 2,5 and 10.
 	 */
 	private void mediumEquation() {
 		//choosing between all possible operators
@@ -120,8 +126,10 @@ public class Equation extends Question {
 	}
 
 	/**
-	 * Method called to create a hard difficulty equation.
-	 * @return
+	 * Method called to generate a hard equation. Numerical answers are
+	 * between 1 and 99 and all operators are possible. Multiplication is for
+	 * all times tables up to 12. Division is again only for basic divisors
+	 * like 2,5 and 10.
 	 */
 	private void hardEquation() {
 		Operator operator = _operators[randomNumber(0,3)];
@@ -144,6 +152,13 @@ public class Equation extends Question {
 	}
 
 
+	/**
+	 * Gives an integer answer for an equation when provided with the
+	 * two integers of the equation.
+	 * @param left: integer on LHS of equation operator
+	 * @param right: integer on RHS of equation operator
+	 * @return integer answer for the equation
+	 */
 	private int evaluateEquation(int left, int right) {
 		switch(_operator) {
 		case ADD:
@@ -159,6 +174,13 @@ public class Equation extends Question {
 		}
 	}
 
+	/**
+	 * Sets fields of the equation, including the string displayed on screen
+	 * the integer answer and the word representing the number in Maori.
+	 * @param left: integer on LHS of equation operator
+	 * @param right: integer on RHS of equation operator
+	 * @param answer: answer of equation
+	 */
 	public void generateEquation(int left, int right, int answer) {
 		answerInt = answer;
 		String equation = left + " " + _operator.getSymbol() + " " + right;
