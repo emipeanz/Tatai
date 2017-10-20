@@ -8,7 +8,8 @@ public class Round {
 	private int _chances = 2;
 
 	public Round(TestType testType) {
-		_question = Equation.create(testType);
+		_question = new Equation(testType);
+		System.out.println(_question.getDisplayString());
 	}
 	
 	public Round(Operator operator) {
