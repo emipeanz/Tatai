@@ -19,6 +19,7 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class CustomMenuController {
 
@@ -67,6 +68,7 @@ public class CustomMenuController {
 			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
 			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.initStyle(StageStyle.UNDECORATED);
 			stage.initOwner(eventButton.getScene().getWindow());
 			stage.showAndWait();
 		} catch (IOException e1) {

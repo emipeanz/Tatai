@@ -28,6 +28,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * This class handles everything to do with making a custom equation list. This includes checking that all the equations are valid
@@ -137,6 +138,7 @@ public class CustomEquationController {
 		Button eventButton = (Button)e.getSource();
 		Stage stage = new Loader("CustomEquationName.fxml", new CustomEquationPopupController(equationList)).loadPopup();
 		stage.initOwner(eventButton.getScene().getWindow());
+		stage.initStyle(StageStyle.UNDECORATED);
 		stage.showAndWait();
 
 		returntoCreationsMenu(e);

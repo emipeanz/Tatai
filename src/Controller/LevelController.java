@@ -35,6 +35,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -272,6 +273,7 @@ public class LevelController extends BaseController {
 		Stage stage = new Loader("ExitPopup.fxml",new ExitPopupController(stageEventBelongsTo, "/View/MainMenu.fxml")).loadPopup();
 
 		stage.initOwner(eventButton.getScene().getWindow());
+		stage.initStyle(StageStyle.UNDECORATED);
 		stage.showAndWait();
 
 
