@@ -8,6 +8,14 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * This abstract class is used for all controllers. It comes with the base method of returning to
+ * main menu - should any scene require a button returning to the main menu then this one can be 
+ * used. It also classifies all controllers of type BaseController to the load class in the View 
+ * package can take in any BaseController and attach it to any FXML file
+ * @author se206
+ *
+ */
 public abstract class BaseController {
 	
 

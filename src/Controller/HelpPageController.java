@@ -22,6 +22,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+/**
+ * This class handles everything to do wit the help page. This includes holding all the images and
+ * information related to each page description.
+ * @author Emilie Pearce and Maddie Beagley
+ *
+ */
 public class HelpPageController extends BaseController{
 
 	@FXML private ImageView screenImage;
@@ -32,29 +38,21 @@ public class HelpPageController extends BaseController{
 	private ArrayList<String> titles = new ArrayList<String>();
 	private Map<String, Image> imageList = new HashMap<String, Image>();
 	private Map<String, String> textList = new HashMap<String, String>();
-	private Map<String, String> englishToMaoriTitles = new HashMap<String, String>();
 	private ArrayList<Circle> progressCircles;
 	private Integer currentPage = 0;
 	private Color GREEN = Color.web("56ab2f");
 	private Color TRANSPARENT = Color.TRANSPARENT;
 	private Color WHITE = Color.WHITE;
 
+	/**
+	 * Sets up the page which includes loading images and storing them in hashmaps along with their respective
+	 * descriptions
+	 */
 	public void initialize() {
 
 		
 		File dir = new File("src/View/Images");
 		String extension = "png";
-		
-		englishToMaoriTitles.put("Main Menu", "tahua matua");
-		englishToMaoriTitles.put("Play Menu", "tahua tahua");
-		englishToMaoriTitles.put("Making a Custom List", "Te Hanga i te Rarangi Ritenga");
-		englishToMaoriTitles.put("Playing a Custom List", "Te Mahi i te Rarangi Ritenga");
-		englishToMaoriTitles.put("Playing a Level", "Te takaro i te taumata");
-		englishToMaoriTitles.put("Getting it wrong the first time", "Ko te tango i te he i te wa tuatahi");
-		englishToMaoriTitles.put("Getting it wrong the second time", "Kei te hapa i te wa tuarua");
-		englishToMaoriTitles.put("Getting a question right", "Te whakautu tika");
-		englishToMaoriTitles.put("Results", "Hua");
-		englishToMaoriTitles.put("Statistics", "Taatauranga");
 
 		titles.add("Main Menu");
 		titles.add("Play Menu");
@@ -67,24 +65,17 @@ public class HelpPageController extends BaseController{
 		titles.add("Results");
 		titles.add("Statistics");
 		
-		textList.put("Main Menu", "Koinei te waharoa rārangi kai.\n" + 
-				"Ka taea e koe te takaro i nga kēmu me te kore he tohu i tuhia i roto i te 'mahi', te takaro rānei, me te whakarite i o ake ake taumata me o raatau hua!.\n "
-				+ "Pāwhiritia te paatatau tatauranga ki runga kia kite koe i nga tohu");
-		textList.put("Making a Custom List", "Whakauruhia e koe nga whakawhitinga e 10 whārite kōpiko  me nga whakautu 1 - 99 ma te whakamahi i nga tau me te -, *, - me nga "
-				+ "tohu. Kia tae mai koe, tirohia mehemea he raruraru ka korerotia ki a koe. Na ka tuku ia ratou ka whiriwhiria he ingoa mo to rarangi!");
-		textList.put("Playing a Custom List", "Ka whiriwhirihia he rarangi i hanga e koe, ka tīpakohia te tarairo hei tarai i tenei rārangi ka tohua ki runga!\n" + 
-				"Ka taea e koe te hoki atu me te hanga i etahi atu ritenga ritenga i nga wa katoa!");
-		textList.put("Playing a Level", "Ko nga paatene e toru kei raro i te takaro o raro, tuhia me te tirotiro ka whakautu. Ko te papa i runga ko te wa kua waiho e koe ki te tuhi.\n" + 
-				"Ka taea e koe te hoki ki te tahua i nga wa katoa, engari kaore koe e haere ki te ahunga whakamua.\n" + 
-				"Whakamahia te pātene whakatere mēnā e hiahia ana koe ki te peke i tētahi pātai");
-		textList.put("Play Menu", "Ko tenei tahua kei hea koe i whiriwhiri i te raruraru e hiahia ana koe ki te takaro. Ko etahi kei te kati kia tae ra ano ki a koe te tohu o te 8/10 i te taumata i raro nei.\n" + 
-				"Ka taea hoki e koe te hanga i nga whakamatautau ritenga me te whakamahi i nga whakamatautau ritenga mai i tenei wharangi!");
-		textList.put("Results", "Ka whakaaturia nga hua mo te whakamatautau i konei. Ko te tikanga o te whero ko te mea he kino ki a koe, ko nga mea matomato he tikanga tika koe. Ka taea e koe te tarai i te whakamatautau me te paatene tautuhi i raro, ka hoki ki te tahua matua!");
-		textList.put("Getting it wrong the second time", "Ko te karere whero he tikanga he he. Na inaianei ki te uiuinga e whai ake nei!");
-		textList.put("Getting it wrong the first time", "Ae, kua hara koe. Ko te karere karaka e whakaatu ana he kotahi noa atu te waahi ka mahue ki a koe!");
-		textList.put("Getting a question right", "Ko te karere matomato ko te tikanga o nga korero tika! I te take e whai mai nei!");
-		textList.put("Statistics", "I konei ka whakaatuhia o taatau tatau. Whakamahia te kiriata i te tihi ki te neke i waenga i nga tatauranga taumata taumatawari, reo, pakeke hoki!");
-
+		textList.put("Main Menu", "This is the main menus where you can chose to practice math by playing fun games, or playin g the game where it will also track your score. You can view your statistics any time from the button in the top right corner.");
+		textList.put("Play Menu", "Here you can chose what difficulty you want to play or create you own equation lists to test by going to custom. You can return to the main menu at any time. Remember, before you can play harder levels, you must get 8/10 on the level below!");
+		textList.put("Making a Custom List", "Here you can input 10 of you own equations to test. Make sure to only use numbers, =, -, * and / symbols and make sure the answer is between 1 - 99. Heres an example \" 6 * 4 \". When you have them all, click the green check button to see if they are all valid. Then click submit and think of a list name!");
+		textList.put("Playing a Custom List", "Here you can chose what list you want to play. Remebers, you can always go back and create more!");
+		textList.put("Playing a Level", "When playing, the equation to answer is shown in the middle. Use the button down the bottom to record, check and play a recording. When recording, the blue bar up the top will show you how much time you have left. You can always return to the main menu but your progress wont be saved!");
+		textList.put("Getting it wrong the first time", "When playing, if you get it wrong the first time, an orange warning will show and you have one chance left!");
+		textList.put("Getting it wrong the second time", "If you get it wrong the second time a red warning will show, but dont worry. The game will move onto the next question!");
+		textList.put("Getting a question right", "When you get a question right a green label will show and the game will move onto the next question");
+		textList.put("Results", "Once you have completed a test, results will show you your score, the questions you got right and wrong and their answer");
+		textList.put("Statistics", "Here you can see you average score, how many tests you have taken and your high score. Keep playing more games to change them! User the slider bar up the top to change between statistics for easy, medium and hard levels.");
+		
 		FilenameFilter imagesFilter = new FilenameFilter() {
 			@Override
 			public boolean accept(final File dir, final String name) {
@@ -114,18 +105,31 @@ public class HelpPageController extends BaseController{
 
 	}
 
+	/**
+	 * Method handles changing to another scene description by increasing the count of 
+	 * currentPage
+	 * @param e
+	 */
 	public void next(ActionEvent e) {
 		currentPage++;
 		this.refresh();
 		this.colourCircle();
 	}
 
+	/**
+	 * Method handles changing to another scene description by decreasing the count of
+	 * currentPage
+	 * @param e
+	 */
 	public void previous(ActionEvent e) {
 		currentPage--;
 		this.refresh();
 		this.uncolourCircle();
 	}
 
+	/**
+	 * Colors a progress circle down the bottom when a page is increased to the next
+	 */
 	public void colourCircle() {
 			Circle circle =	progressCircles.get(currentPage);
 			circle.setFill(GREEN);
@@ -133,14 +137,20 @@ public class HelpPageController extends BaseController{
 
 	}
 
+	/**
+	 * Empties a circles color when the user goes back a page
+	 */
 	public void uncolourCircle() {
 		Circle circle =	progressCircles.get(currentPage + 1);
 		circle.setFill(TRANSPARENT);
 		circle.setStroke(WHITE);
 	}
 	
-	
-
+	/**
+	 * Is called whenever the user changed a scene description. It checks if they are on the first or last scene - and if
+	 * so disables the respective button so they cant continue going forward/back. It also changes the title of the page 
+	 * and updates the image and description from the respective hashmaps
+	 */
 	private void refresh(){
 		if(currentPage >= 9) {
 			System.out.println(currentPage);
@@ -153,7 +163,7 @@ public class HelpPageController extends BaseController{
 		} else {
 			previousButton.setDisable(false);
 		}
-		title.setText(englishToMaoriTitles.get(titles.get(currentPage)));
+		title.setText(titles.get(currentPage));
 		explanation.setText(textList.get(titles.get(currentPage)));
 		screenImage.setImage(imageList.get(titles.get(currentPage)));
 	}
