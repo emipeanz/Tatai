@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import View.*;
+import Model.Operator;
 import Model.TestType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,17 +26,20 @@ public class DifficultyController extends BaseController {
 	@FXML private Button hardButton;
 	@FXML private Button mediumButton;
 	@FXML private Button customButton;
+	@FXML private Button plusButton;
+	@FXML private Button minusButton;
+	@FXML private Button timesButton;
+	@FXML private Button divideButton;
 	@FXML private Label hardText;
 	@FXML private Label mediumText;
 	@FXML private Label hardLockSymbol = new Label();
 	@FXML private Label medLockSymbol = new Label();
 	@FXML private DialogPane customDialog;
-	
 
 	private TestType testType;
+	private Operator operator;
 	private boolean hardUnlocked = false;
 	private boolean medUnlocked = false;
-
 
 	/**
 	 * Takes note of current high score, and sets boolean "unlocked" to true
@@ -57,7 +61,7 @@ public class DifficultyController extends BaseController {
 				medLockSymbol.setText("");
 				System.out.println("Medium unlocked");
 			}
-			
+
 			//checks the current highscore
 			String highScoreMedString = Files.readAllLines(Paths.get(".mediumResults.txt")).get(1);
 			int highScoreMed = Integer.parseInt(highScoreMedString);
@@ -101,6 +105,26 @@ public class DifficultyController extends BaseController {
 
 	}
 
+	public void enterPracticeTest(ActionEvent e) {
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+		AnchorPane levelScene = null;
+		
+		if (e.getSource().equals(minusButton)) {
+			System.out.println("minus");
+			operator = Operator.SUBTRACT;
+		} else if (e.getSource().equals(timesButton)) {
+			System.out.println("times");
+			operator = Operator.MULTIPLY;
+		} else if (e.getSource().equals(divideButton)) {
+			operator = Operator.DIVIDE;
+		} else if (e.getSource().equals(plusButton)) {
+			operator = Operator.ADD;
+		}
+
+		Scene scene = new Loader("Level.fxml", new LevelController(operator, false)).load();
+		stageEventBelongsTo.setScene(scene);
+	}
+
 	public void customButtonEvent(ActionEvent e) {
 		System.out.println("Enter Custom view");
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
@@ -117,7 +141,7 @@ public class DifficultyController extends BaseController {
 			hardText.setVisible(true);
 		}
 	}
-	
+
 	/**
 	 * Displays the text telling user that they need 8+ in a round to progress to hard level.
 	 */
@@ -131,9 +155,9 @@ public class DifficultyController extends BaseController {
 	 * Hides text telling user that they need 8+ in a round to progress to hard level.
 	 */
 	public void hideText() {
-			hardText.setVisible(false);
+		hardText.setVisible(false);
 
-			mediumText.setVisible(false);
+		mediumText.setVisible(false);
 
 	}
 

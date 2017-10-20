@@ -86,6 +86,19 @@ public class LevelController extends BaseController {
 	}
 
 	/**
+	 * Method is custom constructor for LevelController so parameters can be passed into it.
+	 * the difficulty is set and a new test is made
+	 * @param diff Difficulty of the test user wants to run (enum)
+	 */
+	public LevelController(Operator operator, boolean b) {
+		_testType = TestType.PRACTICE;
+		goToResultsOnceFinished = b;
+		_test = new Test(operator);
+		makeRecordingDir();
+		_currentRound = _test.getTestRound(questionNumber - 1);
+	}
+
+	/**
 	 * Used only when a custom list is being used
 	 * @param customListName
 	 */
@@ -122,6 +135,13 @@ public class LevelController extends BaseController {
 
 		progressCircles = new ArrayList<Circle>(Arrays.asList(circle1, circle2,
 				circle3, circle4, circle5, circle6, circle7, circle8, circle9, circle10));
+
+		if (_testType.equals(TestType.PRACTICE)){
+			for (Circle circle : progressCircles) {
+				circle.setVisible(false);
+			}
+		}
+
 	}
 
 	/**
@@ -134,7 +154,7 @@ public class LevelController extends BaseController {
 	public void takeRecording(ActionEvent event) {
 		setDisableButtons(true, true, true);
 		recordingProgressBar(BLUEPROGRESSBAR);
-		
+
 		Task task = new Task() {
 
 			@Override
@@ -149,9 +169,9 @@ public class LevelController extends BaseController {
 		});
 
 		new Thread(task).start();
-	
+
 	}
-	
+
 
 	/**
 	 * Uses the media player to play the current recording as long as that player has been
@@ -192,20 +212,26 @@ public class LevelController extends BaseController {
 		questionNumber++;
 		skipButton.setVisible(false);
 
-		if((questionNumber == 11) && (goToResultsOnceFinished)) {
-			System.out.println("Results showing");
-			showResults(event);
-			return;
+		if (!_testType.equals(TestType.PRACTICE)) {
+
+			if((questionNumber == 11) && (goToResultsOnceFinished)) {
+				System.out.println("Results showing");
+				showResults(event);
+				return;
+			}
+			if((questionNumber == 11) && (!goToResultsOnceFinished)) {
+				System.out.println("Restarting");
+				clearAndStartAgain(event);
+				return;
+			}
+			if(questionNumber - 1 > 10) {
+				throw new RuntimeException("Too many tests have been logged");
+			}
+			_currentRound = _test.getTestRound(questionNumber - 1);
+		} else {
+			_test.addRound();
+			_currentRound = _test.getTestRound(questionNumber -1);
 		}
-		if((questionNumber == 11) && (!goToResultsOnceFinished)) {
-			System.out.println("Restarting");
-			clearAndStartAgain(event);
-			return;
-		}
-		if(questionNumber - 1 > 10) {
-			throw new RuntimeException("Too many tests have been logged");
-		}
-		_currentRound = _test.getTestRound(questionNumber - 1);
 		numberToTest.setText(_currentRound.getQuestion().getDisplayString());
 	}
 
@@ -320,12 +346,18 @@ public class LevelController extends BaseController {
 				feedbackMessage.setVisible(false);
 				setDisableButtons(true, true, false);
 			}
-			
-			
+
+
 		});
 		delay.play();
 	}
 
+	/**
+	 * Increments a progress bar at the top of the game scene that fills with the 
+	 * input colour gradually over duration of recording. Used when playing and
+	 * taking a recording.
+	 * @param progressStyle: CSS string representing colour of bar
+	 */
 	public void recordingProgressBar(String progressStyle) {
 		recordingProgress.setStyle(progressStyle);
 		recordingProgress.setVisible(true);
@@ -351,7 +383,7 @@ public class LevelController extends BaseController {
 		th.start();
 	}
 
-	
+
 	public void skipQuestion(ActionEvent e) {
 		_currentRound.setPass(false);
 		updateProgressBar(RED);

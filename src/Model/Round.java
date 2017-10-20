@@ -10,6 +10,10 @@ public class Round {
 	public Round(TestType testType) {
 		_question = Equation.create(testType);
 	}
+	
+	public Round(Operator operator) {
+		_question = new Equation(operator);
+	}
 
 	/**
 	 * This constructor should only be used to create rounds for a 

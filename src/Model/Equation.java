@@ -7,6 +7,8 @@ import javax.script.ScriptException;
 public class Equation extends Question {
 
 	private String equationString;
+	private Operator _operator;
+	
 
 	/**
 	 * Generates an equation of a specified difficulty level
@@ -23,7 +25,36 @@ public class Equation extends Question {
 			displayString = Integer.toString(left) + " " + op.symbol + " " + Integer.toString(right);
 		}
 	}
+	
+	/**
+	 * This equation constructor is only called for a practice test with a
+	 * specified operator.
+	 * @param operator: operator for particular practice round
+	 */
+	public Equation(Operator operator) {
+		System.out.println("generating equation");
+		_operator = operator;
+		int answer = -1;
+		int left = 0, right = 0;
+		
+		while((answer < 1) || (answer > 100)) {
+			left = randomNumber(1,99);
+			right = randomNumber(1,99);
+			answer = evaluateEquation(left,right, _operator);
+			System.out.println(left + _operator.getSymbol() + right);
+		}
+		
+		answerString = numberToWord(answer);
+		String equation = left + _operator.getSymbol() + right;
+		displayString = equation.replace("*", " x ");
+	}
 
+	/**
+	 * This equation constructor is only called for a custom equation where
+	 * the string for the equation is passed through to the constructor from 
+	 * the file storing user input.
+	 * @param equation
+	 */
 	public Equation(String equation) {
 		try {
 			ScriptEngineManager mgr = new ScriptEngineManager();
@@ -51,6 +82,10 @@ public class Equation extends Question {
 		}
 	}
 
+	/**
+	 * Method called to generate an easy equation.
+	 * @return
+	 */
 	public static Equation easyEquation() {
 		//choosing between all possible operators
 		Operator operator = Operator.choose();
@@ -68,7 +103,10 @@ public class Equation extends Question {
 		return equation;
 	}
 
-
+	/**
+	 * Method called to create a medium difficulty equation
+	 * @return
+	 */
 	private static Equation mediumEquation() {
 		//choosing between all possible operators
 		Operator operator = Operator.choose();
@@ -93,6 +131,10 @@ public class Equation extends Question {
 		return equation;
 	}
 
+	/**
+	 * Method called to create a hard difficulty equation.
+	 * @return
+	 */
 	private static Equation hardEquation() {
 		//choosing between all possible operators
 		int left, right;
@@ -115,6 +157,7 @@ public class Equation extends Question {
 		return equation;
 	}
 
+	
 	public static int evaluateEquation(int left, int right, Operator operator) {
 		switch(operator) {
 		case ADD:
@@ -123,6 +166,8 @@ public class Equation extends Question {
 			return left - right;
 		case MULTIPLY:
 			return left * right;
+		case DIVIDE:
+			return  left / right;
 		default:
 			throw new IllegalArgumentException("Invalid operator entered: " + operator);
 		}

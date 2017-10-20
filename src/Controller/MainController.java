@@ -81,7 +81,7 @@ public class MainController extends BaseController {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
-		Scene scene = new Loader("Level.fxml", new LevelController(TestType.EASY, false)).load();
+		Scene scene = new Loader("PracticeChoice.fxml", new DifficultyController()).load();
 		stageEventBelongsTo.setScene(scene);
 	}
 

@@ -1,12 +1,16 @@
 package Model;
 
 public enum Operator {
-	ADD("+"), SUBTRACT("-"), MULTIPLY("*");
+	ADD("+"), SUBTRACT("-"), MULTIPLY("*"), DIVIDE("/");
 	
 	public final String symbol;
 	
 	private Operator(String operator) {
 		this.symbol = operator;
+	}
+	
+	public String getSymbol() {
+		return this.symbol;
 	}
 
 	public static Operator choose() {

@@ -23,6 +23,7 @@ public class Test {
 	private final int _numRounds = 10;
 	private List<String> _customEquationList = new ArrayList<String>();
 	private String listName;
+	private Operator _operator;
 
 
 	/**
@@ -40,6 +41,15 @@ public class Test {
 				_testRounds.add(new Round(_testType));
 			}
 		}
+	}
+	/**
+	 * Test constructor used only for a practice test.
+	 * @param operator
+	 */
+	public Test(Operator operator) {
+		_testType = TestType.PRACTICE;
+		_operator = operator;
+		_testRounds.add(new Round(_operator));
 	}
 
 	/**
@@ -99,6 +109,12 @@ public class Test {
 		
 		return questions;
 	}
-	
 
+	/**
+	 * Should only be used to add rounds during a practice test, in all
+	 * other cases rounds are all added in the initial instantiation of the test.
+	 */
+	public void addRound() {
+		_testRounds.add(new Round(_operator));
+	}
 }
