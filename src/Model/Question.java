@@ -6,10 +6,6 @@ package Model;
  * right.
  * @author Maddie Beagley and Emilie Pearce
  */
-import Controller.*;
-import View.*;
-import java.util.Arrays;
-import java.util.List;
 
 public class Question {
 
@@ -33,7 +29,7 @@ public class Question {
 	}
 
 	/**
-	 * Converts an integer to the maori word associated to that integer.
+	 * Converts an integer to the Maori word associated to that integer.
 	 * @param number: number to be converted
 	 * @return String associated to that number
 	 */

@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button id="menuCircleButtons" fx:id="plusButton" layoutX="162.0" layoutY="189.0" mnemonicParsing="false" onAction="#enterPracticeTest" prefHeight="0.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
@@ -35,7 +34,7 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="7.0" layoutY="9.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="/" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="7.0" layoutY="9.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="\\u00F7" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="100.0" />
                      </font>

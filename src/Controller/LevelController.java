@@ -1,39 +1,25 @@
 package Controller;
 
-import java.io.BufferedReader;
 import Model.*;
 import View.Loader;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import java.nio.file.Paths;
 
 import javafx.animation.PauseTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Shape;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -82,7 +68,6 @@ public class LevelController extends BaseController {
 		goToResultsOnceFinished = b;
 		_test = new Test(testType);
 		makeRecordingDir();
-		System.out.println(goToResultsOnceFinished);
 		_currentRound = _test.getTestRound(questionNumber - 1);
 	}
 
@@ -142,7 +127,6 @@ public class LevelController extends BaseController {
 				circle.setVisible(false);
 			}
 		}
-
 	}
 
 	/**
@@ -157,22 +141,17 @@ public class LevelController extends BaseController {
 		recordingProgressBar(BLUEPROGRESSBAR);
 
 		Task task = new Task() {
-
 			@Override
 			protected Object call() throws Exception {
 				_currentRound.takeRecording();
 				return null;
 			}
 		};
-
 		task.setOnSucceeded(e -> {
 			setDisableButtons(false, false, false);
 		});
-
 		new Thread(task).start();
-
 	}
-
 
 	/**
 	 * Uses the media player to play the current recording as long as that player has been
@@ -198,12 +177,15 @@ public class LevelController extends BaseController {
 
 	/**
 	 * Updates the state of the progress bar. Tracks how many rounds of the
-	 * level have been made.
+	 * level have been made. This feature is disabled in a practice test as
+	 * there is not a set limit of 10 questions
 	 */
 	private void updateProgressBar(Color color) {
-		Circle circle =	progressCircles.get(questionNumber - 1);
-		circle.setFill(color);
-		circle.setStroke(color);
+		if (!_testType.equals(TestType.PRACTICE)) {
+			Circle circle =	progressCircles.get(questionNumber - 1);
+			circle.setFill(color);
+			circle.setStroke(color);
+		}
 	}
 
 	/**
@@ -214,14 +196,11 @@ public class LevelController extends BaseController {
 		skipButton.setVisible(false);
 
 		if (!_testType.equals(TestType.PRACTICE)) {
-
 			if((questionNumber == 11) && (goToResultsOnceFinished)) {
-				System.out.println("Results showing");
 				showResults(event);
 				return;
 			}
 			if((questionNumber == 11) && (!goToResultsOnceFinished)) {
-				System.out.println("Restarting");
 				clearAndStartAgain(event);
 				return;
 			}
@@ -239,10 +218,8 @@ public class LevelController extends BaseController {
 	private void clearAndStartAgain(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
-
 		Scene scene = new Loader("Level.fxml", new LevelController(TestType.EASY, false)).load();
 		stageEventBelongsTo.setScene(scene);
-
 	}
 
 	/**
@@ -251,12 +228,8 @@ public class LevelController extends BaseController {
 	 * @param event
 	 */
 	public void showResults(ActionEvent event) {
-		System.out.println("Going to the results page");
-
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
 		Scene scene = new Loader("Results.fxml", new ResultsController(_test, _testType)).load();
-
 		stageEventBelongsTo.setScene(scene);
 
 	}
@@ -269,14 +242,10 @@ public class LevelController extends BaseController {
 	public void backButtonEvent(ActionEvent event) {
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Button eventButton = (Button)event.getSource();
-
 		Stage stage = new Loader("ExitPopup.fxml",new ExitPopupController(stageEventBelongsTo, "/View/MainMenu.fxml")).loadPopup();
-
 		stage.initOwner(eventButton.getScene().getWindow());
 		stage.initStyle(StageStyle.UNDECORATED);
 		stage.showAndWait();
-
-
 	}
 
 	/**
@@ -341,15 +310,13 @@ public class LevelController extends BaseController {
 		feedbackMessage.setVisible(true);
 		setDisableButtons(true, true, true);
 		PauseTransition delay = new PauseTransition(Duration.seconds(3));
+		
 		delay.setOnFinished( new EventHandler<ActionEvent>() {
-
 			@Override
 			public void handle(ActionEvent arg0) {
 				feedbackMessage.setVisible(false);
 				setDisableButtons(true, true, false);
 			}
-
-
 		});
 		delay.play();
 	}

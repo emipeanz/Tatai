@@ -14,8 +14,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.util.Callback;
-
 public class Test {
 
 	private ArrayList<Round> _testRounds = new ArrayList<Round>();
@@ -66,7 +64,6 @@ public class Test {
 			e.printStackTrace();
 		}
 		for (String equation : _customEquationList) {
-			System.out.println("adding equation: " + equation);
 			_testRounds.add(new Round(equation));
 		}
 	}
@@ -80,7 +77,6 @@ public class Test {
 	 * @return: arraylist of test questions
 	 */
 	public Round getTestRound(int index) {
-		System.out.println("testRounds.get(index) index = " + index);
 		return _testRounds.get(index);
 	}
 
@@ -92,7 +88,6 @@ public class Test {
 	 */
 	public int getOverallMark() {
 		int overallMark = 0;
-		//cycles through each question checking if it was a pass
 		for (Round round : _testRounds) {
 			if (round.getPass()) {
 				overallMark++;
@@ -101,12 +96,15 @@ public class Test {
 		return overallMark;
 	}
 	
+	/**
+	 * Returns all the questions associated to the test as an array list.
+	 * @return
+	 */
 	public ArrayList<Question> getTestQuestions() {
 		ArrayList<Question> questions = new ArrayList<Question>();
 		for(Round r : _testRounds) {
 			questions.add(r.getQuestion());
 		}
-		
 		return questions;
 	}
 

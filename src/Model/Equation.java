@@ -2,7 +2,6 @@ package Model;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 
 public class Equation extends Question {
 
@@ -32,7 +31,6 @@ public class Equation extends Question {
 			}
 
 			answer = evaluateEquation(left, right);
-			System.out.println(left + _operator.getSymbol() + right + "=" + answer);
 		} while (answer < 2 || answer > 99);
 
 		generateEquation(left, right, answer);
@@ -85,8 +83,6 @@ public class Equation extends Question {
 	 * only between 1 and 10 and only +, - and x are possible operators.
 	 */
 	private void easyEquation() {
-		System.out.println("generating an easy equation");
-		//choosing between all possible operators
 		_operator = _operators[randomNumber(0,2)];
 
 		while (answer <= 0 || answer > 10) {
@@ -117,9 +113,7 @@ public class Equation extends Question {
 				right = basicMultiples[randomNumber(0, basicMultiples.length - 1)];
 				left = right * randomNumber(2,4);
 			}
-
 			answer = evaluateEquation(left, right);
-			System.out.println(left + _operator.getSymbol() + right + "=" + answer);
 		} while (answer < 1 || answer > 99);
 		
 		generateEquation(left, right, answer);

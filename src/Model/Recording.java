@@ -1,15 +1,11 @@
 package Model;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -21,8 +17,8 @@ public class Recording {
 
 	/**
 	 * Uses a bash command to take a new recording. This functionality will be run in a 
-	 * backgroud thread. Buttons (except return to main menu) will be disabled during the
-	 * recording process and reenabled after. A new media player storing the current 
+	 * background thread. Buttons (except return to main menu) will be disabled during the
+	 * recording process and re-enabled after. A new media player storing the current 
 	 * recording will be instantiated once this recording has been taken.
 	 * @param e
 	 */
@@ -31,16 +27,11 @@ public class Recording {
 		ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", cmd);
 		try {
 			pb.start().waitFor();
-			//when recording has completed, run the onRecordComplete with the input 
-			//being the recording file that has just been generated.
-			System.out.println("recording ready to update");
-			//instantiates a new media player with the new media recording set.
 		} catch (InterruptedException ignored) { // if process is prematurely terminated
 		} catch (IOException ioEvent) { //if process is incorrect (likely programmer error)
 			throw new RuntimeException("Programmer messed up command...");
 		}
 	}
-
 	
 	public boolean checkRecording() {
 		return false;
@@ -67,7 +58,7 @@ public class Recording {
 			public void run() {
 				//ensures media can be replayed.
 				_player.stop();
-				//reenables buttons for use
+				//re-enables buttons for use
 				a.setDisable(false);
 				b.setDisable(false);
 				c.setDisable(false);
@@ -85,13 +76,11 @@ public class Recording {
 	 */
 	public boolean checkRecordingForWord(String numberWord) {
 		ArrayList<String> output = new ArrayList<String>();
-		System.out.println("Checking recording HTK bash");
 		String cmd = "HVite -H HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -C user/configLR  "
 				+ "-w user/wordNetworkNum -o SWT -l '*' -i recout.mlf -p 0.0 -s 5.0  "
 				+ "user/dictionaryD user/tiedList " + RECORDINGFILEPATH;
 		ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", cmd);
 		try {
-			System.out.println("Starting process");
 			Process process = processBuilder.start();
 			process.waitFor();
 			BufferedReader br = new BufferedReader(new FileReader("recout.mlf"));
@@ -99,7 +88,6 @@ public class Recording {
 			while((line = br.readLine()) != null) {
 				if((!(line.contains("#!MLF!#"))) && (!(line.contains("\"*/foo.rec\""))) && (!(line.contains("."))) && (!(line.contains("sil")))) {
 					String newLine = line.replaceAll("aa", "ā");
-					System.out.println("new line = " + newLine);
 					output.add(newLine);
 				}
 			}
@@ -109,14 +97,12 @@ public class Recording {
 		}
 
 		String[] split = numberWord.split("\\s+");
-		List<String> list = Arrays.asList(split);
+		
 		for(String s : split) {
 			if(!(output.contains(s))) {
-				System.out.println("word not there, exiting FALSE");
 				return false;
 			}
 		}
-		System.out.println("word there, exiting TRUE");
 		return true;
 	}
 }
