@@ -30,7 +30,7 @@ public class Equation extends Question {
 				left = right * randomNumber(2,4);
 			}
 
-			answer = evaluateEquation(left, right);
+			answer = evaluateEquation(left+_operator.getSymbol()+right);
 		} while (answer < 2 || answer > 99);
 
 		generateEquation(left, right, answer);
@@ -43,19 +43,22 @@ public class Equation extends Question {
 	 * @param equation
 	 */
 	public Equation(String equation) {
-		try {
-			ScriptEngineManager mgr = new ScriptEngineManager();
-			ScriptEngine engine = mgr.getEngineByName("JavaScript");
-			int answerInt = (int)engine.eval(equation);
-			setAnswerInt(answerInt);
-
-		} catch (Exception e) {
-			System.out.println("Invalid custom equation - exception thrown");
-		}
+		answerInt = evaluateEquation(equation);
 		answerString = numberToWord(answerInt);
 		displayString = equation.replace("*", " x ");
 	}
 
+	public int evaluateEquation(String equation) {
+		int answer = 0;
+		try {
+			ScriptEngineManager mgr = new ScriptEngineManager();
+			ScriptEngine engine = mgr.getEngineByName("JavaScript");
+			answer = (int)engine.eval(equation);
+		} catch (Exception e) {
+			System.out.println("Invalid custom equation - exception thrown");
+		}
+		return answer;
+	}
 	/**
 	 * Generates a "standard" test based on the difficulty level specified
 	 * by the user. Will randomly generate numbers and operators for the equation
@@ -88,7 +91,7 @@ public class Equation extends Question {
 		while (answer <= 0 || answer > 10) {
 			left = randomNumber(1,9);
 			right = randomNumber(1,9);
-			answer = evaluateEquation(left, right);
+			answer = evaluateEquation(left+_operator.getSymbol()+right);
 		}
 		generateEquation(left, right, answer);
 	}
@@ -113,9 +116,9 @@ public class Equation extends Question {
 				right = basicMultiples[randomNumber(0, basicMultiples.length - 1)];
 				left = right * randomNumber(2,4);
 			}
-			answer = evaluateEquation(left, right);
+			answer = evaluateEquation(left+_operator.getSymbol()+right);
 		} while (answer < 1 || answer > 99);
-		
+
 		generateEquation(left, right, answer);
 	}
 
@@ -126,46 +129,22 @@ public class Equation extends Question {
 	 * like 2,5 and 10.
 	 */
 	private void hardEquation() {
-		Operator operator = _operators[randomNumber(0,3)];
-		
+		_operator = _operators[randomNumber(0,3)];
 		do {
-			if (operator.equals(Operator.ADD)|| operator.equals(Operator.SUBTRACT)) {
+			if (_operator.equals(Operator.ADD)|| _operator.equals(Operator.SUBTRACT)) {
 				left = randomNumber(15,99);
 				right = randomNumber(15,99);
-			} else if (operator.equals(Operator.MULTIPLY)) { 
+			} else if (_operator.equals(Operator.MULTIPLY)) { 
 				left = randomNumber(1,12);
 				right = randomNumber(1,6);
 			} else {
 				right = basicMultiples[randomNumber(0, basicMultiples.length - 1)];
 				left = right * randomNumber(2,4);
 			}
-			answer = evaluateEquation(left, right);
+			answer = evaluateEquation(left+_operator.getSymbol()+right);
 		} while (answer < 1 || answer > 100);
 
 		generateEquation(left, right, answer);
-	}
-
-
-	/**
-	 * Gives an integer answer for an equation when provided with the
-	 * two integers of the equation.
-	 * @param left: integer on LHS of equation operator
-	 * @param right: integer on RHS of equation operator
-	 * @return integer answer for the equation
-	 */
-	private int evaluateEquation(int left, int right) {
-		switch(_operator) {
-		case ADD:
-			return left + right;
-		case SUBTRACT:
-			return left - right;
-		case MULTIPLY:
-			return left * right;
-		case DIVIDE:
-			return  left / right;
-		default:
-			throw new IllegalArgumentException("Invalid operator entered: " + _operator);
-		}
 	}
 
 	/**
@@ -181,7 +160,7 @@ public class Equation extends Question {
 		answerInt = answer;
 		answerString = numberToWord(answerInt);
 		displayString = equation;
-		
+
 		if (_operator.equals(Operator.MULTIPLY)) {
 			displayString = equation.replace("*", "x");
 		} else if (_operator.equals(Operator.DIVIDE)) {
