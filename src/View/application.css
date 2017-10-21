@@ -2,12 +2,15 @@
 	src: url(/View/fontawesome-webfont.ttf);
 }
 
-.root {
-	-fx-background-color: linear-gradient(to top, #dfe9f3 0%, white 100%);
-}
-
 #background{
-	-fx-background-image: url("File:Resources/background1.jpg");
+	-fx-background-image: url("background1.jpg");
+	-fx-background-position: left top, center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover, auto;
+	}
+	
+#popupBackground{
+	-fx-background-image: url("backgroundPopup.jpg");
 	-fx-background-position: left top, center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: cover, auto;
@@ -21,11 +24,6 @@
     -fx-max-height: 170px; 
     -fx-background-insets: 0px; 
     -fx-padding: 0px;
-}
-
-#background{
-	-fx-background-image: url("background1.jpg");
-	-fx-background-size: cover;
 }
 
 #englishTranslation{
