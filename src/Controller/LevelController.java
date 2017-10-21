@@ -58,6 +58,9 @@ public class LevelController extends BaseController {
 	private String ORANGEPROGRESSBAR = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
 	private boolean goToResultsOnceFinished;
+	private String[] tryAgainWarning = {"Oops, try again!", "Not quite, have another go!"};
+	private String[] incorrectWarning = {"Bad luck, the answer was: ", "Better luck next time, the answer was: "};
+	private String[] rightWarning = {"Awesome work!", "Nice job!", "You got it!"};
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
@@ -295,15 +298,15 @@ public class LevelController extends BaseController {
 		int chances = _currentRound.getChances();
 		if(skip == false) {
 			if(b) {
-				feedbackMessage.setText("Well Done. You got it right!");
+				feedbackMessage.setText(selectMessage(rightWarning));
 				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
 			}
 			else if((!b) && (chances == 1)) {
-				feedbackMessage.setText("Almost... try again!");
+				feedbackMessage.setText(selectMessage(tryAgainWarning));
 				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
 			}
 			else {
-				feedbackMessage.setText("Oops, not quite! The answer is " + _currentRound.getQuestion().getAnswerInt());
+				feedbackMessage.setText(selectMessage(incorrectWarning) + _currentRound.getQuestion().getAnswerInt());
 				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
 			}
 		}
@@ -323,6 +326,12 @@ public class LevelController extends BaseController {
 			}
 		});
 		delay.play();
+	}
+	
+	private String selectMessage(String[] messages) {
+		int index = (int)(Math.random() * messages.length);
+		System.out.println(index);
+		return messages[index];
 	}
 
 	/**
