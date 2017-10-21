@@ -303,7 +303,7 @@ public class LevelController extends BaseController {
 				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
 			}
 			else {
-				feedbackMessage.setText("Opps, got it wrong. The answer is " + _currentRound.getQuestion().getAnswerInt());
+				feedbackMessage.setText("Oops, not quite! The answer is " + _currentRound.getQuestion().getAnswerInt());
 				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
 			}
 		}
