@@ -78,7 +78,7 @@ public class ResultsController extends BaseController{
 								setText("Right!");
 							}
 							if (pass){
-								if (_test.getTestRound(questions.indexOf(q)).getSkip()){
+								if (_test.getTestRound(questions.indexOf(q)).getSkip()) {
 									setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ff9e0c);");
 									setText("Skipped");
 								} else {

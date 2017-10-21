@@ -45,11 +45,12 @@ public class Equation extends Question {
 	public Equation(String equation) {
 		answerInt = evaluateEquation(equation);
 		answerString = numberToWord(answerInt);
-		displayString = equation.replace("*", " x ");
+		displayString = equation.replace("*", "x");
 	}
 
-	public int evaluateEquation(String equation) {
+	public int evaluateEquation(String evaluateEquation) {
 		int answer = 0;
+		String equation = evaluateEquation.replace("x", "*");
 		try {
 			ScriptEngineManager mgr = new ScriptEngineManager();
 			ScriptEngine engine = mgr.getEngineByName("JavaScript");

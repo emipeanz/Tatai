@@ -84,7 +84,6 @@ public class CustomEquationController extends BaseController {
 		int i = 0;
 		int corrrectEquations = 0;
 		for (TextField t : equationList) {
-			//equation including x instead of *
 			String inputEquation = t.getText();
 			//equation in form that can be analysed
 			String currentEquation = inputEquation.replaceAll("x", "\\*");
@@ -92,8 +91,6 @@ public class CustomEquationController extends BaseController {
 				ScriptEngineManager mgr = new ScriptEngineManager();
 				ScriptEngine engine = mgr.getEngineByName("JavaScript");
 				int answerInt = (int)engine.eval(currentEquation);
-				System.out.println("answer int = " + answerInt);
-
 				if((answerInt>0) && (answerInt<100)) {
 					this.changeFeedbackIcon(circleList.get(i), true);
 					corrrectEquations++;
