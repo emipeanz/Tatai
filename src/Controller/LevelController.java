@@ -53,6 +53,7 @@ public class LevelController extends BaseController {
 	private int questionNumber = 1;
 	private Color RED = Color.web("ef473a");
 	private Color GREEN = Color.web("56ab2f");
+	private Color ORANGE = Color.web("ff9e0c");
 	private String BLUEPROGRESSBAR = "-fx-accent: #0fb7ff;";
 	private String ORANGEPROGRESSBAR = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
@@ -278,9 +279,7 @@ public class LevelController extends BaseController {
 			} else { // If they have one more chance left
 				feedbackMessage(false, false);
 			}
-
 		}
-
 	}
 
 	/**
@@ -355,7 +354,8 @@ public class LevelController extends BaseController {
 
 	public void skipQuestion(ActionEvent e) {
 		_currentRound.setPass(false);
-		updateProgressBar(RED);
+		_currentRound.setSkip();
+		updateProgressBar(ORANGE);
 		feedbackMessage(false, true);
 		PauseTransition delay = new PauseTransition(Duration.seconds(3));
 		delay.setOnFinished( event -> this.nextQuestion(e) );

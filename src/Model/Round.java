@@ -10,7 +10,8 @@ package Model;
 public class Round {
 
 	private Question _question;
-	private Boolean _pass;
+	private Boolean _pass = false;
+	private Boolean _skip = false;
 	private Recording _recording = new Recording();
 	private int _chances = 2;
 
@@ -97,6 +98,17 @@ public class Round {
 	 */
 	public Boolean getPass() {
 		return _pass;
+	}
+	
+	/**
+	 * Is set only when user has chosen to skip this round
+	 */
+	public void setSkip() {
+		this._skip = true;
+	}
+	
+	public Boolean getSkip() {
+		return this._skip;
 	}
 	
 
