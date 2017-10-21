@@ -89,8 +89,8 @@ public class Equation extends Question {
 		_operator = _operators[randomNumber(0,2)];
 
 		while (answer <= 0 || answer > 10) {
-			left = randomNumber(1,9);
-			right = randomNumber(1,9);
+			left = randomNumber(2,9);
+			right = randomNumber(2,9);
 			answer = evaluateEquation(left+_operator.getSymbol()+right);
 		}
 		generateEquation(left, right, answer);

@@ -34,7 +34,7 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="7.0" layoutY="9.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="\\u00F7" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="7.0" layoutY="9.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="÷" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="100.0" />
                      </font>
