@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button id="menuCircleButtons" fx:id="plusButton" layoutX="162.0" layoutY="189.0" mnemonicParsing="false" onAction="#enterPracticeTest" prefHeight="0.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
@@ -27,7 +27,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="menuCircleButtons" fx:id="divideButton" layoutX="529.0" layoutY="189.0" mnemonicParsing="false" onAction="#enterPracticeTest" onMouseEntered="#showHardText" onMouseExited="#hideText" prefHeight="0.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
+      <Button id="menuCircleButtons" fx:id="divideButton" layoutX="529.0" layoutY="189.0" mnemonicParsing="false" onAction="#enterPracticeTest" prefHeight="0.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);">
          <font>
             <Font size="24.0" />
          </font>
@@ -71,7 +71,7 @@
          </graphic>
       </Button>
       <Button id="backButton" fx:id="backButton" layoutX="17.0" layoutY="17.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="0.0" prefWidth="62.0" text="" textAlignment="CENTER" />
-      <Button id="menuCircleButtons" fx:id="timesButton" layoutX="346.0" layoutY="285.0" mnemonicParsing="false" onAction="#enterPracticeTest" onMouseEntered="#showMedText" onMouseExited="#hideText" prefHeight="0.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #98f263,#b1d802);" text="&#10;" textAlignment="CENTER">
+      <Button id="menuCircleButtons" fx:id="timesButton" layoutX="346.0" layoutY="285.0" mnemonicParsing="false" onAction="#enterPracticeTest" prefHeight="0.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #98f263,#b1d802);" text="&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
