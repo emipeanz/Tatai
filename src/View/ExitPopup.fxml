@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="popupBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="491.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="popupBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="491.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="8.0" layoutY="20.0" text="Kei te hiahia koe ki te haere?&#10;Kaore to maangaranga e tiakina." textAlignment="CENTER" textFill="#f5f5f5">
+      <Label layoutX="8.0" layoutY="20.0" text="Are you sure you want to leave?&#10;You progress wont be saved." textAlignment="CENTER" textFill="#f5f5f5">
          <font>
             <Font size="29.0" />
          </font>
@@ -16,9 +16,9 @@
          <graphic>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="9.0" layoutY="52.0" text="Tuhinga">
+                  <Label layoutX="23.0" layoutY="50.0" text="Exit">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="36.0" />
                      </font>
                   </Label>
                </children>
@@ -31,7 +31,7 @@
          <graphic>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="25.0" layoutY="51.0" text="Noho">
+                  <Label layoutX="25.0" layoutY="51.0" text="Stay">
                      <font>
                         <Font size="36.0" />
                      </font>

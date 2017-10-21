@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane id="popupBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="491.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="58.0" layoutY="22.0" text="He aha te rārangi e hiahia&#10;ana koe ki te tākaro?" textAlignment="CENTER" textFill="#fffefe">
+      <Label layoutX="109.0" layoutY="63.0" text="Chose a list to play" textAlignment="CENTER" textFill="#fffefe">
          <font>
             <Font size="30.0" />
          </font>
@@ -23,7 +22,7 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation21" layoutX="-1.0" layoutY="15.0" text="Purei" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation21" layoutX="-1.0" layoutY="15.0" text="Play" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="29.0" />
                      </font>
@@ -35,5 +34,6 @@
             </AnchorPane>
          </graphic>
       </Button>
+      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
    </children>
 </AnchorPane>

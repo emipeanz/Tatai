@@ -10,7 +10,7 @@
 
 <AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomEquationController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="21.0" text="Tāurutia ngā pātai i raro nei!" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="21.0" text="Enter 10 Equations below..." textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
@@ -18,52 +18,52 @@
             <DropShadow />
          </effect>
       </Label>
-      <TextField fx:id="equation1" alignment="CENTER" layoutX="55.0" layoutY="140.0" prefHeight="33.0" prefWidth="216.0" promptText="Whārite 1">
+      <TextField fx:id="equation1" alignment="CENTER" layoutX="55.0" layoutY="140.0" prefHeight="33.0" prefWidth="216.0" promptText="Equation 1">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation5" alignment="CENTER" layoutX="55.0" layoutY="334.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 5">
+      <TextField fx:id="equation5" alignment="CENTER" layoutX="55.0" layoutY="334.0" prefHeight="29.0" prefWidth="216.0" promptText="Equation 5">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation4" alignment="CENTER" layoutX="55.0" layoutY="285.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 4">
+      <TextField fx:id="equation4" alignment="CENTER" layoutX="55.0" layoutY="285.0" prefHeight="29.0" prefWidth="216.0" promptText="Equation 4">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation3" alignment="CENTER" layoutX="55.0" layoutY="237.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 3">
+      <TextField fx:id="equation3" alignment="CENTER" layoutX="55.0" layoutY="237.0" prefHeight="29.0" prefWidth="216.0" promptText="Equation 3">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation2" alignment="CENTER" layoutX="55.0" layoutY="189.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 2">
+      <TextField fx:id="equation2" alignment="CENTER" layoutX="55.0" layoutY="189.0" prefHeight="29.0" prefWidth="216.0" promptText="Equation 2">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation6" alignment="CENTER" layoutX="368.0" layoutY="139.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 6">
+      <TextField fx:id="equation6" alignment="CENTER" layoutX="368.0" layoutY="139.0" prefHeight="29.0" prefWidth="216.0" promptText="Equation 6">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation10" alignment="CENTER" layoutX="368.0" layoutY="333.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 10">
+      <TextField fx:id="equation10" alignment="CENTER" layoutX="368.0" layoutY="333.0" prefHeight="29.0" prefWidth="216.0" promptText="Equation 10">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation9" alignment="CENTER" layoutX="368.0" layoutY="284.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 9">
+      <TextField fx:id="equation9" alignment="CENTER" layoutX="368.0" layoutY="284.0" prefHeight="29.0" prefWidth="216.0" promptText="Equation 9">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation8" alignment="CENTER" layoutX="368.0" layoutY="236.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 8">
+      <TextField fx:id="equation8" alignment="CENTER" layoutX="368.0" layoutY="236.0" prefHeight="29.0" prefWidth="216.0" promptText="Equation 8">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="equation7" alignment="CENTER" layoutX="368.0" layoutY="188.0" prefHeight="29.0" prefWidth="216.0" promptText="Whārite 7">
+      <TextField fx:id="equation7" alignment="CENTER" layoutX="368.0" layoutY="188.0" prefHeight="29.0" prefWidth="216.0" promptText="Equation 7">
          <font>
             <Font size="18.0" />
          </font>

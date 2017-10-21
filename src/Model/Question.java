@@ -10,16 +10,17 @@ package Model;
 public class Question {
 
 	//integer value of the number that is the answer
-	public Integer question;
+	protected Integer question;
 	//maori word expecting to hear back
-	public boolean pass;
+	protected boolean pass;
+	protected boolean skip;
+	protected String passString;
 	//String that is displayed onscreen during a level
 	protected String displayString;
 	//Answer as a maori word
 	protected String answerString;
 	//Answer as an integer
 	protected int answerInt;
-	protected String passString;
 	
 	/**
 	 * Generates a random number between min and max (inclusive)
@@ -113,17 +114,35 @@ public class Question {
 		answerInt = i;
 	}
 	
-	public String getPassString() {
-		return passString;
-	}
-	
-	public void setPassString(boolean pass) {
-		if(!pass) {
-			passString = "Wrong";
+	public void setPass(boolean b) {
+		pass = b;
+		if(b) {
+			this.setPassString("Correct!");
 		}
 		else {
-			passString = "Right!";
+			this.setPassString("Wrong");
 		}
 	}
 	
+	public boolean getPass() {
+		return pass;
+	}
+	
+	public void setSkip() {
+		skip = true;
+		this.setPassString("Skipped");
+	}
+	
+	public boolean getSkip() {
+		return skip;
+	}
+	
+	public void setPassString(String s) {
+		passString = s;
+	}
+	
+	public String getPassString()
+	{
+		return passString;
+	}
 }

@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="popupBackground" fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="491.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="popupBackground" fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="491.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="heading" layoutX="68.0" layoutY="28.0" text="Tomo ingoa mo to &#10;whakamatautau" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="heading" layoutX="68.0" layoutY="28.0" text="Chose a name for&#10;you custom list" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
@@ -17,7 +17,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <TextField fx:id="listName" layoutX="48.0" layoutY="188.0" prefHeight="26.0" prefWidth="267.0" promptText="ingoa" />
+      <TextField fx:id="listName" layoutX="48.0" layoutY="188.0" prefHeight="26.0" prefWidth="267.0" promptText="Name" />
       <Button id="circleButton" fx:id="submitNameButton" layoutX="333.0" layoutY="131.0" mnemonicParsing="false" onAction="#checkName" prefHeight="38.0" prefWidth="81.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,  #56ab2f);" text="" />
       <Label fx:id="invalidNameText" layoutX="32.0" layoutY="158.0" text="Kia mohio kua uru koe ki tetahi ingoa!" textFill="WHITE" visible="false">
          <font>

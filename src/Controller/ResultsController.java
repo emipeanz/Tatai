@@ -71,23 +71,22 @@ public class ResultsController extends BaseController{
 						super.updateItem(q, empty);
 
 						if(q != null) {
-							boolean pass = (_test.getTestRound(questions.indexOf(q))).getPass();
-							if (!pass) {
+							String pass = (_test.getTestRound(questions.indexOf(q))).getQuestion().getPassString();
+							if (pass.equals("Correct!")) {
 								// Colour green for getting it right
-								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
-								setText("Right!");
+								setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");
+								
 							}
-							if (pass){
-								if (_test.getTestRound(questions.indexOf(q)).getSkip()) {
-									setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ff9e0c);");
-									setText("Skipped");
-								} else {
-									// Colour red for getting it wrong
-									setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063); ");								setText("Wrong");
-								}
+							if (pass.equals("Skipped")){
+								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ff9e0c);");
+							}
+							if(pass.equals("Wrong")) {
+								// Colour red for getting it wrong
+								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ef473a);");
 							}
 						}
 					}
+
 				};
 			}
 		});
@@ -95,7 +94,7 @@ public class ResultsController extends BaseController{
 
 
 		tableView.setItems(_dataList);
-		resultsLabel.setText("Kua " + _test.getOverallMark() + "/10 koe!");
+		resultsLabel.setText("You scored " + _test.getOverallMark() + "/10 !");
 
 		//saves results of this round to file for use in stats menu
 		saveResults();

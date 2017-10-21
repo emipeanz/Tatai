@@ -138,7 +138,7 @@ public class LevelController extends BaseController {
 	 * @param e
 	 */
 	public void takeRecording(ActionEvent event) {
-		setDisableButtons(true, true, true);
+		setDisableButtons(true, true, true, true);
 		recordingProgressBar(BLUEPROGRESSBAR);
 
 		Task task = new Task() {
@@ -149,7 +149,7 @@ public class LevelController extends BaseController {
 			}
 		};
 		task.setOnSucceeded(e -> {
-			setDisableButtons(false, false, false);
+			setDisableButtons(false, false, false, false);
 		});
 		new Thread(task).start();
 	}
@@ -161,19 +161,20 @@ public class LevelController extends BaseController {
 	public void playRecording() {	
 		recordingProgressBar(ORANGEPROGRESSBAR);
 
-		setDisableButtons(true, true, true);
+		setDisableButtons(true, true, true, true);
 		//plays media
-		_currentRound.getRecording().newMediaPlayer(recordButton, checkButton, listenButton); 
+		_currentRound.getRecording().newMediaPlayer(recordButton, checkButton, listenButton, skipButton); 
 		_currentRound.getRecording().getMediaPlayer().play();
 		//invokes a runnable that resets the mediaplayer and updates buttons
 		_currentRound.getRecording().getMediaPlayer().onEndOfMediaProperty();
 
 	}
 
-	public void setDisableButtons(boolean listenDisable, boolean checkDisable, boolean recordDisable) {
+	public void setDisableButtons(boolean listenDisable, boolean checkDisable, boolean recordDisable, boolean skipDisable) {
 		listenButton.setDisable(listenDisable);
 		checkButton.setDisable(checkDisable);
 		recordButton.setDisable(recordDisable);
+		skipButton.setDisable(skipDisable);
 	}
 
 	/**
@@ -255,7 +256,7 @@ public class LevelController extends BaseController {
 	 * @param e
 	 */
 	public void checkRecording(ActionEvent e) {
-		setDisableButtons(true, true, true);
+		setDisableButtons(true, true, true, true);
 		String numberString = _currentRound.getQuestion().getAnswerString();
 		boolean correct = _currentRound.getRecording().checkRecordingForWord(numberString);
 
@@ -268,7 +269,6 @@ public class LevelController extends BaseController {
 			delay.play();
 		} else {
 			_currentRound.decreaseChances();
-			skipButton.setVisible(true);
 			if(_currentRound.getChances() == 0) { // If they have no more chances left
 				_currentRound.setPass(false);
 				updateProgressBar(RED);
@@ -278,6 +278,11 @@ public class LevelController extends BaseController {
 				delay.play();
 			} else { // If they have one more chance left
 				feedbackMessage(false, false);
+				skipButton.setDisable(false);
+				PauseTransition delay = new PauseTransition(Duration.seconds(3));
+				delay.setOnFinished( event -> skipButton.setVisible(true));
+				delay.play();
+				
 			}
 		}
 	}
@@ -290,31 +295,31 @@ public class LevelController extends BaseController {
 		int chances = _currentRound.getChances();
 		if(skip == false) {
 			if(b) {
-				feedbackMessage.setText("I tika koe i te whakautu!");
+				feedbackMessage.setText("Well Done. You got it right!");
 				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
 			}
 			else if((!b) && (chances == 1)) {
-				feedbackMessage.setText("Kati ... tamata ano");
+				feedbackMessage.setText("Almost... try again!");
 				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
 			}
 			else {
-				feedbackMessage.setText("Kaore, he he. \nKo te whakautu he " + _currentRound.getQuestion().getAnswerInt());
+				feedbackMessage.setText("Opps, got it wrong. The answer is " + _currentRound.getQuestion().getAnswerInt());
 				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
 			}
 		}
 		else{
-			feedbackMessage.setText("ngaro i tenei patai!");
+			feedbackMessage.setText("Skipping question");
 			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ece9e6, #ffffff);");
 		}
 		feedbackMessage.setVisible(true);
-		setDisableButtons(true, true, true);
+		setDisableButtons(true, true, true, true);
 		PauseTransition delay = new PauseTransition(Duration.seconds(3));
 		
 		delay.setOnFinished( new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
 				feedbackMessage.setVisible(false);
-				setDisableButtons(true, true, false);
+				setDisableButtons(true, true, false, false);
 			}
 		});
 		delay.play();
@@ -352,7 +357,13 @@ public class LevelController extends BaseController {
 	}
 
 
+	/**
+	 * Method handled a skip button event; which includes setting the skip option in the 
+	 * round to true and progressing to next question
+	 * @param e
+	 */
 	public void skipQuestion(ActionEvent e) {
+		skipButton.setVisible(false);
 		_currentRound.setPass(false);
 		_currentRound.setSkip();
 		updateProgressBar(ORANGE);

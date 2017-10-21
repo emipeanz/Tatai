@@ -47,7 +47,7 @@ public class Recording {
 	 * called. Will be instantiated each time a new recording is taken.
 	 * @return
 	 */
-	public void newMediaPlayer(Button a, Button b, Button c) {
+	public void newMediaPlayer(Button a, Button b, Button c, Button d) {
 		
 		Media media = new Media(Paths.get(RECORDINGFILEPATH).toUri().toString());
 		//generates a media player to play audio
@@ -62,6 +62,7 @@ public class Recording {
 				a.setDisable(false);
 				b.setDisable(false);
 				c.setDisable(false);
+				d.setDisable(false);
 			}
 		});
 		_player = player;

@@ -12,7 +12,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
    <children>
       <Button id="menuCircleButtons" fx:id="practiceButton" layoutX="171.0" layoutY="221.0" mnemonicParsing="false" onAction="#enterPracticeMode" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
@@ -21,9 +21,9 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" layoutX="1.0" layoutY="20.0" text="Mahi">
+                  <Label fx:id="maoriTranslation" layoutX="1.0" layoutY="20.0" text="Practice">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="35.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" />
@@ -40,7 +40,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="7.0" layoutY="65.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="Takaro" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="7.0" layoutY="65.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="Play" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="35.0" />
                      </font>
@@ -52,7 +52,7 @@ in the text area for the label, "&#x" then the 4 codes under unicode options for
             </AnchorPane>
          </graphic>
       </Button>
-      <Label layoutX="82.0" layoutY="95.0" text="Tohua he Taumata" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="14.0" layoutY="107.0" text="Chose a game to play!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="64.0" />
          </font>

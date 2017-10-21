@@ -40,7 +40,7 @@ public class HelpPageController extends BaseController{
 	private Map<String, String> textList = new HashMap<String, String>();
 	private ArrayList<Circle> progressCircles;
 	private Integer currentPage = 0;
-	private Color GREEN = Color.web("56ab2f");
+	private Color GREEN = Color.web("1c92d2");
 	private Color TRANSPARENT = Color.TRANSPARENT;
 	private Color WHITE = Color.WHITE;
 

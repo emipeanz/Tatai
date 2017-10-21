@@ -89,7 +89,7 @@ public class Round {
 	 */
 	public void setPass(Boolean pass) {
 		this._pass = pass;
-		_question.setPassString(pass);
+		_question.setPass(pass);
 	}
 
 	/**
@@ -105,6 +105,7 @@ public class Round {
 	 */
 	public void setSkip() {
 		this._skip = true;
+		_question.setSkip();
 	}
 	
 	public Boolean getSkip() {

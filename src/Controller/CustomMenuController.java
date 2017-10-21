@@ -35,17 +35,20 @@ public class CustomMenuController extends BaseController{
 	}
 
 	public void returnDifficulty(ActionEvent e) {
-		this.returnPreviousScene(e, "Difficulty.fxml");
+		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+
+		Scene scene = new Loader("Difficulty.fxml",  new DifficultyController()).load();
+		stageEventBelongsTo.setScene(scene);
 	}
 
 	public void selectCustomTest(ActionEvent event) {
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Button eventButton = (Button)event.getSource();
 
-			Stage stage = new Loader("ChoseCustomList.fxm", new ChoseCustomListController(stageEventBelongsTo)).loadPopup();
-			
-			stage.initOwner(eventButton.getScene().getWindow());
-			stage.showAndWait();
+		Stage stage = new Loader("ChoseCustomList.fxml", new ChoseCustomListController(stageEventBelongsTo)).loadPopup();
+
+		stage.initOwner(eventButton.getScene().getWindow());
+		stage.showAndWait();
 
 
 	}		

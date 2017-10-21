@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button id="menuCircleButtons" fx:id="easyButton" layoutX="152.0" layoutY="179.0" mnemonicParsing="false" onAction="#enterTest" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #a8e063,#56ab2f);" text="&#10;" textAlignment="CENTER">
          <font>
@@ -15,7 +15,7 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" layoutX="2.0" layoutY="23.0" text="Ngawari">
+                  <Label fx:id="maoriTranslation" layoutX="2.0" layoutY="23.0" text="Easy">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>
@@ -34,7 +34,7 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="10.0" layoutY="68.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="He Uaua" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation" alignment="CENTER" layoutX="10.0" layoutY="68.0" prefHeight="49.0" prefWidth="154.0" stylesheets="@application.css" text="Hard" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>
@@ -63,7 +63,7 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation1" layoutX="2.0" layoutY="39.0" text="Auaha">
+                  <Label fx:id="maoriTranslation1" layoutX="2.0" layoutY="39.0" text="Custom">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>
@@ -88,7 +88,7 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation2" layoutX="6.0" layoutY="45.0" text="Ngao &#10;tū " textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation2" layoutX="6.0" layoutY="45.0" text="Medium" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>
@@ -96,7 +96,7 @@
                         <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label id="Font" fx:id="medLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="-11.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525fc">
+                  <Label id="Font" fx:id="medLockSymbol" alignment="CENTER" contentDisplay="CENTER" layoutX="54.0" layoutY="-11.0" prefHeight="52.0" prefWidth="39.0" text="" textAlignment="CENTER" textFill="#252525fc">
                      <font>
                         <Font size="41.0" />
                      </font>
@@ -105,7 +105,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="211.0" layoutY="466.0" text="Me whiwhi koe i te 8/10 i te reo tuatahi!" textFill="WHITE">
+      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="211.0" layoutY="466.0" text="You have to get at least 8/10 on Easy" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

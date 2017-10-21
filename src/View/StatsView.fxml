@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle id="roundedSquare" arcHeight="5.0" arcWidth="5.0" height="213.0" layoutX="51.0" layoutY="209.0" stroke="#00000002" strokeType="INSIDE" width="214.0">
          <fill>
@@ -56,17 +56,17 @@
             <Font name="System Bold" size="100.0" />
          </font>
       </Label>
-      <Label layoutX="354.0" layoutY="358.0" text="Tohu Nui!">
+      <Label layoutX="354.0" layoutY="358.0" text="High Score!">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="105.0" layoutY="360.0" text="Toharite">
+      <Label layoutX="105.0" layoutY="360.0" text="Average">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="606.0" layoutY="351.0" text="Te maha o nga &#10;whakamatautau" textAlignment="CENTER">
+      <Label layoutX="606.0" layoutY="351.0" text="Total number&#10;of tests taken" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -76,7 +76,7 @@
          <effect>
             <DropShadow />
          </effect></Slider>
-      <Label layoutX="184.0" layoutY="27.0" text="Ngawari" textFill="WHITE">
+      <Label layoutX="184.0" layoutY="27.0" text="Easy" textFill="WHITE">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
@@ -84,7 +84,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="354.0" layoutY="99.0" text="Ngao tū " textFill="WHITE">
+      <Label layoutX="354.0" layoutY="99.0" text="Medium" textFill="WHITE">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
@@ -92,7 +92,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="494.0" layoutY="27.0" text="He pakeke" textFill="WHITE">
+      <Label layoutX="494.0" layoutY="27.0" text="Hard" textFill="WHITE">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>

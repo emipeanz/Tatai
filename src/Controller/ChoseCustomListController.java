@@ -19,6 +19,7 @@ public class ChoseCustomListController extends BaseController{
 	@FXML private Button playCustomTestButton;
 	private ObservableList<String> equationLists;
 	private Stage root;
+	@FXML private Button backButton;
 
 	public ChoseCustomListController(Stage root) {
 		this.root = root;
@@ -51,6 +52,11 @@ public class ChoseCustomListController extends BaseController{
 		}
 		equationLists = FXCollections.observableArrayList(equationListNames);
 		customListOptions.getItems().addAll(equationLists);
+	}
+	
+	public void backButtonEvent(ActionEvent e) {
+		Stage stage = (Stage) backButton.getScene().getWindow();
+		stage.close();
 	}
 
 
