@@ -10,24 +10,27 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="134.0" layoutY="46.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="46.0">
+      <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="134.0" layoutY="67.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="67.0">
          <font>
             <Font size="120.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Label>
-      <Button id="circleButton" fx:id="listenButton" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="251.0" mnemonicParsing="false" onAction="#playRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);" text="" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="listenButton" alignment="CENTER" contentDisplay="CENTER" layoutX="111.0" layoutY="265.0" mnemonicParsing="false" onAction="#playRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ffd200, #f7971e);" text="" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
       </Button>
-      <Button id="circleButton" fx:id="recordButton" layoutX="339.0" layoutY="251.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #44ffd3, #0fb7ff);" text="" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="recordButton" layoutX="338.0" layoutY="265.0" mnemonicParsing="false" onAction="#takeRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #44ffd3, #0fb7ff);" text="" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
       </Button>
-      <Button id="circleButton" fx:id="checkButton" layoutX="565.0" layoutY="250.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ec79f4,  #a250ff);" textAlignment="CENTER" textFill="#252525">
+      <Button id="circleButton" fx:id="checkButton" layoutX="564.0" layoutY="264.0" mnemonicParsing="false" onAction="#checkRecording" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #ec79f4,  #a250ff);" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="80.0" />
          </font>
@@ -41,18 +44,48 @@
          </graphic>
       </Button>
       <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
-      <HBox fx:id="progressBar" layoutX="236.0" layoutY="449.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
+      <HBox fx:id="progressBar" layoutX="240.0" layoutY="46.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
          <children>
-            <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle2" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle3" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle4" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle5" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle6" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle7" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle8" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle9" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
-            <Circle fx:id="circle10" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
+            <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Circle fx:id="circle2" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Circle fx:id="circle3" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Circle fx:id="circle4" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Circle fx:id="circle5" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Circle fx:id="circle6" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Circle fx:id="circle7" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Circle fx:id="circle8" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Circle fx:id="circle9" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Circle fx:id="circle10" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
          </children>
       </HBox>
       <Button id="tryAgainButton" fx:id="skipButton" layoutX="678.0" layoutY="19.0" mnemonicParsing="false" onAction="#skipQuestion" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #83a4d4,#b6fbff);" text="&#10;" textAlignment="CENTER" visible="false">
@@ -74,15 +107,18 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <ProgressBar fx:id="recordingProgress" layoutX="265.0" layoutY="36.0" prefHeight="18.0" prefWidth="311.0" progress="0.0">
+      <ProgressBar fx:id="recordingProgress" layoutX="264.0" layoutY="462.0" prefHeight="18.0" prefWidth="311.0" progress="0.0">
          <effect>
             <DropShadow />
          </effect>
       </ProgressBar>
-      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="47.0" prefHeight="186.0" prefWidth="678.0" textAlignment="CENTER" textFill="#252525">
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="97.0" prefHeight="186.0" prefWidth="678.0" textAlignment="CENTER" textFill="#252525">
          <font>
             <Font size="49.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Label>
    
 

@@ -141,7 +141,8 @@ public class ResultsController extends BaseController{
 	 */
 	private void saveResults() {
 		//will only store results if the test was using equations
-		if (!((_testType.equals(TestType.CUSTOM)) || (_testType.equals(TestType.PRACTICE)))) {
+		if ((_testType.equals(TestType.EASY) || _testType.equals(TestType.MEDIUM))
+				|| _testType.equals(TestType.HARD)) {
 			String filename;
 
 			if (_testType.equals(TestType.EASY)) {
