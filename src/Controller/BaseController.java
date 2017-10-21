@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 
+import View.Loader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -24,20 +25,17 @@ public abstract class BaseController {
 	 * displayed and the level view is taken away
 	 * @param event
 	 */
-	public void returnMainMenu(ActionEvent event) {
-		System.out.println("Event triggering return to main menu");
-
+	public void returnPreviousScene(ActionEvent event, String fxmlLocation) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		Scene mainMenuScene = null;
 
-		try {
-			mainMenuScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		mainMenuScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-		stageEventBelongsTo.setScene(mainMenuScene);
+		Scene scene = new Loader(fxmlLocation, null).load();
+		
+		stageEventBelongsTo.setScene(scene);
+	}
+	
+	public void returnMainMenu(ActionEvent e) {
+		this.returnPreviousScene(e, "MainMenu.fxml");
 	}
 
 }

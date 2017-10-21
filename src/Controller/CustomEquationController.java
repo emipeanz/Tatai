@@ -36,7 +36,7 @@ import javafx.stage.StageStyle;
  * @author Emilie Pearce and Maddie Beagley
  *
  */
-public class CustomEquationController {
+public class CustomEquationController extends BaseController {
 
 	@FXML private TextField equation1,equation2, equation3, equation4, equation5, 
 	equation6, equation7, equation8, equation9, equation10;
