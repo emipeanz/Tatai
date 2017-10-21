@@ -26,9 +26,9 @@ public class Test {
 
 	/**
 	 * Stores the difficulty level of the particular test being 
-	 * carried out and initialises an array list to store 
+	 * carried out and initializes an array list to store 
 	 * the questions of that test.
-	 * @param difficulty: difficulty level of the test (enum)
+	 * @param difficulty: difficulty level of the test (enumeration)
 	 */
 	public Test(TestType testType) {
 		_testType = testType;
