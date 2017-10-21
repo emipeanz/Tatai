@@ -58,7 +58,7 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation1" layoutX="3.0" layoutY="17.0" text="-">
+                  <Label fx:id="maoriTranslation1" layoutX="1.0" layoutY="5.0" text="-">
                      <font>
                         <Font name="System Bold" size="120.0" />
                      </font>
@@ -78,7 +78,7 @@
          <graphic>
             <AnchorPane>
                <children>
-                  <Label fx:id="maoriTranslation2" layoutX="5.0" layoutY="1.0" text="x" textAlignment="CENTER">
+                  <Label fx:id="maoriTranslation2" layoutX="5.0" layoutY="1.0" text="×" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="100.0" />
                      </font>
