@@ -9,7 +9,7 @@
 
 <AnchorPane id="popupBackground" fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="491.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="heading" layoutX="68.0" layoutY="28.0" text="Chose a name for&#10;you custom list" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="heading" layoutX="68.0" layoutY="28.0" text="Choose a name for&#10;you custom list" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
