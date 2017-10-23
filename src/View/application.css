@@ -44,8 +44,6 @@
 }
 
 #backButton{
-	-fx-border-color: #000000;
-	-fx-border-width: 2px;
 	-fx-border-radius: 60px;
 	-fx-background-radius: 5em; 
 	-fx-font-weight: BOLD;

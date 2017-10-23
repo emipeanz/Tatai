@@ -71,7 +71,6 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <Slider fx:id="slider" blockIncrement="1.0" layoutX="243.0" layoutY="75.0" majorTickUnit="1.0" max="2.0" minorTickCount="0" prefHeight="24.0" prefWidth="345.0" showTickMarks="true" snapToTicks="true">
          <effect>
             <DropShadow />
@@ -100,5 +99,6 @@
             <DropShadow />
          </effect>
       </Label>
+      <Button id="smallCircleButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="69.0" prefWidth="62.0" text="" textAlignment="CENTER" />
    </children>
 </AnchorPane>

@@ -52,7 +52,6 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnDifficulty" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <Label layoutX="202.0" layoutY="35.0" text="Chose to make a custom&#10;list or play one" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="34.0" />
@@ -61,5 +60,6 @@
             <DropShadow />
          </effect>
       </Label>
+      <Button id="smallCircleButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnDifficulty" prefHeight="69.0" prefWidth="62.0" text="" textAlignment="CENTER" />
    </children>
 </AnchorPane>

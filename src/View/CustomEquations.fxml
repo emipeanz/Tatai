@@ -77,7 +77,6 @@
             <Font size="7.0" />
          </font>
       </Button>
-      <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <Circle fx:id="equationCircle1" fill="#ffffff00" layoutX="294.0" layoutY="156.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
       <Circle fx:id="equationCircle2" fill="#ffffff00" layoutX="293.0" layoutY="206.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
       <Circle fx:id="equationCircle3" fill="#ffffff00" layoutX="294.0" layoutY="255.0" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5" />
@@ -143,5 +142,6 @@
             <Font size="25.0" />
          </font>
       </Label>
+      <Button id="smallCircleButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="69.0" prefWidth="62.0" text="" textAlignment="CENTER" />
    </children>
 </AnchorPane>
