@@ -116,6 +116,7 @@ public class LevelController extends BaseController {
 	 * in the code.
 	 */
 	public void initialize() {
+		skipButton.setVisible(false);
 		checkButton.setDisable(true);
 		recordButton.setDisable(false);
 		listenButton.setDisable(true);
