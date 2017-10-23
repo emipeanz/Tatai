@@ -51,7 +51,8 @@ public class Test {
 	}
 
 	/**
-	 * Constructor is used only for creating a custom test
+	 * Constructor is used only for creating a custom test, order of 
+	 * the equations shown in the test is randomised.
 	 * @param customListName
 	 */
 	public Test(String customListName) {
@@ -63,8 +64,19 @@ public class Test {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		for (String equation : _customEquationList) {
-			_testRounds.add(new Round(equation));
+
+		int randIndex;
+		int count = _customEquationList.size();
+		String randomEquation;
+		
+		//Order of custom equations in the test is randomised.
+		for (int i = 0; i < count; i++) {
+			randIndex = (int)(Math.random() * _customEquationList.size());
+			System.out.println(randIndex);
+			randomEquation = _customEquationList.get(randIndex);
+			_customEquationList.remove(randIndex);
+			_testRounds.add(new Round(randomEquation));
+			System.out.println("equation at pos " + i + ":" + randomEquation);
 		}
 	}
 
