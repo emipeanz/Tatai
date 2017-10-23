@@ -32,8 +32,20 @@ public class CustomEquationPopupController extends BaseController {
 
 	public void checkName(ActionEvent e) {
 		System.out.println("checking name method");
-		if (listName.getText().isEmpty()) {
-			System.out.println("invalid name");
+		String name = listName.getText();
+		if (name.isEmpty() ) {
+			System.out.println("Need to enter a name");
+			invalidNameText.setText("Need to enter a name");
+			invalidNameText.setVisible(true);
+		}
+		else if (!(name.trim().length() > 0)) {
+			System.out.println("Name cant be all whitespace");
+			invalidNameText.setText("Name cant be all whitespace");
+			invalidNameText.setVisible(true);
+		}
+		else if(new File(".CustomEquations/" + name).exists()) {
+			System.out.println("Name already exists, try a new one");
+			invalidNameText.setText("Name already exists, try a new one");
 			invalidNameText.setVisible(true);
 		} else {
 			System.out.println("valid name");

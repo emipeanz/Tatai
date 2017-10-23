@@ -81,29 +81,35 @@ public class CustomEquationController extends BaseController {
 			String inputEquation = t.getText();
 			//equation in form that can be analysed
 			String currentEquation = inputEquation.replaceAll("x", "\\*");
-			try {
-				//ensures the equation is not all white space
-				if (!currentEquation.trim().isEmpty()) {
+
+			//ensures the equation is not all white space
+			if (!currentEquation.trim().isEmpty()) {
+				try {
 					ScriptEngineManager mgr = new ScriptEngineManager();
 					ScriptEngine engine = mgr.getEngineByName("JavaScript");
-					int answerInt = (int)engine.eval(currentEquation);
+					int answerInt;
+
+					answerInt = (int)engine.eval(currentEquation);
+
 					if((answerInt>0) && (answerInt<100) && (currentEquation.length() <= 10)) {
 						this.changeFeedbackIcon(circleList.get(i), true);
 						corrrectEquations++;
 					}
 					else {
 						this.changeFeedbackIcon(circleList.get(i), false);
+						System.out.println(Integer.parseInt(t.getId().split("equation")[1]));
 						wrongEquations.add(Integer.parseInt(t.getId().split("equation")[1]));
 					}
-				}
-				else {
-					this.changeFeedbackIcon(circleList.get(i), false);
+				} catch (ScriptException e1) {
 					wrongEquations.add(Integer.parseInt(t.getId().split("equation")[1]));
+					this.changeFeedbackIcon(circleList.get(i), false);
 				}
-			} catch (ScriptException | ClassCastException e1) {
-				wrongEquations.add(i);
-				this.changeFeedbackIcon(circleList.get(i), false);
 			}
+			else {
+				this.changeFeedbackIcon(circleList.get(i), false);
+				wrongEquations.add(Integer.parseInt(t.getId().split("equation")[1]));
+			}
+
 			i++;
 		}
 		if(corrrectEquations != 10) {
