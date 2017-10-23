@@ -41,7 +41,7 @@ public class CustomEquationController extends BaseController {
 	@FXML private Button checkEquationsButton;
 	@FXML private Button submitButton;
 	@FXML private Label errorMessage;
-	
+
 	private ArrayList<Integer> wrongEquations = new ArrayList<Integer>();
 
 	/**
@@ -82,12 +82,15 @@ public class CustomEquationController extends BaseController {
 			//equation in form that can be analysed
 			String currentEquation = inputEquation.replaceAll("x", "\\*");
 			try {
-				ScriptEngineManager mgr = new ScriptEngineManager();
-				ScriptEngine engine = mgr.getEngineByName("JavaScript");
-				int answerInt = (int)engine.eval(currentEquation);
-				if((answerInt>0) && (answerInt<100) && (currentEquation.length() <= 10)) {
-					this.changeFeedbackIcon(circleList.get(i), true);
-					corrrectEquations++;
+				//ensures the equation is not all white space
+				if (!currentEquation.trim().isEmpty()) {
+					ScriptEngineManager mgr = new ScriptEngineManager();
+					ScriptEngine engine = mgr.getEngineByName("JavaScript");
+					int answerInt = (int)engine.eval(currentEquation);
+					if((answerInt>0) && (answerInt<100) && (currentEquation.length() <= 10)) {
+						this.changeFeedbackIcon(circleList.get(i), true);
+						corrrectEquations++;
+					}
 				}
 				else {
 					this.changeFeedbackIcon(circleList.get(i), false);
