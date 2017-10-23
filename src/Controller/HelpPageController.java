@@ -65,7 +65,7 @@ public class HelpPageController extends BaseController{
 		titles.add("Results");
 		titles.add("Statistics");
 		
-		textList.put("Main Menu", "This is the main menus where you can chose to practice math by playing fun games, or playin g the game where it will also track your score. You can view your statistics any time from the button in the top right corner.");
+		textList.put("Main Menu", "This is the main menus where you can chose to practice math by playing fun games, or playing the game where it will also track your score. You can view your statistics any time from the button in the top right corner.");
 		textList.put("Play Menu", "Here you can chose what difficulty you want to play or create you own equation lists to test by going to custom. You can return to the main menu at any time. Remember, before you can play harder levels, you must get 8/10 on the level below!");
 		textList.put("Making a Custom List", "Here you can input 10 of you own equations to test. Make sure to only use numbers, =, -, * and / symbols and make sure the answer is between 1 - 99. Heres an example \" 6 * 4 \". When you have them all, click the green check button to see if they are all valid. Then click submit and think of a list name!");
 		textList.put("Playing a Custom List", "Here you can chose what list you want to play. Remebers, you can always go back and create more!");

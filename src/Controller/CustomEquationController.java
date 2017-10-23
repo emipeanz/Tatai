@@ -91,6 +91,10 @@ public class CustomEquationController extends BaseController {
 						this.changeFeedbackIcon(circleList.get(i), true);
 						corrrectEquations++;
 					}
+					else {
+						this.changeFeedbackIcon(circleList.get(i), false);
+						wrongEquations.add(Integer.parseInt(t.getId().split("equation")[1]));
+					}
 				}
 				else {
 					this.changeFeedbackIcon(circleList.get(i), false);

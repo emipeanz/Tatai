@@ -335,16 +335,12 @@ public class LevelController extends BaseController {
 		});
 		delay.play();
 	}
-<<<<<<< HEAD
 	
-	/**
-	 * Selects an element from an array of strings at a random index position
-=======
 
 	/**
 	 * Selects a string from a randomly generated index position from 
 	 * an input array of strings. Used for showing user feedback on the popup dialog.
->>>>>>> 45db47cd9b8f669a650867f5e9645819f1e7f282
+
 	 * @param messages
 	 * @return
 	 */
