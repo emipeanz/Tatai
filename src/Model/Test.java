@@ -72,11 +72,9 @@ public class Test {
 		//Order of custom equations in the test is randomised.
 		for (int i = 0; i < count; i++) {
 			randIndex = (int)(Math.random() * _customEquationList.size());
-			System.out.println(randIndex);
 			randomEquation = _customEquationList.get(randIndex);
 			_customEquationList.remove(randIndex);
 			_testRounds.add(new Round(randomEquation));
-			System.out.println("equation at pos " + i + ":" + randomEquation);
 		}
 	}
 
