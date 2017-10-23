@@ -60,7 +60,8 @@ public class LevelController extends BaseController {
 	private boolean goToResultsOnceFinished;
 	private String[] tryAgainWarning = {"Oops, try again!", "Not quite, have another go!"};
 	private String[] incorrectWarning = {"Bad luck, the answer was: ", "Better luck next time, the answer was: "};
-	private String[] rightWarning = {"Awesome work!", "Nice job!", "You got it!"};
+	private String[] rightWarning = {"Ka Pai!", "Kei reira!", "You got it!"};
+	private boolean displayExitInfo = true;
 
 	/**
 	 * Method is custom constructor for LevelController so parameters can be passed into it.
@@ -132,6 +133,9 @@ public class LevelController extends BaseController {
 				circle.setVisible(false);
 			}
 		}
+
+		feedbackMessage(true, true);
+		displayExitInfo = false;
 	}
 
 	/**
@@ -164,14 +168,12 @@ public class LevelController extends BaseController {
 	 */
 	public void playRecording() {	
 		recordingProgressBar(ORANGEPROGRESSBAR);
-
 		setDisableButtons(true, true, true, true);
 		//plays media
 		_currentRound.getRecording().newMediaPlayer(recordButton, checkButton, listenButton, skipButton); 
 		_currentRound.getRecording().getMediaPlayer().play();
 		//invokes a runnable that resets the mediaplayer and updates buttons
 		_currentRound.getRecording().getMediaPlayer().onEndOfMediaProperty();
-
 	}
 
 	public void setDisableButtons(boolean listenDisable, boolean checkDisable, boolean recordDisable, boolean skipDisable) {
@@ -286,7 +288,7 @@ public class LevelController extends BaseController {
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));
 				delay.setOnFinished( event -> skipButton.setVisible(true));
 				delay.play();
-				
+
 			}
 		}
 	}
@@ -297,28 +299,33 @@ public class LevelController extends BaseController {
 	 */
 	private void feedbackMessage(boolean b, boolean skip) {
 		int chances = _currentRound.getChances();
-		if(skip == false) {
-			if(b) {
-				feedbackMessage.setText(selectMessage(rightWarning));
-				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
+		if (displayExitInfo) {
+			feedbackMessage.setText("Finish practicing at any time by clicking the return button in top left corner");
+			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #4AC29A, #BDFFF3);");
+		} else {
+			if(skip == false) {
+				if(b) {
+					feedbackMessage.setText(selectMessage(rightWarning));
+					feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);");
+				}
+				else if((!b) && (chances == 1)) {
+					feedbackMessage.setText(selectMessage(tryAgainWarning));
+					feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
+				}
+				else {
+					feedbackMessage.setText(selectMessage(incorrectWarning) + _currentRound.getQuestion().getAnswerInt());
+					feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
+				}
 			}
-			else if((!b) && (chances == 1)) {
-				feedbackMessage.setText(selectMessage(tryAgainWarning));
-				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);");
+			else{
+				feedbackMessage.setText("Skipping question");
+				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ece9e6, #ffffff);");
 			}
-			else {
-				feedbackMessage.setText(selectMessage(incorrectWarning) + _currentRound.getQuestion().getAnswerInt());
-				feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);");
-			}
-		}
-		else{
-			feedbackMessage.setText("Skipping question");
-			feedbackMessage.setStyle("-fx-background-color: linear-gradient(to right, #ece9e6, #ffffff);");
 		}
 		feedbackMessage.setVisible(true);
 		setDisableButtons(true, true, true, true);
 		PauseTransition delay = new PauseTransition(Duration.seconds(3));
-		
+
 		delay.setOnFinished( new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
@@ -328,7 +335,13 @@ public class LevelController extends BaseController {
 		});
 		delay.play();
 	}
-	
+
+	/**
+	 * Selects a string from a randomly generated index position from 
+	 * an input array of strings. Used for showing user feedback on the popup dialog.
+	 * @param messages
+	 * @return
+	 */
 	private String selectMessage(String[] messages) {
 		int index = (int)(Math.random() * messages.length);
 		System.out.println(index);
