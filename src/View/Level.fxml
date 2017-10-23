@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="numberToTest" alignment="CENTER" contentDisplay="CENTER" layoutX="134.0" layoutY="67.0" prefHeight="216.0" prefWidth="547.0" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="67.0">
          <font>
@@ -43,7 +43,7 @@
          </graphic>
       </Button>
       <Button id="smallCircleButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="69.0" prefWidth="62.0" text="" textAlignment="CENTER" />
-      <HBox fx:id="progressBar" layoutX="240.0" layoutY="46.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
+      <HBox fx:id="progressBar" layoutX="234.0" layoutY="49.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
          <children>
             <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
                <effect>
@@ -97,7 +97,7 @@
             <DropShadow />
          </effect>
       </ProgressBar>
-      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="97.0" prefHeight="186.0" prefWidth="678.0" textAlignment="CENTER" textFill="#252525" wrapText="true">
+      <Label fx:id="feedbackMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="97.0" prefHeight="151.0" prefWidth="622.0" textAlignment="CENTER" textFill="#252525" wrapText="true">
          <font>
             <Font size="49.0" />
          </font>

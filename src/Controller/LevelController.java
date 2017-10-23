@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -129,7 +130,7 @@ public class LevelController extends BaseController {
 
 		if (_testType.equals(TestType.PRACTICE)){
 			showFeedbackMessage("User can finish practicing at any time by clicking the arrow in the top left corner", 
-					"-fx-background-color: linear-gradient(to right, #4AC29A, #BDFFF3);", 40, 5);
+					"-fx-background-color: linear-gradient(to right, #4AC29A, #BDFFF3);", 34, 6);
 			for (Circle circle : progressCircles) {
 				circle.setVisible(false);
 			}
@@ -220,9 +221,9 @@ public class LevelController extends BaseController {
 		}
 		numberToTest.setText(_currentRound.getQuestion().getDisplayString());
 		
-		if (_test.getTestQuestions().size() % 4 == 0) {
-			String displayText = "You have practiced " + _test.getTestQuestions().size() + "questions, press back arrow to leave at any time.";
-			showFeedbackMessage(displayText, "-fx-background-color: linear-gradient(to right, #4AC29A, #BDFFF3);", 40, 4);
+		if ((_test.getTestQuestions().size() % 6 == 0) && _testType.equals(TestType.PRACTICE)) {
+			String displayText = "You have practiced " + _test.getTestQuestions().size() + " questions! Click back arrow to leave at any time.";
+			showFeedbackMessage(displayText, "-fx-background-color: linear-gradient(to right, #4AC29A, #BDFFF3);", 34, 4);
 		}
 	}
 
@@ -271,7 +272,7 @@ public class LevelController extends BaseController {
 
 		if(correct) {		
 			_currentRound.setPass(true);
-			showFeedbackMessage(selectMessage(rightMessages), "-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);", 54, 3);
+			showFeedbackMessage(selectMessage(rightMessages), "-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);", 64, 3);
 			updateProgressBar(GREEN);
 			PauseTransition delay = new PauseTransition(Duration.seconds(3));
 			delay.setOnFinished( event -> this.nextQuestion(e) );
@@ -288,7 +289,7 @@ public class LevelController extends BaseController {
 				delay.play();
 			} else { // If they have one more chance left
 				int messageDisplayTime = 3;
-				showFeedbackMessage(selectMessage(tryAgainMessages), "-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);", 50, messageDisplayTime);
+				showFeedbackMessage(selectMessage(tryAgainMessages), "-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);", 54, messageDisplayTime);
 				skipButton.setDisable(false);
 				PauseTransition delay = new PauseTransition(Duration.seconds(messageDisplayTime));
 				delay.setOnFinished( event -> skipButton.setVisible(true));
@@ -307,6 +308,7 @@ public class LevelController extends BaseController {
 	 */
 	private void showFeedbackMessage(String message, String cssInfo, int fontSize, int displayTime) {
 		feedbackMessage.setText(message);
+		feedbackMessage.setFont(new Font("System", fontSize));
 		feedbackMessage.setStyle(cssInfo);
 		feedbackMessage.setVisible(true);
 		setDisableButtons(true, true, true, true);
@@ -377,7 +379,7 @@ public class LevelController extends BaseController {
 		_currentRound.setPass(false);
 		_currentRound.setSkip();
 		updateProgressBar(ORANGE);
-		showFeedbackMessage("You have skipped this question", "-fx-background-color: linear-gradient(to right, #ece9e6, #ffffff);", 50, 3);
+		showFeedbackMessage("Question skipped!", "-fx-background-color: linear-gradient(to right, #ece9e6, #ffffff);", 50, 3);
 		PauseTransition delay = new PauseTransition(Duration.seconds(3));
 		delay.setOnFinished( event -> this.nextQuestion(e) );
 		delay.play();
