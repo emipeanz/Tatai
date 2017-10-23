@@ -60,7 +60,7 @@ public class LevelController extends BaseController {
 	private boolean goToResultsOnceFinished;
 	private String[] tryAgainWarning = {"Oops, try again!", "Not quite, have another go!"};
 	private String[] incorrectWarning = {"Bad luck, the answer was: ", "Better luck next time, the answer was: "};
-	private String[] rightWarning = {"Ka Pai!", "Kei reira!", "You got it!"};
+	private String[] rightWarning = {"Ka Pai!", "Kei reira!", "Kia kaha!"};
 	private boolean displayExitInfo = true;
 
 	/**
