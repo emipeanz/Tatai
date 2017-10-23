@@ -11,12 +11,14 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ChoseCustomListController extends BaseController{
 
 	@FXML private ComboBox<String> customListOptions;
 	@FXML private Button playCustomTestButton;
+	@FXML private Label noListsText;
 	private ObservableList<String> equationLists;
 	private Stage root;
 	@FXML private Button backButton;
@@ -26,6 +28,7 @@ public class ChoseCustomListController extends BaseController{
 	}
 
 	public void initialize() {
+		noListsText.setVisible(false);
 		populateComboBox();
 	}
 
@@ -50,10 +53,16 @@ public class ChoseCustomListController extends BaseController{
 		for (File equationList : lists) {
 			equationListNames.add(equationList.getName());
 		}
-		equationLists = FXCollections.observableArrayList(equationListNames);
-		customListOptions.getItems().addAll(equationLists);
+		if(equationListNames.isEmpty()) {
+			customListOptions.setDisable(true);
+			noListsText.setVisible(true);
+		}
+		else {
+			equationLists = FXCollections.observableArrayList(equationListNames);
+			customListOptions.getItems().addAll(equationLists);
+		}
 	}
-	
+
 	public void backButtonEvent(ActionEvent e) {
 		Stage stage = (Stage) backButton.getScene().getWindow();
 		stage.close();
