@@ -58,7 +58,7 @@ public class LevelController extends BaseController {
 	private String ORANGEPROGRESSBAR = "-fx-accent: orange;";
 	private List<Circle> progressCircles;
 	private boolean goToResultsOnceFinished;
-	private String[] tryAgainWarning = {"Oops, try again!", "Not quite, have another go!"};
+	private String[] tryAgainWarning = {"Oops, try again!", "Not quite, have another go!", "Keep trying!"};
 	private String[] incorrectWarning = {"Bad luck, the answer was: ", "Better luck next time, the answer was: "};
 	private String[] rightWarning = {"Ka Pai!", "Kei reira!", "Kia kaha!"};
 	private boolean displayExitInfo = true;
@@ -335,16 +335,21 @@ public class LevelController extends BaseController {
 		});
 		delay.play();
 	}
+<<<<<<< HEAD
+	
+	/**
+	 * Selects an element from an array of strings at a random index position
+=======
 
 	/**
 	 * Selects a string from a randomly generated index position from 
 	 * an input array of strings. Used for showing user feedback on the popup dialog.
+>>>>>>> 45db47cd9b8f669a650867f5e9645819f1e7f282
 	 * @param messages
 	 * @return
 	 */
 	private String selectMessage(String[] messages) {
 		int index = (int)(Math.random() * messages.length);
-		System.out.println(index);
 		return messages[index];
 	}
 
