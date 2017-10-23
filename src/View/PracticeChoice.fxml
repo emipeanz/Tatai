@@ -94,6 +94,6 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button id="backButton" fx:id="backButton" layoutX="17.0" layoutY="17.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <Button id="smallCircleButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="69.0" prefWidth="62.0" text="" textAlignment="CENTER" />
    </children>
 </AnchorPane>

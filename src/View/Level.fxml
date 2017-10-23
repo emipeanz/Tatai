@@ -42,7 +42,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
+      <Button id="smallCircleButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonEvent" prefHeight="69.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <HBox fx:id="progressBar" layoutX="240.0" layoutY="46.0" prefHeight="35.0" prefWidth="200.0" spacing="14.0">
          <children>
             <Circle fx:id="circle1" fill="#ffffff00" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.5">
@@ -87,21 +87,10 @@
                </effect></Circle>
          </children>
       </HBox>
-      <Button id="tryAgainButton" fx:id="skipButton" layoutX="678.0" layoutY="19.0" mnemonicParsing="false" onAction="#skipQuestion" prefHeight="69.0" prefWidth="145.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #83a4d4,#b6fbff);" textAlignment="CENTER" visible="false">
+      <Button id="smallCircleButton" fx:id="skipButton" layoutX="744.0" layoutY="14.0" mnemonicParsing="false" onAction="#skipQuestion" prefHeight="69.0" prefWidth="62.0" style="-fx-background-color: radial-gradient(focus-angle 50deg, focus-distance 10%, center 50% 50%, radius 50%, reflect, #83a4d4,#b6fbff);" styleClass="statsButton" text="" textAlignment="CENTER" visible="false">
          <font>
             <Font size="15.0" />
          </font>
-         <graphic>
-            <AnchorPane id="circleButton" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Label layoutX="44.0" layoutY="48.0" text="Skip">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </graphic>
       </Button>
       <ProgressBar fx:id="recordingProgress" layoutX="264.0" layoutY="462.0" prefHeight="18.0" prefWidth="311.0" progress="0.0">
          <effect>

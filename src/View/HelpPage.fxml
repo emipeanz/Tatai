@@ -11,7 +11,6 @@
 
 <AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="840.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HelpPageController">
    <children>
-      <Button id="backButton" fx:id="backButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="65.0" prefWidth="62.0" text="" textAlignment="CENTER" />
       <ImageView fx:id="screenImage" fitHeight="210.0" fitWidth="373.0" layoutX="277.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
       <HBox fx:id="progressBar" layoutX="238.0" layoutY="448.0" prefHeight="35.0" prefWidth="200.0" spacing="15.0">
          <children>
@@ -37,9 +36,10 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label fx:id="explanation" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="278.0" prefHeight="136.0" prefWidth="781.0" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="explanation" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="278.0" prefHeight="136.0" prefWidth="781.0" textAlignment="JUSTIFY" wrapText="true">
          <font>
-            <Font size="15.0" />
+            <Font size="18.0" />
          </font></Label>
+      <Button id="smallCircleButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnMainMenu" prefHeight="69.0" prefWidth="62.0" text="" textAlignment="CENTER" />
    </children>
 </AnchorPane>

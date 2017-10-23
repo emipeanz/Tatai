@@ -1,7 +1,5 @@
 package Controller;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,19 +12,14 @@ import View.Loader;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -56,7 +49,7 @@ public class CustomEquationController extends BaseController {
 	 * to check their equations until all fields have been filled.
 	 */
 	public void initialize() {
-		submitButton.setVisible(false);
+		submitButton.setDisable(true);
 		errorMessage.setVisible(false);
 		equationList = new ArrayList<TextField>(Arrays.asList(equation1,equation2, equation3, equation4, equation5, 
 				equation6, equation7, equation8, equation9, equation10));
@@ -76,7 +69,8 @@ public class CustomEquationController extends BaseController {
 	 * Method handles the check button event to check all equations are valid. Uses a javascript engine to evaluate
 	 * a string equation to an int. Colors the respective circle next to the equation to show if it is correct 
 	 * or incorrect. If there are some incorrect one then an error message with hints is shown. If all the equations
-	 * are valid then the submit button is shown.
+	 * are valid then the submit button is shown. Valid equation must have an integer answer between 1 and 99 and a 
+	 * character limit of 10. 
 	 * @param e
 	 */
 	public void checkEquations(ActionEvent e) {
@@ -91,7 +85,7 @@ public class CustomEquationController extends BaseController {
 				ScriptEngineManager mgr = new ScriptEngineManager();
 				ScriptEngine engine = mgr.getEngineByName("JavaScript");
 				int answerInt = (int)engine.eval(currentEquation);
-				if((answerInt>0) && (answerInt<100)) {
+				if((answerInt>0) && (answerInt<100) && (currentEquation.length() <= 10)) {
 					this.changeFeedbackIcon(circleList.get(i), true);
 					corrrectEquations++;
 				}
@@ -106,7 +100,7 @@ public class CustomEquationController extends BaseController {
 			i++;
 		}
 		if(corrrectEquations != 10) {
-			submitButton.setVisible(false);
+			submitButton.setDisable(true);
 			String output = "Some equations are invalid. Please fix equation";
 			for(int in = 0; in< wrongEquations.size() ; in++) {
 				output = output + (" " + wrongEquations.get(in));
@@ -114,14 +108,15 @@ public class CustomEquationController extends BaseController {
 					output = output + (",");
 				}
 			}
-			output = output + ". Make sure to only use numbers and the -, *, + and / symbols. Also make sure the answer is between 1-99 !";
+			output = output + ". Make sure to only use numbers and the -, *, + and / symbols. "
+					+ "Also make sure the answer is between 1-99 and there are only up to 10 characters!";
 			System.out.println(output);
 			errorMessage.setText(output);
 			errorMessage.setVisible(true);
 		}
 		else {
-			submitButton.setVisible(true);
-			errorMessage.setText("All your equations are good");
+			submitButton.setDisable(false);
+			errorMessage.setText("All your equations are good to go!");
 			errorMessage.setVisible(true);
 		}
 	}
@@ -135,7 +130,6 @@ public class CustomEquationController extends BaseController {
 		Button eventButton = (Button)e.getSource();
 		Stage stage = new Loader("CustomEquationName.fxml", new CustomEquationPopupController(equationList)).loadPopup();
 		stage.initOwner(eventButton.getScene().getWindow());
-		stage.initStyle(StageStyle.UNDECORATED);
 		stage.showAndWait();
 
 		returntoCreationsMenu(e);

@@ -16,7 +16,7 @@
          <graphic>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="23.0" layoutY="50.0" text="Exit">
+                  <Label layoutX="25.0" layoutY="52.0" text="Exit">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -31,7 +31,7 @@
          <graphic>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="25.0" layoutY="51.0" text="Stay">
+                  <Label layoutX="27.0" layoutY="52.0" text="Stay">
                      <font>
                         <Font size="36.0" />
                      </font>
