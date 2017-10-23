@@ -92,7 +92,7 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Button>
-      <Label layoutX="23.0" layoutY="141.0" text="1)" textFill="WHITE">
+      <Label layoutX="23.0" layoutY="141.0" text="1" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -100,7 +100,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="22.0" layoutY="192.0" text="2)" textFill="WHITE">
+      <Label layoutX="22.0" layoutY="192.0" text="2" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -108,7 +108,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="22.0" layoutY="237.0" text="3)" textFill="WHITE">
+      <Label layoutX="22.0" layoutY="237.0" text="3" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -116,7 +116,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="21.0" layoutY="287.0" text="4)" textFill="WHITE">
+      <Label layoutX="21.0" layoutY="287.0" text="4" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -124,7 +124,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="21.0" layoutY="335.0" text="5)" textFill="WHITE">
+      <Label layoutX="21.0" layoutY="335.0" text="5" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -132,7 +132,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="338.0" layoutY="137.0" text="6)" textFill="WHITE">
+      <Label layoutX="338.0" layoutY="137.0" text="6" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -140,7 +140,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="337.0" layoutY="188.0" text="7)" textFill="WHITE">
+      <Label layoutX="337.0" layoutY="188.0" text="7" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -148,7 +148,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="337.0" layoutY="233.0" text="8)" textFill="WHITE">
+      <Label layoutX="337.0" layoutY="233.0" text="8" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -156,7 +156,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="336.0" layoutY="283.0" text="9)" textFill="WHITE">
+      <Label layoutX="336.0" layoutY="283.0" text="9" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -164,7 +164,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label layoutX="321.0" layoutY="331.0" text="10)" textFill="WHITE">
+      <Label layoutX="321.0" layoutY="331.0" text="10" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
