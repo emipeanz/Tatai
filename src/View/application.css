@@ -1,16 +1,16 @@
 @font-face {
-	src: url(/View/fontawesome-webfont.ttf);
+	src: url(/Fonts/fontawesome-webfont.ttf);
 }
 
 #background{
-	-fx-background-image: url("background1.jpg");
+	-fx-background-image: url(/Images/background1.jpg);
 	-fx-background-position: left top, center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: cover, auto;
 	}
 	
 #popupBackground{
-	-fx-background-image: url("backgroundPopup.jpg");
+	-fx-background-image: url(/Images/backgroundPopup.jpg);
 	-fx-background-position: left top, center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: cover, auto;

@@ -1,10 +1,13 @@
 package View;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Controller.BaseController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -71,7 +74,7 @@ public class Loader {
 				e1.printStackTrace();
 			}
 			Scene scene = new Scene (pane);
-			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			return scene;
 		}
 		else { // Else there is no custom controller and can just load the FXML file
@@ -81,7 +84,7 @@ public class Loader {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			scene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			return scene;
 		}
 	}

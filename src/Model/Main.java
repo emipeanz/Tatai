@@ -2,6 +2,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import View.Loader;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -26,11 +27,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			//sets both the introductory and level scenes ready for transition from introduction to levels
-			Scene mainScene = new Scene(FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml")));
-			Scene introScene = new Scene(FXMLLoader.load(getClass().getResource("/View/IntroMenu.fxml")));
-			
-			//introScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
-			//mainScene.getStylesheets().add(getClass().getResource("/View/application.css").toExternalForm());
+			Scene mainScene = new Loader("MainMenu.fxml", null).load();
+			Scene introScene = new Loader("IntroMenu.fxml", null).load();
 			
 			//Sets the introductory scene
 			primaryStage.setScene(introScene);

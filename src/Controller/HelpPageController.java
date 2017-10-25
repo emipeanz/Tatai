@@ -1,15 +1,21 @@
 package Controller;
 
+import View.*;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.net.URL;
+import java.security.CodeSource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import com.sun.xml.internal.bind.v2.schemagen.episode.Bindings;
 
+import Model.Main;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -50,10 +56,6 @@ public class HelpPageController extends BaseController{
 	 */
 	public void initialize() {
 
-		
-		File dir = new File("src/View/Images");
-		String extension = "png";
-
 		titles.add("Main Menu");
 		titles.add("Play Menu");
 		titles.add("Making a Custom List");
@@ -64,7 +66,7 @@ public class HelpPageController extends BaseController{
 		titles.add("Getting a question right");
 		titles.add("Results");
 		titles.add("Statistics");
-		
+
 		textList.put("Main Menu", "This is the main menus where you can chose to practice math by playing fun games, or playing the game where it will also track your score. You can view your statistics any time from the button in the top right corner.");
 		textList.put("Play Menu", "Here you can chose what difficulty you want to play or create you own equation lists to test by going to custom. You can return to the main menu at any time. Remember, before you can play harder levels, you must get 8/10 on the level below!");
 		textList.put("Making a Custom List", "Here you can input 10 of you own equations to test. Make sure to only use numbers, =, -, * and / symbols and make sure the answer is between 1 - 99. Heres an example \" 6 * 4 \". When you have them all, click the green check button to see if they are all valid. Then click submit and think of a list name!");
@@ -76,26 +78,20 @@ public class HelpPageController extends BaseController{
 		textList.put("Results", "Once you have completed a test, results will show you your score, the questions you got right and wrong and their answer");
 		textList.put("Statistics", "Here you can see you average score, how many tests you have taken and your high score. Keep playing more games to change them! User the slider bar up the top to change between statistics for easy, medium and hard levels.");
 		
-		FilenameFilter imagesFilter = new FilenameFilter() {
-			@Override
-			public boolean accept(final File dir, final String name) {
-				if(name.endsWith(extension)) {
-					return true;
-				}
-				return false;
+		File dir = new File("Resources/Images");
+		File[] foundfiles = dir.listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".png");
 			}
-		};
-
-		int i = 0;
-
-		if(dir.isDirectory()) {
-			for ( File f : dir.listFiles()) {
-				Image image = new Image(f.toURI().toString());
-				String imageName = f.getName().replaceFirst("[.][^.]+$", "");
-				imageList.put(imageName, image);
-
-			}
+		});
+		
+		for (File f : foundfiles) {
+			Image img = new Image(f.toURI().toString());
+			String name = f.getName().replaceFirst("[.][^.]+$", "");
+			imageList.put(name, img);
+			
 		}
+		
 		
 		progressCircles = new ArrayList<Circle>(Arrays.asList(circle1, circle2,
 				circle3, circle4, circle5, circle6, circle7, circle8, circle9, circle10));
@@ -131,9 +127,9 @@ public class HelpPageController extends BaseController{
 	 * Colors a progress circle down the bottom when a page is increased to the next
 	 */
 	public void colourCircle() {
-			Circle circle =	progressCircles.get(currentPage);
-			circle.setFill(GREEN);
-			circle.setStroke(GREEN);
+		Circle circle =	progressCircles.get(currentPage);
+		circle.setFill(GREEN);
+		circle.setStroke(GREEN);
 
 	}
 
@@ -145,7 +141,7 @@ public class HelpPageController extends BaseController{
 		circle.setFill(TRANSPARENT);
 		circle.setStroke(WHITE);
 	}
-	
+
 	/**
 	 * Is called whenever the user changed a scene description. It checks if they are on the first or last scene - and if
 	 * so disables the respective button so they cant continue going forward/back. It also changes the title of the page 
