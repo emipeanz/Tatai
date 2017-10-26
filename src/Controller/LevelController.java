@@ -230,6 +230,7 @@ public class LevelController extends BaseController {
 	private void clearAndStartAgain(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
+		
 		Scene scene = new Loader("Level.fxml", new LevelController(TestType.EASY, false)).load();
 		stageEventBelongsTo.setScene(scene);
 	}
@@ -254,6 +255,7 @@ public class LevelController extends BaseController {
 	public void backButtonEvent(ActionEvent event) {
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Button eventButton = (Button)event.getSource();
+		
 		Stage stage = new Loader("ExitPopup.fxml",new ExitPopupController(stageEventBelongsTo, "/View/MainMenu.fxml")).loadPopup();
 		stage.initOwner(eventButton.getScene().getWindow());
 		stage.initStyle(StageStyle.UNDECORATED);
@@ -272,8 +274,10 @@ public class LevelController extends BaseController {
 
 		if(correct) {		
 			_currentRound.setPass(true);
+			
 			showFeedbackMessage(selectMessage(rightMessages), "-fx-background-color: linear-gradient(to right, #56ab2f, #a8e063);", 64, 3);
 			updateProgressBar(GREEN);
+			
 			PauseTransition delay = new PauseTransition(Duration.seconds(3));
 			delay.setOnFinished( event -> this.nextQuestion(e) );
 			delay.play();
@@ -281,16 +285,21 @@ public class LevelController extends BaseController {
 			_currentRound.decreaseChances();
 			if(_currentRound.getChances() == 0) { // If they have no more chances left
 				_currentRound.setPass(false);
+				
 				updateProgressBar(RED);
 				String warningMessage = selectMessage(wrongMessages) + + _currentRound.getQuestion().getAnswerInt();
 				showFeedbackMessage(warningMessage, "-fx-background-color: linear-gradient(to right, #cb2d3e, #ef473a);", 46, 3);
+				
 				PauseTransition delay = new PauseTransition(Duration.seconds(3));
 				delay.setOnFinished( event -> this.nextQuestion(e) );
 				delay.play();
+			
 			} else { // If they have one more chance left
 				int messageDisplayTime = 3;
 				showFeedbackMessage(selectMessage(tryAgainMessages), "-fx-background-color: linear-gradient(to right, #ff8008, #ffc837);", 54, messageDisplayTime);
+				
 				skipButton.setDisable(false);
+				
 				PauseTransition delay = new PauseTransition(Duration.seconds(messageDisplayTime));
 				delay.setOnFinished( event -> skipButton.setVisible(true));
 				delay.play();
@@ -310,6 +319,7 @@ public class LevelController extends BaseController {
 		feedbackMessage.setText(message);
 		feedbackMessage.setFont(new Font("System", fontSize));
 		feedbackMessage.setStyle(cssInfo);
+		
 		feedbackMessage.setVisible(true);
 		setDisableButtons(true, true, true, true);
 		
@@ -318,8 +328,10 @@ public class LevelController extends BaseController {
 		delay.setOnFinished( new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
+				
 				feedbackMessage.setVisible(false);
 				setDisableButtons(true, true, false, false);
+				
 			}
 		});
 		delay.play();
@@ -362,6 +374,7 @@ public class LevelController extends BaseController {
 				return null;                
 			}
 		};
+		
 		recordingProgress.progressProperty().bind(task.progressProperty());
 		Thread th = new Thread(task);
 		th.setDaemon(true);
@@ -380,6 +393,7 @@ public class LevelController extends BaseController {
 		_currentRound.setSkip();
 		updateProgressBar(ORANGE);
 		showFeedbackMessage("Question skipped!", "-fx-background-color: linear-gradient(to right, #ece9e6, #ffffff);", 50, 3);
+		
 		PauseTransition delay = new PauseTransition(Duration.seconds(3));
 		delay.setOnFinished( event -> this.nextQuestion(e) );
 		delay.play();

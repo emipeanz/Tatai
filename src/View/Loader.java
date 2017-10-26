@@ -14,7 +14,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
- * This class handles the loading of FXML files.
+ * This class handles the loading of FXML files. It can load the file as a
+ * popup or as a new scene.
  * @author se206
  *
  */

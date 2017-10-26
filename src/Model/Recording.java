@@ -10,6 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * This class handles everything to do with recording. That included storing the 
+ * recoding and its location, as well as recording and playing it
+ * @author se206
+ *
+ */
 public class Recording {
 	
 	private MediaPlayer _player;
@@ -32,11 +38,11 @@ public class Recording {
 			throw new RuntimeException("Programmer messed up command...");
 		}
 	}
-	
-	public boolean checkRecording() {
-		return false;
-	}
-	
+
+	/**
+	 * Gets media player for current recording object
+	 * @return the player object
+	 */
 	public MediaPlayer getMediaPlayer() {
 		return _player;
 	}
@@ -97,8 +103,10 @@ public class Recording {
 			e.printStackTrace();
 		}
 
+		// Splits word up into corresponding parts
 		String[] split = numberWord.split("\\s+");
 		
+		// If the recorded word in in the list of correct word parts they got it right
 		for(String s : split) {
 			if(!(output.contains(s))) {
 				return false;

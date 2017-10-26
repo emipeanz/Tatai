@@ -90,30 +90,58 @@ public class Question {
 		return numberWord;	
 	}
 	
+	/**
+	 * Gets display string
+	 * @return
+	 */
 	public String getDisplayString() {
 		return displayString;
 	}
 	
+	/**
+	 * Gets answer string
+	 * @return
+	 */
 	public String getAnswerString() {
 		return answerString;
 	}
 	
+	/**
+	 * Gets answer as integer
+	 * @return
+	 */
 	public int getAnswerInt() {
 		return answerInt;
 	}
 	
+	/**
+	 * Sets the display string
+	 * @param s
+	 */
 	public void setDisplayString(String s) {
 		displayString = s;
 	}
 	
+	/**
+	 * Sets the answer string
+	 * @param s
+	 */
 	public void setAnswerString(String s) {
 		answerString = s;
 	}
 	
+	/**
+	 * Sets answer as an integer
+	 * @param i
+	 */
 	public void setAnswerInt(int i) {
 		answerInt = i;
 	}
 	
+	/**
+	 * Sets the pass string that is used in displaying results
+	 * @param b
+	 */
 	public void setPass(boolean b) {
 		pass = b;
 		if(b) {
@@ -124,23 +152,42 @@ public class Question {
 		}
 	}
 	
+	/**
+	 * Gets pass for question
+	 * @return
+	 */
 	public boolean getPass() {
 		return pass;
 	}
 	
+	/**
+	 * Sets skip as a string value, only used in displaying results
+	 */
 	public void setSkip() {
 		skip = true;
 		this.setPassString("Skipped");
 	}
 	
+	/**
+	 * Gets skip for question
+	 * @return
+	 */
 	public boolean getSkip() {
 		return skip;
 	}
 	
+	/**
+	 * Sets the pass string for question, only used in disiplaying results
+	 * @param s
+	 */
 	public void setPassString(String s) {
 		passString = s;
 	}
 	
+	/**
+	 * Gets the pass string for question
+	 * @return
+	 */
 	public String getPassString()
 	{
 		return passString;

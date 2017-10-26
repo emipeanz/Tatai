@@ -3,6 +3,12 @@ package Model;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
+/**
+ * This class handles everything to do with an equation. This includes storing the operators and operands
+ * as well as answers.
+ * @author Emilie Pearce and Maddie Beagley
+ *
+ */
 public class Equation extends Question {
 
 	private Operator _operator;
@@ -48,6 +54,12 @@ public class Equation extends Question {
 		displayString = equation.replace("*", "x");
 	}
 
+	/**
+	 * This method uses a JavaScript engine to evaluate an equation that is 
+	 * a string. Used for custom equation lists only
+	 * @param evaluateEquation
+	 * @return answer to equation
+	 */
 	public int evaluateEquation(String evaluateEquation) {
 		int answer = 0;
 		String equation = evaluateEquation.replace("x", "*");

@@ -21,12 +21,23 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * This class handles everything to do with custom equations menu. That involves directing
+ * user to the scene to make a list, or the popup to choose a list to play
+ * @author Emilie Pearce and Maddie Beagley
+ *
+ */
 public class CustomMenuController extends BaseController{
 
 	@FXML private DialogPane dialogChooseTest;
 	@FXML private ComboBox comboBox;
 	@FXML private Button PlayCustomTestButton;
 
+	/**
+	 * Method directs user to scene where they can create their own custom 
+	 * equation lists.
+	 * @param e
+	 */
 	public void openCreateCustom(ActionEvent e) {
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
@@ -34,6 +45,10 @@ public class CustomMenuController extends BaseController{
 		stageEventBelongsTo.setScene(scene);		
 	}
 
+	/**
+	 * Goes back to the difficulty page
+	 * @param e
+	 */
 	public void returnDifficulty(ActionEvent e) {
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 
@@ -41,6 +56,10 @@ public class CustomMenuController extends BaseController{
 		stageEventBelongsTo.setScene(scene);
 	}
 
+	/**
+	 * Method opens popup to chose a custom list to play
+	 * @param event
+	 */
 	public void selectCustomTest(ActionEvent event) {
 		Stage stageEventBelongsTo = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		Button eventButton = (Button)event.getSource();

@@ -78,6 +78,7 @@ public class ResultsController extends BaseController{
 								
 							}
 							if (pass.equals("Skipped")){
+								// Colours it orange if skipped
 								setStyle("-fx-background-color : linear-gradient(to right, #cb2d3e, #ff9e0c);");
 							}
 							if(pass.equals("Wrong")) {
@@ -127,7 +128,6 @@ public class ResultsController extends BaseController{
 
 		stageEventBelongsTo.setScene(scene);		
 	}
-
 
 
 	/**

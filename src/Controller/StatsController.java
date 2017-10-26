@@ -70,7 +70,10 @@ public class StatsController extends BaseController{
 		});
 	}
 
-
+	/**
+	 * Displays results for the corresponding level based on where the slider is.
+	 * Reads the results from the relevant file then loads it to the screen
+	 */
 	public void displayResults() {
 		String filename = "";
 		
@@ -96,7 +99,6 @@ public class StatsController extends BaseController{
 			testsTaken.setText(numOfTestsString);
 
 		} catch (Exception exception) {
-
 		}
 	}
 }

@@ -20,6 +20,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * This class handles everything to do with choosing the difficulty for a test.
+ * Directs user to respective level or to custom screen should they want to 
+ * create their own lists
+ * @author Emilie Pearce and Maddie Beagley
+ *
+ */
 public class DifficultyController extends BaseController {
 
 	@FXML private Button easyButton;
@@ -105,6 +112,11 @@ public class DifficultyController extends BaseController {
 
 	}
 
+	/**
+	 * Method only used if scene is choosing which operator to be tested on, and creates
+	 * a new level and level controller with that respective operator
+	 * @param e
+	 */
 	public void enterPracticeTest(ActionEvent e) {
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 		AnchorPane levelScene = null;
@@ -125,6 +137,11 @@ public class DifficultyController extends BaseController {
 		stageEventBelongsTo.setScene(scene);
 	}
 
+	/**
+	 * Directs user to the custom options screen if they want to make their own
+	 * custom equation lists.
+	 * @param e
+	 */
 	public void customButtonEvent(ActionEvent e) {
 		System.out.println("Enter Custom view");
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();

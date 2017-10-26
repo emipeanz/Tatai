@@ -4,7 +4,7 @@ package Model;
  * one round of a test. It will store the information about the question
  * being asked, whether or not the user answered correctly and the recording
  * information for play back and taking a recording.
- * @author se206
+ * @author Emilie Pearce and Maddie Beagley
  *
  */
 public class Round {
@@ -54,7 +54,7 @@ public class Round {
 
 	/**
 	 * Returns number of chances the user has remaining in the particular round.
-	 * @return
+	 * @return chances left
 	 */
 	public int getChances() {
 		return _chances;
@@ -62,7 +62,7 @@ public class Round {
 
 	/**
 	 * Returns the question associated to the particular round.
-	 * @return
+	 * @return the rounds question
 	 */
 	public Question getQuestion() {
 		return _question;
@@ -77,7 +77,7 @@ public class Round {
 
 	/**
 	 * Recording is returned.
-	 * @return
+	 * @return the rounds recording
 	 */
 	public Recording getRecording() {
 		return _recording;
@@ -94,7 +94,7 @@ public class Round {
 
 	/**
 	 * Returns whether the user passed the round.
-	 * @return
+	 * @return the rounds pass value
 	 */
 	public Boolean getPass() {
 		return _pass;
@@ -108,6 +108,10 @@ public class Round {
 		_question.setSkip();
 	}
 	
+	/**
+	 * Get's skip for the round
+	 * @return boolean if the round has been skipped
+	 */
 	public Boolean getSkip() {
 		return this._skip;
 	}

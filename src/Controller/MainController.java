@@ -33,7 +33,11 @@ public class MainController extends BaseController {
 
 	private TestType testType;
 
-	//makes sure files exist for results to be stored in for easy hard and medium
+	/**
+	 * Method initializes the main menu. Also sets up all results files if they do
+	 * not exist. Makes a directory to store custom equations if it does not 
+	 * already exist
+	 */
 	public void initialize() {
 		String[] difficulties = {"easy", "medium", "hard"};		
 		File tmpfile;
@@ -64,8 +68,8 @@ public class MainController extends BaseController {
 	}
 
 	/**
-	 * This method directs the user to the easy test screen.  A custom controller is made with
-	 * the difficulty parameter and attached to the Level scene
+	 * This method directs the user to the difficulty screen.  A custom controller is made with
+	 * the difficulty parameter and attached to the difficulty scene
 	 * @param e ActionEvent when easyButton is clicked
 	 */
 	public void enterDifficultyOption(ActionEvent e) {
@@ -77,6 +81,11 @@ public class MainController extends BaseController {
 
 	}
 
+	/**
+	 * This method directs user to the operator choice page where user can choose what operator
+	 * they want to practice with.
+	 * @param e
+	 */
 	public void enterPracticeMode(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
@@ -85,6 +94,10 @@ public class MainController extends BaseController {
 		stageEventBelongsTo.setScene(scene);
 	}
 
+	/**
+	 * This method directs user to the stats screen
+	 * @param e
+	 */
 	public void enterStatsView(ActionEvent e) {
 		// Get the main stage to display the scene in
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
@@ -93,6 +106,10 @@ public class MainController extends BaseController {
 		stageEventBelongsTo.setScene(scene);
 	}
 	
+	/**
+	 * This method directs user to the help page
+	 * @param e
+	 */
 	public void enterHelpPage(ActionEvent e) {
 		Stage stageEventBelongsTo = (Stage) ((Node)e.getSource()).getScene().getWindow();
 

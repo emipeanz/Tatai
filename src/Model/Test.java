@@ -40,6 +40,8 @@ public class Test {
 			}
 		}
 	}
+	
+	
 	/**
 	 * Test constructor used only for a practice test.
 	 * @param operator
@@ -78,6 +80,11 @@ public class Test {
 		}
 	}
 
+	
+	/**
+	 * Getter for the testType
+	 * @return testType
+	 */
 	public TestType getTestType() {
 		return _testType;
 	}

@@ -34,6 +34,10 @@ public abstract class BaseController {
 		stageEventBelongsTo.setScene(scene);
 	}
 	
+	/**
+	 * Method to return to the main menu from whatever scene the user is currently at
+	 * @param e
+	 */
 	public void returnMainMenu(ActionEvent e) {
 		this.returnPreviousScene(e, "MainMenu.fxml");
 	}

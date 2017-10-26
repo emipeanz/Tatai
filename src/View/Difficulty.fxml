@@ -51,7 +51,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Label id="hardText" fx:id="mediumText" alignment="CENTER" contentDisplay="CENTER" layoutX="202.0" layoutY="466.0" text="Me tango te 8/10 ki te timatanga tuatahi!" textFill="WHITE">
+      <Label id="hardText" fx:id="mediumText" alignment="CENTER" contentDisplay="CENTER" layoutX="202.0" layoutY="466.0" text="You have to get at least 8/10 on Easy" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -104,7 +104,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="211.0" layoutY="466.0" text="You have to get at least 8/10 on Easy" textFill="WHITE">
+      <Label id="hardText" fx:id="hardText" alignment="CENTER" contentDisplay="CENTER" layoutX="211.0" layoutY="466.0" text="You have to get at least 8/10 on Medium" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
