@@ -80,10 +80,10 @@ public class CustomEquationController extends BaseController {
 		for (TextField t : equationList) {
 			String inputEquation = t.getText();
 			//equation in form that can be analysed
-			String currentEquation = inputEquation.replaceAll("x", "\\*");
-
+			String currentEquation = inputEquation.replaceAll("x", "\\*").trim();
+			
 			//ensures the equation is not all white space
-			if (!currentEquation.trim().isEmpty()) {
+			if (!currentEquation.isEmpty() && (!currentEquation.contains("/0"))) {
 				try {
 					ScriptEngineManager mgr = new ScriptEngineManager();
 					ScriptEngine engine = mgr.getEngineByName("JavaScript");
@@ -100,7 +100,7 @@ public class CustomEquationController extends BaseController {
 						System.out.println(Integer.parseInt(t.getId().split("equation")[1]));
 						wrongEquations.add(Integer.parseInt(t.getId().split("equation")[1]));
 					}
-				} catch (ScriptException e1) {
+				} catch (ScriptException | ClassCastException e1) {
 					wrongEquations.add(Integer.parseInt(t.getId().split("equation")[1]));
 					this.changeFeedbackIcon(circleList.get(i), false);
 				}
