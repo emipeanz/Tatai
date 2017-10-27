@@ -52,7 +52,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Label layoutX="202.0" layoutY="35.0" text="Chose to make a custom&#10;list or play one" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="202.0" layoutY="35.0" text="Choose to make a custom&#10;list or play one" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="34.0" />
          </font>
