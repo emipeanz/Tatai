@@ -15,7 +15,7 @@ Tatai is designed to help children who speak Maori learn to pronounce Maori numb
 ![Image of Statistics Screen](https://github.com/emipeanz/Tatai/blob/master/docs/images/StatsScreen.png)
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This application was built with Java for a linux system
 
 ### Prerequisites
 
