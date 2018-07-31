@@ -39,16 +39,18 @@ TataiPrototype.jar into the folder containing the HTK material as indicated
 by the folder structure below. Make sure all directories and files are as
 they are represented below
 
-Documents
-|   HTK
-|   |   MaoriNumbers
-|   |   |   HMMs
-|   |   |   RecordingDir
-|   |   |   user
-|   |   |   GoSpeech
-|   |   |   recout.mlf
-|   |   |   TataiPrototype.jar
 
+```
+Documents
+    ├── HTK                  
+    ├───├── MaoriNumbers                    
+    ├───├──├─── HMMs                 
+    ├───├──├─── RecordingDir              
+    ├───├──├─── user   
+    ├───├──├─── GoSpeech
+    ├───├──├─── recout.mlf
+    └───└──└── Tatai.jar
+```
 Then run the jar file from the command line by typing the following command: 
 ```
 java -jar TataiPrototype.jar &> /dev/null
@@ -62,3 +64,4 @@ java -jar TataiPrototype.jar &> /dev/null
 ## Acknowledgments
 
 * Software Engineering lecturers at the University of Auckland
+
